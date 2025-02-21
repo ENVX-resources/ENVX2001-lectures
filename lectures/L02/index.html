@@ -220,13 +220,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-
-
 ```{=html}
 <iframe class="slide-deck" src="lecture-02.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ``` 
-
-
 
 
 
@@ -327,7 +323,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ENVX-resources\.github\.io\/ENVX2001-lectures\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }

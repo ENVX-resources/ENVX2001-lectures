@@ -214,8 +214,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>Lecture 01a – Welcome</strong> <a href="lecture-01a.qmd">Full Screen</a> | <a href="lecture-01a.pdf">PDF</a></p>
-<iframe class="slide-deck" src="lecture-01a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+<p><strong>Lecture 01a – Welcome</strong> <a href="../../lectures/L01/Lecture-01a.html">Full Screen</a> | <a href="Lecture-01a.pdf">PDF</a></p>
+<iframe class="slide-deck" src="Lecture-01a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 <!-- **Lecture 01b -- The beginning is the end: a revision** [Full Screen](lecture-01b.qmd) | [PDF](lecture-01b.pdf)  -->
 <!-- ```{=html}
 <iframe class="slide-deck" src="lecture-01b.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
@@ -314,7 +314,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ENVX-resources\.github\.io\/ENVX2001-lectures\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
