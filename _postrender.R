@@ -19,7 +19,8 @@ convert_html_to_pdf <- function(html_dir, pdf_dir) {
       recursive = TRUE,
       pattern = ".html"
     ),
-    value = TRUE
+    value = TRUE,
+    ignore.case = TRUE
   )
 
   # Present list of files to user and get selection
@@ -80,4 +81,3 @@ convert_html_to_pdf <- function(html_dir, pdf_dir) {
 
 # Example usage:
 convert_html_to_pdf("_site/lectures", "lectures")
-

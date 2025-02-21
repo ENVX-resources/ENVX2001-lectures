@@ -1,5 +1,5 @@
 ---
-title: "Lecture 01 -- Reproducible science"
+title: "Lecture 01"
 ---
 
 **Lecture 01a -- Welcome** [Full Screen](lecture-01a.qmd) | [PDF](lecture-01a.pdf) 

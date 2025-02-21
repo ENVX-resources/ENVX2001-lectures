@@ -1,0 +1,51 @@
+---
+title: Lecture 03a -- $t$-Tests
+subtitle: ENVX2001 Applied Statistical Methods
+author: Dr. Januar Harianto 
+institute: The University of Sydney
+date: last-modified # today | last-modified
+date-format: "MMM YYYY"
+execute:
+  cache: false
+  echo: true
+editor-options:
+  canonical: true
+toc: true
+toc-depth: 1
+toc-title: Outline
+---
+
+
+# History
+
+![William Gosset (1908)](images/will.png)
+
+Formulated the $t$-distribution and $t$-tests.
+
+![Ronald FIsher](images/ronald.png)
+
+Formulated the $t$-distribution and $t$-tests.
+
+
+# Cattle
+## Data
+
+- Weights of two breeds of cattle are to be compared
+- Twelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.
+- Are there any differences in the mean weights of the two breeds?
+
+::: fragment
+```{r}
+cattle <- read.csv("data/cattle.csv")
+cattle
+```
+
+:::
+
+
+
+## Thanks!
+### Questions?
+This presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by].
+
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
