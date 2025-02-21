@@ -196,7 +196,7 @@
     "href": "lectures/L02/Lecture-02b.html#soil-carbon-1",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Soil carbon",
-    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\n\n\nDifferent land types\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?\n\n\n\nIn R\nSuppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.\n(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)\n\nlandA &lt;- c(90, 78, 86, 71)  # stratum A samples\nlandB &lt;- c(48, 56, 42)      # stratum B samples"
+    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\n\n\nDifferent land types\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?\n\n\n\nIn R\nSuppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.\n(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)\n\n\nCode\nlandA &lt;- c(90, 78, 86, 71)  # stratum A samples\nlandB &lt;- c(48, 56, 42)      # stratum B samples"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#confidence-interval",
@@ -210,14 +210,14 @@
     "href": "lectures/L02/Lecture-02b.html#pooled-mean-bar-y_s",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Pooled mean \\(\\bar y_{s}\\)",
-    "text": "Pooled mean \\(\\bar y_{s}\\)\n\nSum of the weighted estimates of mean, from each stratum.\n\n\n\\[\\bar{y}_{s} = \\sum_{i=1}^L \\bar{y}_i \\times w_i\\]\nwhere \\(L\\) is the number of strata, \\(\\bar{y}_i\\) is the mean of stratum \\(i\\), and \\(w_i\\) is the weight for stratum \\(i\\).\n\n\nWe first define the weights \\(w_i\\) for each stratum:\n\nweight &lt;- c(0.62, 0.38)\n\n\n\nThen we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:\n\nweighted_mean &lt;- mean(landA) * weight[1] + mean(landB) * weight[2]\nweighted_mean\n\n[1] 68.86833"
+    "text": "Pooled mean \\(\\bar y_{s}\\)\n\nSum of the weighted estimates of mean, from each stratum.\n\n\n\\[\\bar{y}_{s} = \\sum_{i=1}^L \\bar{y}_i \\times w_i\\]\nwhere \\(L\\) is the number of strata, \\(\\bar{y}_i\\) is the mean of stratum \\(i\\), and \\(w_i\\) is the weight for stratum \\(i\\).\n\n\nWe first define the weights \\(w_i\\) for each stratum:\n\n\nCode\nweight &lt;- c(0.62, 0.38)\n\n\n\n\nThen we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:\n\n\nCode\nweighted_mean &lt;- mean(landA) * weight[1] + mean(landB) * weight[2]\nweighted_mean\n\n\n[1] 68.86833"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s",
     "href": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)",
-    "text": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)\n\nSquare root of the sum of the weight-adjusted variances of the mean per stratum, assuming the strata are independent (see next slide).\n\n\n\\[Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i)\\] \\[SE(\\bar y_{s}) = \\sqrt{Var(\\bar y_{s})}\\]\nwhere \\(L\\) is the number of strata, \\(w_i\\) is the weight for stratum \\(i\\), and \\(Var(\\bar y_i)\\) is the variance of the mean for stratum \\(i\\).\n\n\n\nIn R\n\nvarA &lt;- var(landA) / length(landA)\nvarB &lt;- var(landB) / length(landB)\nweighted_var &lt;- weight[1]^2 * varA + weight[2]^2 * varB\nweighted_se &lt;- sqrt(weighted_var)\nweighted_se\n\n[1] 3.041995"
+    "text": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)\n\nSquare root of the sum of the weight-adjusted variances of the mean per stratum, assuming the strata are independent (see next slide).\n\n\n\\[Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i)\\] \\[SE(\\bar y_{s}) = \\sqrt{Var(\\bar y_{s})}\\]\nwhere \\(L\\) is the number of strata, \\(w_i\\) is the weight for stratum \\(i\\), and \\(Var(\\bar y_i)\\) is the variance of the mean for stratum \\(i\\).\n\n\n\nIn R\n\n\nCode\nvarA &lt;- var(landA) / length(landA)\nvarB &lt;- var(landB) / length(landB)\nweighted_var &lt;- weight[1]^2 * varA + weight[2]^2 * varB\nweighted_se &lt;- sqrt(weighted_var)\nweighted_se\n\n\n[1] 3.041995"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s-1",
@@ -231,14 +231,14 @@
     "href": "lectures/L02/Lecture-02b.html#t-critical-value",
     "title": "Lecture 02b – Sampling designs II",
     "section": "\\(t\\)-critical value",
-    "text": "\\(t\\)-critical value\n\nDegrees of freedom \\(df\\)\n\\[df = n - L\\]\nwhere \\(n\\) is the total number of samples and \\(L\\) is the number of strata.\n\n\nSuppose we want to assign 12 samples to 3 strata.\nThe degrees of freedom is \\(12 - 3 = 9\\).\nThink of it this way: of all the 12 samples, we can assign at least 9 units freely into any stratum, but the last 3 must be in each of the 3 strata.\n\n\n\n\n\nIn R\n\ndf &lt;- length(landA) + length(landB) - 2\nt_crit &lt;- qt(0.975, df)\nt_crit\n\n[1] 2.570582"
+    "text": "\\(t\\)-critical value\n\nDegrees of freedom \\(df\\)\n\\[df = n - L\\]\nwhere \\(n\\) is the total number of samples and \\(L\\) is the number of strata.\n\n\nSuppose we want to assign 12 samples to 3 strata.\nThe degrees of freedom is \\(12 - 3 = 9\\).\nThink of it this way: of all the 12 samples, we can assign at least 9 units freely into any stratum, but the last 3 must be in each of the 3 strata.\n\n\n\n\n\nIn R\n\n\nCode\ndf &lt;- length(landA) + length(landB) - 2\nt_crit &lt;- qt(0.975, df)\nt_crit\n\n\n[1] 2.570582"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#confidence-interval-1",
     "href": "lectures/L02/Lecture-02b.html#confidence-interval-1",
     "title": "Lecture 02b – Sampling designs II",
     "section": "95 % Confidence interval",
-    "text": "95 % Confidence interval\n\nPutting it all together\n\nci &lt;- c(\n  L95 = weighted_mean - t_crit * weighted_se,\n  u95 = weighted_mean + t_crit * weighted_se\n)\nci\n\n     L95      u95 \n61.04864 76.68803"
+    "text": "95 % Confidence interval\n\nPutting it all together\n\n\nCode\nci &lt;- c(\n  L95 = weighted_mean - t_crit * weighted_se,\n  u95 = weighted_mean + t_crit * weighted_se\n)\nci\n\n\n     L95      u95 \n61.04864 76.68803"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#simple-random-vs.-stratified-random-sampling",
@@ -252,7 +252,7 @@
     "href": "lectures/L02/Lecture-02b.html#efficiency",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Efficiency",
-    "text": "Efficiency\n\nCalculated as a ratio: \\[\\text{Efficiency} = \\frac{\\text{Variance of SRS}}{\\text{Variance of Stratified}}\\]\nIndicates sampling effort required to achieve precision of stratified sampling.\nEfficiency &gt; 1 means stratified sampling is more efficient.\nValue tells us how much we need to increase the sample size in SRS to achieve the same precision as stratified sampling.\n\n\nIn R\n\nefficiency &lt;- 50.83 / 9.30\nefficiency\n\n[1] 5.465591\n\n\nHow many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?\n\nround(7 * efficiency, 0)\n\n[1] 38"
+    "text": "Efficiency\n\nCalculated as a ratio: \\[\\text{Efficiency} = \\frac{\\text{Variance of SRS}}{\\text{Variance of Stratified}}\\]\nIndicates sampling effort required to achieve precision of stratified sampling.\nEfficiency &gt; 1 means stratified sampling is more efficient.\nValue tells us how much we need to increase the sample size in SRS to achieve the same precision as stratified sampling.\n\n\nIn R\n\n\nCode\nefficiency &lt;- 50.83 / 9.30\nefficiency\n\n\n[1] 5.465591\n\n\nHow many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?\n\n\nCode\nround(7 * efficiency, 0)\n\n\n[1] 38"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#tips-on-implementation",
@@ -315,7 +315,7 @@
     "href": "lectures/L03/Lecture-03a.html#data",
     "title": "Lecture 03a – \\(t\\)-Tests",
     "section": "Data",
-    "text": "Data\n\nWeights of two breeds of cattle are to be compared\nTwelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.\nAre there any differences in the mean weights of the two breeds?\n\n\n\ncattle &lt;- read.csv(\"data/cattle.csv\")\ncattle\n\n   Breed1 Breed2\n1   187.6  148.1\n2   180.3  146.2\n3   198.6  152.8\n4   190.7  135.3\n5   196.3  151.2\n6   203.8  146.3\n7   190.2  163.5\n8   201.0  146.6\n9   194.7  162.4\n10  221.1  140.2\n11  186.7  159.4\n12  203.1  181.8\n13     NA  165.1\n14     NA  165.0\n15     NA  141.6"
+    "text": "Data\n\nWeights of two breeds of cattle are to be compared\nTwelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.\nAre there any differences in the mean weights of the two breeds?\n\n\n\n\nCode\ncattle &lt;- read.csv(\"data/cattle.csv\")\ncattle\n\n\n   Breed1 Breed2\n1   187.6  148.1\n2   180.3  146.2\n3   198.6  152.8\n4   190.7  135.3\n5   196.3  151.2\n6   203.8  146.3\n7   190.2  163.5\n8   201.0  146.6\n9   194.7  162.4\n10  221.1  140.2\n11  186.7  159.4\n12  203.1  181.8\n13     NA  165.1\n14     NA  165.0\n15     NA  141.6"
   },
   {
     "objectID": "lectures/L03/Lecture-03a.html#thanks",
@@ -422,7 +422,7 @@
     "href": "lectures/L02/Lecture-02a.html#soil-carbon",
     "title": "Lecture 02a – Sampling designs I",
     "section": "Soil carbon",
-    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\nWe start with the sampled data:\n\nsoil &lt;- c(48, 56, 90, 78, 86, 71, 42)\nsoil\n\n[1] 48 56 90 78 86 71 42\n\n\nWhat is the mean soil carbon content and how confident are we in this estimate?"
+    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\nWe start with the sampled data:\n\n\nCode\nsoil &lt;- c(48, 56, 90, 78, 86, 71, 42)\nsoil\n\n\n[1] 48 56 90 78 86 71 42\n\n\nWhat is the mean soil carbon content and how confident are we in this estimate?"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#confidence-interval",
@@ -436,14 +436,14 @@
     "href": "lectures/L02/Lecture-02a.html#sample-mean",
     "title": "Lecture 02a – Sampling designs I",
     "section": "Sample mean",
-    "text": "Sample mean\n\\[\\bar y = \\frac{1}{n} \\times \\sum_{i = 1}^{n}y_i\\]\n\nThe sum of all sampled values, divided by the number of samples.\n\nRelatively straightforward to calculate.\n\nmean_soil &lt;- mean(soil)\nmean_soil\n\n[1] 67.28571"
+    "text": "Sample mean\n\\[\\bar y = \\frac{1}{n} \\times \\sum_{i = 1}^{n}y_i\\]\n\nThe sum of all sampled values, divided by the number of samples.\n\nRelatively straightforward to calculate.\n\n\nCode\nmean_soil &lt;- mean(soil)\nmean_soil\n\n\n[1] 67.28571"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#t-critical-value",
     "href": "lectures/L02/Lecture-02a.html#t-critical-value",
     "title": "Lecture 02a – Sampling designs I",
     "section": "\\(t\\)-critical value",
-    "text": "\\(t\\)-critical value\n\nWhat is the \\(t\\)-distribution?\nThe \\(t\\)-distribution is a family of distributions indexed by a parameter called degrees of freedom.\n\n\n\nUnderstanding degrees of freedom for a mean estimate\n\n\nDegrees of freedom (df) represent the count of independent data points used to estimate a parameter.\nFor the mean, df equals n - 1. For a sample size n, the last sample isn’t independent – it must satisfy the mean.\nFor instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value must be 8 and df = 2.\n\n\n\n\n\n\nCalculating the \\(t\\)-critical value\nWe refer to the \\(t\\)-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the qt() function in R. For a 95% confidence level, we use the 0.975 quantile since the \\(t\\)-distribution is symmetric.\n\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nt_critical\n\n[1] 2.446912"
+    "text": "\\(t\\)-critical value\n\nWhat is the \\(t\\)-distribution?\nThe \\(t\\)-distribution is a family of distributions indexed by a parameter called degrees of freedom.\n\n\n\nUnderstanding degrees of freedom for a mean estimate\n\n\nDegrees of freedom (df) represent the count of independent data points used to estimate a parameter.\nFor the mean, df equals n - 1. For a sample size n, the last sample isn’t independent – it must satisfy the mean.\nFor instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value must be 8 and df = 2.\n\n\n\n\n\n\nCalculating the \\(t\\)-critical value\nWe refer to the \\(t\\)-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the qt() function in R. For a 95% confidence level, we use the 0.975 quantile since the \\(t\\)-distribution is symmetric.\n\n\nCode\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nt_critical\n\n\n[1] 2.446912"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#standard-error-of-the-mean",
@@ -457,14 +457,14 @@
     "href": "lectures/L02/Lecture-02a.html#in-words",
     "title": "Lecture 02a – Sampling designs I",
     "section": "In words",
-    "text": "In words\n\nstep 1 calculate the variance \\(var(y)\\) of the sampled values.  step 2 divide \\(var(y)\\) by the number of samples (\\(n\\)) to obtain variance of the mean \\(var{(\\bar y)}\\).  step 3 take the square root of \\(var{(\\bar y)}\\) to obtain the standard error of the mean \\(\\sqrt{var{(\\bar{y})}} = SE(\\bar y)\\).\n\n\nIn R, we can calculate the standard error of the mean using the var() or sd() function and the number of samples.\n\nusing var()using sd()\n\n\n\n# step 1\nvar_soil &lt;- var(soil)\n# step 2\nvar_mean &lt;- var_soil / length(soil)\n# step 3\nse_mean &lt;- sqrt(var_mean)\nse_mean\n\n[1] 7.127126\n\n\n\n\n\nse_mean &lt;- sd(soil) / sqrt(length(soil))\nse_mean\n\n[1] 7.127126"
+    "text": "In words\n\nstep 1 calculate the variance \\(var(y)\\) of the sampled values.  step 2 divide \\(var(y)\\) by the number of samples (\\(n\\)) to obtain variance of the mean \\(var{(\\bar y)}\\).  step 3 take the square root of \\(var{(\\bar y)}\\) to obtain the standard error of the mean \\(\\sqrt{var{(\\bar{y})}} = SE(\\bar y)\\).\n\n\nIn R, we can calculate the standard error of the mean using the var() or sd() function and the number of samples.\n\nusing var()using sd()\n\n\n\n\nCode\n# step 1\nvar_soil &lt;- var(soil)\n# step 2\nvar_mean &lt;- var_soil / length(soil)\n# step 3\nse_mean &lt;- sqrt(var_mean)\nse_mean\n\n\n[1] 7.127126\n\n\n\n\n\n\nCode\nse_mean &lt;- sd(soil) / sqrt(length(soil))\nse_mean\n\n\n[1] 7.127126"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#putting-it-all-together",
     "href": "lectures/L02/Lecture-02a.html#putting-it-all-together",
     "title": "Lecture 02a – Sampling designs I",
     "section": "Putting it all together",
-    "text": "Putting it all together\nSo far we have:\nmean_soil &lt;- mean(soil)\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nse_mean &lt;- sqrt(var_soil / length(soil))\nNow we can calculate the confidence interval:\n\nmargin_error &lt;- t_critical * se_mean\nci95 &lt;- c(mean = mean_soil, \n  L95 = mean_soil - margin_error, \n  U95 = mean_soil + margin_error)\n\nci95\n\n    mean      L95      U95 \n67.28571 49.84627 84.72516"
+    "text": "Putting it all together\nSo far we have:\nmean_soil &lt;- mean(soil)\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nse_mean &lt;- sqrt(var_soil / length(soil))\nNow we can calculate the confidence interval:\n\n\nCode\nmargin_error &lt;- t_critical * se_mean\nci95 &lt;- c(mean = mean_soil, \n  L95 = mean_soil - margin_error, \n  U95 = mean_soil + margin_error)\n\nci95\n\n\n    mean      L95      U95 \n67.28571 49.84627 84.72516"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#questions",

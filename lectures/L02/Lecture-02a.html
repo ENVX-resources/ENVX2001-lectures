@@ -532,8 +532,11 @@ window.Quarto = {
 </div><div class="column" style="width:50%;">
 <p>We start with the sampled data:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>soil <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">56</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">86</span>, <span class="dv">71</span>, <span class="dv">42</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>soil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 48 56 90 78 86 71 42</code></pre>
 </div>
@@ -575,8 +578,11 @@ window.Quarto = {
 </blockquote>
 <p>Relatively straightforward to calculate.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>mean_soil <span class="ot">&lt;-</span> <span class="fu">mean</span>(soil)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mean_soil</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 67.28571</code></pre>
 </div>
@@ -605,8 +611,11 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="calculating-the-t-critical-value">Calculating the <span class="math inline">\(t\)</span>-critical value</h3>
 <p>We refer to the <span class="math inline">\(t\)</span>-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the <code>qt()</code> function in R. For a 95% confidence level, we use the 0.975 quantile since the <span class="math inline">\(t\)</span>-distribution is symmetric.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>t_critical <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, <span class="at">df =</span> <span class="fu">length</span>(soil) <span class="sc">-</span> <span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>t_critical</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.446912</code></pre>
 </div>
@@ -645,6 +654,8 @@ window.Quarto = {
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># step 1</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>var_soil <span class="ot">&lt;-</span> <span class="fu">var</span>(soil)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># step 2</span></span>
@@ -652,6 +663,7 @@ window.Quarto = {
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># step 3</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>se_mean <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_mean)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>se_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7.127126</code></pre>
 </div>
@@ -659,8 +671,11 @@ window.Quarto = {
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>se_mean <span class="ot">&lt;-</span> <span class="fu">sd</span>(soil) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(soil))</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>se_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7.127126</code></pre>
 </div>
@@ -678,12 +693,15 @@ window.Quarto = {
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>se_mean <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_soil <span class="sc">/</span> <span class="fu">length</span>(soil))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Now we can calculate the confidence interval:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>margin_error <span class="ot">&lt;-</span> t_critical <span class="sc">*</span> se_mean</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>ci95 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">mean =</span> mean_soil, </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">L95 =</span> mean_soil <span class="sc">-</span> margin_error, </span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">U95 =</span> mean_soil <span class="sc">+</span> margin_error)</span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>ci95</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>    mean      L95      U95 
 67.28571 49.84627 84.72516 </code></pre>

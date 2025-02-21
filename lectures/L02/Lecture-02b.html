@@ -489,8 +489,11 @@ window.Quarto = {
 <p>Suppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.</p>
 <p>(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>landA <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">86</span>, <span class="dv">71</span>)  <span class="co"># stratum A samples</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>landB <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">48</span>, <span class="dv">56</span>, <span class="dv">42</span>)      <span class="co"># stratum B samples</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </section>
 </div>
@@ -525,14 +528,20 @@ window.Quarto = {
 <div class="fragment">
 <p>We first define the weights <span class="math inline">\(w_i\)</span> for each stratum:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.62</span>, <span class="fl">0.38</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 </div>
 <div class="fragment">
 <p>Then we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>weighted_mean <span class="ot">&lt;-</span> <span class="fu">mean</span>(landA) <span class="sc">*</span> weight[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">mean</span>(landB) <span class="sc">*</span> weight[<span class="dv">2</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>weighted_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 68.86833</code></pre>
 </div>
@@ -552,11 +561,14 @@ window.Quarto = {
 <section id="in-r-1" class="level3">
 <h3 class="anchored" data-anchor-id="in-r-1">In R</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>varA <span class="ot">&lt;-</span> <span class="fu">var</span>(landA) <span class="sc">/</span> <span class="fu">length</span>(landA)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>varB <span class="ot">&lt;-</span> <span class="fu">var</span>(landB) <span class="sc">/</span> <span class="fu">length</span>(landB)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>weighted_var <span class="ot">&lt;-</span> weight[<span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> varA <span class="sc">+</span> weight[<span class="dv">2</span>]<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> varB</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>weighted_se <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(weighted_var)</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>weighted_se</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.041995</code></pre>
 </div>
@@ -604,9 +616,12 @@ window.Quarto = {
 <section id="in-r-2" class="level3">
 <h3 class="anchored" data-anchor-id="in-r-2">In R</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">length</span>(landA) <span class="sc">+</span> <span class="fu">length</span>(landB) <span class="sc">-</span> <span class="dv">2</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>t_crit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.975</span>, df)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>t_crit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.570582</code></pre>
 </div>
@@ -619,11 +634,14 @@ window.Quarto = {
 <section id="putting-it-all-together" class="level3">
 <h3 class="anchored" data-anchor-id="putting-it-all-together">Putting it all together</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ci <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">L95 =</span> weighted_mean <span class="sc">-</span> t_crit <span class="sc">*</span> weighted_se,</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">u95 =</span> weighted_mean <span class="sc">+</span> t_crit <span class="sc">*</span> weighted_se</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>ci</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     L95      u95 
 61.04864 76.68803 </code></pre>
@@ -721,15 +739,21 @@ window.Quarto = {
 <section id="in-r-3" class="level3">
 <h3 class="anchored" data-anchor-id="in-r-3">In R</h3>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>efficiency <span class="ot">&lt;-</span> <span class="fl">50.83</span> <span class="sc">/</span> <span class="fl">9.30</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>efficiency</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 5.465591</code></pre>
 </div>
 </div>
 <p>How many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="dv">7</span> <span class="sc">*</span> efficiency, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 38</code></pre>
 </div>
