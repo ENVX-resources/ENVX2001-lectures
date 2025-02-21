@@ -1,0 +1,30 @@
+---
+title: ENVX2001 -- Applied Statistical Methods
+author: 
+  - Januar Harianto
+  - Si Yang Han
+anchor-sections: false
+section-divs: false
+---
+
+**This site contains ONLY SOME of the lecture material for ENVX2001.** It is meant for lecturers to publish their lecture content in a structured way and has not been designed for student use. Most of the content is still in development and will be updated throughout the semester. If you happen to stumble upon this site, feel free to have a look around... but be aware that the content is *not* final and may contain errors.
+
+**ENVX2001 students should always navigate to [Canvas](https://canvas.sydney.edu.au/) to access the ENVX2001 page and view the course material in the right context.  If you are looking for a specific lecture, please refer to the Canvas page for the course.**
+
+### Module 1: Designed studies
+
+- [Lecture 01](lectures/L01/index.qmd) -- Introduction
+- [Lecture 02](lectures/L02/index.qmd) -- Sampling designs
+- [Lecture 03](lectures/L03/index.qmd) -- 1-way ANOVA
+- ~~Lecture 04 -- Residual diagnostics & post hoc tests~~
+- ~~Lecture 05 -- Experimental design~~
+- ~~Lecture 06 -- ANOVA with blocking~~
+
+### Module 2: Finding patterns in data
+
+- [Lecture 07](lectures/L07/index.qmd) -- Regression modelling
+- [Lecture 08](lectures/L08/index.qmd) -- Regression model development
+- [Lecture 09](lectures/L09/index.qmd) -- Regression model assessment
+- ~~Lecture 10 -- Principle component analysis~~
+- ~~Lecture 11 -- Clustering~~
+- ~~Lecture 12 -- Multidimensional scaling~~

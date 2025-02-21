@@ -1,0 +1,87 @@
+project:
+  type: website
+editor:
+  render-on-save: true
+execute:
+  freeze: auto # re-render only when source changes
+
+website:
+  page-navigation: true
+  # title: SOLES-TEMLPATE-001
+  # site-url: https://sydney-informatics-hub.github.io/AgReFed-Workshop
+  # repo-url: https://github.com/Sydney-Informatics-Hub/AgReFed-Workshop
+  # repo-actions: [issue]
+
+  page-footer:
+    # center: "Site built with [Quarto](https://quarto.org/)."
+    right: The University of Sydney
+    left: "Built using the SOLES Quarto handbook template"
+
+  navbar:
+    title: ENVX2001 Lectures
+    # background: "#F1F1F1" # "#ff3333" "#424242"
+    # logo: "images/logo_white.png"
+    pinned: false
+    left:
+      - text: "{{< fa house-chimney >}}"
+        file: index.qmd
+    # right:
+    #   - text: "{{< fa brands python >}} Python Workshop"
+    #     file: pydocs/py00-workshop.qmd
+    #   - text: "{{< fa brands r-project >}} Workshop"
+    #     file: rdocs/r00-workshop.qmd
+
+  sidebar:
+    logo: "assets/images/usydlogo.png"
+    pinned: true
+    align: center
+    # tools:
+    #   - icon: globe
+    #     href: https://www.sydney.edu.au/research/facilities/sydney-informatics-hub.html
+    #     text: "SIH Website"
+    # - icon: github
+    #   href: https://github.com/sydney-informatics-hub/agrefed-workshop
+    #   text: "GitHub Repository"
+    style: "floating" # "floating" "docked"
+    search: false
+    collapse-level: 2
+    contents:
+    - text: "**Home**"
+      href: index.qmd
+    - section: "**Module 1: Designed studies**"
+      contents:
+        - text: "L01 -- Introduction"
+          href: lectures/L01/index.qmd
+        - text: "L02 -- Sampling designs"
+          href: lectures/L02/index.qmd
+        - text: "L03 -- 1-way ANOVA"
+          href: lectures/L03/index.qmd
+        # - text: "L04 -- Residuals & post hoc"
+        #   href: lectures/L04/index.qmd
+        # - text: "L05 -- Experimental design"
+        #   href: lectures/L05/index.qmd
+        # - text: "L06 -- ANOVA with blocking"
+        #   href: lectures/L06/index.qmd
+    - section: "**Module 2: Finding patterns**"
+      contents:
+        - text: "L07 -- Regression modelling"
+          href: lectures/L07/index.qmd
+        - text: "L08 -- Model development"
+          href: lectures/L08/index.qmd
+        - text: "L09 -- Model assessment"
+          href: lectures/L09/index.qmd
+        # - text: "L10 -- PCA"
+        #   href: lectures/L10/index.qmd
+        # - text: "L11 -- Clustering"
+        #   href: lectures/L11/index.qmd
+        # - text: "L12 -- Multidimensional scaling"
+        #   href: lectures/L12/index.qmd
+format:
+  html:
+    theme:
+      light: [cosmo] # from https://github.com/sta210-s22/website/blob/main/_quarto.yml
+      # dark: [cosmo, theme-dark.scss]
+    fontsize: 12pt
+    code-copy: true
+    code-overflow: wrap
+    toc: false

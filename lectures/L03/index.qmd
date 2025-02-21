@@ -1,0 +1,16 @@
+---
+title: "Lecture 03"
+---
+
+<!-- 
+[Full Screen](lecture-03.qmd) | [PDF]() 
+
+```{=html}
+<iframe class="slide-deck" src="lecture-03.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+ -->
+
+
+**Lecture 03a -- *t*-tests** Full Screen | PDF
+
+**Lecture 03b -- One-way ANOVA** Full Screen | PDF

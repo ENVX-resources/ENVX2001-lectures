@@ -1,0 +1,16 @@
+---
+title: "Lecture 05"
+---
+
+<!-- 
+[Full Screen](lecture-05.qmd) | [PDF]() 
+
+```{=html}
+<iframe class="slide-deck" src="lecture-05.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+``` 
+-->
+
+
+::: callout-important
+**Lecture 05 is not available in Quarto. Please refer to the Canvas site to access the lecture material.**
+:::

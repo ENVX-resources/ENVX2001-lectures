@@ -1,0 +1,15 @@
+---
+title: "Lecture 01 -- Reproducible science"
+---
+
+**Lecture 01a -- Welcome** [Full Screen](lecture-01a.qmd) | [PDF](lecture-01a.pdf) 
+
+```{=html}
+<iframe class="slide-deck" src="lecture-01a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+
+<!-- **Lecture 01b -- The beginning is the end: a revision** [Full Screen](lecture-01b.qmd) | [PDF](lecture-01b.pdf)  -->
+
+<!-- ```{=html}
+<iframe class="slide-deck" src="lecture-01b.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+``` -->

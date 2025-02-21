@@ -1,0 +1,15 @@
+---
+title: "Lecture 09"
+---
+
+
+**Lecture 09 -- Predictive modelling** Full screen | PDF
+
+<!-- 
+```{=html}
+<iframe class="slide-deck" src="lecture-09.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+``` 
+-->
+
+
+

@@ -1,0 +1,17 @@
+---
+title: "Lecture 02"
+---
+
+<!-- 
+[Full Screen](lecture-02.qmd) | [PDF]() 
+
+```{=html}
+<iframe class="slide-deck" src="lecture-02.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+``` 
+-->
+
+
+
+**Lecture 02a -- Sampling designs I** Full Screen | PDF
+
+**Lecture 02b -- Sampling designs II** Full Screen | PDF

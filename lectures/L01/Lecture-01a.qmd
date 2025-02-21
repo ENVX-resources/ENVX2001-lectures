@@ -1,0 +1,211 @@
+---
+title: Lecture 01a -- Welcome
+author: Januar Harianto
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
+execute:
+  cache: true
+---
+
+
+# About
+
+Staff | Structure | Attendance
+
+## Staff
+
+::: {layout-ncol=4 style="text-align:center;"}
+
+
+![A. Prof Aaron Greenville](images/aaron.tiff){width=200}
+
+![Dr Si Yang Han](images/siyang.jpeg){width=216}
+
+![Dr Januar Harianto](images/januar.jpeg){width=230}
+
+![Prof Mathew Crowther](images/matcrowther.jpeg){width=205}
+
+:::
+
+
+## Structure
+
+### Lectures
+
+**Tue 10 AM, Wed 11 AM** -- [Chemistry Lecture Theatre 3][clt03]
+
+### Tutorials
+
+**Self-guided** sessions (1 hour), to be completed before the week's lab.
+
+### Labs
+
+All labs are held in the **South Eveleigh Precinct** (more on this later):
+
+- Thursday 9 am – 12 pm
+- Friday 10 am – 1 pm, 2 pm – 5 pm
+
+## Attendance
+
+- Mandatory for labs, **80%** minimum required.
+- Lecture attendance is highly recommended, but not compulsory.
+- Lecture recordings capture slides and audio *only*. You will miss out on important discussions and informal feedback.
+
+
+## Assessments 
+
+Check [Unit Outline](https://www.sydney.edu.au/units/ENVX2001/2025-S1C-ND-CC)
+
+- **Early Feedback Task** -- 1% individual, due **Week 4**
+- **Quizzes (weekly)** -- 4% individual, opens weekly, multiple due dates
+- **Project 1: Describing data** -- 10% individual, due **Week 5**
+- **Project 2: Analysing experimental data** -- 20% individual, due **Week 10**
+- **Project 3: Presentation (multivariate)** -- 20% group, due **Week 13**
+- **Exam** -- 45% individual: 2 hours, Multiple Choice Questions + Short Answers
+
+
+
+# South Eveleigh Precinct
+Used to be known as the **Australian Techonlogy Park** (ATP). *Still is, but it used to, too.*
+
+## Biomedical Building
+![](images/biomedical.jpg)
+
+Credit: Michael Wheatland
+
+
+## Directions
+
+
+### Buses
+[Courtesy buses][buses] are available:
+
+- Best option is to take the bus from **Fisher Library** to **Redfern Station**, then walk to the precinct (through the new station platform as “local traffic”).
+- Alternatively, direct buses are available -- but less frequent.
+
+### Driving
+Free parking is available around Henderson Road, but it is extremely crowded. We do *not* recommend driving to the precinct.
+
+
+
+## Walking
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d3311.892510223299!2d151.19220377714373!3d-33.89242207028511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x6b12b1d46683b08b%3A0x16d4584b9e392df3!2sCarslaw%20Building%2C%20University%20of%20Sydney%2C%20Camperdown%20NSW%2C%20Australia!3m2!1d-33.8885751!2d151.1903621!4m5!1s0x6b12b1ce3cfcd14d%3A0xe363fbe9239512d6!2s1%20Central%20Avenue%2C%20Eveleigh%20NSW%2C%20Australia!3m2!1d-33.896277999999995!2d151.19577999999998!5e0!3m2!1sen!2smy!4v1702530988987!5m2!1sen!2smy" width="1200" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+[If the map does not load, click here](https://maps.app.goo.gl/vs6aXA6YY4cL98Po7)
+
+# Why study statistics?
+
+*Why would it be relevant to my (non-statistical) career?*
+
+
+##  Importance
+All of science (and industry) are increasingly data-driven and computational:
+
+- **Research** papers are filled with statistical analyses
+- **Business** and **policy** decisions are based on data analytics
+- Environmental **policies** are guided by statistical models
+- **Medical** treatments are evaluated using statistical methods
+
+Most of you are majoring in a field that will require you to understand and use statistics in some form.
+
+## Benefits
+
+Even if you don't become a data scientist, statistics will help you to:
+
+::: fragment
+1. **Evaluate claims critically**
+   - Understand and analyse data in your field
+   - Make informed decisions based on evidence
+:::
+::: fragment
+2. **Communicate effectively**
+   - Create compelling data visualisations and reports
+   - Present findings clearly to different audiences
+:::
+::: fragment
+3. **Solve real-world problems**
+   - Design and analyse experiments properly
+   - Make evidence-based predictions and identify trends
+:::
+
+::: fragment
+
+![Don't be like this. Source: *Anchorman* (2004)](images/anchorman.gif){fig-align="left"}.
+
+:::
+
+
+
+# Doing well
+
+Attend lectures | Put in the hours | Ask questions
+
+## Lecture attendance options
+### In-person vs. online recordings
+
+::: fragment
+**In-person benefits:**
+
+- Real-time interaction with peers and lecturers
+- Immediate feedback and clarification of concepts
+- Active participation in discussions and polls
+- Building connections with classmates
+
+**Online recording benefits:**
+
+- Flexibility to manage other commitments
+- Ability to pause and review complex concepts
+- Learn at your own pace
+- Convenient for those with long commutes
+:::
+
+## On-campus or online?
+
+Choose the option that best suits your learning style and circumstances. **If watching online, try to**:
+
+- Stay up to date with recordings to avoid falling behind
+- Use Ed discussion board actively for questions
+- **Attend some lectures in person when possible for key topics**
+
+There is a strong positive correlation between lecture attendance and final grades -- but it's not the only factor. *It may just be the case that students who attend lectures are more likely to keep up with the course material.*
+
+## Put in the hours 
+- This is a **6 credit point** unit, which means that you are expected to spend **120 -- 150 hours** in total, including exam prep time (~10 h per week)!
+- **Practice makes perfect**. Tutorials and Labs help you apply the concepts you learn in lectures -- complete all the exercises, and practice with the bonus questions provided.
+
+![](images/adventuretime.gif){fig-align="center" height=350}
+
+## Ask questions
+
+- [**Ed**][edsite] is the *best* place to ask questions. We are way more responsive on **Ed** than on email.
+- We are *open* to the use of AI tools (including LLMs like ChatGPT) to help you answer questions about code... but don't use them to cheat *yourself* out of learning.
+- We have **drop-in sessions**, where you can jump in and have a chat on Zoom. We will announce the schedule on **Ed**.
+
+# Learning outcomes
+
+## By the end of this course, we want you to be able to:
+- **LO1** demonstrate proficiency in designing sample schemes and analysing data from them **using R**.
+- **LO2** describe and identify the basic features of an **experimental design**: replicate, treatment structure and blocking structure.
+- **LO3** demonstrate proficiency in the use or the statistical programming language **R** to apply an ANOVA and fit regression models to experimental data.
+- **LO4** demonstrate proficiency in the use or the statistical programming language **R** to use multivariate methods to find patterns in data.
+- **LO5** interpret the output and understand conceptually how its derived of a regression, ANOVA and multivariate analysis that have been calculated by R.
+- **LO6** write statistical and modelling results as part of a scientific report.
+- **LO7** appraise the validity of statistical analyses used publications.
+
+
+# Thanks for listening! Questions?
+
+
+
+This presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by] 
+
+
+<!-- Links -->
+[clt01]: https://venueweb.sydney.edu.au/F11.01.145
+[clt03]: https://venueweb.sydney.edu.au/F11.02.238
+[cc-by]: http://creativecommons.org/licenses/by/4.0/
+[buses]: https://www.sydney.edu.au/about-us/campuses/getting-to-campus/campus-bus-timetables.html
+[edsite]:https://edstem.org/au/dashboard
