@@ -1,0 +1,526 @@
+[
+  {
+    "objectID": "lectures/L08/index.html",
+    "href": "lectures/L08/index.html",
+    "title": "Lecture 08",
+    "section": "",
+    "text": "Lecture 08 – Regression model development Full screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 2: Finding patterns**",
+      "L08 -- Model development"
+    ]
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#staff",
+    "href": "lectures/L01/Lecture-01a.html#staff",
+    "title": "Lecture 01a – Welcome",
+    "section": "Staff",
+    "text": "Staff\n\n\n\n\n\n\n\n\n\nA. Prof Aaron Greenville\n\n\n\n\n\n\n\nDr Si Yang Han\n\n\n\n\n\n\n\nDr Januar Harianto\n\n\n\n\n\n\n\nProf Mathew Crowther"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#structure",
+    "href": "lectures/L01/Lecture-01a.html#structure",
+    "title": "Lecture 01a – Welcome",
+    "section": "Structure",
+    "text": "Structure\nThis unit includes lectures, self-guided tutorials, labs, discussions, and drop-in sessions.\n\nLectures: Tuesdays 10 AM, Wednesdays 11 AM, Chemistry Lecture Theatre 3\nTutorials: Self-guided (1 hour), complete before each week’s lab.\nLabs: South Eveleigh Precinct, Thursday 9 am – 12 pm, Friday 10 am – 1 pm, 2 pm – 5 pm\nDiscussion: Via Ed discussion, we usually respond the same day unless it is the weekend.\nDrop-in sessions: Scheduled as necessary (Zoom or in person). Email us to arrange a session."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#attendance",
+    "href": "lectures/L01/Lecture-01a.html#attendance",
+    "title": "Lecture 01a – Welcome",
+    "section": "Attendance",
+    "text": "Attendance\n\nLectures: Highly recommended but not compulsory. Lectures are recorded, capturing slides and audio only, which may miss important discussions.\nLabs: Mandatory, 80% minimum attendance required. Attendance will be taken by QR code. If you miss a lab, you may attend another session that week – send us an email!\nTutorials: Self-guided (1 hour), complete before each week’s lab."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#assessments",
+    "href": "lectures/L01/Lecture-01a.html#assessments",
+    "title": "Lecture 01a – Welcome",
+    "section": "Assessments",
+    "text": "Assessments\nCheck Unit Outline\n\n\n\n\n\n\n\n\n\nWeek\nAssessment\nWeight\nType\n\n\n\n\n4\nEarly Feedback Task\n1%\nIndividual\n\n\n5\nProject 1: Describing data\n10%\nIndividual\n\n\n10\nProject 2: Analysing experimental data\n20%\nIndividual\n\n\n13\nProject 3: Presentation (multivariate)\n20%\nGroup\n\n\n-\nQuizzes (weekly, multiple due dates)\n4%\nIndividual\n\n\n-\nExam (2 hours, MCQs + Short Answers)\n45%\nIndividual"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#biomedical-building",
+    "href": "lectures/L01/Lecture-01a.html#biomedical-building",
+    "title": "Lecture 01a – Welcome",
+    "section": "Biomedical Building",
+    "text": "Biomedical Building\n\nCredit: Michael Wheatland"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#directions",
+    "href": "lectures/L01/Lecture-01a.html#directions",
+    "title": "Lecture 01a – Welcome",
+    "section": "Directions",
+    "text": "Directions\nBuses\nCourtesy buses are available:\n\nThe best option is to take the bus from Fisher Library to Redfern Station, then walk to the precinct (through the new station platform as “local traffic”).\nAlternatively, direct buses are available – but less frequent.\n\nDriving\nFree parking is available around Henderson Road, but it is extremely crowded. We do not recommend driving to the precinct."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#walking",
+    "href": "lectures/L01/Lecture-01a.html#walking",
+    "title": "Lecture 01a – Welcome",
+    "section": "Walking",
+    "text": "Walking\nWalking to the South Eveleigh Precinct takes about 20 minutes. However, you can save approximately 5 minutes by using Redfern station’s community access gates, where you don’t need to use an Opal card to get through.\nIf the map does not load, click here"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#statistics-in-action",
+    "href": "lectures/L01/Lecture-01a.html#statistics-in-action",
+    "title": "Lecture 01a – Welcome",
+    "section": "Statistics in Action",
+    "text": "Statistics in Action\nModern science and decision-making are driven by data:\n\n\nResearch: From lab experiments to field studies\nPolicy: Environmental management decisions\nIndustry: Business analytics and optimisation\nInnovation: AI and machine learning – foundations"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#why-statistics-matters",
+    "href": "lectures/L01/Lecture-01a.html#why-statistics-matters",
+    "title": "Lecture 01a – Welcome",
+    "section": "Why Statistics Matters?",
+    "text": "Why Statistics Matters?\nStatistics empowers you to:\n\n\nTurn raw data into meaningful insights\nMake evidence-based decisions\nCommunicate findings effectively\nSolve complex real-world problems\n\n\n\n\n\n\nStatistics helps avoid misinterpreting data. Source: Anchorman (2004)"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#real-world-applications",
+    "href": "lectures/L01/Lecture-01a.html#real-world-applications",
+    "title": "Lecture 01a – Welcome",
+    "section": "Real-world Applications",
+    "text": "Real-world Applications\n\nSource: NASA’s Global Temperature Index"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#sports-analytics",
+    "href": "lectures/L01/Lecture-01a.html#sports-analytics",
+    "title": "Lecture 01a – Welcome",
+    "section": "Sports Analytics",
+    "text": "Sports Analytics\n\nThe 10 highest-seeded players averaged 3.48 rounds won in the Australian Open since 2011, compared to just 3.03 at Wimbledon. Source: fivethirtyeight"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#your-path-ahead",
+    "href": "lectures/L01/Lecture-01a.html#your-path-ahead",
+    "title": "Lecture 01a – Welcome",
+    "section": "Your Path Ahead",
+    "text": "Your Path Ahead\nThis course will develop your:\n\nTechnical Skills\n\nR programming proficiency\nData visualization expertise\nStatistical analysis methods\n\n\n\nProfessional Skills\n\nCritical thinking\nScientific communication\nProblem-solving abilities"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#lecture-attendance-options",
+    "href": "lectures/L01/Lecture-01a.html#lecture-attendance-options",
+    "title": "Lecture 01a – Welcome",
+    "section": "Lecture attendance options",
+    "text": "Lecture attendance options\nIn-person vs. online recordings\n\nIn-person benefits:\n\nReal-time interaction with peers and lecturers\nImmediate feedback and clarification of concepts\nActive participation in discussions and polls\nBuilding connections with classmates\n\nOnline recording benefits:\n\nFlexibility to manage other commitments\nAbility to pause and review complex concepts\nLearn at your own pace\nConvenient for those with long commutes"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#on-campus-or-online",
+    "href": "lectures/L01/Lecture-01a.html#on-campus-or-online",
+    "title": "Lecture 01a – Welcome",
+    "section": "On-campus or online?",
+    "text": "On-campus or online?\nChoose the option that best suits your learning style and circumstances. If watching online, try to:\n\nStay up to date with recordings to avoid falling behind\nUse Ed discussion board actively for questions\nAttend some lectures in person when possible for key topics\n\nThere is a strong positive correlation between lecture attendance and final grades – but it’s not the only factor. It may just be the case that students who attend lectures are more likely to keep up with the course material."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#put-in-the-hours",
+    "href": "lectures/L01/Lecture-01a.html#put-in-the-hours",
+    "title": "Lecture 01a – Welcome",
+    "section": "Put in the hours",
+    "text": "Put in the hours\n\nThis is a 6 credit point unit, which means that you are expected to spend 120 – 150 hours in total, including exam prep time (~10 h per week)!\nPractice makes perfect. Tutorials and Labs help you apply the concepts you learn in lectures – complete all the exercises, and practice with the bonus questions provided."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#ask-questions",
+    "href": "lectures/L01/Lecture-01a.html#ask-questions",
+    "title": "Lecture 01a – Welcome",
+    "section": "Ask questions",
+    "text": "Ask questions\n\nEd is the best place to ask questions. We are way more responsive on Ed than on email.\nWe are open to the use of AI tools (including LLMs like ChatGPT) to help you answer questions about code… but don’t use them to cheat yourself out of learning.\nWe have drop-in sessions, where you can jump in and have a chat on Zoom. We will announce the schedule on Ed."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#by-the-end-of-this-course-we-want-you-to-be-able-to",
+    "href": "lectures/L01/Lecture-01a.html#by-the-end-of-this-course-we-want-you-to-be-able-to",
+    "title": "Lecture 01a – Welcome",
+    "section": "By the end of this course, we want you to be able to:",
+    "text": "By the end of this course, we want you to be able to:\n\nLO1 demonstrate proficiency in designing sample schemes and analysing data from them using R.\nLO2 describe and identify the basic features of an experimental design: replicate, treatment structure and blocking structure.\nLO3 demonstrate proficiency in the use or the statistical programming language R to apply an ANOVA and fit regression models to experimental data.\nLO4 demonstrate proficiency in the use or the statistical programming language R to use multivariate methods to find patterns in data.\nLO5 interpret the output and understand conceptually how its derived of a regression, ANOVA and multivariate analysis that have been calculated by R.\nLO6 write statistical and modelling results as part of a scientific report.\nLO7 appraise the validity of statistical analyses used publications."
+  },
+  {
+    "objectID": "lectures/L07/index.html",
+    "href": "lectures/L07/index.html",
+    "title": "Lecture 07",
+    "section": "",
+    "text": "Lecture 07 – Regression modelling Full screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 2: Finding patterns**",
+      "L07 -- Regression modelling"
+    ]
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html",
+    "href": "lectures/L02/Lecture-02b.html",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "",
+    "text": "Each unit has an equal chance of being selected.\n\n\n\n\n\n\n\n\n\nEach unit has an equal chance of being selected.\n\n\n\nBut what if we have more information about the population?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#simple-random-sampling",
+    "href": "lectures/L02/Lecture-02b.html#simple-random-sampling",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "",
+    "text": "Each unit has an equal chance of being selected."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#simple-random-sampling-1",
+    "href": "lectures/L02/Lecture-02b.html#simple-random-sampling-1",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "",
+    "text": "Each unit has an equal chance of being selected.\n\n\n\nBut what if we have more information about the population?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#stratified-random-sampling",
+    "href": "lectures/L02/Lecture-02b.html#stratified-random-sampling",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Stratified random sampling",
+    "text": "Stratified random sampling\n\n3 steps\n\n\nDivide the population into homogeneous subgroups (strata).\nSample from each stratum using simple random sampling.\nPool (or combine) the estimates from each stratum to get an overall population estimate."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#strata-rules",
+    "href": "lectures/L02/Lecture-02b.html#strata-rules",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Strata rules",
+    "text": "Strata rules\n\nStrata are…\n\n\nMutually exclusive and collectively exhaustive; i.e. units must all belong to a stratum and only to one stratum (no unit should be unassigned).\nHomogeneous – units within a stratum are similar to each other and distinct from units in other strata.\nSampled irrespective of size – the point is to ensure that each stratum is represented in the final sample.\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying strata\n\n\n\nAcceptable\nAge groups or income brackets – these are mutually exclusive and homogeneous.\n\n\n\nMight not work…\nNationality or food preference – these may not be mutually exclusive e.g. a person can have multiple nationalities, or animals can have multiple food preferences."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#advantages",
+    "href": "lectures/L02/Lecture-02b.html#advantages",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Advantages",
+    "text": "Advantages\n\nWe address:\n\n\nBias. Each stratum is sampled, so the sample is representative of the population.\nAccuracy. Each stratum is represented by a minimum number of sampling units.\nInsight. We can compare strata and make inferences about the population.\n\n\n\n\n\nDoes this make simple random sampling obsolete?\n\n\nNo. Still a good technique.\nWith large enough samples, the two methods will converge.\nChance of not selecting a unit from a stratum is always there, but reduces as the sample size increases."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#everything-is-the-same-but",
+    "href": "lectures/L02/Lecture-02b.html#everything-is-the-same-but",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Everything is the same, but…",
+    "text": "Everything is the same, but…\n\nWeighted estimates\n\nWe need to “weigh” the estimates from each stratum to account for the different stratum sizes and inclusion probabilities.\nMost of the time, we use the stratum size as the weight to calculate weighted estimates.\nThe overall population estimate is the sum of the weighted estimates from each stratum, i.e. we pool the individual strata information into a single, overall population estimate.\n\n\n\n\nExample\n\n\nA forest contains two types of trees: A and B, with 60% and 40% of the population, respectively.\nWe want to estimate the mean height of the trees.\nTake 10 height measurements, of which 7 are randomly selected from type A and 3 are randomly selected from type B.\nThe pooled estimate for the mean height of the trees is: \\[0.6 \\times \\text{average height of A} + 0.4 \\times \\text{average height of B}\\]"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#soil-carbon-1",
+    "href": "lectures/L02/Lecture-02b.html#soil-carbon-1",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Soil carbon",
+    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\n\n\nDifferent land types\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?\n\n\n\nIn R\nSuppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.\n(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)\n\nlandA &lt;- c(90, 78, 86, 71)  # stratum A samples\nlandB &lt;- c(48, 56, 42)      # stratum B samples"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#confidence-interval",
+    "href": "lectures/L02/Lecture-02b.html#confidence-interval",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "95 % Confidence interval",
+    "text": "95 % Confidence interval\n\nThe formula\n\\[95\\%\\ CI = \\bar y_{s} \\pm t^{0.025}_{n-L} \\times SE(\\bar y_{s})\\]\nwhere \\(L\\) is the number of strata, \\(n\\) is the total number of samples, and \\(\\bar y_{s}\\) is the weighted mean of the strata.\nTherefore:\n\n\n\\(\\bar y_{s}\\) is the pooled mean.\n\\(t^{0.025}_{n-L}\\) is the \\(t\\)-value for a 95% confidence interval with \\(n-L\\) degrees of freedom.\n\\(SE(\\bar y_{s})\\) is the pooled standard error of the mean."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#pooled-mean-bar-y_s",
+    "href": "lectures/L02/Lecture-02b.html#pooled-mean-bar-y_s",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Pooled mean \\(\\bar y_{s}\\)",
+    "text": "Pooled mean \\(\\bar y_{s}\\)\n\nSum of the weighted estimates of mean, from each stratum.\n\n\n\\[\\bar{y}_{s} = \\sum_{i=1}^L \\bar{y}_i \\times w_i\\]\nwhere \\(L\\) is the number of strata, \\(\\bar{y}_i\\) is the mean of stratum \\(i\\), and \\(w_i\\) is the weight for stratum \\(i\\).\n\n\nWe first define the weights \\(w_i\\) for each stratum:\n\nweight &lt;- c(0.62, 0.38)\n\n\n\nThen we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:\n\nweighted_mean &lt;- mean(landA) * weight[1] + mean(landB) * weight[2]\nweighted_mean\n\n[1] 68.86833"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s",
+    "href": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)",
+    "text": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)\n\nSquare root of the sum of the weight-adjusted variances of the mean per stratum, assuming the strata are independent (see next slide).\n\n\n\\[Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i)\\] \\[SE(\\bar y_{s}) = \\sqrt{Var(\\bar y_{s})}\\]\nwhere \\(L\\) is the number of strata, \\(w_i\\) is the weight for stratum \\(i\\), and \\(Var(\\bar y_i)\\) is the variance of the mean for stratum \\(i\\).\n\n\n\nIn R\n\nvarA &lt;- var(landA) / length(landA)\nvarB &lt;- var(landB) / length(landB)\nweighted_var &lt;- weight[1]^2 * varA + weight[2]^2 * varB\nweighted_se &lt;- sqrt(weighted_var)\nweighted_se\n\n[1] 3.041995"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s-1",
+    "href": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s-1",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)",
+    "text": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)\n\nWhy is weight \\(w\\) squared?\nVariance is standard deviation squared, therefore the weight is naturally squared when calculating the variance of the weighted mean. We just don’t see it unless we expand the variance formula i.e. “it’s a math thing”.\n\n\n\nCan we really add variances?\nYes, if sampling units are all independent, which should be the case for a well-designed stratified random sampling since units are mutually exclusive and collectively exhaustive.\nThe addition or subtraction of variances include a covariance term if the strata are not independent:\n\\[ Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i) + 2 \\times \\sum_{i=1}^L \\sum_{j=1}^L w_i \\times w_j \\times Cov(\\bar y_i, \\bar y_j)\\]"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#t-critical-value",
+    "href": "lectures/L02/Lecture-02b.html#t-critical-value",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "\\(t\\)-critical value",
+    "text": "\\(t\\)-critical value\n\nDegrees of freedom \\(df\\)\n\\[df = n - L\\]\nwhere \\(n\\) is the total number of samples and \\(L\\) is the number of strata.\n\n\nSuppose we want to assign 12 samples to 3 strata.\nThe degrees of freedom is \\(12 - 3 = 9\\).\nThink of it this way: of all the 12 samples, we can assign at least 9 units freely into any stratum, but the last 3 must be in each of the 3 strata.\n\n\n\n\n\nIn R\n\ndf &lt;- length(landA) + length(landB) - 2\nt_crit &lt;- qt(0.975, df)\nt_crit\n\n[1] 2.570582"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#confidence-interval-1",
+    "href": "lectures/L02/Lecture-02b.html#confidence-interval-1",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "95 % Confidence interval",
+    "text": "95 % Confidence interval\n\nPutting it all together\n\nci &lt;- c(\n  L95 = weighted_mean - t_crit * weighted_se,\n  u95 = weighted_mean + t_crit * weighted_se\n)\nci\n\n     L95      u95 \n61.04864 76.68803"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#simple-random-vs.-stratified-random-sampling",
+    "href": "lectures/L02/Lecture-02b.html#simple-random-vs.-stratified-random-sampling",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Simple random vs. stratified random sampling",
+    "text": "Simple random vs. stratified random sampling\nWhat if we had use stratified random sampling instead of simple random sampling (and collected the same amount of data)?\n\nWhat differences can you see?\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\n# Manually printing the results below as SRS data is in previous lecture\ncompare &lt;- tibble(\n  Design = c(\"Simple Random\", \"Stratified Random\"),\n  Mean = c(67.29, 68.9), \n  `Var (mean)` = c(50.83, 9.30),\n  L95 = c(49.85, 61), \n  U95 = c(84.73, 76.7), \n  df = c(6, 5))\nknitr::kable(compare)\n\n\n\n\n\nDesign\nMean\nVar (mean)\nL95\nU95\ndf\n\n\n\n\nSimple Random\n67.29\n50.83\n49.85\n84.73\n6\n\n\nStratified Random\n68.90\n9.30\n61.00\n76.70\n5\n\n\n\n\n\n\n\nDifferences in mean, variance of the mean and 95% CI?\nWhich method is more precise?\nCan simple random sampling be as precise as stratified random sampling?"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#efficiency",
+    "href": "lectures/L02/Lecture-02b.html#efficiency",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Efficiency",
+    "text": "Efficiency\n\nCalculated as a ratio: \\[\\text{Efficiency} = \\frac{\\text{Variance of SRS}}{\\text{Variance of Stratified}}\\]\nIndicates sampling effort required to achieve precision of stratified sampling.\nEfficiency &gt; 1 means stratified sampling is more efficient.\nValue tells us how much we need to increase the sample size in SRS to achieve the same precision as stratified sampling.\n\n\nIn R\n\nefficiency &lt;- 50.83 / 9.30\nefficiency\n\n[1] 5.465591\n\n\nHow many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?\n\nround(7 * efficiency, 0)\n\n[1] 38"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#tips-on-implementation",
+    "href": "lectures/L02/Lecture-02b.html#tips-on-implementation",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Tips on implementation",
+    "text": "Tips on implementation\n\nThe most difficult part is to identify the strata and assign the sampling units to the strata.\nStrata sampling size: allocate samples to strata based on the size of the strata, either proportional to:\n\nthe size of the strata, or\nthe variance of the strata."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#the-change-in-mean-delta-bar-y",
+    "href": "lectures/L02/Lecture-02b.html#the-change-in-mean-delta-bar-y",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "The change in mean \\(\\Delta \\bar y\\)",
+    "text": "The change in mean \\(\\Delta \\bar y\\)\n\nOur interest now lies in the change in mean soil carbon content.\nWe can still calculate the 95% confidence interval for the change in mean, but we need to account for the correlation between the two sets of measurements.\nA covariance problem that differs depending on the resampling design."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#monitoring-estimates",
+    "href": "lectures/L02/Lecture-02b.html#monitoring-estimates",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Monitoring estimates",
+    "text": "Monitoring estimates\n\nChange in mean \\(\\Delta \\bar y\\)\n\nThe difference between the means of the two sets of measurements.\n\n\\[\\Delta \\bar y = \\bar y_2 - \\bar y_1\\]\nwhere \\(\\bar y_2\\) and \\(\\bar y_1\\) are the means of the second and first set of measurements, respectively.\n\n\n\nVariance of the change in mean \\(Var(\\Delta{\\bar y})\\)\n\nSum of the variances of the two sets of measurements, minus twice the covariance between the two sets of measurements if the two sets are not independent. The covariance term is zero if the two sets are independent.\n\n\\[Var(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1) - 2 \\times Cov(\\bar y_2, \\bar y_1)\\]"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#covariance",
+    "href": "lectures/L02/Lecture-02b.html#covariance",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Covariance?",
+    "text": "Covariance?\n\nIf we revisit the same 7 sites\n\\[Var(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1) - 2 \\times Cov(\\bar y_2, \\bar y_1)\\]\n\nThe measurements are not independent, as anything that affects the first set of measurements will also affect the second set (unknown to us).\nCovariance exists between the two sets of measurements.\nWe need to account for this in the variance of the change in mean.\nEquivalent to a paired t-test.\n\n\n\nIf we visit 7 randomly-selected sites\n\\[Var(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1)\\]\n\nThe measurements are independent.\nCovariance is zero.\nEquivalent to a two-sample t-test."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#calculating-the-95-ci-for-the-change-in-mean",
+    "href": "lectures/L02/Lecture-02b.html#calculating-the-95-ci-for-the-change-in-mean",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Calculating the 95% CI for the change in mean",
+    "text": "Calculating the 95% CI for the change in mean\n\\[95\\%\\ CI = \\Delta \\bar y \\pm t^{0.025}_{n-1} \\times SE(\\Delta \\bar y)\\]\nwhere \\(n\\) is the number of pairs of measurements, and \\(SE(\\Delta \\bar y)\\) is the standard error of the change in mean.\n\n\n\\(SE(\\Delta \\bar y)\\)\nIf the covariance term is needed, we calculate covariance as:\n\\[Cov(\\bar y_2, \\bar y_1) = \\frac{\\sum_{i=1}^n (y_{2i} - \\bar y_2) \\times (y_{1i} - \\bar y_1)}{n-1}\\]\nwhere \\(n\\) is the number of pairs of measurements, and \\(y_{2i}\\) and \\(y_{1i}\\) are the measurements from the second and first set, respectively.\n\nThe sum of the product of the differences between each pair of measurements and the mean of each set, divided by \\(n-1\\).\n\n\n\n\nLuckily, you are not expected to calculate this by hand. R will do it for you either by using the cov() function (if calculating manually), or by using the t.test() function with the paired argument set to TRUE. We will go through this in the lab!"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02b.html#thanks",
+    "href": "lectures/L02/Lecture-02b.html#thanks",
+    "title": "Lecture 02b – Sampling designs II",
+    "section": "Thanks!",
+    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "lectures/L05/index.html",
+    "href": "lectures/L05/index.html",
+    "title": "Lecture 05",
+    "section": "",
+    "text": "Important\n\n\n\nLecture 05 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+  },
+  {
+    "objectID": "lectures/L03/Lecture-03a.html",
+    "href": "lectures/L03/Lecture-03a.html",
+    "title": "Lecture 03a – \\(t\\)-Tests",
+    "section": "",
+    "text": "William Gosset (1908)\n\n\nFormulated the \\(t\\)-distribution and \\(t\\)-tests.\n\n\n\nRonald FIsher\n\n\nFormulated the \\(t\\)-distribution and \\(t\\)-tests."
+  },
+  {
+    "objectID": "lectures/L03/Lecture-03a.html#data",
+    "href": "lectures/L03/Lecture-03a.html#data",
+    "title": "Lecture 03a – \\(t\\)-Tests",
+    "section": "Data",
+    "text": "Data\n\nWeights of two breeds of cattle are to be compared\nTwelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.\nAre there any differences in the mean weights of the two breeds?\n\n\n\ncattle &lt;- read.csv(\"data/cattle.csv\")\ncattle\n\n   Breed1 Breed2\n1   187.6  148.1\n2   180.3  146.2\n3   198.6  152.8\n4   190.7  135.3\n5   196.3  151.2\n6   203.8  146.3\n7   190.2  163.5\n8   201.0  146.6\n9   194.7  162.4\n10  221.1  140.2\n11  186.7  159.4\n12  203.1  181.8\n13     NA  165.1\n14     NA  165.0\n15     NA  141.6"
+  },
+  {
+    "objectID": "lectures/L03/Lecture-03a.html#thanks",
+    "href": "lectures/L03/Lecture-03a.html#thanks",
+    "title": "Lecture 03a – \\(t\\)-Tests",
+    "section": "Thanks!",
+    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ENVX2001 – Applied Statistical Methods",
+    "section": "",
+    "text": "This site contains ONLY SOME of the lecture material for ENVX2001. It is meant for lecturers to publish their lecture content in a structured way and has not been designed for student use. Most of the content is still in development and will be updated throughout the semester. If you happen to stumble upon this site, feel free to have a look around… but be aware that the content is not final and may contain errors.\nENVX2001 students should always navigate to Canvas to access the ENVX2001 page and view the course material in the right context. If you are looking for a specific lecture, please refer to the Canvas page for the course.\nModule 1: Designed studies\n\nLecture 01 – Introduction\nLecture 02 – Sampling designs\nLecture 03 – 1-way ANOVA\nLecture 04 – Residual diagnostics & post hoc tests\nLecture 05 – Experimental design\nLecture 06 – ANOVA with blocking\n\nModule 2: Finding patterns in data\n\nLecture 07 – Regression modelling\nLecture 08 – Regression model development\nLecture 09 – Regression model assessment\nLecture 10 – Principle component analysis\nLecture 11 – Clustering\nLecture 12 – Multidimensional scaling",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Home**"
+    ]
+  },
+  {
+    "objectID": "lectures/L03/index.html",
+    "href": "lectures/L03/index.html",
+    "title": "Lecture 03",
+    "section": "",
+    "text": "Lecture 03a – t-tests Full Screen | PDF\nLecture 03b – One-way ANOVA Full Screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 1: Designed studies**",
+      "L03 -- 1-way ANOVA"
+    ]
+  },
+  {
+    "objectID": "lectures/L04/index.html",
+    "href": "lectures/L04/index.html",
+    "title": "Lecture 04",
+    "section": "",
+    "text": "Important\n\n\n\nLecture 04 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html",
+    "href": "lectures/L02/Lecture-02a.html",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "",
+    "text": "Aspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest - Mensurative and Absolute\nControl over the variables of interest - Comparative and Manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and cannot always be done"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#observational-study-vs.-controlled-experiment",
+    "href": "lectures/L02/Lecture-02a.html#observational-study-vs.-controlled-experiment",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "",
+    "text": "Aspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest - Mensurative and Absolute\nControl over the variables of interest - Comparative and Manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and cannot always be done"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#two-common-types",
+    "href": "lectures/L02/Lecture-02a.html#two-common-types",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Two common types",
+    "text": "Two common types\n\n\nSurveys\n\nEstimate a statistic (e.g. mean, variance), but\nno temporal change during estimate.\nE.g. measuring species richness in a forest.\n\n\n\n\n\nMonitoring studies\n\nEstimate a change in statistic (same as above), and\ntemporal change across observations, i.e. before and after.\nE.g. measuring species richness in a forest before and after a fire."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#sampling-designs",
+    "href": "lectures/L02/Lecture-02a.html#sampling-designs",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Sampling designs",
+    "text": "Sampling designs\n\n\nSimple random sampling:\n\nEach unit has an equal chance of being selected.\nRandomly sample units from the entire population.\n\n\n\n\n\n\n\n\n\n\nStratified random sampling\n\nThe population is first divided into strata (more on this later).\nRandomly sample units within each strata by simple random sampling, standardised by the inclusion probability (or weight) of each strata."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#what-is-random-sampling",
+    "href": "lectures/L02/Lecture-02a.html#what-is-random-sampling",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "What is “random” sampling?",
+    "text": "What is “random” sampling?\n\nRandom selection of finite or infinite population units.\n\n\n\nWhat does random mean?\n\n\n\nWithin a population, all units have a &gt; 0 probability of being selected i.e. everything has a chance to be selected.\n\n\nThis chance is called the inclusion probability (\\(\\pi_i\\)):\n\n\\(\\pi_i\\) is equal within a population unit – i.e. all units have the same chance of being selected.\n\\(\\pi_i\\) not necessarily equal between different population units – i.e. a unit from one population unit may have a different chance of being selected than a unit from another population unit - more on this later.\n\n\n\n\n\n\nHow do we perform random sampling in real life?\n\nRandom number generator (RNG) – e.g. R’s sample() function.\nRandom number table – e.g. Random number table by the National Institute of Standards and Technology (NIST)."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#we-know-that",
+    "href": "lectures/L02/Lecture-02a.html#we-know-that",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "We know that…",
+    "text": "We know that…\n\nFrom the previous lecture\n\n\nSample mean is a good measure of central tendency.\nSample variance is a good measure of dispersion.\nSample size affects the precision of the sample mean.\n\n\n\n\n\nCan we combine all of the above in a single statistic?"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#combining-an-estimate-with-its-precision",
+    "href": "lectures/L02/Lecture-02a.html#combining-an-estimate-with-its-precision",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Combining an estimate with its precision",
+    "text": "Combining an estimate with its precision\n\nA confidence interval (CI) is a range of values, derived from a sample of data, that is used to estimate the range of values for a population parameter.\nCrucial for hypothesis testing and estimation, the basis of statistical inference.\nWill be frequently mentioned throughout this unit!\n\n\nGeneral form\nIn general, a CI has the form: \\[\\text{estimate} \\pm \\text{margin of error}\\]\nwhere the margin of error is a function of the standard error of the estimate:\n\\[\\text{estimate} \\pm (\\text{critical value} \\times \\text{standard error (estimate)})\\]\nwhere the critical value is based on the sampling distribution of the estimate i.e. the \\(t\\)-distribution."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#interpreting-confidence-intervals",
+    "href": "lectures/L02/Lecture-02a.html#interpreting-confidence-intervals",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Interpreting confidence intervals",
+    "text": "Interpreting confidence intervals\n\nConfidence intervals depend on a specified confidence level (e.g. 95%, 99%) with higher confidence levels producing wider intervals (i.e. more conservative).\nThink of it as a range of values that we are fairly sure contains the true value of the population parameter.\n\n\n\nFishing net analogy\nImagine that we are fishing in a river and we want to catch a fish that we saw.\n\nIf we use a spear and throw it at a fish, we might miss it.\nIf we use a net, we have a better chance of catching the fish.\nThe bigger the net, the more likely we are to catch the fish.\n\nAnalogy: The net is the confidence interval, and the fish is the true population parameter."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#what-we-need",
+    "href": "lectures/L02/Lecture-02a.html#what-we-need",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "What we need",
+    "text": "What we need\n\nEstimate of the population parameter, e.g. the sample mean.\nCritical value from the sampling distribution of the estimate, which depends on the number of samples and the confidence level. This is usually based on the \\(t\\)-distribution.\nStandard error of the estimate, standardised by the number of samples i.e. SE of the mean.\n\n\nWhy the t-distribution?\n\nThe \\(t\\)-distribution results from standardising the sample variance by the number of samples.\n\nUsed when the true population variance is unknown.\n\nIt resembles the normal distribution, but with heavier tails for small sample sizes.\nAs sample size increases, the \\(t\\)-distribution converges to the normal distribution."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#soil-carbon",
+    "href": "lectures/L02/Lecture-02a.html#soil-carbon",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Soil carbon",
+    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\nWe start with the sampled data:\n\nsoil &lt;- c(48, 56, 90, 78, 86, 71, 42)\nsoil\n\n[1] 48 56 90 78 86 71 42\n\n\nWhat is the mean soil carbon content and how confident are we in this estimate?"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#confidence-interval",
+    "href": "lectures/L02/Lecture-02a.html#confidence-interval",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "95 % Confidence interval",
+    "text": "95 % Confidence interval\n\nThe formula\n\\[95\\%\\ CI = \\bar y \\pm t^{0.025}_{n-1} \\times SE(\\bar y)\\]\n\n\n\n\n\n\n\n\nRecall: \\[CI = \\text{estimate} \\pm \\text{margin of error}\\]\nSo: \\[95\\%\\ CI = \\text{sample mean} \\pm \\text{t-critical value} \\times \\text{standard error of the mean}\\]\n\n\nWe need to calculate each of these components:\n① Sample mean \\(\\bar y\\); ⓶ Critical value \\(t^{0.025}_{n-1}\\); and ③ Standard error of the mean \\(SE(\\bar y)\\)"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#sample-mean",
+    "href": "lectures/L02/Lecture-02a.html#sample-mean",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Sample mean",
+    "text": "Sample mean\n\\[\\bar y = \\frac{1}{n} \\times \\sum_{i = 1}^{n}y_i\\]\n\nThe sum of all sampled values, divided by the number of samples.\n\nRelatively straightforward to calculate.\n\nmean_soil &lt;- mean(soil)\nmean_soil\n\n[1] 67.28571"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#t-critical-value",
+    "href": "lectures/L02/Lecture-02a.html#t-critical-value",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "\\(t\\)-critical value",
+    "text": "\\(t\\)-critical value\n\nWhat is the \\(t\\)-distribution?\nThe \\(t\\)-distribution is a family of distributions indexed by a parameter called degrees of freedom.\n\n\n\nUnderstanding degrees of freedom for a mean estimate\n\n\nDegrees of freedom (df) represent the count of independent data points used to estimate a parameter.\nFor the mean, df equals n - 1. For a sample size n, the last sample isn’t independent – it must satisfy the mean.\nFor instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value must be 8 and df = 2.\n\n\n\n\n\n\nCalculating the \\(t\\)-critical value\nWe refer to the \\(t\\)-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the qt() function in R. For a 95% confidence level, we use the 0.975 quantile since the \\(t\\)-distribution is symmetric.\n\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nt_critical\n\n[1] 2.446912"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#standard-error-of-the-mean",
+    "href": "lectures/L02/Lecture-02a.html#standard-error-of-the-mean",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Standard error of the mean",
+    "text": "Standard error of the mean\n\nThe variance of the mean, \\(var(\\bar y)\\), is: \\[var(\\bar y) = \\frac{var(y)}{n}\\]\n\n\nVariance is standard deviation squared (\\(s^2\\)), so the formula is: \\[var(\\bar y) = \\frac{s^2(y)}{n}\\]\n\n\nSince \\(SE = \\frac{s}{\\sqrt{n}}\\), then the standard error of the mean, \\(SE(\\bar y)\\), is: \\[SE(\\bar y) = \\frac{s(y)}{\\sqrt{n}} = \\frac{\\sqrt{s^2(y)}}{\\sqrt{n}} = \\sqrt{var(\\bar y)}\\]"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#in-words",
+    "href": "lectures/L02/Lecture-02a.html#in-words",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "In words",
+    "text": "In words\n\nstep 1 calculate the variance \\(var(y)\\) of the sampled values.  step 2 divide \\(var(y)\\) by the number of samples (\\(n\\)) to obtain variance of the mean \\(var{(\\bar y)}\\).  step 3 take the square root of \\(var{(\\bar y)}\\) to obtain the standard error of the mean \\(\\sqrt{var{(\\bar{y})}} = SE(\\bar y)\\).\n\n\nIn R, we can calculate the standard error of the mean using the var() or sd() function and the number of samples.\n\nusing var()using sd()\n\n\n\n# step 1\nvar_soil &lt;- var(soil)\n# step 2\nvar_mean &lt;- var_soil / length(soil)\n# step 3\nse_mean &lt;- sqrt(var_mean)\nse_mean\n\n[1] 7.127126\n\n\n\n\n\nse_mean &lt;- sd(soil) / sqrt(length(soil))\nse_mean\n\n[1] 7.127126"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#putting-it-all-together",
+    "href": "lectures/L02/Lecture-02a.html#putting-it-all-together",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Putting it all together",
+    "text": "Putting it all together\nSo far we have:\nmean_soil &lt;- mean(soil)\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nse_mean &lt;- sqrt(var_soil / length(soil))\nNow we can calculate the confidence interval:\n\nmargin_error &lt;- t_critical * se_mean\nci95 &lt;- c(mean = mean_soil, \n  L95 = mean_soil - margin_error, \n  U95 = mean_soil + margin_error)\n\nci95\n\n    mean      L95      U95 \n67.28571 49.84627 84.72516"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#questions",
+    "href": "lectures/L02/Lecture-02a.html#questions",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Questions",
+    "text": "Questions\n\nHow precise is our estimate?\nHow big a change must there be to estimate a statistically significant change?\nCan we sample more efficiently?"
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#thanks",
+    "href": "lectures/L02/Lecture-02a.html#thanks",
+    "title": "Lecture 02a – Sampling designs I",
+    "section": "Thanks!",
+    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License\n\n\n\n⇣PDF"
+  },
+  {
+    "objectID": "lectures/L02/index.html",
+    "href": "lectures/L02/index.html",
+    "title": "Lecture 02",
+    "section": "",
+    "text": "Lecture 02a – Sampling designs I Full Screen | PDF\nLecture 02b – Sampling designs II Full Screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 1: Designed studies**",
+      "L02 -- Sampling designs"
+    ]
+  },
+  {
+    "objectID": "lectures/L09/index.html",
+    "href": "lectures/L09/index.html",
+    "title": "Lecture 09",
+    "section": "",
+    "text": "Lecture 09 – Predictive modelling Full screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 2: Finding patterns**",
+      "L09 -- Model assessment"
+    ]
+  },
+  {
+    "objectID": "lectures/L01/index.html",
+    "href": "lectures/L01/index.html",
+    "title": "Lecture 01",
+    "section": "",
+    "text": "Lecture 01a – Welcome Full Screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 1: Designed studies**",
+      "L01 -- Introduction"
+    ]
+  },
+  {
+    "objectID": "lectures/L06/index.html",
+    "href": "lectures/L06/index.html",
+    "title": "Lecture 06",
+    "section": "",
+    "text": "Important\n\n\n\nLecture 06 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+  }
+]
