@@ -1,34 +1,32 @@
-# ENVX1002 Lectures
+# ENVX2001 Lectures
 
-This repository contains lecture materials for the ENVX1002 unit at the University of Sydney. The content is built using [Quarto](https://quarto.org/), providing interactive and dynamic lecture materials for environmental data science education.
+This repository contains lecture materials for the ENVX2001 unit at the University of Sydney. The content is built using [Quarto](https://quarto.org/), providing interactive and dynamic lecture materials for environmental data science education.
 
 ## 📚 Course Overview
 
-ENVX1002 is an introductory unit focused on data analysis and statistics in environmental science. The course covers:
+ENVX2001 is a second-year unit focused on data analysis and statistics for students in the School of Life and Environmental Sciences. 
 
-- Introduction to R programming
-- Data visualization and analysis
-- Statistical methods in environmental science
-- Practical applications of data science in environmental contexts
+## 🗂️ Repository Structure
 
 ## 🗂️ Repository Structure
 
 ```
 lectures/
-├── L01/ - Reproducible science
-├── L02/ - Introduction to Statistical Programming
-├── L03/ - Exploring and Visualising Data
-├── L04/ - The Central Limit Theorem
-├── L05/ - Introduction to Inference
-├── L06/ - Comparing Two Samples
-├── L07/ - Non-parametric Tests
-├── L08/ - bootstrapping and Randomisation
-├── L09/ - Describing relationships
-├── L10/ - Simple linear regression
-├── L11/ - Multiple linear regression
-├── L12/ - Non-linear regression
+├── L01/ - Introduction
+├── L02/ - Sampling designs
+├── L03/ - 1-way ANOVA
+├── L04/ - Residual diagnostics & post hoc tests
+├── L05/ - Experimental design
+├── L06/ - ANOVA with blocking
+├── L07/ - Regression modelling
+├── L08/ - Regression model development
+├── L09/ - Regression model assessment
+├── L10/ - Principle component analysis
+├── L11/ - Clustering
+├── L12/ - Multidimensional scaling
 └── L13/ - Revision
 ```
+
 
 ## 🛠️ Setup and Usage
 
