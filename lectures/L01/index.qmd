@@ -2,10 +2,10 @@
 title: "Lecture 01"
 ---
 
-**Lecture 01a -- Welcome** [Full Screen](lecture-01a.qmd) | [PDF](lecture-01a.pdf) 
+**Lecture 01a -- Welcome** [Full Screen](Lecture-01a.qmd) | [PDF](Lecture-01a.pdf) 
 
 ```{=html}
-<iframe class="slide-deck" src="lecture-01a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+<iframe class="slide-deck" src="Lecture-01a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 
 <!-- **Lecture 01b -- The beginning is the end: a revision** [Full Screen](lecture-01b.qmd) | [PDF](lecture-01b.pdf)  -->
