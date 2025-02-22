@@ -343,18 +343,25 @@
     ]
   },
   {
-    "objectID": "lectures/L01/Lecture-01b.html#things-to-recall",
-    "href": "lectures/L01/Lecture-01b.html#things-to-recall",
+    "objectID": "lectures/L01/Lecture-01b.html#assumed-knowledge",
+    "href": "lectures/L01/Lecture-01b.html#assumed-knowledge",
     "title": "Lecture 01b – Revision",
-    "section": "Things to recall",
-    "text": "Things to recall\n\nSamples, populations and statistical inference\nProbability distributions\nParameter estimation\n\ncentral tendency\nspread or variability\n\nSampling distributions (mean)\nStandard error (mean)\nConfidence intervals (mean)\nControlled experiments vs observational studies"
+    "section": "Assumed knowledge",
+    "text": "Assumed knowledge\n\nSamples, populations and statistical inference\nProbability distributions\nParameter estimation\n\ncentral tendency\nspread or variability\n\nSampling distribution of the mean\n\nStandard error\nConfidence intervals\nCentral Limit Theorem"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#why-is-this-important",
+    "href": "lectures/L01/Lecture-01b.html#why-is-this-important",
+    "title": "Lecture 01b – Revision",
+    "section": "Why is this important?",
+    "text": "Why is this important?\n\nUnderstanding sampling informs experimental design (Week 4 onward). How many samples do we need and are our samples representative?\nRecognising sample (not sampling) distributions helps us choose the right statistical model – e.g. t-test to compare two means that are normally distributed.\nMost statistical techniques use sample statistics for interpretation, e.g. the t-test can be explained using confidence intervals, and the ANOVA test can be interpreted in part using means and standard errors.\n\nAll of these concepts will make more sense as we go through the course, but if you do not try to understand them now, you will struggle."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#populations-and-samples",
     "href": "lectures/L01/Lecture-01b.html#populations-and-samples",
     "title": "Lecture 01b – Revision",
     "section": "Populations and samples",
-    "text": "Populations and samples\nPopulations\n\nAll the possible units and their associated observations of interest\nScientists are often interested in making inferences about populations, but measuring every unit is impractical\n\nSamples\n\nA collection of observations from any population is a sample, and the number of observations in it is the sample size\nWe assume samples that we collect can be used to make inferences about the population\nNEW: Samples need to be representative of the population\n\n\nThe basic way of generating a sample is random sampling, where every observation has the same probability of being included in the sample. We will go in-depth on this next week."
+    "text": "Populations and samples\nPopulations\n\nAll the possible units and their associated observations of interest\nScientists are often interested in making inferences about populations, but measuring every unit is impractical\n\nSamples\n\nA collection of observations from any population is a sample, and the number of observations in it is the sample size\nWe assume samples that we collect can be used to make inferences about the population\nNEW: Samples need to be representative of the population"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#statistics-vs-parameters",
@@ -382,7 +389,7 @@
     "href": "lectures/L01/Lecture-01b.html#types-of-probability-distributions",
     "title": "Lecture 01b – Revision",
     "section": "Types of probability distributions",
-    "text": "Types of probability distributions\nBy now, you should be familiar with these distributions and their properties\n\n\nNormal Distribution: Bell-shaped curve, symmetric around the mean. Data is continuous\nBinomial Distribution: Models success/failure outcomes in a fixed number of trials. Data is discrete\nPoisson Distribution: Models count data when events occur at a constant rate. Data is discrete\n\n\n\nKnowing the distribution of your data is important for choosing the right statistical model – although it is not always necessary."
+    "text": "Types of probability distributions\nPopulations can be described by probability distributions, and by now, you should be familiar with these distributions and their properties\n\n\nNormal Distribution: Bell-shaped curve, symmetric around the mean. Data is continuous\nBinomial Distribution: Models success/failure outcomes in a fixed number of trials. Data is discrete\nPoisson Distribution: Models count data when events occur at a constant rate. Data is discrete\n\n\n\nKnowing the distribution of your data is important for choosing the right statistical model – although it is not always necessary."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#section",
@@ -396,7 +403,7 @@
     "href": "lectures/L01/Lecture-01b.html#measures-of-central-tendency",
     "title": "Lecture 01b – Revision",
     "section": "Measures of central tendency",
-    "text": "Measures of central tendency\nMean\n\nThe arithmetic average of all values in a dataset\nSum of all values divided by number of observations\nSensitive to extreme values (outliers)\n\n\n\n\n\n\n\n\nFormula\n\n\n\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\nwhere n is the number of observations\nx_i represents each individual value\n\\sum means we add up all values from i=1 to n\nExample: for data {2,4,6,8}, n=4 and \\bar{x} = \\frac{2+4+6+8}{4} = 5"
+    "text": "Measures of central tendency\nMean \\bar{x}\n\nThe arithmetic average of all values in a dataset\nSum of all values divided by number of observations\nSensitive to extreme values (outliers)\n\n\n\n\n\n\n\n\nFormula\n\n\n\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\nwhere n is the number of observations\nx_i represents each individual value\n\\sum means we add up all values from i=1 to n\nExample: for data {2,4,6,8}, n=4 and \\bar{x} = \\frac{2+4+6+8}{4} = 5"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#section-1",
@@ -417,7 +424,7 @@
     "href": "lectures/L01/Lecture-01b.html#measures-of-dispersion",
     "title": "Lecture 01b – Revision",
     "section": "Measures of dispersion",
-    "text": "Measures of dispersion\nVariance\n\nMeasures how spread out the data is from the mean\nCalculated as average squared deviations from the mean\nSquared units make it harder to interpret\nSensitive to outliers (squares large deviations)"
+    "text": "Measures of dispersion\nVariance s^2\n\nMeasures how spread out the data is from the mean\nCalculated as average squared deviations from the mean\nSquared units make it harder to interpret\nSensitive to outliers (squares large deviations)"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#measures-of-dispersion-1",
@@ -431,7 +438,7 @@
     "href": "lectures/L01/Lecture-01b.html#measures-of-dispersion-2",
     "title": "Lecture 01b – Revision",
     "section": "Measures of dispersion",
-    "text": "Measures of dispersion\nStandard Deviation\n\nSquare root of variance\nSame units as original data\nMore interpretable than variance\nEmpirical rule for normal distributions:\n\n≈68% of data within ±1 SD\n≈95% of data within ±2 SD\n≈99.7% of data within ±3 SD\n\n\n\n\n\n\n\n\n\nFormula\n\n\ns = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2}\n\nSimply the square root of variance\nFor our example data {2,4,6,8}:\n\ns = \\sqrt{6.67} \\approx 2.58\n\nInterpretation: On average, values deviate about 2.58 units from the mean"
+    "text": "Measures of dispersion\nStandard Deviation s\n\nSquare root of variance\nSame units as original data\nMore interpretable than variance\nEmpirical rule for normal distributions:\n\n≈68% of data within ±1 SD\n≈95% of data within ±2 SD\n≈99.7% of data within ±3 SD\n\n\n\n\n\n\n\n\n\nFormula\n\n\ns = \\sqrt{s^2}\n\nSimply the square root of variance\nFor our example data {2,4,6,8}:\n\ns = \\sqrt{6.67} \\approx 2.58\n\nInterpretation: On average, values deviate about 2.58 units from the mean"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#visualising-standard-deviation",
@@ -453,6 +460,139 @@
     "title": "Lecture 01b – Revision",
     "section": "Why n-1?",
     "text": "Why n-1?\n\nWhen calculating sample variance, we use n-1 instead of n in the denominator\nThis is called “Bessel’s correction”\nWhy? Because we lose one “degree of freedom” when we estimate the mean:\n\nIf you know the sample mean (\\bar{x})\nAnd you know all but one value in your sample\nThe last value is constrained - it must make the mean equal \\bar{x}"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#what-is-a-sampling-distribution",
+    "href": "lectures/L01/Lecture-01b.html#what-is-a-sampling-distribution",
+    "title": "Lecture 01b – Revision",
+    "section": "What is a sampling distribution?",
+    "text": "What is a sampling distribution?\n\nDistribution of a statistic (e.g., mean) calculated from repeated samples\nShows how sample statistics vary from sample to sample\nImportant for understanding sampling variability and making inferences"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#sampling-distribution-of-the-mean",
+    "href": "lectures/L01/Lecture-01b.html#sampling-distribution-of-the-mean",
+    "title": "Lecture 01b – Revision",
+    "section": "Sampling distribution of the mean",
+    "text": "Sampling distribution of the mean"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#central-limit-theorem",
+    "href": "lectures/L01/Lecture-01b.html#central-limit-theorem",
+    "title": "Lecture 01b – Revision",
+    "section": "Central Limit Theorem",
+    "text": "Central Limit Theorem\n\nI know of scarcely anything so apt to impress the imagination as the wonderful form of cosmic order expressed by the Central Limit Theorem. The law would have been personified by the Greeks and deified, if they had known of it.”\n\n– Sir Francis Galton, 1889, Natural Inheritance\nThe Central Limit Theorem (CLT) states that for sufficiently large samples:\n\nThe sampling distribution of the mean follows a normal distribution\nThe mean of the sampling distribution equals the population mean\nThe standard deviation of the sampling distribution (standard error) = \\frac{\\sigma}{\\sqrt{n}}"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#clt-in-action",
+    "href": "lectures/L01/Lecture-01b.html#clt-in-action",
+    "title": "Lecture 01b – Revision",
+    "section": "CLT in action",
+    "text": "CLT in action\n\n\nCode\n# Create a skewed population\nset.seed(456)\nskewed_pop &lt;- exp(rnorm(10000, mean = 0, sd = 0.5))\n\n# Sample means for different sample sizes (ordered small to large)\nsample_sizes &lt;- c(5, 30, 100)\nsample_labels &lt;- factor(paste(\"n =\", sample_sizes), \n                       levels = paste(\"n =\", sample_sizes))  # preserve order\nsample_dist_data &lt;- lapply(sample_sizes, function(n) {\n  means &lt;- replicate(1000, mean(sample(skewed_pop, size = n)))\n  data.frame(means = means, size = factor(paste(\"n =\", n), levels = levels(sample_labels)))\n})\nsample_dist_df &lt;- do.call(rbind, sample_dist_data)\n\n# Plot\nggplot() +\n  geom_histogram(aes(x = means, y = ..density..), data = sample_dist_df,\n                bins = 30, fill = \"lightblue\", color = \"black\", alpha = 0.7) +\n  geom_density(aes(x = means), data = sample_dist_df, color = \"blue\") +\n  facet_wrap(~size, scales = \"free_x\") +\n  ggtitle(\"Sampling distributions for different sample sizes\")"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#example",
+    "href": "lectures/L01/Lecture-01b.html#example",
+    "title": "Lecture 01b – Revision",
+    "section": "Example",
+    "text": "Example\n\n\nCode\nset.seed(239)\n# Generate a skewed distribution\nskewed &lt;- tibble(\n    x = rgamma(1000, shape = 2, scale = 1)\n)\n\n# plot in ggplot2\nggplot(data = skewed, aes(x = x)) +\n    geom_histogram(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlab(\"Height (m)\")\n\n\n\n\nSkewed population distribution for tree heights.\nWe want to estimate the mean height of the trees in the forest."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#sample-no-summary-statistic",
+    "href": "lectures/L01/Lecture-01b.html#sample-no-summary-statistic",
+    "title": "Lecture 01b – Revision",
+    "section": "1 sample (no summary statistic)",
+    "text": "1 sample (no summary statistic)\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 1,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\nWith only one sample, we are not really seeing a sampling distribution – we are just replicating the same population distribution. A sampling distribution emerges when we take multiple samples and calculate their means."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#samples-1",
+    "href": "lectures/L01/Lecture-01b.html#samples-1",
+    "title": "Lecture 01b – Revision",
+    "section": "2 samples",
+    "text": "2 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 2,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nWe sample 2 trees and calculate the mean height, and repeat this 1000 times.\nThe distribution of sample means is starting to look more like a normal distribution."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#samples-2",
+    "href": "lectures/L01/Lecture-01b.html#samples-2",
+    "title": "Lecture 01b – Revision",
+    "section": "5 samples",
+    "text": "5 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 5,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nFive random samples per calculated mean, repeated 1000 times.\nThe distribution is becoming more normal, and the spread is decreasing: estimate is getting more precise."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#samples-3",
+    "href": "lectures/L01/Lecture-01b.html#samples-3",
+    "title": "Lecture 01b – Revision",
+    "section": "30 samples",
+    "text": "30 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 30,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nThirty random samples per calculated mean, repeated 1000 times.\nThe distribution of sample means is very close to a normal distribution."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#samples-4",
+    "href": "lectures/L01/Lecture-01b.html#samples-4",
+    "title": "Lecture 01b – Revision",
+    "section": "50 samples",
+    "text": "50 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 50,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nFifty random samples per calculated mean, repeated 1000 times.\nHow many samples is enough?"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#are-50-samples-normal-enough",
+    "href": "lectures/L01/Lecture-01b.html#are-50-samples-normal-enough",
+    "title": "Lecture 01b – Revision",
+    "section": "Are 50 samples “normal” enough?",
+    "text": "Are 50 samples “normal” enough?\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 50,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  stat_function(\n    fun = dnorm,\n    args = list(\n      mean = 2,  # population mean for gamma(2,1)\n      sd = sqrt(2)/sqrt(50)  # theoretical SE for gamma(2,1)\n    ),\n    linewidth = 1,\n    color = \"blue\",\n    linetype = \"dashed\"\n  ) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nFifty random samples per calculated mean, repeated 1000 times.\nHow many samples is enough?"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#effect-of-sample-size",
+    "href": "lectures/L01/Lecture-01b.html#effect-of-sample-size",
+    "title": "Lecture 01b – Revision",
+    "section": "Effect of sample size",
+    "text": "Effect of sample size\n\n\nCode\nlibrary(tidymodels)\nlibrary(patchwork)\nset.seed(642)\n\nheights &lt;- tibble(heights = rnorm(1000, 1.99, 1))\npopmean &lt;- mean(heights$heights)\nsample_sizes &lt;- c(2, 5, 25, 100)\nn &lt;- length(sample_sizes)\n\nheights &lt;- tibble(heights = rgamma(1000, shape = 2, scale = 1))\nsample_sizes &lt;- c(2, 5, 25, 100)\nn &lt;- length(sample_sizes)\n\nplots &lt;- lapply(sample_sizes, function(size) {\n    df &lt;- heights |&gt;\n        rep_sample_n(size = size, reps = 2000) |&gt;\n        group_by(replicate) |&gt;\n        summarise(xbar = mean(heights))\n\n    mean_xbar &lt;- mean(df$xbar)\n\n    ggplot(df, aes(x = xbar)) +\n        geom_histogram(fill = \"orangered\", alpha = 0.5, bins = 50) +\n        geom_vline(aes(xintercept = mean_xbar), color = \"blue\", linetype = \"dashed\") +\n        geom_text(aes(x = mean_xbar, label = sprintf(\"%.2f\", mean_xbar), y = Inf), hjust = -0.1, vjust = 2, color = \"blue\") +\n        ggtitle(paste0(\"Sample Size: \", size)) +\n        xlab(\"Mean height (m)\") +\n        xlim(-3, 8) \n})\nwrap_plots(plots)\n\n\n\nIncreased sample size leads to a more accurate estimate of the population mean, reflected by the narrower distribution of the sample mean, which is captured by the standard error."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#effect-of-variability",
+    "href": "lectures/L01/Lecture-01b.html#effect-of-variability",
+    "title": "Lecture 01b – Revision",
+    "section": "Effect of variability",
+    "text": "Effect of variability\n\n\nCode\nset.seed(1221)\n\n# Define a function to generate ggplot objects\ngenerate_plot &lt;- function(sd) {\n    data &lt;- rnorm(500, 1.99, sd)\n    p &lt;- ggplot(data = tibble(x = data), aes(x = x)) +\n        geom_histogram(fill = \"orangered\", alpha = 0.5, bins = 50) +\n        ggtitle(paste(\"SD =\", sd)) +\n        xlim(-100, 100)\n    return(p)\n}\n\n# Apply the function to a list of standard deviations\nsds &lt;- c(3, 6, 15, 25)\nplots &lt;- lapply(sds, generate_plot)\n\n# Wrap the plots\nwrap_plots(plots)\n\n\n\nIncreased variability (i.e. wide range of tree heights) leads to a wider distribution of the sample mean (i.e. less precision), which is also reflected by the standard error."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#clt-drives-statistical-inference",
+    "href": "lectures/L01/Lecture-01b.html#clt-drives-statistical-inference",
+    "title": "Lecture 01b – Revision",
+    "section": "CLT drives statistical inference",
+    "text": "CLT drives statistical inference\nBecause of how predictable the CLT applies to sample means, we can use this to make reasonably accurate inferences about the population mean, even if we do not know the population distribution.\n\nA sampling distribution of the mean will be normally distributed for sufficiently large samples – how large is “sufficient” depends on the population distribution\nThe mean of the sampling distribution trends towards the population mean with increasing sample size\nTo determine how well the sample mean estimates the population mean, we use the standard error of the mean – basically a standard deviation of the sampling distribution"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#standard-error-of-the-mean",
+    "href": "lectures/L01/Lecture-01b.html#standard-error-of-the-mean",
+    "title": "Lecture 01b – Revision",
+    "section": "Standard Error of the Mean",
+    "text": "Standard Error of the Mean\n\nMeasures the precision of a sample mean\nDescribes variation in sample means – around the true population mean\nDecreases as sample size increases, because we become more “confident” in our estimate\n\n\n\n\n\n\n\n\nFormula\n\n\nSE_{\\bar{x}} = \\frac{s}{\\sqrt{n}}\n\nwhere s is the sample standard deviation\nn is the sample size"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#when-to-report-sd-or-se",
+    "href": "lectures/L01/Lecture-01b.html#when-to-report-sd-or-se",
+    "title": "Lecture 01b – Revision",
+    "section": "When to report SD or SE",
+    "text": "When to report SD or SE\nStandard Deviation (SD)\n\nDescribes variability in your data\nStays constant regardless of sample size\n\nStandard Error (SE)\n\nDescribes precision of your mean estimate\nDecreases with larger sample size (SE = \\frac{SD}{\\sqrt{n}})\n\nWhen reporting statistics:\n\nUse mean ± SE to show precision of your estimate\nUse mean ± SD to show spread of your raw data\nSE can appear deceptively small with large sample sizes – always report sample size!"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#confidence-intervals",
+    "href": "lectures/L01/Lecture-01b.html#confidence-intervals",
+    "title": "Lecture 01b – Revision",
+    "section": "Confidence intervals",
+    "text": "Confidence intervals\nWhat is a confidence interval?\n\nRange of values likely to contain the true population parameter\nLevel of confidence (usually 95%) indicates reliability\nWider intervals = less precise estimates\n\n\n\n\n\n\n\n\nFormula for 95% CI\n\n\n\\bar{x} \\pm (t_{n-1} \\times SE_{\\bar{x}})\n\nwhere t_{n-1} is the t-value for n-1 degrees of freedom\nFor large samples (n &gt; 30), use 1.96 instead of t-value"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#visualising-confidence-intervals",
+    "href": "lectures/L01/Lecture-01b.html#visualising-confidence-intervals",
+    "title": "Lecture 01b – Revision",
+    "section": "Visualising confidence intervals",
+    "text": "Visualising confidence intervals\n\n\nCode\n# Generate sample data\nset.seed(253)\nsample_data &lt;- data.frame(\n  group = rep(c(\"A\", \"B\", \"C\"), each = 30),\n  value = c(rnorm(30, 100, 15),\n            rnorm(30, 110, 15),\n            rnorm(30, 105, 15))\n)\n\n# Calculate means and CIs\nci_data &lt;- sample_data %&gt;%\n  group_by(group) %&gt;%\n  summarise(\n    mean = mean(value),\n    se = sd(value)/sqrt(n()),\n    ci_lower = mean - qt(0.975, n()-1)*se,\n    ci_upper = mean + qt(0.975, n()-1)*se\n  )\n\n# Plot\nggplot(ci_data, aes(x = group, y = mean)) +\n  geom_point(size = 3) +\n  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2) +\n  ggtitle(\"Means with 95% Confidence Intervals\")"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#summary",
+    "href": "lectures/L01/Lecture-01b.html#summary",
+    "title": "Lecture 01b – Revision",
+    "section": "Summary",
+    "text": "Summary\nYou should\n\nUnderstand the difference between populations and samples"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html",
