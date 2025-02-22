@@ -1,10 +1,10 @@
 ---
 title: Lecture 01b -- Revision
 author: Januar Harianto
-# format: soles-revealjs
-format: revealjs
-fontsize: 16pt
-# embed-resources: true
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
 execute:
   cache: true
 ---
