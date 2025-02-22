@@ -35,6 +35,9 @@ vignettes/*.pdf
 ## Memory Bank
 memory-bank/
 
+## Reference folders
+**/_ref/
+
 ## Cline configuration
 .clinerules-*
 
