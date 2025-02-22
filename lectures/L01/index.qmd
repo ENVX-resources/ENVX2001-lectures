@@ -8,8 +8,8 @@ title: "Lecture 01"
 <iframe class="slide-deck" src="Lecture-01a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ```
 
-<!-- **Lecture 01b -- The beginning is the end: a revision** [Full Screen](lecture-01b.qmd) | [PDF](lecture-01b.pdf)  -->
+**Lecture 01b -- The beginning is the end: a revision** [Full Screen](Lecture-01b.qmd) | [PDF](Lecture-01b.pdf)
 
-<!-- ```{=html}
-<iframe class="slide-deck" src="lecture-01b.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
-``` -->
+```{=html}
+<iframe class="slide-deck" src="Lecture-01b.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
