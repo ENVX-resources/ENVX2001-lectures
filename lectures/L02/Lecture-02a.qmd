@@ -1,33 +1,20 @@
 ---
 title: Lecture 02a -- Sampling designs I
-subtitle: ENVX2001 Applied Statistical Methods
-author: Dr. Januar Harianto 
-institute: The University of Sydney
-date: last-modified # today | last-modified
-date-format: "MMM YYYY"
-execute:
-  cache: false
-  echo: true
-editor-options:
-  canonical: true
-toc: true
-toc-depth: 1
-toc-title: Outline
+author: Januar Harianto
+# format: soles-revealjs
+format: revealjs
+fontsize: 15pt
+# embed-resources: true
+# execute:
+#   cache: true
 ---
 
-```{r setup, include=FALSE}
-library(tidyverse)
-library(ggthemes)
+```{r setup}
+#| include: false
+if (!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse, ggthemes)
 ```
 
-# Last week
-
-## Observational study vs controlled experiment
-| Aspect | Observational study | Controlled experiment |
-|--------|---------------------|-----------------------|
-| **Control** | No control over the variables of interest - **Mensurative** and **Absolute** | Control over the variables of interest - **Comparative** and **Manipulative** |
-| **Causation** | Cannot establish causation, but perhaps **association** | Can establish **causation** |
-| **Feasibility** | Can be done in many cases | May be destructive and cannot always be done |
 
 # Today: Observational studies
 
@@ -286,6 +273,21 @@ ci95
 - How precise is our estimate of soil carbon?
 - What sample size would improve precision?
 - **Can we sample more efficiently?**
+:::
+
+# Looking ahead: Beyond observational studies
+
+## Understanding different approaches
+Our focus today has been on observational studies. However, environmental science uses different approaches depending on the research question.
+
+| Aspect | Observational study | Controlled experiment |
+|--------|---------------------|-----------------------|
+| **Control** | No control over the variables of interest - **Mensurative** and **Absolute** | Control over the variables of interest - **Comparative** and **Manipulative** |
+| **Causation** | Cannot establish causation, but perhaps **association** | Can establish **causation** |
+| **Feasibility** | Can be done in many cases | May be destructive and cannot always be done |
+
+::: fragment
+This comparison will be important as we move into experimental design in our next lectures.
 :::
 
 # Next: Stratified random sampling
