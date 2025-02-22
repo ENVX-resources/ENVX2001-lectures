@@ -1,0 +1,281 @@
+---
+title: Lecture 01b -- Revision
+author: Januar Harianto
+# format: soles-revealjs
+format: revealjs
+fontsize: 16pt
+# embed-resources: true
+execute:
+  cache: true
+---
+
+```{r}
+#| label: setup
+#| include: false
+#| warning: false
+#| message: false
+
+# Load required packages
+pacman::p_load(tidyverse, patchwork)
+
+# Set random seed for reproducibility
+set.seed(909)
+
+# Set default ggplot theme
+theme_set(theme_minimal())
+```
+
+# Refresher
+
+## Things to recall
+
+- Samples, populations and statistical inference
+- Probability distributions
+- Parameter estimation
+  - central tendency
+  - spread or variability
+- Sampling distributions (mean)
+- Standard error (mean)
+- Confidence intervals (mean)
+- Controlled experiments vs observational studies
+
+# Samples, populations and statistical inference
+
+## Populations and Samples
+
+### Populations
+- **All** the possible units and their associated observations of interest
+- Scientists are often interested in making *inferences* about populations, but measuring every unit is impractical
+
+### Samples
+- A collection of observations from any population is a sample, and the number of observations in it is the **sample size**
+- We assume samples that we collect can be used to make inferences about the population
+- **NEW**: Samples need to be *representative* of the population
+
+::: fragment
+The basic way of generating a sample is **random sampling**, where every observation has the same probability of being included in the sample. We will go in-depth on this next week.
+:::
+
+## Statistics vs Parameters
+
+- Characteristics of the **population** are called *parameters* (e.g. population mean or population regression slope)
+- Characteristics of the **sample** are called *statistics* (e.g. sample mean or sample regression slope) -- they are used to estimate the population parameters
+- Statistics are what we use to help use understand the population
+- Formal statistical methods can help us make inferences about the population based on the sample -- statistical inference
+- *Not all statistical techniques are inferential, but many are*
+
+
+
+## Sample Data
+
+Sample data are usually collected as **variables**, which are the characteristics we measure or record from each object.
+
+::: fragment
+
+Variables can be:
+
+### Categorical Variables
+- **Nominal**: categories without a natural order (e.g. colors, names)
+- **Ordinal**: categories with a natural order (e.g. ratings, rankings)
+
+### Numerical Variables
+- **Continuous**: can take any value within a range (e.g. height, weight)
+- **Discrete**: can take only specific values (e.g. counts, presence/absence)
+:::
+
+## YOU decide on what a variable represents
+
+A numerical, continuous variable can be treated as a categorical variable if you decide to categorise it.
+
+### Examples
+::: incremental
+- **height (in cm)** -- a numerical, **continuous** variable, can be treated as a categorical variable if you group it into categories (short, medium, tall)
+- **age (in years)** -- a numerical, **discrete** variable, can be treated as a continuous variable (if we allow for certain *issues*)
+- **treatment (A, B, C)** -- a categorical variable, can be treated as a numerical variable if we assign numbers to the treatments (1, 2, 3) and assume they are **ordered** e.g. effect of 1 < 2 < 3 -- *the basis of non-parametric tests*
+:::
+
+# Distribution of data
+## Types of probability distributions
+By now, you should be familiar with these distributions and their properties
+
+::: incremental
+- **Normal Distribution**: Bell-shaped curve, symmetric around the mean. **Data is continuous**
+- **Binomial Distribution**: Models success/failure outcomes in a fixed number of trials. **Data is discrete**
+- **Poisson Distribution**: Models count data when events occur at a constant rate. **Data is discrete**
+:::
+::: fragment
+Knowing the distribution of your data is important for choosing the right statistical model -- although it is not always necessary.
+:::
+
+## 
+```{r}
+library(tidyverse)
+
+set.seed(908)
+normal_data <- data.frame(x = rnorm(10000, mean = 0, sd = 1))
+binomial_data <- data.frame(x = rbinom(10000, size = 10, prob = 0.5))
+poisson_data <- data.frame(x = rpois(500, lambda = 3))
+
+# normal
+p1 <- ggplot(normal_data, aes(x = x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black") +
+  geom_density(color = "red") +
+  ggtitle("Normal Distribution") +
+  theme_minimal()
+
+# binomial
+p2 <- ggplot(binomial_data, aes(x = x)) +
+  geom_bar(fill = "lightgreen", color = "black") +
+  ggtitle("Binomial Distribution") +
+  theme_minimal()
+
+# poisson
+p3 <- ggplot(poisson_data, aes(x = x)) +
+  geom_bar(fill = "lightpink", color = "black") +
+  ggtitle("Poisson Distribution") +
+  theme_minimal()
+
+# Arrange plots
+library(patchwork)
+p1 | p2 / p3
+```
+
+# Parameter estimation
+
+## Measures of Central Tendency
+
+### Mean
+::: incremental
+- The arithmetic average of all values in a dataset
+- Sum of all values divided by number of observations
+- Sensitive to extreme values (outliers)
+- Formula: $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
+:::
+
+### Median
+::: incremental
+- Middle value when data is ordered
+- 50th percentile of the data
+- More robust to outliers than mean
+- For even n, average of two middle values
+:::
+
+### Mode
+::: incremental
+- Most frequently occurring value
+- Can have multiple modes
+- Only measure of central tendency for categorical data
+- Not always meaningful for continuous data
+:::
+
+## Visual Comparison of Central Tendency
+
+```{r}
+#| label: central-tendency
+#| echo: false
+#| warning: false
+#| fig.height: 4
+
+# Create data with different shapes
+set.seed(123)
+normal_data <- data.frame(x = rnorm(1000, mean = 0, sd = 1))
+skewed_data <- data.frame(x = exp(rnorm(1000, mean = 0, sd = 0.5)))
+
+# Normal distribution plot
+p1 <- ggplot(normal_data, aes(x = x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", alpha = 0.7) +
+  geom_density(color = "darkblue") +
+  geom_vline(xintercept = mean(normal_data$x), color = "red", linetype = "dashed") +
+  geom_vline(xintercept = median(normal_data$x), color = "green", linetype = "dashed") +
+  ggtitle("Symmetric Distribution") +
+  theme_minimal() +
+  annotate("text", x = mean(normal_data$x), y = 0.1, 
+           label = "Mean ≈ Median", angle = 90, vjust = -0.5)
+
+# Skewed distribution plot
+p2 <- ggplot(skewed_data, aes(x = x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightgreen", alpha = 0.7) +
+  geom_density(color = "darkgreen") +
+  geom_vline(xintercept = mean(skewed_data$x), color = "red", linetype = "dashed") +
+  geom_vline(xintercept = median(skewed_data$x), color = "green", linetype = "dashed") +
+  ggtitle("Skewed Distribution") +
+  theme_minimal() +
+  annotate("text", x = mean(skewed_data$x), y = 0.2, 
+           label = "Mean", angle = 90, vjust = -0.5) +
+  annotate("text", x = median(skewed_data$x), y = 0.2, 
+           label = "Median", angle = 90, vjust = -0.5)
+
+# Arrange plots side by side
+p1 | p2
+```
+
+## Measures of Dispersion
+
+### Variance
+::: incremental
+- Measures spread of data around the mean
+- Average of squared deviations from mean
+- Formula: $s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$
+- Units are squared (harder to interpret)
+:::
+
+### Standard Deviation
+::: incremental
+- Square root of variance
+- Same units as original data
+- Approximately 68% of data within ±1 SD of mean
+- Formula: $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}$
+:::
+
+## Visualizing Dispersion
+
+```{r}
+#| label: dispersion
+#| echo: false
+#| warning: false
+#| fig.height: 4
+
+# Create datasets with different dispersion
+set.seed(456)
+narrow_data <- data.frame(x = rnorm(1000, mean = 0, sd = 1))
+wide_data <- data.frame(x = rnorm(1000, mean = 0, sd = 2))
+
+# Function to add SD bands
+add_sd_bands <- function(p, data, fill_colors) {
+  mean_val <- mean(data$x)
+  sd_val <- sd(data$x)
+  p + 
+    geom_rect(aes(xmin = mean_val - sd_val, xmax = mean_val + sd_val, 
+                  ymin = -Inf, ymax = Inf), 
+              fill = fill_colors[1], alpha = 0.2) +
+    geom_rect(aes(xmin = mean_val - 2*sd_val, xmax = mean_val + 2*sd_val, 
+                  ymin = -Inf, ymax = Inf), 
+              fill = fill_colors[2], alpha = 0.1)
+}
+
+# Create base plots
+p1 <- ggplot(narrow_data, aes(x = x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black", alpha = 0.7) +
+  geom_density(color = "darkblue") +
+  ggtitle("Smaller Dispersion (SD = 1)") +
+  theme_minimal()
+
+p2 <- ggplot(wide_data, aes(x = x)) +
+  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightgreen", color = "black", alpha = 0.7) +
+  geom_density(color = "darkgreen") +
+  ggtitle("Larger Dispersion (SD = 2)") +
+  theme_minimal()
+
+# Add SD bands
+p1 <- add_sd_bands(p1, narrow_data, c("blue", "lightblue"))
+p2 <- add_sd_bands(p2, wide_data, c("green", "lightgreen"))
+
+# Arrange plots
+p1 | p2
+```
+
+
+
+
+# Thanks for listening! Questions?
+This presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by]
