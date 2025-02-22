@@ -23,7 +23,7 @@ jobs:
           r-version: "4.4.0"
       
       - name: Install additional dependencies
-        run: sudo apt-get install libcurl4-openssl-dev libmagick++-dev
+        run: sudo apt-get install libcurl4-openssl-dev libmagick++-dev libharfbuzz-dev libfribidi-dev
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
