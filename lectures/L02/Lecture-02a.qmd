@@ -21,42 +21,49 @@ library(ggthemes)
 ```
 
 # Last week
-## Observational study vs. controlled experiment
+
+## Observational study vs controlled experiment
 | Aspect | Observational study | Controlled experiment |
 |--------|---------------------|-----------------------|
 | **Control** | No control over the variables of interest - **Mensurative** and **Absolute** | Control over the variables of interest - **Comparative** and **Manipulative** |
 | **Causation** | Cannot establish causation, but perhaps **association** | Can establish **causation** |
 | **Feasibility** | Can be done in many cases | May be destructive and cannot always be done |
 
-# Today: observational studies
-## Two common types
+# Today: Observational studies
+
+## Common study types
 ::: fragment
-### Surveys
+### Research surveys
+
 - Estimate a statistic (e.g. mean, variance), but
-- **no temporal change** during estimate.
-- *E.g. measuring species richness in a forest*.
+- **no temporal change** during estimate
+- *E.g. measuring species richness in a forest*
 :::
+
 ::: fragment
 ### Monitoring studies
+
 - Estimate a ***change*** in statistic (same as above), and
-- **temporal change** across observations, i.e. before and after.
-- *E.g. measuring species richness in a forest **before and after a fire***.
+- **temporal change** across observations, i.e. before and after
+- *E.g. measuring species richness in a forest **before and after a fire***
 :::
 
 ## Sampling designs
 
 ::: fragment
 ### Simple random sampling
-- Each unit has an equal chance of being selected.
-- **Randomly sample units from the entire population.**
+
+- Each unit has an equal chance of being selected
+- **Randomly sample units from the entire population**
 
 ![](images/simple_random.png){fig-align="center" height=140}
 :::
 
 ::: fragment
 ### Stratified random sampling
-- The population is first divided into *strata* (more on this later).
-- **Randomly sample units within each strata by simple random sampling, *standardised* by the inclusion probability (or weight) of each strata.**
+
+- The population is first divided into *strata* (more on this later)
+- **Randomly sample units within each strata by simple random sampling, *standardised* by the inclusion probability (or weight) of each strata**
 
 ![](images/stratified.png){fig-align="center" height=140}
 :::
@@ -79,6 +86,7 @@ For a sample size $n$ from a population of size $N$:
 $$\pi_i = \frac{n}{N} \quad \text{for all units }i$$
 
 This means:
+
 - Every unit has the same probability of being selected
 - $0 < \pi_i \leq 1$ for all units
 - In simple random sampling, $\pi_i$ is equal for all units
@@ -97,8 +105,9 @@ In practice, we achieve random sampling through:
 :::
 
 ::: fragment
-### Biological context
+### Biological application
 In ecological surveys:
+
 - Each quadrat in a field has equal probability of selection
 - Each individual in a population has equal chance of being measured
 - Each time point has equal likelihood of being sampled
@@ -106,24 +115,28 @@ In ecological surveys:
 
 # Interpreting sampled data
 
-## We know that...
+## Review of key concepts
 ### From the previous lecture
 ::: incremental
-- **Sample mean** is a good measure of central tendency.
-- **Sample variance** is a good measure of dispersion.
-- **Sample size** affects the precision of the sample mean.
+
+- **Sample mean** is a good measure of central tendency
+- **Sample variance** is a good measure of dispersion
+- **Sample size** affects the precision of the sample mean
 :::
+
 ::: fragment
-### Can we combine all of the above in a single statistic?
+### Core question
+
+Can we combine all of the above in a single statistic?
 :::
 
 # Confidence intervals
 ![](images/ci-garfield.png)
 
-## Confidence interval concept
+## Understanding confidence intervals
 
 ::: fragment
-### Definition
+### Basic definition
 A range of values that likely contains the true population parameter, based on sample data.
 :::
 
@@ -136,49 +149,51 @@ $$\text{estimate} \pm (\text{critical value} \times \text{standard error})$$
 :::
 
 ::: fragment
-### Biological significance
+### Applications in ecology
+
 - Helps assess precision of ecological measurements
 - Guides sample size decisions in field studies
 - Enables comparison between different populations
 :::
 
-## Interpreting confidence intervals
+## Interpreting intervals
 
 - Confidence intervals depend on a specified **confidence level** (e.g. 95%, 99%)
 - Higher confidence levels produce wider intervals (more conservative)
 - Represents our uncertainty about the true population value
 
 ::: fragment
-### Ecological example
+### Field example
 When measuring tree heights in a forest:
+
 - 95% CI of 20 ± 2 metres means:
 - If we repeated this sampling many times
 - 95% of intervals would contain the true mean height
 - Wider intervals suggest more variable populations
 :::
 
-# Biological application: soil carbon
+# Soil carbon in forest ecosystems
 
-## Soil carbon in forest ecosystems
-:::: {.columns}
-::: {.column width="60%"}
+## Understanding soil carbon
+
 ### Ecological importance
 ::: fragment
+
 - Critical for climate change mitigation
 - Indicator of soil health and fertility
 - Key factor in forest ecosystem function
 :::
 
 ::: fragment
-### Sampling challenges
+### Research challenges
+
 - High spatial variability
 - Labour-intensive measurements
 - Seasonal fluctuations
 :::
-::::
 
-::: {.column width="40%"}
-::: fragment
+## Sample data analysis
+
 ```{r, fig.height=4}
 # Create data frame for soil samples
 soil_data <- tibble(
@@ -206,14 +221,11 @@ ggplot(soil_data, aes(x = "", y = carbon)) +
        subtitle = "Points show samples, bar shows 95% CI") +
   theme(plot.title = element_text(face = "bold"))
 ```
-:::
-:::
-::::
 
-## Statistical analysis
+## Data processing
 
 ::: fragment
-### Sample data
+### Raw measurements
 ```{r}
 soil <- soil_data$carbon
 soil
@@ -221,7 +233,8 @@ soil
 :::
 
 ::: fragment
-### Components for confidence interval
+### Statistical components
+
 1. Sample mean calculation
 ```{r}
 mean_soil <- mean(soil)
@@ -250,12 +263,14 @@ margin_error <- t_critical * se_mean
 ci95 <- c(mean = mean_soil, 
   L95 = mean_soil - margin_error, 
   U95 = mean_soil + margin_error)
+
 ci95
 ```
 :::
 
 ::: fragment
-### Ecological interpretation
+### Ecological implications
+
 - Mean soil carbon: 67.3 t/ha
 - 95% CI: [52.3, 82.3] t/ha
 - Interpretation:
@@ -264,15 +279,16 @@ ci95
   - More samples needed for higher precision
 :::
 
-## Questions for field sampling
+## Research considerations
 
 ::: incremental
+
 - How precise is our estimate of soil carbon?
 - What sample size would improve precision?
 - **Can we sample more efficiently?**
 :::
 
-# Tomorrow: stratified random sampling
+# Next: Stratified random sampling
 
 ## Thanks!
 
