@@ -1,9 +1,9 @@
 ---
 title: Lecture 01b -- Revision
 author: Januar Harianto
-# format: soles-revealjs
-format: revealjs
-fontsize: 16pt
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
 # embed-resources: true
 execute:
   cache: false
@@ -41,7 +41,7 @@ theme_set(theme_cowplot())
 
 # Samples, populations and statistical inference
 
-## Populations and Samples
+## Populations and samples
 
 ### Populations
 - **All** the possible units and their associated observations of interest
@@ -56,17 +56,17 @@ theme_set(theme_cowplot())
 The basic way of generating a sample is **random sampling**, where every observation has the same probability of being included in the sample. We will go in-depth on this next week.
 :::
 
-## Statistics vs Parameters
+## Statistics vs parameters
 
 - Characteristics of the **population** are called *parameters* (e.g. population mean or population regression slope)
 - Characteristics of the **sample** are called *statistics* (e.g. sample mean or sample regression slope) -- they are used to estimate the population parameters
-- Statistics are what we use to help use understand the population
+- Statistics are what we use to help us understand the population
 - Formal statistical methods can help us make inferences about the population based on the sample -- statistical inference
 - *Not all statistical techniques are inferential, but many are*
 
 
 
-## Sample Data
+## Sample data
 
 Sample data are usually collected as **variables**, which are the characteristics we measure or record from each object.
 
@@ -217,39 +217,9 @@ p1 / p2
 
 Depending on the distribution of the data, the mean and median can be different, and this can tell you something about the data.
 
-## Population Parameters vs Sample Statistics
-
-For those of you interested:
-
-### Mean
-| Population Parameter | Sample Statistic |
-|---------------------|------------------|
-| $\mu = \frac{1}{N}\sum_{i=1}^N x_i$ | $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ |
-
-### Variance
-| Population Parameter | Sample Statistic |
-|---------------------|------------------|
-| $\sigma^2 = \frac{1}{N}\sum_{i=1}^N (x_i - \mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$ |
-
-### Standard Deviation
-| Population Parameter | Sample Statistic |
-|---------------------|------------------|
-| $\sigma = \sqrt{\sigma^2}$ | $s = \sqrt{s^2}$ |
-
-::: {.callout-note}
-Notice the use of $n-1$ in sample variance and standard deviation
-:::
-
-## Why n-1?
-- When calculating sample variance, we use $n-1$ instead of $n$ in the denominator
-- This is called "[Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction)"
-- Why? Because we lose one "degree of freedom" when we estimate the mean:
-  1. If you know the sample mean ($\bar{x}$)
-  2. And you know all but one value in your sample
-  3. The last value is *constrained* - it must make the mean equal $\bar{x}$
 
 
-## Measures of Dispersion
+## Measures of dispersion
 
 ### Variance
 - Measures how spread out the data is from the mean
@@ -257,7 +227,8 @@ Notice the use of $n-1$ in sample variance and standard deviation
 - Squared units make it harder to interpret
 - Sensitive to outliers (squares large deviations)
 
-::: fragment
+## Measures of dispersion
+
 ::: callout-warning
 ## Formula
 $$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$$
@@ -265,16 +236,13 @@ $$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$$
 - where $n$ is the number of observations
 - $x_i$ represents each individual value
 - $\bar{x}$ is the sample mean
-- Example: for data {2,4,6,8}:
-  1. Mean $\bar{x} = 5$
-  2. Deviations: -3, -1, 1, 3
-  3. Squared deviations: 9, 1, 1, 9
-  4. Sum = 20
-  5. $s^2 = \frac{20}{4-1} \approx 6.67$
-:::
+- For data {2,4,6,8}: 
+  - mean = 5 
+  - differences = (-3,-1,1,3), squares = (9,1,1,9), sum = 20
+  - Therefore, $s^2 = \frac{20}{3} \approx 6.67$
 :::
 
-## 
+## Measures of dispersion
 
 ### Standard Deviation
 - Square root of variance
@@ -347,7 +315,38 @@ p1 / p2
 ```
 
 
+## Population parameters vs sample statistics
 
+For those of you interested:
+
+### Mean
+| Population Parameter | Sample Statistic |
+|---------------------|------------------|
+| $\mu = \frac{1}{N}\sum_{i=1}^N x_i$ | $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ |
+
+### Variance
+| Population Parameter | Sample Statistic |
+|---------------------|------------------|
+| $\sigma^2 = \frac{1}{N}\sum_{i=1}^N (x_i - \mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$ |
+
+### Standard Deviation
+| Population Parameter | Sample Statistic |
+|---------------------|------------------|
+| $\sigma = \sqrt{\sigma^2}$ | $s = \sqrt{s^2}$ |
+
+::: {.callout-note}
+Notice the use of $n-1$ in sample variance and standard deviation
+:::
+
+## Why n-1?
+- When calculating sample variance, we use $n-1$ instead of $n$ in the denominator
+- This is called "[Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction)"
+- Why? Because we lose one "degree of freedom" when we estimate the mean:
+  1. If you know the sample mean ($\bar{x}$)
+  2. And you know all but one value in your sample
+  3. The last value is *constrained* - it must make the mean equal $\bar{x}$
+
+# Sampling distributions
 
 # Thanks for listening! Questions?
 This presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by]
