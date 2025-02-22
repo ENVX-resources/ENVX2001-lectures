@@ -217,6 +217,80 @@ p1 / p2
 
 Depending on the distribution of the data, the mean and median can be different, and this can tell you something about the data.
 
+## Population Parameters vs Sample Statistics {.smaller}
+
+### Mean
+| Population Parameter | Sample Statistic |
+|---------------------|------------------|
+| $\mu = \frac{1}{N}\sum_{i=1}^N x_i$ | $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ |
+
+### Variance
+| Population Parameter | Sample Statistic |
+|---------------------|------------------|
+| $\sigma^2 = \frac{1}{N}\sum_{i=1}^N (x_i - \mu)^2$ | $s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$ |
+
+### Standard Deviation
+| Population Parameter | Sample Statistic |
+|---------------------|------------------|
+| $\sigma = \sqrt{\sigma^2}$ | $s = \sqrt{s^2}$ |
+
+::: {.callout-note}
+Notice the use of $n-1$ in sample variance and standard deviation!
+:::
+
+## Why n-1? {.smaller}
+
+::: {.incremental}
+- When calculating sample variance, we use $n-1$ instead of $n$ in the denominator
+- This is called "Bessel's correction"
+- Why? Because we lose one "degree of freedom" when we estimate the mean
+- Think about it:
+  1. If you know the sample mean ($\bar{x}$)
+  2. And you know all but one value in your sample
+  3. The last value is *constrained* - it must make the mean equal $\bar{x}$
+:::
+
+## Example of Degrees of Freedom
+
+Let's say we have 5 numbers with a mean of 10:
+
+::: {.incremental}
+- If we know four numbers: 8, 9, 11, 12
+- The fifth number MUST be 10 to maintain the mean of 10
+- We can calculate it: $5 \times 10 - (8 + 9 + 11 + 12) = 10$
+- This loss of freedom is why we use $n-1$
+- Using $n-1$ gives an unbiased estimate of population variance
+:::
+
+## R Simulation: n vs n-1 {.smaller}
+
+```{r}
+#| echo: true
+set.seed(42)
+# Create population
+population <- rnorm(10000, mean = 50, sd = 10)
+pop_var <- var(population) * (length(population)-1)/length(population)
+
+# Function to compare variance estimates
+compare_var <- function(n_samples = 1000, sample_size = 30) {
+  samples <- replicate(n_samples, {
+    sample <- sample(population, size = sample_size)
+    c(
+      n1 = var(sample),  # using n-1
+      n = var(sample) * (length(sample)-1)/length(sample)  # using n
+    )
+  })
+  # Calculate mean estimates
+  colMeans(t(samples))
+}
+
+# Compare estimates
+estimates <- compare_var()
+cat("Population variance:", pop_var, "\n",
+    "Mean estimate (n-1):", estimates["n1"], "\n",
+    "Mean estimate (n):", estimates["n"], "\n")
+```
+
 ## Measures of dispersion
 
 ::: fragment
@@ -283,6 +357,7 @@ p2 <- add_sd_bands(p2, wide_data, "#009E73")
 # Arrange plots
 p1 / p2
 ```
+
 
 
 
