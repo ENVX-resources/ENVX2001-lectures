@@ -1,18 +1,12 @@
 ---
 title: Lecture 02b -- Sampling designs II
-subtitle: ENVX2001 Applied Statistical Methods
-author: Dr. Januar Harianto 
-institute: The University of Sydney
-date: last-modified # today | last-modified
-date-format: "MMM YYYY"
+author: Januar Harianto
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
 execute:
-  cache: false
-  echo: true
-editor-options:
-  canonical: true
-toc: true
-toc-depth: 1
-toc-title: Outline
+  cache: true
 ---
 
 # In the last lecture...

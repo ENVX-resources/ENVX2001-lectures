@@ -1,250 +1,382 @@
 ---
-title: Lecture 02a -- Sampling designs I
+title: "Lecture 02a -- Sampling designs: simple random sampling"
 author: Januar Harianto
 # format: soles-revealjs
 format: revealjs
-fontsize: 15pt
+fontsize: 16pt
 # embed-resources: true
-# execute:
-#   cache: true
+execute:
+  cache: true
 ---
 
-```{r setup}
-#| include: false
-if (!require(pacman)) install.packages("pacman")
-pacman::p_load(tidyverse, ggthemes)
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
 ```
 
+# Last week
 
-# Today: Observational studies
+- Population vs. sample
+- Parameters (pop) and statistics (sample)
+  - central tendency (mean, median, mode)
+  - spread/dispersion (variance, standard deviation)
+- Confidence intervals -- a brief introduction
 
-## Common study types
+
+# Observational studies
+
+## Overview
+
+```{r}
+#| echo: false
+library(gt)
+
+tibble(
+  Aspect = c("**Control**", "**Causation**", "**Feasibility**", 
+             "**Examples**", "**Statistical Tests**"),
+  `Observational study` = c(
+    "No control over the variables of interest: **mensurative** and **absolute**",
+    "Cannot establish causation, but perhaps **association**",
+    "Can be done in many cases",
+    "Surveys, monitoring studies, correlational studies, case-control studies, cohort studies",
+    "Correlation, regression, chi-squared tests, **t-tests**, **one-way ANOVA**, time series analysis"
+  ),
+  `Controlled experiment` = c(
+    "Control over the variables of interest: **comparative** and **manipulative**",
+    "Can establish **causation**",
+    "May be destructive and thus cannot always be done", 
+    "Clinical trials, A/B testing, laboratory experiments, field experiments",
+    "**T-tests**, **one-way ANOVA**, factorial ANOVA, regression"
+  )
+) |>
+  gt() |>
+  fmt_markdown(columns = everything()) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_column_labels()
+  ) |>
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = "Aspect")
+  ) |>
+  opt_table_font(font = "sans-serif") |>
+  tab_options(table.width = pct(100))
+```
+
+We will focus on the fundamentals behind **observational studies** this week.
+
+## Today: observational studies
+### Two common types
 ::: fragment
-### Research surveys
-
+#### Surveys
 - Estimate a statistic (e.g. mean, variance), but
-- **no temporal change** during estimate
-- *E.g. measuring species richness in a forest*
+- **no temporal change** during estimate.
+- *E.g. measuring species richness in a forest*.
 :::
-
 ::: fragment
-### Monitoring studies
-
+#### Monitoring studies
 - Estimate a ***change*** in statistic (same as above), and
-- **temporal change** across observations, i.e. before and after
-- *E.g. measuring species richness in a forest **before and after a fire***
+- **temporal change** across observations, i.e. before and after.
+- *E.g. measuring species richness in a forest **before and after a fire***.
 :::
+
 
 ## Sampling designs
 
 ::: fragment
-### Simple random sampling
-
-- Each unit has an equal chance of being selected
-- **Randomly sample units from the entire population**
+### Simple random sampling:
+- Each unit has an equal chance of being selected.
+- **Randomly sample units from the entire population.**
 
 ![](images/simple_random.png){fig-align="center" height=140}
 :::
 
 ::: fragment
 ### Stratified random sampling
-
-- The population is first divided into *strata* (more on this later)
-- **Randomly sample units within each strata by simple random sampling, *standardised* by the inclusion probability (or weight) of each strata**
+- The population is first divided into *strata* (more on this later).
+- **Randomly sample units within each strata by simple random sampling, *standardised* by the inclusion probability (or weight) of each strata.**
 
 ![](images/stratified.png){fig-align="center" height=140}
 :::
 
-## Inclusion probability
 
-The mathematical foundation of random sampling rests on the concept of inclusion probability.
+
+## What is "random" sampling?
 
 ::: fragment
-### Definition
-The probability that a unit from the population will be included in the sample, denoted as $\pi_i$.
+***Random*** selection of **finite** or **infinite** population units.
+:::
 
-$$\pi_i = P(\text{unit }i\text{ is selected})$$
+::: {.fragment .fade-up}
+> What does *random* mean?
 :::
 
 ::: fragment
-### Properties in simple random sampling
-For a sample size $n$ from a population of size $N$:
+Within a population, **all** units have a > 0 probability of being selected *i.e. everything has a chance to be selected*. 
 
-$$\pi_i = \frac{n}{N} \quad \text{for all units }i$$
-
-This means:
-
-- Every unit has the same probability of being selected
-- $0 < \pi_i \leq 1$ for all units
-- In simple random sampling, $\pi_i$ is equal for all units
+::: incremental
+- This *chance* is called the **inclusion probability ($\pi_i$)**:
+  - $\pi_i$ is **equal** *within* a population unit -- *i.e. all units have the same chance of being selected*.
+  - $\pi_i$ **not** necessarily equal *between different* population units -- *i.e. a unit from one population unit may have a different chance of being selected than a unit from another population unit* - more on this later.
+:::
 :::
 
 ::: fragment
-### Implementation
-In practice, we achieve random sampling through:
-
-- **Computational methods**: Using R's `sample()` function
-  ```r
-  # Sample 5 units from a population of 100
-  sample(1:100, size = 5, replace = FALSE)
-  ```
-- **Traditional methods**: Random number tables
+### How do we perform random sampling in real life?
+- **Random number generator** (RNG) -- e.g. R's `sample()` function.
+- **Random number table** -- e.g. [Random number table](https://www.nist.gov/system/files/documents/2017/04/28/AppenB-HB133-05-Z.pdf) by the National Institute of Standards and Technology (NIST).
 :::
 
-::: fragment
-### Biological application
-In ecological surveys:
-
-- Each quadrat in a field has equal probability of selection
-- Each individual in a population has equal chance of being measured
-- Each time point has equal likelihood of being sampled
-:::
 
 # Interpreting sampled data
 
-## Review of key concepts
-### From the previous lecture
-::: incremental
 
-- **Sample mean** is a good measure of central tendency
-- **Sample variance** is a good measure of dispersion
-- **Sample size** affects the precision of the sample mean
-:::
+## We know that...
+### From the previous lecture
+
+- **Sample mean** is a good measure of central tendency.
+- **Sample variance** is a good measure of dispersion.
+- **Sample size** affects the precision of the sample mean.
 
 ::: fragment
-### Core question
-
-Can we combine all of the above in a single statistic?
+### Can we combine all of the above in a single statistic?
 :::
 
 # Confidence intervals
 ![](images/ci-garfield.png)
 
-## Understanding confidence intervals
+## Combining an estimate with its precision
+
+- A **confidence interval (CI)** is a range of values, derived from a sample of data, that is used to estimate the range of values for a population **parameter**
+- Crucial for **hypothesis testing** and **estimation**, the basis of statistical inference
+- Will be frequently mentioned throughout this unit
+
+## Calculating confidence intervals
+
+### What we need
+
+1. **Estimate** of the population parameter, i.e. the [**sample mean** ($\bar{x}$)]{style="color: #e64626;"}
+2. [**Critical value** ($t_{n-1}$)]{style="color: #e64626;"} from the sampling distribution of the estimate, which depends on the **number of samples** and the **confidence level**. This is usually based on the **$t$-distribution**
+3. **Standard error** of the estimate, standardised by the number of samples i.e. [**SE of the mean** ($SE_{\bar{x}}$)]{style="color: #e64626;"}
 
 ::: fragment
-### Basic definition
-A range of values that likely contains the true population parameter, based on sample data.
+### The t-distribution?
+
+- The $t$-distribution results from **standardising the sample variance by the number of samples**
+  - Used when the true population variance is unknown
+- It resembles the normal distribution, but with heavier tails for small sample sizes
+- As sample size increases, the $t$-distribution converges to the normal distribution
 :::
 
-::: fragment
-### Mathematical form
+## Breakdown
+
+In general, a CI has the form:
 $$\text{estimate} \pm \text{margin of error}$$
 
-More specifically:
-$$\text{estimate} \pm (\text{critical value} \times \text{standard error})$$
-:::
+where the margin of error is a **function of the standard error** of the estimate:
+
+$$\text{estimate} \pm (\text{critical value} \times \text{standard error (estimate)})$$
+
+where the critical value is based on the **sampling distribution** of the estimate i.e. the **$t$-distribution**.
+
+## Formula for 95% Confidence Interval (CI)
+
+$$
+\bar{x} \pm \left(t_{n-1} \times \frac{s}{\sqrt{n}}\right)
+$$
+
+### Step-by-step calculation by hand
+
+1. Calculate the sample mean, $\bar{x}$
+
+2. Calculate the sample standard deviation, $s$
+
+3. Determine the standard error of the mean, $SE_{\bar{x}} = \frac{s}{\sqrt{n}}$
+
+4. Look up the t-value, $t_{n-1}$, from the t-distribution table for the 95% confidence level and $n-1$ degrees of freedom (manual table or funcition in R).
+
+5. Compute the margin of error:
+  $$\text{Margin of Error} = t_{n-1} \times SE_{\bar{x}}$$
+
+6. Finally, the 95% CI is:
+  $$\bar{x} \pm (t_{n-1} \times SE_{\bar{x}})$$
+
+
+**You need to be able to calculate this by hand/calculator.**
+
+## Interpreting confidence intervals
+
+- Confidence intervals depend on a specified **confidence level** (e.g. 95%, 99%) with higher confidence levels producing wider intervals (i.e. more conservative).
+- Another way to think of it: a **range of values** that we are fairly sure contains the true value of the population parameter.
 
 ::: fragment
-### Applications in ecology
+### Fishing analogy
 
-- Helps assess precision of ecological measurements
-- Guides sample size decisions in field studies
-- Enables comparison between different populations
+A confidence interval is like a fishing net:
+
+- A wider net (interval) is more likely to catch the fish (true value)
+- A spear is *less* likely to catch the fish
+- The net width represents our uncertainty about the true value
 :::
 
-## Interpreting intervals
 
-- Confidence intervals depend on a specified **confidence level** (e.g. 95%, 99%)
-- Higher confidence levels produce wider intervals (more conservative)
-- Represents our uncertainty about the true population value
 
-::: fragment
-### Field example
-When measuring tree heights in a forest:
+# Data story: soil carbon
 
-- 95% CI of 20 ± 2 metres means:
-- If we repeated this sampling many times
-- 95% of intervals would contain the true mean height
-- Wider intervals suggest more variable populations
+
+## Soil carbon
+:::: {.columns}
+::: {.column width="50%"}
+### Data story
+
+![](images/datastory.png)
+
+Soil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).
 :::
 
-# Soil carbon in forest ecosystems
-
-## Understanding soil carbon
-
-### Ecological importance
-::: fragment
-
-- Critical for climate change mitigation
-- Indicator of soil health and fertility
-- Key factor in forest ecosystem function
-:::
-
-::: fragment
-### Research challenges
-
-- High spatial variability
-- Labour-intensive measurements
-- Seasonal fluctuations
-:::
-
-## Sample data analysis
-
-```{r, fig.height=4}
-# Create data frame for soil samples
-soil_data <- tibble(
-  location = 1:7,
-  carbon = c(48, 56, 90, 78, 86, 71, 42)
-)
-
-# Calculate mean and confidence interval
-soil_summary <- tibble(
-  mean = mean(soil_data$carbon),
-  se = sd(soil_data$carbon)/sqrt(length(soil_data$carbon)),
-  ci_lower = mean - qt(0.975, df=length(soil_data$carbon)-1) * se,
-  ci_upper = mean + qt(0.975, df=length(soil_data$carbon)-1) * se
-)
-
-# Plot with ggplot2
-ggplot(soil_data, aes(x = "", y = carbon)) +
-  geom_jitter(width = 0.1, alpha = 0.6, colour = "forestgreen") +
-  geom_crossbar(data = soil_summary, 
-                aes(y = mean, ymin = ci_lower, ymax = ci_upper),
-                width = 0.3, alpha = 0.2) +
-  theme_minimal() +
-  labs(x = "", y = "Soil carbon (t/ha)",
-       title = "Forest soil carbon content",
-       subtitle = "Points show samples, bar shows 95% CI") +
-  theme(plot.title = element_text(face = "bold"))
-```
-
-## Data processing
-
-::: fragment
-### Raw measurements
+::: {.column width="50%"}
+We start with the sampled data:
 ```{r}
-soil <- soil_data$carbon
+soil <- c(48, 56, 90, 78, 86, 71, 42)
 soil
 ```
+
+**What is the mean soil carbon content and how confident are we in this estimate?**
+:::
+::::
+
+# Simple random sampling: estimates
+
+
+## 95 % Confidence interval
+
+### The formula
+$$95\%\ CI = \bar y \pm t^{0.025}_{n-1} \times SE(\bar y)$$
+
+::: fragment
+![](images/confused.gif){fig-align="center" height=150}
 :::
 
 ::: fragment
-### Statistical components
+Recall:
+$$CI = \text{estimate} \pm \text{margin of error}$$
 
-1. Sample mean calculation
+So:
+$$95\%\ CI = \text{sample mean} \pm \text{t-critical value} \times \text{standard error of the mean}$$
+:::
+
+::: fragment
+**We need to calculate each of these components:** 
+
+① Sample mean $\bar y$; ⓶ Critical value $t^{0.025}_{n-1}$; and ③ Standard error of the mean $SE(\bar y)$
+:::
+
+
+## Sample mean
+$$\bar y = \frac{1}{n} \times \sum_{i = 1}^{n}y_i$$
+
+> The **sum** of all sampled **values**, divided by the number of **samples**.
+
+Relatively straightforward to calculate.
+
 ```{r}
 mean_soil <- mean(soil)
 mean_soil
 ```
 
-2. Critical value (95% confidence)
+## $t$-critical value
+
+### What is the $t$-distribution?
+
+The $t$-distribution is a **family of distributions** indexed by a **parameter** called **degrees of freedom**.
+
+::: fragment
+### Understanding degrees of freedom for a mean estimate
+::: incremental
+- Degrees of freedom (df) represent the count of independent data points used to estimate a parameter.
+- For the mean, df equals `n - 1`. For a sample size `n`, the last sample isn't independent -- it **must** satisfy the mean.
+- For instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value **must** be 8 and df = 2.
+:::
+:::
+
+::: fragment
+### Calculating the $t$-critical value
+We refer to the $t$-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the `qt()` function in R. For a 95% confidence level, we use the 0.975 quantile since the $t$-distribution is symmetric.
+
 ```{r}
 t_critical <- qt(0.975, df = length(soil) - 1)
 t_critical
 ```
+:::
 
-3. Standard error
+## Standard error of the mean
+
+::: fragment
+The variance of the mean, $var(\bar y)$, is:
+$$var(\bar y) = \frac{var(y)}{n}$$
+:::
+
+::: fragment
+Variance is standard deviation squared ($s^2$), so the formula is:
+$$var(\bar y) = \frac{s^2(y)}{n}$$
+:::
+
+::: fragment
+Since $SE = \frac{s}{\sqrt{n}}$, then the standard error of the mean, $SE(\bar y)$, is:
+$$SE(\bar y) = \frac{s(y)}{\sqrt{n}} = \frac{\sqrt{s^2(y)}}{\sqrt{n}} = \sqrt{var(\bar y)}$$
+:::
+
+::: fragment
+![](images/wtf.gif){fig-align="center" height=160}
+:::
+
+
+## In words
+
+> **step 1** calculate the variance $var(y)$ of the sampled values. <br>
+> **step 2** divide $var(y)$ by the number of samples ($n$) to obtain variance of the mean $var{(\bar y)}$. <br>
+> **step 3** take the square root of $var{(\bar y)}$ to obtain the standard error of the mean $\sqrt{var{(\bar{y})}} = SE(\bar y)$.
+
+
+::: fragment
+In R, we can calculate the standard error of the mean using the `var()` or `sd()` function and the number of samples.
+
+::: panel-tabset
+
+## using `var()`
+```{r}
+# step 1
+var_soil <- var(soil)
+# step 2
+var_mean <- var_soil / length(soil)
+# step 3
+se_mean <- sqrt(var_mean)
+se_mean
+```
+
+## using `sd()`
 ```{r}
 se_mean <- sd(soil) / sqrt(length(soil))
 se_mean
 ```
 :::
+:::
 
-## Results interpretation
 
-::: fragment
-### Confidence interval calculation
+
+## Putting it all together
+
+So far we have:
+
+```r
+mean_soil <- mean(soil)
+t_critical <- qt(0.975, df = length(soil) - 1)
+se_mean <- sqrt(var_soil / length(soil))
+```
+
+Now we can calculate the confidence interval:
+
 ```{r}
 margin_error <- t_critical * se_mean
 ci95 <- c(mean = mean_soil, 
@@ -253,50 +385,21 @@ ci95 <- c(mean = mean_soil,
 
 ci95
 ```
-:::
 
-::: fragment
-### Ecological implications
+## Questions
 
-- Mean soil carbon: 67.3 t/ha
-- 95% CI: [52.3, 82.3] t/ha
-- Interpretation:
-  - Moderate to high carbon content
-  - Relatively wide interval suggests high variability
-  - More samples needed for higher precision
-:::
-
-## Research considerations
-
-::: incremental
-
-- How precise is our estimate of soil carbon?
-- What sample size would improve precision?
+- How precise is our estimate?
+- How big a change must there be to estimate a statistically significant change?
 - **Can we sample more efficiently?**
-:::
 
-# Looking ahead: Beyond observational studies
-
-## Understanding different approaches
-Our focus today has been on observational studies. However, environmental science uses different approaches depending on the research question.
-
-| Aspect | Observational study | Controlled experiment |
-|--------|---------------------|-----------------------|
-| **Control** | No control over the variables of interest - **Mensurative** and **Absolute** | Control over the variables of interest - **Comparative** and **Manipulative** |
-| **Causation** | Cannot establish causation, but perhaps **association** | Can establish **causation** |
-| **Feasibility** | Can be done in many cases | May be destructive and cannot always be done |
-
-::: fragment
-This comparison will be important as we move into experimental design in our next lectures.
-:::
-
-# Next: Stratified random sampling
+# Tomorrow: stratified random sampling
 
 ## Thanks!
 
 ### Questions?
 
 This presentation is based on the [SOLES Quarto reveal.js template][soles-revealjs] and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by] 
+
 
 <!-- Links -->
 [soles-revealjs]: https://github.com/usyd-soles-edu/soles-revealjs
