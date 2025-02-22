@@ -1,12 +1,12 @@
 ---
 title: Lecture 01b -- Revision
 author: Januar Harianto
-format: soles-revealjs
-# format: revealjs
-# fontsize: 16pt
+# format: soles-revealjs
+format: revealjs
+fontsize: 16pt
 # embed-resources: true
 execute:
-  cache: false
+  cache: true
 ---
 
 ```{r}
@@ -27,17 +27,26 @@ theme_set(theme_cowplot())
 
 # Refresher
 
-## Things to recall
+## Assumed knowledge
 
-- Samples, populations and statistical inference
-- Probability distributions
-- Parameter estimation
-  - central tendency
-  - spread or variability
-- Sampling distributions (mean)
-- Standard error (mean)
-- Confidence intervals (mean)
-- Controlled experiments vs observational studies
+1. Samples, populations and statistical inference
+2. Probability distributions
+3. Parameter estimation
+   - central tendency
+   - spread or variability
+4. Sampling distribution of the mean
+    - Standard error
+    - Confidence intervals
+    - Central Limit Theorem
+5. Controlled experiments vs observational studies
+
+## Why is this important?
+
+- Understanding sampling **informs experimental design (Week 4 onward)**. *How many samples do we need and are our samples representative?*
+- Recognising sample (*not sampling*) distributions helps us choose the right statistical model -- e.g. *t*-test to compare two means that are normally distributed.
+- Most statistical techniques use sample statistics for interpretation, e.g. the *t*-test can be explained using **confidence intervals**, and the ANOVA test can be interpreted in part using **means** and **standard errors**.
+
+All of these concepts will make more sense as we go through the course, but if you do not try to understand them now, you **will** struggle.
 
 # Samples, populations and statistical inference
 
@@ -52,9 +61,7 @@ theme_set(theme_cowplot())
 - We assume samples that we collect can be used to make inferences about the population
 - **NEW**: Samples need to be *representative* of the population
 
-::: fragment
-The basic way of generating a sample is **random sampling**, where every observation has the same probability of being included in the sample. We will go in-depth on this next week.
-:::
+
 
 ## Statistics vs parameters
 
@@ -94,9 +101,10 @@ A numerical, continuous variable can be treated as a categorical variable if you
 - **treatment (A, B, C)** -- a categorical variable, can be treated as a numerical variable if we assign numbers to the treatments (1, 2, 3) and assume they are **ordered** e.g. effect of 1 < 2 < 3 -- *the basis of non-parametric tests*
 :::
 
+
 # Distribution of data
 ## Types of probability distributions
-By now, you should be familiar with these distributions and their properties
+Populations can be described by probability distributions, and by now, you should be familiar with these distributions and their properties
 
 ::: incremental
 - **Normal Distribution**: Bell-shaped curve, symmetric around the mean. **Data is continuous**
@@ -142,7 +150,7 @@ p1 | p2 / p3
 ## Measures of central tendency
 
 
-### Mean
+### Mean $\bar{x}$
 - The arithmetic average of all values in a dataset
 - Sum of all values divided by number of observations
 - Sensitive to extreme values (outliers)
@@ -221,7 +229,7 @@ Depending on the distribution of the data, the mean and median can be different,
 
 ## Measures of dispersion
 
-### Variance
+### Variance $s^2$
 - Measures how spread out the data is from the mean
 - Calculated as average squared deviations from the mean
 - Squared units make it harder to interpret
@@ -244,7 +252,7 @@ $$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$$
 
 ## Measures of dispersion
 
-### Standard Deviation
+### Standard Deviation $s$
 - Square root of variance
 - Same units as original data
 - More interpretable than variance
@@ -256,7 +264,7 @@ $$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$$
 ::: fragment
 ::: callout-warning
 ## Formula
-$$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}$$
+$$s = \sqrt{s^2}$$
 
 - Simply the square root of variance
 - For our example data {2,4,6,8}:
@@ -353,7 +361,7 @@ Notice the use of $n-1$ in sample variance and standard deviation
 - Shows how sample statistics vary from sample to sample
 - Important for understanding sampling variability and making inferences
 
-## Sampling Distribution of the Mean
+## Sampling distribution of the mean
 
 ```{r}
 #| echo: false
@@ -386,17 +394,21 @@ samp_plot <- ggplot() +
 pop_plot / samp_plot
 ```
 
-## Central Limit Theorem {.smaller}
+## Central Limit Theorem
 
-::: {.incremental}
+> I know of scarcely anything so apt to impress the imagination as the wonderful form of **cosmic order** expressed by the Central Limit Theorem. The law would have been personified by the Greeks and deified, if they had known of it.”
+
+– Sir Francis Galton, 1889, Natural Inheritance
+
+
 The Central Limit Theorem (CLT) states that for sufficiently large samples:
 
 1. The sampling distribution of the mean follows a normal distribution
 2. The mean of the sampling distribution equals the population mean
 3. The standard deviation of the sampling distribution (standard error) = $\frac{\sigma}{\sqrt{n}}$
-:::
 
-## CLT Demonstration
+
+## CLT in action
 
 ```{r}
 #| echo: false
@@ -406,11 +418,13 @@ The Central Limit Theorem (CLT) states that for sufficiently large samples:
 set.seed(456)
 skewed_pop <- exp(rnorm(10000, mean = 0, sd = 0.5))
 
-# Sample means for different sample sizes
+# Sample means for different sample sizes (ordered small to large)
 sample_sizes <- c(5, 30, 100)
+sample_labels <- factor(paste("n =", sample_sizes), 
+                       levels = paste("n =", sample_sizes))  # preserve order
 sample_dist_data <- lapply(sample_sizes, function(n) {
   means <- replicate(1000, mean(sample(skewed_pop, size = n)))
-  data.frame(means = means, size = paste("n =", n))
+  data.frame(means = means, size = factor(paste("n =", n), levels = levels(sample_labels)))
 })
 sample_dist_df <- do.call(rbind, sample_dist_data)
 
@@ -420,11 +434,48 @@ ggplot() +
                 bins = 30, fill = "lightblue", color = "black", alpha = 0.7) +
   geom_density(aes(x = means), data = sample_dist_df, color = "blue") +
   facet_wrap(~size) +
-  ggtitle("Sampling Distributions for Different Sample Sizes") +
+  ggtitle("Sampling distributions for different sample sizes") +
   theme_minimal()
 ```
 
-# Standard Error and Confidence Intervals
+
+## CLT in action
+
+```{r}
+#| echo: false
+#| warning: false
+
+# Create a skewed binomial population
+set.seed(456)
+binom_pop <- rbinom(10000, size = 10, prob = 0.1)  # skewed binomial
+
+# Sample means for different sample sizes
+sample_sizes <- c(5, 30, 100)
+sample_dist_data <- lapply(sample_sizes, function(n) {
+  means <- replicate(1000, mean(sample(binom_pop, size = n)))
+  data.frame(means = means, size = paste("n =", n))
+})
+sample_dist_df <- do.call(rbind, sample_dist_data)
+
+# Plot
+ggplot() +
+  geom_histogram(aes(x = means, y = ..density..), data = sample_dist_df,
+                bins = 30, fill = "lightpink", color = "black", alpha = 0.7) +
+  geom_density(aes(x = means), data = sample_dist_df, color = "red") +
+  facet_wrap(~size) +
+  ggtitle("Sampling distributions for different sample sizes (Binomial)") +
+  theme_minimal()
+```
+
+## CLT and statistics
+
+Because of the CLT, we understand that:
+
+- A sampling distribution of the mean *will* be normally distributed for sufficiently large samples -- how large is "sufficient" depends on the population distribution
+- The mean of the sampling distribution will be the population mean
+- To determine how well the sample mean estimates the population mean, we use the standard error of the mean -- basically a standard deviation of the sampling distribution
+
+# Standard error and confidence intervals
 
 ## Standard Error of the Mean
 - Measures the precision of a sample mean
@@ -442,7 +493,7 @@ $$SE_{\bar{x}} = \frac{s}{\sqrt{n}}$$
 :::
 :::
 
-## Confidence Intervals
+## Confidence intervals
 
 ### What is a confidence interval?
 - Range of values likely to contain the true population parameter
@@ -459,14 +510,13 @@ $$\bar{x} \pm (t_{n-1} \times SE_{\bar{x}})$$
 :::
 :::
 
-## Visualizing Confidence Intervals
+## Visualising confidence intervals
 
 ```{r}
-#| echo: false
 #| warning: false
 
 # Generate sample data
-set.seed(789)
+set.seed(253)
 sample_data <- data.frame(
   group = rep(c("A", "B", "C"), each = 30),
   value = c(rnorm(30, 100, 15),
@@ -494,7 +544,7 @@ ggplot(ci_data, aes(x = group, y = mean)) +
 
 # Controlled Experiments vs Observational Studies
 
-## Key Differences {.smaller}
+## Key differences
 
 | Aspect | Controlled Experiment | Observational Study |
 |--------|---------------------|-------------------|
