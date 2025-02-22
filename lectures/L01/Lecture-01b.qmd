@@ -38,7 +38,6 @@ theme_set(theme_cowplot())
     - Standard error
     - Confidence intervals
     - Central Limit Theorem
-5. Controlled experiments vs observational studies
 
 ## Why is this important?
 
@@ -323,6 +322,7 @@ p1 / p2
 ```
 
 
+
 ## Population parameters vs sample statistics
 
 For those of you interested:
@@ -381,15 +381,13 @@ pop_plot <- ggplot() +
   geom_histogram(aes(x = population, y = ..density..), bins = 50,
                 fill = "lightblue", color = "black", alpha = 0.7) +
   geom_density(aes(x = population), color = "blue") +
-  ggtitle("Population Distribution") +
-  theme_minimal()
+  ggtitle("Population Distribution") 
 
 samp_plot <- ggplot() +
   geom_histogram(aes(x = sample_means, y = ..density..), bins = 30,
                 fill = "lightgreen", color = "black", alpha = 0.7) +
   geom_density(aes(x = sample_means), color = "darkgreen") +
-  ggtitle("Sampling Distribution of Mean (n=30)") +
-  theme_minimal()
+  ggtitle("Sampling Distribution of Mean (n=30)")
 
 pop_plot / samp_plot
 ```
@@ -411,7 +409,6 @@ The Central Limit Theorem (CLT) states that for sufficiently large samples:
 ## CLT in action
 
 ```{r}
-#| echo: false
 #| warning: false
 
 # Create a skewed population
@@ -433,54 +430,255 @@ ggplot() +
   geom_histogram(aes(x = means, y = ..density..), data = sample_dist_df,
                 bins = 30, fill = "lightblue", color = "black", alpha = 0.7) +
   geom_density(aes(x = means), data = sample_dist_df, color = "blue") +
-  facet_wrap(~size) +
-  ggtitle("Sampling distributions for different sample sizes") +
-  theme_minimal()
+  facet_wrap(~size, scales = "free_x") +
+  ggtitle("Sampling distributions for different sample sizes") 
 ```
 
+## Example
 
-## CLT in action
 
 ```{r}
-#| echo: false
-#| warning: false
+set.seed(239)
+# Generate a skewed distribution
+skewed <- tibble(
+    x = rgamma(1000, shape = 2, scale = 1)
+)
 
-# Create a skewed binomial population
-set.seed(456)
-binom_pop <- rbinom(10000, size = 10, prob = 0.1)  # skewed binomial
-
-# Sample means for different sample sizes
-sample_sizes <- c(5, 30, 100)
-sample_dist_data <- lapply(sample_sizes, function(n) {
-  means <- replicate(1000, mean(sample(binom_pop, size = n)))
-  data.frame(means = means, size = paste("n =", n))
-})
-sample_dist_df <- do.call(rbind, sample_dist_data)
-
-# Plot
-ggplot() +
-  geom_histogram(aes(x = means, y = ..density..), data = sample_dist_df,
-                bins = 30, fill = "lightpink", color = "black", alpha = 0.7) +
-  geom_density(aes(x = means), data = sample_dist_df, color = "red") +
-  facet_wrap(~size) +
-  ggtitle("Sampling distributions for different sample sizes (Binomial)") +
-  theme_minimal()
+# plot in ggplot2
+ggplot(data = skewed, aes(x = x)) +
+    geom_histogram(
+        fill = "orangered",
+        alpha = 0.5, bins = 50
+    ) +
+    xlab("Height (m)")
 ```
 
-## CLT and statistics
+- Skewed population distribution for tree heights.
+- We want to estimate the mean height of the trees in the forest.
 
-Because of the CLT, we understand that:
+## 1 sample (no summary statistic)
+
+
+```{r}
+skewed |>
+    infer::rep_sample_n(
+        size = 1,
+        reps = 1000
+    ) |>
+    group_by(replicate) |>
+    summarise(xbar = mean(x)) |>
+    ggplot(aes(x = xbar)) +
+    geom_density(
+        fill = "orangered",
+        alpha = 0.5, bins = 50
+    ) +
+    xlim(0, 10) +
+    xlab("Mean height (m)")
+```
+
+With only one sample, we are not really seeing a sampling distribution -- we are just replicating the same population distribution. A sampling distribution emerges when we take multiple samples and calculate their means.
+
+## 2 samples
+
+
+```{r}
+skewed |>
+    infer::rep_sample_n(
+        size = 2,
+        reps = 1000
+    ) |>
+    group_by(replicate) |>
+    summarise(xbar = mean(x)) |>
+    ggplot(aes(x = xbar)) +
+    geom_density(
+        fill = "orangered",
+        alpha = 0.5, bins = 50
+    ) +
+    xlim(0, 10) +
+    xlab("Mean height (m)")
+```
+
+- We sample 2 trees and calculate the mean height, and repeat this 1000 times.
+- The distribution of sample means is starting to look more like a normal distribution.
+
+
+## 5 samples
+
+```{r}
+skewed |>
+    infer::rep_sample_n(
+        size = 5,
+        reps = 1000
+    ) |>
+    group_by(replicate) |>
+    summarise(xbar = mean(x)) |>
+    ggplot(aes(x = xbar)) +
+    geom_density(
+        fill = "orangered",
+        alpha = 0.5, bins = 50
+    ) +
+    xlim(0, 10) +
+    xlab("Mean height (m)")
+```
+
+- Five random samples per calculated mean, repeated 1000 times.
+- The distribution is becoming more normal, and the spread is decreasing: estimate is getting more **precise**.
+
+## 30 samples
+
+```{r}
+skewed |>
+    infer::rep_sample_n(
+        size = 30,
+        reps = 1000
+    ) |>
+    group_by(replicate) |>
+    summarise(xbar = mean(x)) |>
+    ggplot(aes(x = xbar)) +
+    geom_density(
+        fill = "orangered",
+        alpha = 0.5, bins = 50
+    ) +
+    xlim(0, 10) +
+    xlab("Mean height (m)")
+```
+
+- Thirty random samples per calculated mean, repeated 1000 times.
+- The distribution of sample means is very close to a normal distribution.
+
+## 50 samples
+
+```{r}
+skewed |>
+    infer::rep_sample_n(
+        size = 50,
+        reps = 1000
+    ) |>
+    group_by(replicate) |>
+    summarise(xbar = mean(x)) |>
+    ggplot(aes(x = xbar)) +
+    geom_density(
+        fill = "orangered",
+        alpha = 0.5, bins = 50
+    ) +
+    xlim(0, 10) +
+    xlab("Mean height (m)")
+```
+
+- Fifty random samples per calculated mean, repeated 1000 times.
+- **How many samples is enough?**
+
+## Are 50 samples "normal" enough?
+```{r}
+skewed |>
+  infer::rep_sample_n(
+    size = 50,
+    reps = 1000
+  ) |>
+  group_by(replicate) |>
+  summarise(xbar = mean(x)) |>
+  ggplot(aes(x = xbar)) +
+  geom_density(
+    fill = "orangered",
+    alpha = 0.5, bins = 50
+  ) +
+  stat_function(
+    fun = dnorm,
+    args = list(
+      mean = 2,  # population mean for gamma(2,1)
+      sd = sqrt(2)/sqrt(50)  # theoretical SE for gamma(2,1)
+    ),
+    linewidth = 1,
+    color = "blue",
+    linetype = "dashed"
+  ) +
+  xlab("Mean height (m)")
+```
+
+- Fifty random samples per calculated mean, repeated 1000 times.
+- **How many samples is enough?**
+
+## Effect of sample size
+
+```{r}
+#| code-fold: true
+
+library(tidymodels)
+library(patchwork)
+set.seed(642)
+
+heights <- tibble(heights = rnorm(1000, 1.99, 1))
+popmean <- mean(heights$heights)
+sample_sizes <- c(2, 5, 25, 100)
+n <- length(sample_sizes)
+
+heights <- tibble(heights = rgamma(1000, shape = 2, scale = 1))
+sample_sizes <- c(2, 5, 25, 100)
+n <- length(sample_sizes)
+
+plots <- lapply(sample_sizes, function(size) {
+    df <- heights |>
+        rep_sample_n(size = size, reps = 2000) |>
+        group_by(replicate) |>
+        summarise(xbar = mean(heights))
+
+    mean_xbar <- mean(df$xbar)
+
+    ggplot(df, aes(x = xbar)) +
+        geom_histogram(fill = "orangered", alpha = 0.5, bins = 50) +
+        geom_vline(aes(xintercept = mean_xbar), color = "blue", linetype = "dashed") +
+        geom_text(aes(x = mean_xbar, label = sprintf("%.2f", mean_xbar), y = Inf), hjust = -0.1, vjust = 2, color = "blue") +
+        ggtitle(paste0("Sample Size: ", size)) +
+        xlab("Mean height (m)") +
+        xlim(-3, 8) 
+})
+wrap_plots(plots)
+```
+
+
+Increased sample size leads to a more accurate estimate of the population mean, reflected by the **narrower distribution** of the sample mean, which is captured by the **standard error**.
+
+## Effect of variability
+
+```{r}
+#| code-fold: true
+
+set.seed(1221)
+
+# Define a function to generate ggplot objects
+generate_plot <- function(sd) {
+    data <- rnorm(500, 1.99, sd)
+    p <- ggplot(data = tibble(x = data), aes(x = x)) +
+        geom_histogram(fill = "orangered", alpha = 0.5, bins = 50) +
+        ggtitle(paste("SD =", sd)) +
+        xlim(-100, 100)
+    return(p)
+}
+
+# Apply the function to a list of standard deviations
+sds <- c(3, 6, 15, 25)
+plots <- lapply(sds, generate_plot)
+
+# Wrap the plots
+wrap_plots(plots)
+```
+
+Increased variability (i.e. wide range of tree heights) leads to a wider distribution of the sample mean (i.e. less precision), which is *also* reflected by the **standard error**.
+
+## CLT drives statistical inference
+
+Because of how predictable the CLT applies to sample means, we can use this to make reasonably accurate inferences about the population mean, even if we do *not* know the population distribution.
 
 - A sampling distribution of the mean *will* be normally distributed for sufficiently large samples -- how large is "sufficient" depends on the population distribution
-- The mean of the sampling distribution will be the population mean
+- The mean of the sampling distribution trends towards the population mean with increasing sample size
 - To determine how well the sample mean estimates the population mean, we use the standard error of the mean -- basically a standard deviation of the sampling distribution
 
 # Standard error and confidence intervals
 
 ## Standard Error of the Mean
 - Measures the precision of a sample mean
-- Describes variation in sample means around the true population mean
-- Decreases as sample size increases
+- Describes variation in sample means -- around the true population mean
+- Decreases as sample size increases, because we become more "confident" in our estimate
 
 ::: fragment
 ::: callout-warning
@@ -489,12 +687,26 @@ $$SE_{\bar{x}} = \frac{s}{\sqrt{n}}$$
 
 - where $s$ is the sample standard deviation
 - $n$ is the sample size
-- Note: As $n$ increases, $SE$ decreases
 :::
 :::
+
+
+## When to report SD or SE
+### Standard Deviation (SD)
+- Describes variability in your **data**
+- **Stays constant regardless of sample size**
+
+### Standard Error (SE)
+- Describes precision of your **mean estimate**
+- **Decreases with larger sample size ($SE = \frac{SD}{\sqrt{n}}$)**
+
+When reporting statistics:
+
+- Use **mean ± SE** to show precision of your estimate
+- Use **mean ± SD** to show spread of your raw data
+- SE can appear deceptively small with large sample sizes -- **always report sample size**!
 
 ## Confidence intervals
-
 ### What is a confidence interval?
 - Range of values likely to contain the true population parameter
 - Level of confidence (usually 95%) indicates reliability
@@ -538,52 +750,14 @@ ci_data <- sample_data %>%
 ggplot(ci_data, aes(x = group, y = mean)) +
   geom_point(size = 3) +
   geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2) +
-  ggtitle("Means with 95% Confidence Intervals") +
-  theme_minimal()
+  ggtitle("Means with 95% Confidence Intervals")
 ```
 
-# Controlled Experiments vs Observational Studies
+## Summary
 
-## Key differences
+You should
 
-| Aspect | Controlled Experiment | Observational Study |
-|--------|---------------------|-------------------|
-| Control | Researcher controls variables | No control over variables |
-| Random Assignment | Yes | No |
-| Causation | Can establish | Can only show association |
-| Natural Setting | Less natural | More natural |
-| Internal Validity | Higher | Lower |
-| External Validity | Lower | Higher |
-
-## Design Characteristics
-
-### Controlled Experiments
-- Researcher manipulates independent variable(s)
-- Random assignment to treatment groups
-- Control group often used
-- Confounding variables minimized
-
-### Observational Studies
-- No manipulation of variables
-- Study subjects in natural settings
-- May be prospective or retrospective
-- Need to account for confounding variables
-
-## Example Study Types {.smaller}
-
-::: {.incremental}
-### Controlled Experiment
-- Testing a new fertilizer's effect on plant growth
-  - Random assignment to treatments
-  - Control environmental conditions
-  - Can conclude causation
-
-### Observational Study
-- Studying relationship between diet and heart disease
-  - Cannot assign diets randomly
-  - Natural variation in habits
-  - Can only show association
-:::
+- Understand the difference between populations and samples
 
 # Thanks for listening! Questions?
 This presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by]
