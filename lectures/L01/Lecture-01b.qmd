@@ -346,7 +346,194 @@ Notice the use of $n-1$ in sample variance and standard deviation
   2. And you know all but one value in your sample
   3. The last value is *constrained* - it must make the mean equal $\bar{x}$
 
-# Sampling distributions
+# Sampling distributions and CLT
+
+## What is a sampling distribution?
+- Distribution of a statistic (e.g., mean) calculated from repeated samples
+- Shows how sample statistics vary from sample to sample
+- Important for understanding sampling variability and making inferences
+
+## Sampling Distribution of the Mean
+
+```{r}
+#| echo: false
+#| warning: false
+set.seed(123)
+
+# Create population
+population <- rnorm(10000, mean = 100, sd = 15)
+
+# Function to take samples and calculate means
+sample_means <- replicate(1000, {
+  sample_mean <- mean(sample(population, size = 30))
+})
+
+# Plot population and sampling distribution
+pop_plot <- ggplot() +
+  geom_histogram(aes(x = population, y = ..density..), bins = 50,
+                fill = "lightblue", color = "black", alpha = 0.7) +
+  geom_density(aes(x = population), color = "blue") +
+  ggtitle("Population Distribution") +
+  theme_minimal()
+
+samp_plot <- ggplot() +
+  geom_histogram(aes(x = sample_means, y = ..density..), bins = 30,
+                fill = "lightgreen", color = "black", alpha = 0.7) +
+  geom_density(aes(x = sample_means), color = "darkgreen") +
+  ggtitle("Sampling Distribution of Mean (n=30)") +
+  theme_minimal()
+
+pop_plot / samp_plot
+```
+
+## Central Limit Theorem {.smaller}
+
+::: {.incremental}
+The Central Limit Theorem (CLT) states that for sufficiently large samples:
+
+1. The sampling distribution of the mean follows a normal distribution
+2. The mean of the sampling distribution equals the population mean
+3. The standard deviation of the sampling distribution (standard error) = $\frac{\sigma}{\sqrt{n}}$
+:::
+
+## CLT Demonstration
+
+```{r}
+#| echo: false
+#| warning: false
+
+# Create a skewed population
+set.seed(456)
+skewed_pop <- exp(rnorm(10000, mean = 0, sd = 0.5))
+
+# Sample means for different sample sizes
+sample_sizes <- c(5, 30, 100)
+sample_dist_data <- lapply(sample_sizes, function(n) {
+  means <- replicate(1000, mean(sample(skewed_pop, size = n)))
+  data.frame(means = means, size = paste("n =", n))
+})
+sample_dist_df <- do.call(rbind, sample_dist_data)
+
+# Plot
+ggplot() +
+  geom_histogram(aes(x = means, y = ..density..), data = sample_dist_df,
+                bins = 30, fill = "lightblue", color = "black", alpha = 0.7) +
+  geom_density(aes(x = means), data = sample_dist_df, color = "blue") +
+  facet_wrap(~size) +
+  ggtitle("Sampling Distributions for Different Sample Sizes") +
+  theme_minimal()
+```
+
+# Standard Error and Confidence Intervals
+
+## Standard Error of the Mean
+- Measures the precision of a sample mean
+- Describes variation in sample means around the true population mean
+- Decreases as sample size increases
+
+::: fragment
+::: callout-warning
+## Formula
+$$SE_{\bar{x}} = \frac{s}{\sqrt{n}}$$
+
+- where $s$ is the sample standard deviation
+- $n$ is the sample size
+- Note: As $n$ increases, $SE$ decreases
+:::
+:::
+
+## Confidence Intervals
+
+### What is a confidence interval?
+- Range of values likely to contain the true population parameter
+- Level of confidence (usually 95%) indicates reliability
+- Wider intervals = less precise estimates
+
+::: fragment
+::: callout-warning
+## Formula for 95% CI
+$$\bar{x} \pm (t_{n-1} \times SE_{\bar{x}})$$
+
+- where $t_{n-1}$ is the t-value for $n-1$ degrees of freedom
+- For large samples ($n > 30$), use 1.96 instead of t-value
+:::
+:::
+
+## Visualizing Confidence Intervals
+
+```{r}
+#| echo: false
+#| warning: false
+
+# Generate sample data
+set.seed(789)
+sample_data <- data.frame(
+  group = rep(c("A", "B", "C"), each = 30),
+  value = c(rnorm(30, 100, 15),
+            rnorm(30, 110, 15),
+            rnorm(30, 105, 15))
+)
+
+# Calculate means and CIs
+ci_data <- sample_data %>%
+  group_by(group) %>%
+  summarise(
+    mean = mean(value),
+    se = sd(value)/sqrt(n()),
+    ci_lower = mean - qt(0.975, n()-1)*se,
+    ci_upper = mean + qt(0.975, n()-1)*se
+  )
+
+# Plot
+ggplot(ci_data, aes(x = group, y = mean)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2) +
+  ggtitle("Means with 95% Confidence Intervals") +
+  theme_minimal()
+```
+
+# Controlled Experiments vs Observational Studies
+
+## Key Differences {.smaller}
+
+| Aspect | Controlled Experiment | Observational Study |
+|--------|---------------------|-------------------|
+| Control | Researcher controls variables | No control over variables |
+| Random Assignment | Yes | No |
+| Causation | Can establish | Can only show association |
+| Natural Setting | Less natural | More natural |
+| Internal Validity | Higher | Lower |
+| External Validity | Lower | Higher |
+
+## Design Characteristics
+
+### Controlled Experiments
+- Researcher manipulates independent variable(s)
+- Random assignment to treatment groups
+- Control group often used
+- Confounding variables minimized
+
+### Observational Studies
+- No manipulation of variables
+- Study subjects in natural settings
+- May be prospective or retrospective
+- Need to account for confounding variables
+
+## Example Study Types {.smaller}
+
+::: {.incremental}
+### Controlled Experiment
+- Testing a new fertilizer's effect on plant growth
+  - Random assignment to treatments
+  - Control environmental conditions
+  - Can conclude causation
+
+### Observational Study
+- Studying relationship between diet and heart disease
+  - Cannot assign diets randomly
+  - Natural variation in habits
+  - Can only show association
+:::
 
 # Thanks for listening! Questions?
 This presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by]
