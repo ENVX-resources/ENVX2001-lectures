@@ -595,130 +595,95 @@
     "text": "Summary\nYou should\n\nUnderstand the difference between populations and samples"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html",
-    "href": "lectures/L02/Lecture-02a.html",
+    "objectID": "lectures/L02/Lecture-02a.html#common-study-types",
+    "href": "lectures/L02/Lecture-02a.html#common-study-types",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "",
-    "text": "Aspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest - Mensurative and Absolute\nControl over the variables of interest - Comparative and Manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and cannot always be done"
-  },
-  {
-    "objectID": "lectures/L02/Lecture-02a.html#observational-study-vs.-controlled-experiment",
-    "href": "lectures/L02/Lecture-02a.html#observational-study-vs.-controlled-experiment",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "",
-    "text": "Aspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest - Mensurative and Absolute\nControl over the variables of interest - Comparative and Manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and cannot always be done"
-  },
-  {
-    "objectID": "lectures/L02/Lecture-02a.html#two-common-types",
-    "href": "lectures/L02/Lecture-02a.html#two-common-types",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Two common types",
-    "text": "Two common types\n\n\nSurveys\n\nEstimate a statistic (e.g. mean, variance), but\nno temporal change during estimate.\nE.g. measuring species richness in a forest.\n\n\n\n\n\nMonitoring studies\n\nEstimate a change in statistic (same as above), and\ntemporal change across observations, i.e. before and after.\nE.g. measuring species richness in a forest before and after a fire."
+    "section": "Common study types",
+    "text": "Common study types\n\nResearch surveys\n\nEstimate a statistic (e.g. mean, variance), but\nno temporal change during estimate\nE.g. measuring species richness in a forest\n\n\n\nMonitoring studies\n\nEstimate a change in statistic (same as above), and\ntemporal change across observations, i.e. before and after\nE.g. measuring species richness in a forest before and after a fire"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#sampling-designs",
     "href": "lectures/L02/Lecture-02a.html#sampling-designs",
     "title": "Lecture 02a – Sampling designs I",
     "section": "Sampling designs",
-    "text": "Sampling designs\n\n\nSimple random sampling:\n\nEach unit has an equal chance of being selected.\nRandomly sample units from the entire population.\n\n\n\n\n\n\n\n\n\n\nStratified random sampling\n\nThe population is first divided into strata (more on this later).\nRandomly sample units within each strata by simple random sampling, standardised by the inclusion probability (or weight) of each strata."
+    "text": "Sampling designs\n\nSimple random sampling\n\nEach unit has an equal chance of being selected\nRandomly sample units from the entire population\n\n\n\n\n\n\n\n\nStratified random sampling\n\nThe population is first divided into strata (more on this later)\nRandomly sample units within each strata by simple random sampling, standardised by the inclusion probability (or weight) of each strata"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#what-is-random-sampling",
-    "href": "lectures/L02/Lecture-02a.html#what-is-random-sampling",
+    "objectID": "lectures/L02/Lecture-02a.html#inclusion-probability",
+    "href": "lectures/L02/Lecture-02a.html#inclusion-probability",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "What is “random” sampling?",
-    "text": "What is “random” sampling?\n\nRandom selection of finite or infinite population units.\n\n\n\nWhat does random mean?\n\n\n\nWithin a population, all units have a &gt; 0 probability of being selected i.e. everything has a chance to be selected.\n\n\nThis chance is called the inclusion probability (\\(\\pi_i\\)):\n\n\\(\\pi_i\\) is equal within a population unit – i.e. all units have the same chance of being selected.\n\\(\\pi_i\\) not necessarily equal between different population units – i.e. a unit from one population unit may have a different chance of being selected than a unit from another population unit - more on this later.\n\n\n\n\n\n\nHow do we perform random sampling in real life?\n\nRandom number generator (RNG) – e.g. R’s sample() function.\nRandom number table – e.g. Random number table by the National Institute of Standards and Technology (NIST)."
+    "section": "Inclusion probability",
+    "text": "Inclusion probability\nThe mathematical foundation of random sampling rests on the concept of inclusion probability.\n\nDefinition\nThe probability that a unit from the population will be included in the sample, denoted as \\(\\pi_i\\).\n\\[\\pi_i = P(\\text{unit }i\\text{ is selected})\\]\n\n\nProperties in simple random sampling\nFor a sample size \\(n\\) from a population of size \\(N\\):\n\\[\\pi_i = \\frac{n}{N} \\quad \\text{for all units }i\\]\nThis means:\n\nEvery unit has the same probability of being selected\n\\(0 &lt; \\pi_i \\leq 1\\) for all units\nIn simple random sampling, \\(\\pi_i\\) is equal for all units\n\n\n\nImplementation\nIn practice, we achieve random sampling through:\n\nComputational methods: Using R’s sample() function\n# Sample 5 units from a population of 100\nsample(1:100, size = 5, replace = FALSE)\nTraditional methods: Random number tables\n\n\n\nBiological application\nIn ecological surveys:\n\nEach quadrat in a field has equal probability of selection\nEach individual in a population has equal chance of being measured\nEach time point has equal likelihood of being sampled"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#we-know-that",
-    "href": "lectures/L02/Lecture-02a.html#we-know-that",
+    "objectID": "lectures/L02/Lecture-02a.html#review-of-key-concepts",
+    "href": "lectures/L02/Lecture-02a.html#review-of-key-concepts",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "We know that…",
-    "text": "We know that…\n\nFrom the previous lecture\n\n\nSample mean is a good measure of central tendency.\nSample variance is a good measure of dispersion.\nSample size affects the precision of the sample mean.\n\n\n\n\n\nCan we combine all of the above in a single statistic?"
+    "section": "Review of key concepts",
+    "text": "Review of key concepts\nFrom the previous lecture\n\n\nSample mean is a good measure of central tendency\nSample variance is a good measure of dispersion\nSample size affects the precision of the sample mean\n\n\n\nCore question\nCan we combine all of the above in a single statistic?"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#combining-an-estimate-with-its-precision",
-    "href": "lectures/L02/Lecture-02a.html#combining-an-estimate-with-its-precision",
+    "objectID": "lectures/L02/Lecture-02a.html#understanding-confidence-intervals",
+    "href": "lectures/L02/Lecture-02a.html#understanding-confidence-intervals",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "Combining an estimate with its precision",
-    "text": "Combining an estimate with its precision\n\nA confidence interval (CI) is a range of values, derived from a sample of data, that is used to estimate the range of values for a population parameter.\nCrucial for hypothesis testing and estimation, the basis of statistical inference.\nWill be frequently mentioned throughout this unit!\n\n\nGeneral form\nIn general, a CI has the form: \\[\\text{estimate} \\pm \\text{margin of error}\\]\nwhere the margin of error is a function of the standard error of the estimate:\n\\[\\text{estimate} \\pm (\\text{critical value} \\times \\text{standard error (estimate)})\\]\nwhere the critical value is based on the sampling distribution of the estimate i.e. the \\(t\\)-distribution."
+    "section": "Understanding confidence intervals",
+    "text": "Understanding confidence intervals\n\nBasic definition\nA range of values that likely contains the true population parameter, based on sample data.\n\n\nMathematical form\n\\[\\text{estimate} \\pm \\text{margin of error}\\]\nMore specifically: \\[\\text{estimate} \\pm (\\text{critical value} \\times \\text{standard error})\\]\n\n\nApplications in ecology\n\nHelps assess precision of ecological measurements\nGuides sample size decisions in field studies\nEnables comparison between different populations"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#interpreting-confidence-intervals",
-    "href": "lectures/L02/Lecture-02a.html#interpreting-confidence-intervals",
+    "objectID": "lectures/L02/Lecture-02a.html#interpreting-intervals",
+    "href": "lectures/L02/Lecture-02a.html#interpreting-intervals",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "Interpreting confidence intervals",
-    "text": "Interpreting confidence intervals\n\nConfidence intervals depend on a specified confidence level (e.g. 95%, 99%) with higher confidence levels producing wider intervals (i.e. more conservative).\nThink of it as a range of values that we are fairly sure contains the true value of the population parameter.\n\n\n\nFishing net analogy\nImagine that we are fishing in a river and we want to catch a fish that we saw.\n\nIf we use a spear and throw it at a fish, we might miss it.\nIf we use a net, we have a better chance of catching the fish.\nThe bigger the net, the more likely we are to catch the fish.\n\nAnalogy: The net is the confidence interval, and the fish is the true population parameter."
+    "section": "Interpreting intervals",
+    "text": "Interpreting intervals\n\nConfidence intervals depend on a specified confidence level (e.g. 95%, 99%)\nHigher confidence levels produce wider intervals (more conservative)\nRepresents our uncertainty about the true population value\n\n\nField example\nWhen measuring tree heights in a forest:\n\n95% CI of 20 ± 2 metres means:\nIf we repeated this sampling many times\n95% of intervals would contain the true mean height\nWider intervals suggest more variable populations"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#what-we-need",
-    "href": "lectures/L02/Lecture-02a.html#what-we-need",
+    "objectID": "lectures/L02/Lecture-02a.html#understanding-soil-carbon",
+    "href": "lectures/L02/Lecture-02a.html#understanding-soil-carbon",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "What we need",
-    "text": "What we need\n\nEstimate of the population parameter, e.g. the sample mean.\nCritical value from the sampling distribution of the estimate, which depends on the number of samples and the confidence level. This is usually based on the \\(t\\)-distribution.\nStandard error of the estimate, standardised by the number of samples i.e. SE of the mean.\n\n\nWhy the t-distribution?\n\nThe \\(t\\)-distribution results from standardising the sample variance by the number of samples.\n\nUsed when the true population variance is unknown.\n\nIt resembles the normal distribution, but with heavier tails for small sample sizes.\nAs sample size increases, the \\(t\\)-distribution converges to the normal distribution."
+    "section": "Understanding soil carbon",
+    "text": "Understanding soil carbon\nEcological importance\n\n\nCritical for climate change mitigation\nIndicator of soil health and fertility\nKey factor in forest ecosystem function\n\n\n\nResearch challenges\n\nHigh spatial variability\nLabour-intensive measurements\nSeasonal fluctuations"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#soil-carbon",
-    "href": "lectures/L02/Lecture-02a.html#soil-carbon",
+    "objectID": "lectures/L02/Lecture-02a.html#sample-data-analysis",
+    "href": "lectures/L02/Lecture-02a.html#sample-data-analysis",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "Soil carbon",
-    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\nWe start with the sampled data:\n\n\nCode\nsoil &lt;- c(48, 56, 90, 78, 86, 71, 42)\nsoil\n\n\n[1] 48 56 90 78 86 71 42\n\n\nWhat is the mean soil carbon content and how confident are we in this estimate?"
+    "section": "Sample data analysis",
+    "text": "Sample data analysis\n\n\nCode\n# Create data frame for soil samples\nsoil_data &lt;- tibble(\n  location = 1:7,\n  carbon = c(48, 56, 90, 78, 86, 71, 42)\n)\n\n# Calculate mean and confidence interval\nsoil_summary &lt;- tibble(\n  mean = mean(soil_data$carbon),\n  se = sd(soil_data$carbon)/sqrt(length(soil_data$carbon)),\n  ci_lower = mean - qt(0.975, df=length(soil_data$carbon)-1) * se,\n  ci_upper = mean + qt(0.975, df=length(soil_data$carbon)-1) * se\n)\n\n# Plot with ggplot2\nggplot(soil_data, aes(x = \"\", y = carbon)) +\n  geom_jitter(width = 0.1, alpha = 0.6, colour = \"forestgreen\") +\n  geom_crossbar(data = soil_summary, \n                aes(y = mean, ymin = ci_lower, ymax = ci_upper),\n                width = 0.3, alpha = 0.2) +\n  theme_minimal() +\n  labs(x = \"\", y = \"Soil carbon (t/ha)\",\n       title = \"Forest soil carbon content\",\n       subtitle = \"Points show samples, bar shows 95% CI\") +\n  theme(plot.title = element_text(face = \"bold\"))"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#confidence-interval",
-    "href": "lectures/L02/Lecture-02a.html#confidence-interval",
+    "objectID": "lectures/L02/Lecture-02a.html#data-processing",
+    "href": "lectures/L02/Lecture-02a.html#data-processing",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "95 % Confidence interval",
-    "text": "95 % Confidence interval\n\nThe formula\n\\[95\\%\\ CI = \\bar y \\pm t^{0.025}_{n-1} \\times SE(\\bar y)\\]\n\n\n\n\n\n\n\n\nRecall: \\[CI = \\text{estimate} \\pm \\text{margin of error}\\]\nSo: \\[95\\%\\ CI = \\text{sample mean} \\pm \\text{t-critical value} \\times \\text{standard error of the mean}\\]\n\n\nWe need to calculate each of these components:\n① Sample mean \\(\\bar y\\); ⓶ Critical value \\(t^{0.025}_{n-1}\\); and ③ Standard error of the mean \\(SE(\\bar y)\\)"
+    "section": "Data processing",
+    "text": "Data processing\n\nRaw measurements\n\n\nCode\nsoil &lt;- soil_data$carbon\nsoil\n\n\n[1] 48 56 90 78 86 71 42\n\n\n\n\nStatistical components\n\nSample mean calculation\n\n\n\nCode\nmean_soil &lt;- mean(soil)\nmean_soil\n\n\n[1] 67.28571\n\n\n\nCritical value (95% confidence)\n\n\n\nCode\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nt_critical\n\n\n[1] 2.446912\n\n\n\nStandard error\n\n\n\nCode\nse_mean &lt;- sd(soil) / sqrt(length(soil))\nse_mean\n\n\n[1] 7.127126"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#sample-mean",
-    "href": "lectures/L02/Lecture-02a.html#sample-mean",
+    "objectID": "lectures/L02/Lecture-02a.html#results-interpretation",
+    "href": "lectures/L02/Lecture-02a.html#results-interpretation",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "Sample mean",
-    "text": "Sample mean\n\\[\\bar y = \\frac{1}{n} \\times \\sum_{i = 1}^{n}y_i\\]\n\nThe sum of all sampled values, divided by the number of samples.\n\nRelatively straightforward to calculate.\n\n\nCode\nmean_soil &lt;- mean(soil)\nmean_soil\n\n\n[1] 67.28571"
+    "section": "Results interpretation",
+    "text": "Results interpretation\n\nConfidence interval calculation\n\n\nCode\nmargin_error &lt;- t_critical * se_mean\nci95 &lt;- c(mean = mean_soil, \n  L95 = mean_soil - margin_error, \n  U95 = mean_soil + margin_error)\n\nci95\n\n\n    mean      L95      U95 \n67.28571 49.84627 84.72516 \n\n\n\n\nEcological implications\n\nMean soil carbon: 67.3 t/ha\n95% CI: [52.3, 82.3] t/ha\nInterpretation:\n\nModerate to high carbon content\nRelatively wide interval suggests high variability\nMore samples needed for higher precision"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#t-critical-value",
-    "href": "lectures/L02/Lecture-02a.html#t-critical-value",
+    "objectID": "lectures/L02/Lecture-02a.html#research-considerations",
+    "href": "lectures/L02/Lecture-02a.html#research-considerations",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "\\(t\\)-critical value",
-    "text": "\\(t\\)-critical value\n\nWhat is the \\(t\\)-distribution?\nThe \\(t\\)-distribution is a family of distributions indexed by a parameter called degrees of freedom.\n\n\n\nUnderstanding degrees of freedom for a mean estimate\n\n\nDegrees of freedom (df) represent the count of independent data points used to estimate a parameter.\nFor the mean, df equals n - 1. For a sample size n, the last sample isn’t independent – it must satisfy the mean.\nFor instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value must be 8 and df = 2.\n\n\n\n\n\n\nCalculating the \\(t\\)-critical value\nWe refer to the \\(t\\)-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the qt() function in R. For a 95% confidence level, we use the 0.975 quantile since the \\(t\\)-distribution is symmetric.\n\n\nCode\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nt_critical\n\n\n[1] 2.446912"
+    "section": "Research considerations",
+    "text": "Research considerations\n\n\nHow precise is our estimate of soil carbon?\nWhat sample size would improve precision?\nCan we sample more efficiently?"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#standard-error-of-the-mean",
-    "href": "lectures/L02/Lecture-02a.html#standard-error-of-the-mean",
+    "objectID": "lectures/L02/Lecture-02a.html#understanding-different-approaches",
+    "href": "lectures/L02/Lecture-02a.html#understanding-different-approaches",
     "title": "Lecture 02a – Sampling designs I",
-    "section": "Standard error of the mean",
-    "text": "Standard error of the mean\n\nThe variance of the mean, \\(var(\\bar y)\\), is: \\[var(\\bar y) = \\frac{var(y)}{n}\\]\n\n\nVariance is standard deviation squared (\\(s^2\\)), so the formula is: \\[var(\\bar y) = \\frac{s^2(y)}{n}\\]\n\n\nSince \\(SE = \\frac{s}{\\sqrt{n}}\\), then the standard error of the mean, \\(SE(\\bar y)\\), is: \\[SE(\\bar y) = \\frac{s(y)}{\\sqrt{n}} = \\frac{\\sqrt{s^2(y)}}{\\sqrt{n}} = \\sqrt{var(\\bar y)}\\]"
-  },
-  {
-    "objectID": "lectures/L02/Lecture-02a.html#in-words",
-    "href": "lectures/L02/Lecture-02a.html#in-words",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "In words",
-    "text": "In words\n\nstep 1 calculate the variance \\(var(y)\\) of the sampled values.  step 2 divide \\(var(y)\\) by the number of samples (\\(n\\)) to obtain variance of the mean \\(var{(\\bar y)}\\).  step 3 take the square root of \\(var{(\\bar y)}\\) to obtain the standard error of the mean \\(\\sqrt{var{(\\bar{y})}} = SE(\\bar y)\\).\n\n\nIn R, we can calculate the standard error of the mean using the var() or sd() function and the number of samples.\n\nusing var()using sd()\n\n\n\n\nCode\n# step 1\nvar_soil &lt;- var(soil)\n# step 2\nvar_mean &lt;- var_soil / length(soil)\n# step 3\nse_mean &lt;- sqrt(var_mean)\nse_mean\n\n\n[1] 7.127126\n\n\n\n\n\n\nCode\nse_mean &lt;- sd(soil) / sqrt(length(soil))\nse_mean\n\n\n[1] 7.127126"
-  },
-  {
-    "objectID": "lectures/L02/Lecture-02a.html#putting-it-all-together",
-    "href": "lectures/L02/Lecture-02a.html#putting-it-all-together",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Putting it all together",
-    "text": "Putting it all together\nSo far we have:\nmean_soil &lt;- mean(soil)\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nse_mean &lt;- sqrt(var_soil / length(soil))\nNow we can calculate the confidence interval:\n\n\nCode\nmargin_error &lt;- t_critical * se_mean\nci95 &lt;- c(mean = mean_soil, \n  L95 = mean_soil - margin_error, \n  U95 = mean_soil + margin_error)\n\nci95\n\n\n    mean      L95      U95 \n67.28571 49.84627 84.72516"
-  },
-  {
-    "objectID": "lectures/L02/Lecture-02a.html#questions",
-    "href": "lectures/L02/Lecture-02a.html#questions",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Questions",
-    "text": "Questions\n\nHow precise is our estimate?\nHow big a change must there be to estimate a statistically significant change?\nCan we sample more efficiently?"
+    "section": "Understanding different approaches",
+    "text": "Understanding different approaches\nOur focus today has been on observational studies. However, environmental science uses different approaches depending on the research question.\n\n\n\n\n\n\n\n\nAspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest - Mensurative and Absolute\nControl over the variables of interest - Comparative and Manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and cannot always be done\n\n\n\n\nThis comparison will be important as we move into experimental design in our next lectures."
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#thanks",
     "href": "lectures/L02/Lecture-02a.html#thanks",
     "title": "Lecture 02a – Sampling designs I",
     "section": "Thanks!",
-    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License\n\n\n\n⇣PDF"
+    "text": "Thanks!\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License\n\n⇣PDF"
   },
   {
     "objectID": "lectures/L02/index.html",
