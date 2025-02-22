@@ -8,3 +8,6 @@ code-fold: true
 execute: 
   echo: true
   cache: false
+toc: true
+toc-depth: 1
+toc-title: Outline
