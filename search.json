@@ -12,135 +12,39 @@
     ]
   },
   {
-    "objectID": "lectures/L01/Lecture-01a.html#staff",
-    "href": "lectures/L01/Lecture-01a.html#staff",
-    "title": "Lecture 01a – Welcome",
-    "section": "Staff",
-    "text": "Staff\n\n\n\n\n\n\n\n\n\nA. Prof Aaron Greenville\n\n\n\n\n\n\n\nDr Si Yang Han\n\n\n\n\n\n\n\nDr Januar Harianto\n\n\n\n\n\n\n\nProf Mathew Crowther"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#structure",
-    "href": "lectures/L01/Lecture-01a.html#structure",
-    "title": "Lecture 01a – Welcome",
-    "section": "Structure",
-    "text": "Structure\nThis unit includes lectures, self-guided tutorials, labs, discussions, and drop-in sessions.\n\nLectures: Tuesdays 10 AM, Wednesdays 11 AM, Chemistry Lecture Theatre 3\nTutorials: Self-guided (1 hour), complete before each week’s lab.\nLabs: South Eveleigh Precinct, Thursday 9 am – 12 pm, Friday 10 am – 1 pm, 2 pm – 5 pm\nDiscussion: Via Ed discussion, we usually respond the same day unless it is the weekend.\nDrop-in sessions: Scheduled as necessary (Zoom or in person). Email us to arrange a session."
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#attendance",
-    "href": "lectures/L01/Lecture-01a.html#attendance",
-    "title": "Lecture 01a – Welcome",
-    "section": "Attendance",
-    "text": "Attendance\n\nLectures: Highly recommended but not compulsory. Lectures are recorded, capturing slides and audio only, which may miss important discussions.\nLabs: Mandatory, 80% minimum attendance required. Attendance will be taken by QR code. If you miss a lab, you may attend another session that week – send us an email!\nTutorials: Self-guided (1 hour), complete before each week’s lab."
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#assessments",
-    "href": "lectures/L01/Lecture-01a.html#assessments",
-    "title": "Lecture 01a – Welcome",
-    "section": "Assessments",
-    "text": "Assessments\nCheck Unit Outline\n\n\n\n\n\n\n\n\n\nWeek\nAssessment\nWeight\nType\n\n\n\n\n4\nEarly Feedback Task\n1%\nIndividual\n\n\n5\nProject 1: Describing data\n10%\nIndividual\n\n\n10\nProject 2: Analysing experimental data\n20%\nIndividual\n\n\n13\nProject 3: Presentation (multivariate)\n20%\nGroup\n\n\n-\nQuizzes (weekly, multiple due dates)\n4%\nIndividual\n\n\n-\nExam (2 hours, MCQs + Short Answers)\n45%\nIndividual"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#biomedical-building",
-    "href": "lectures/L01/Lecture-01a.html#biomedical-building",
-    "title": "Lecture 01a – Welcome",
-    "section": "Biomedical Building",
-    "text": "Biomedical Building\n\nCredit: Michael Wheatland"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#directions",
-    "href": "lectures/L01/Lecture-01a.html#directions",
-    "title": "Lecture 01a – Welcome",
-    "section": "Directions",
-    "text": "Directions\nBuses\nCourtesy buses are available:\n\nThe best option is to take the bus from Fisher Library to Redfern Station, then walk to the precinct (through the new station platform as “local traffic”).\nAlternatively, direct buses are available – but less frequent.\n\nDriving\nFree parking is available around Henderson Road, but it is extremely crowded. We do not recommend driving to the precinct."
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#walking",
-    "href": "lectures/L01/Lecture-01a.html#walking",
-    "title": "Lecture 01a – Welcome",
-    "section": "Walking",
-    "text": "Walking\nWalking to the South Eveleigh Precinct takes about 20 minutes. However, you can save approximately 5 minutes by using Redfern station’s community access gates, where you don’t need to use an Opal card to get through.\nIf the map does not load, click here"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#statistics-in-action",
-    "href": "lectures/L01/Lecture-01a.html#statistics-in-action",
-    "title": "Lecture 01a – Welcome",
-    "section": "Statistics in Action",
-    "text": "Statistics in Action\nModern science and decision-making are driven by data:\n\n\nResearch: From lab experiments to field studies\nPolicy: Environmental management decisions\nIndustry: Business analytics and optimisation\nInnovation: AI and machine learning – foundations"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#why-statistics-matters",
-    "href": "lectures/L01/Lecture-01a.html#why-statistics-matters",
-    "title": "Lecture 01a – Welcome",
-    "section": "Why Statistics Matters?",
-    "text": "Why Statistics Matters?\nStatistics empowers you to:\n\n\nTurn raw data into meaningful insights\nMake evidence-based decisions\nCommunicate findings effectively\nSolve complex real-world problems\n\n\n\n\n\n\nStatistics helps avoid misinterpreting data. Source: Anchorman (2004)"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#real-world-applications",
-    "href": "lectures/L01/Lecture-01a.html#real-world-applications",
-    "title": "Lecture 01a – Welcome",
-    "section": "Real-world Applications",
-    "text": "Real-world Applications\n\nSource: NASA’s Global Temperature Index"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#sports-analytics",
-    "href": "lectures/L01/Lecture-01a.html#sports-analytics",
-    "title": "Lecture 01a – Welcome",
-    "section": "Sports Analytics",
-    "text": "Sports Analytics\n\nThe 10 highest-seeded players averaged 3.48 rounds won in the Australian Open since 2011, compared to just 3.03 at Wimbledon. Source: fivethirtyeight"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#your-path-ahead",
-    "href": "lectures/L01/Lecture-01a.html#your-path-ahead",
-    "title": "Lecture 01a – Welcome",
-    "section": "Your Path Ahead",
-    "text": "Your Path Ahead\nThis course will develop your:\n\nTechnical Skills\n\nR programming proficiency\nData visualization expertise\nStatistical analysis methods\n\n\n\nProfessional Skills\n\nCritical thinking\nScientific communication\nProblem-solving abilities"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#lecture-attendance-options",
-    "href": "lectures/L01/Lecture-01a.html#lecture-attendance-options",
-    "title": "Lecture 01a – Welcome",
-    "section": "Lecture attendance options",
-    "text": "Lecture attendance options\nIn-person vs. online recordings\n\nIn-person benefits:\n\nReal-time interaction with peers and lecturers\nImmediate feedback and clarification of concepts\nActive participation in discussions and polls\nBuilding connections with classmates\n\nOnline recording benefits:\n\nFlexibility to manage other commitments\nAbility to pause and review complex concepts\nLearn at your own pace\nConvenient for those with long commutes"
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#on-campus-or-online",
-    "href": "lectures/L01/Lecture-01a.html#on-campus-or-online",
-    "title": "Lecture 01a – Welcome",
-    "section": "On-campus or online?",
-    "text": "On-campus or online?\nChoose the option that best suits your learning style and circumstances. If watching online, try to:\n\nStay up to date with recordings to avoid falling behind\nUse Ed discussion board actively for questions\nAttend some lectures in person when possible for key topics\n\nThere is a strong positive correlation between lecture attendance and final grades – but it’s not the only factor. It may just be the case that students who attend lectures are more likely to keep up with the course material."
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#put-in-the-hours",
-    "href": "lectures/L01/Lecture-01a.html#put-in-the-hours",
-    "title": "Lecture 01a – Welcome",
-    "section": "Put in the hours",
-    "text": "Put in the hours\n\nThis is a 6 credit point unit, which means that you are expected to spend 120 – 150 hours in total, including exam prep time (~10 h per week)!\nPractice makes perfect. Tutorials and Labs help you apply the concepts you learn in lectures – complete all the exercises, and practice with the bonus questions provided."
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#ask-questions",
-    "href": "lectures/L01/Lecture-01a.html#ask-questions",
-    "title": "Lecture 01a – Welcome",
-    "section": "Ask questions",
-    "text": "Ask questions\n\nEd is the best place to ask questions. We are way more responsive on Ed than on email.\nWe are open to the use of AI tools (including LLMs like ChatGPT) to help you answer questions about code… but don’t use them to cheat yourself out of learning.\nWe have drop-in sessions, where you can jump in and have a chat on Zoom. We will announce the schedule on Ed."
-  },
-  {
-    "objectID": "lectures/L01/Lecture-01a.html#by-the-end-of-this-course-we-want-you-to-be-able-to",
-    "href": "lectures/L01/Lecture-01a.html#by-the-end-of-this-course-we-want-you-to-be-able-to",
-    "title": "Lecture 01a – Welcome",
-    "section": "By the end of this course, we want you to be able to:",
-    "text": "By the end of this course, we want you to be able to:\n\nLO1 demonstrate proficiency in designing sample schemes and analysing data from them using R.\nLO2 describe and identify the basic features of an experimental design: replicate, treatment structure and blocking structure.\nLO3 demonstrate proficiency in the use or the statistical programming language R to apply an ANOVA and fit regression models to experimental data.\nLO4 demonstrate proficiency in the use or the statistical programming language R to use multivariate methods to find patterns in data.\nLO5 interpret the output and understand conceptually how its derived of a regression, ANOVA and multivariate analysis that have been calculated by R.\nLO6 write statistical and modelling results as part of a scientific report.\nLO7 appraise the validity of statistical analyses used publications."
-  },
-  {
-    "objectID": "lectures/L07/index.html",
-    "href": "lectures/L07/index.html",
-    "title": "Lecture 07",
+    "objectID": "lectures/L06/index.html",
+    "href": "lectures/L06/index.html",
+    "title": "Lecture 06",
     "section": "",
-    "text": "Lecture 07 – Regression modelling Full screen | PDF",
-    "crumbs": [
-      "{{< fa house-chimney >}}",
-      "**Module 2: Finding patterns**",
-      "L07 -- Regression modelling"
-    ]
+    "text": "Important\n\n\n\nLecture 06 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+  },
+  {
+    "objectID": "lectures/L04/index.html",
+    "href": "lectures/L04/index.html",
+    "title": "Lecture 04",
+    "section": "",
+    "text": "Important\n\n\n\nLecture 04 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+  },
+  {
+    "objectID": "lectures/L03/Lecture-03a.html",
+    "href": "lectures/L03/Lecture-03a.html",
+    "title": "Lecture 03a – \\(t\\)-Tests",
+    "section": "",
+    "text": "William Gosset (1908)\n\n\nFormulated the \\(t\\)-distribution and \\(t\\)-tests.\n\n\n\nRonald FIsher\n\n\nFormulated the \\(t\\)-distribution and \\(t\\)-tests."
+  },
+  {
+    "objectID": "lectures/L03/Lecture-03a.html#data",
+    "href": "lectures/L03/Lecture-03a.html#data",
+    "title": "Lecture 03a – \\(t\\)-Tests",
+    "section": "Data",
+    "text": "Data\n\nWeights of two breeds of cattle are to be compared\nTwelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.\nAre there any differences in the mean weights of the two breeds?\n\n\n\n\nCode\ncattle &lt;- read.csv(\"data/cattle.csv\")\ncattle\n\n\n   Breed1 Breed2\n1   187.6  148.1\n2   180.3  146.2\n3   198.6  152.8\n4   190.7  135.3\n5   196.3  151.2\n6   203.8  146.3\n7   190.2  163.5\n8   201.0  146.6\n9   194.7  162.4\n10  221.1  140.2\n11  186.7  159.4\n12  203.1  181.8\n13     NA  165.1\n14     NA  165.0\n15     NA  141.6"
+  },
+  {
+    "objectID": "lectures/L03/Lecture-03a.html#thanks",
+    "href": "lectures/L03/Lecture-03a.html#thanks",
+    "title": "Lecture 03a – \\(t\\)-Tests",
+    "section": "Thanks!",
+    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html",
@@ -297,32 +201,135 @@
     "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
-    "objectID": "lectures/L05/index.html",
-    "href": "lectures/L05/index.html",
-    "title": "Lecture 05",
+    "objectID": "lectures/L01/index.html",
+    "href": "lectures/L01/index.html",
+    "title": "Lecture 01",
     "section": "",
-    "text": "Important\n\n\n\nLecture 05 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+    "text": "Lecture 01a – Welcome Full Screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 1: Designed studies**",
+      "L01 -- Introduction"
+    ]
   },
   {
-    "objectID": "lectures/L03/Lecture-03a.html",
-    "href": "lectures/L03/Lecture-03a.html",
-    "title": "Lecture 03a – \\(t\\)-Tests",
-    "section": "",
-    "text": "William Gosset (1908)\n\n\nFormulated the \\(t\\)-distribution and \\(t\\)-tests.\n\n\n\nRonald FIsher\n\n\nFormulated the \\(t\\)-distribution and \\(t\\)-tests."
+    "objectID": "lectures/L01/Lecture-01a.html#staff",
+    "href": "lectures/L01/Lecture-01a.html#staff",
+    "title": "Lecture 01a – Welcome",
+    "section": "Staff",
+    "text": "Staff\n\n\n\n\n\n\n\n\n\nA. Prof Aaron Greenville\n\n\n\n\n\n\n\nDr Si Yang Han\n\n\n\n\n\n\n\nDr Januar Harianto\n\n\n\n\n\n\n\nProf Mathew Crowther"
   },
   {
-    "objectID": "lectures/L03/Lecture-03a.html#data",
-    "href": "lectures/L03/Lecture-03a.html#data",
-    "title": "Lecture 03a – \\(t\\)-Tests",
-    "section": "Data",
-    "text": "Data\n\nWeights of two breeds of cattle are to be compared\nTwelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.\nAre there any differences in the mean weights of the two breeds?\n\n\n\n\nCode\ncattle &lt;- read.csv(\"data/cattle.csv\")\ncattle\n\n\n   Breed1 Breed2\n1   187.6  148.1\n2   180.3  146.2\n3   198.6  152.8\n4   190.7  135.3\n5   196.3  151.2\n6   203.8  146.3\n7   190.2  163.5\n8   201.0  146.6\n9   194.7  162.4\n10  221.1  140.2\n11  186.7  159.4\n12  203.1  181.8\n13     NA  165.1\n14     NA  165.0\n15     NA  141.6"
+    "objectID": "lectures/L01/Lecture-01a.html#structure",
+    "href": "lectures/L01/Lecture-01a.html#structure",
+    "title": "Lecture 01a – Welcome",
+    "section": "Structure",
+    "text": "Structure\nThis unit includes lectures, self-guided tutorials, labs, discussions, and drop-in sessions.\n\nLectures: Tuesdays 10 AM, Wednesdays 11 AM, Chemistry Lecture Theatre 3\nTutorials: Self-guided (1 hour), complete before each week’s lab.\nLabs: South Eveleigh Precinct, Thursday 9 am – 12 pm, Friday 10 am – 1 pm, 2 pm – 5 pm\nDiscussion: Via Ed discussion, we usually respond the same day unless it is the weekend.\nDrop-in sessions: Scheduled as necessary (Zoom or in person). Email us to arrange a session."
   },
   {
-    "objectID": "lectures/L03/Lecture-03a.html#thanks",
-    "href": "lectures/L03/Lecture-03a.html#thanks",
-    "title": "Lecture 03a – \\(t\\)-Tests",
-    "section": "Thanks!",
-    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
+    "objectID": "lectures/L01/Lecture-01a.html#attendance",
+    "href": "lectures/L01/Lecture-01a.html#attendance",
+    "title": "Lecture 01a – Welcome",
+    "section": "Attendance",
+    "text": "Attendance\n\nLectures: Highly recommended but not compulsory. Lectures are recorded, capturing slides and audio only, which may miss important discussions.\nLabs: Mandatory, 80% minimum attendance required. Attendance will be taken by QR code. If you miss a lab, you may attend another session that week – send us an email!\nTutorials: Self-guided (1 hour), complete before each week’s lab."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#assessments",
+    "href": "lectures/L01/Lecture-01a.html#assessments",
+    "title": "Lecture 01a – Welcome",
+    "section": "Assessments",
+    "text": "Assessments\nCheck Unit Outline\n\n\n\n\n\n\n\n\n\nWeek\nAssessment\nWeight\nType\n\n\n\n\n4\nEarly Feedback Task\n1%\nIndividual\n\n\n5\nProject 1: Describing data\n10%\nIndividual\n\n\n10\nProject 2: Analysing experimental data\n20%\nIndividual\n\n\n13\nProject 3: Presentation (multivariate)\n20%\nGroup\n\n\n-\nQuizzes (weekly, multiple due dates)\n4%\nIndividual\n\n\n-\nExam (2 hours, MCQs + Short Answers)\n45%\nIndividual"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#biomedical-building",
+    "href": "lectures/L01/Lecture-01a.html#biomedical-building",
+    "title": "Lecture 01a – Welcome",
+    "section": "Biomedical Building",
+    "text": "Biomedical Building\n\nCredit: Michael Wheatland"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#directions",
+    "href": "lectures/L01/Lecture-01a.html#directions",
+    "title": "Lecture 01a – Welcome",
+    "section": "Directions",
+    "text": "Directions\nBuses\nCourtesy buses are available:\n\nThe best option is to take the bus from Fisher Library to Redfern Station, then walk to the precinct (through the new station platform as “local traffic”).\nAlternatively, direct buses are available – but less frequent.\n\nDriving\nFree parking is available around Henderson Road, but it is extremely crowded. We do not recommend driving to the precinct."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#walking",
+    "href": "lectures/L01/Lecture-01a.html#walking",
+    "title": "Lecture 01a – Welcome",
+    "section": "Walking",
+    "text": "Walking\nWalking to the South Eveleigh Precinct takes about 20 minutes. However, you can save approximately 5 minutes by using Redfern station’s community access gates, where you don’t need to use an Opal card to get through.\nIf the map does not load, click here"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#statistics-in-action",
+    "href": "lectures/L01/Lecture-01a.html#statistics-in-action",
+    "title": "Lecture 01a – Welcome",
+    "section": "Statistics in Action",
+    "text": "Statistics in Action\nModern science and decision-making are driven by data:\n\n\nResearch: From lab experiments to field studies\nPolicy: Environmental management decisions\nIndustry: Business analytics and optimisation\nInnovation: AI and machine learning – foundations"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#why-statistics-matters",
+    "href": "lectures/L01/Lecture-01a.html#why-statistics-matters",
+    "title": "Lecture 01a – Welcome",
+    "section": "Why Statistics Matters?",
+    "text": "Why Statistics Matters?\nStatistics empowers you to:\n\n\nTurn raw data into meaningful insights\nMake evidence-based decisions\nCommunicate findings effectively\nSolve complex real-world problems\n\n\n\n\n\n\nStatistics helps avoid misinterpreting data. Source: Anchorman (2004)"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#real-world-applications",
+    "href": "lectures/L01/Lecture-01a.html#real-world-applications",
+    "title": "Lecture 01a – Welcome",
+    "section": "Real-world Applications",
+    "text": "Real-world Applications\n\nSource: NASA’s Global Temperature Index"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#sports-analytics",
+    "href": "lectures/L01/Lecture-01a.html#sports-analytics",
+    "title": "Lecture 01a – Welcome",
+    "section": "Sports Analytics",
+    "text": "Sports Analytics\n\nThe 10 highest-seeded players averaged 3.48 rounds won in the Australian Open since 2011, compared to just 3.03 at Wimbledon. Source: fivethirtyeight"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#your-path-ahead",
+    "href": "lectures/L01/Lecture-01a.html#your-path-ahead",
+    "title": "Lecture 01a – Welcome",
+    "section": "Your Path Ahead",
+    "text": "Your Path Ahead\nThis course will develop your:\n\nTechnical Skills\n\nR programming proficiency\nData visualization expertise\nStatistical analysis methods\n\n\n\nProfessional Skills\n\nCritical thinking\nScientific communication\nProblem-solving abilities"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#lecture-attendance-options",
+    "href": "lectures/L01/Lecture-01a.html#lecture-attendance-options",
+    "title": "Lecture 01a – Welcome",
+    "section": "Lecture attendance options",
+    "text": "Lecture attendance options\nIn-person vs. online recordings\n\nIn-person benefits:\n\nReal-time interaction with peers and lecturers\nImmediate feedback and clarification of concepts\nActive participation in discussions and polls\nBuilding connections with classmates\n\nOnline recording benefits:\n\nFlexibility to manage other commitments\nAbility to pause and review complex concepts\nLearn at your own pace\nConvenient for those with long commutes"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#on-campus-or-online",
+    "href": "lectures/L01/Lecture-01a.html#on-campus-or-online",
+    "title": "Lecture 01a – Welcome",
+    "section": "On-campus or online?",
+    "text": "On-campus or online?\nChoose the option that best suits your learning style and circumstances. If watching online, try to:\n\nStay up to date with recordings to avoid falling behind\nUse Ed discussion board actively for questions\nAttend some lectures in person when possible for key topics\n\nThere is a strong positive correlation between lecture attendance and final grades – but it’s not the only factor. It may just be the case that students who attend lectures are more likely to keep up with the course material."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#put-in-the-hours",
+    "href": "lectures/L01/Lecture-01a.html#put-in-the-hours",
+    "title": "Lecture 01a – Welcome",
+    "section": "Put in the hours",
+    "text": "Put in the hours\n\nThis is a 6 credit point unit, which means that you are expected to spend 120 – 150 hours in total, including exam prep time (~10 h per week)!\nPractice makes perfect. Tutorials and Labs help you apply the concepts you learn in lectures – complete all the exercises, and practice with the bonus questions provided."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#ask-questions",
+    "href": "lectures/L01/Lecture-01a.html#ask-questions",
+    "title": "Lecture 01a – Welcome",
+    "section": "Ask questions",
+    "text": "Ask questions\n\nEd is the best place to ask questions. We are way more responsive on Ed than on email.\nWe are open to the use of AI tools (including LLMs like ChatGPT) to help you answer questions about code… but don’t use them to cheat yourself out of learning.\nWe have drop-in sessions, where you can jump in and have a chat on Zoom. We will announce the schedule on Ed."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01a.html#by-the-end-of-this-course-we-want-you-to-be-able-to",
+    "href": "lectures/L01/Lecture-01a.html#by-the-end-of-this-course-we-want-you-to-be-able-to",
+    "title": "Lecture 01a – Welcome",
+    "section": "By the end of this course, we want you to be able to:",
+    "text": "By the end of this course, we want you to be able to:\n\nLO1 demonstrate proficiency in designing sample schemes and analysing data from them using R.\nLO2 describe and identify the basic features of an experimental design: replicate, treatment structure and blocking structure.\nLO3 demonstrate proficiency in the use or the statistical programming language R to apply an ANOVA and fit regression models to experimental data.\nLO4 demonstrate proficiency in the use or the statistical programming language R to use multivariate methods to find patterns in data.\nLO5 interpret the output and understand conceptually how its derived of a regression, ANOVA and multivariate analysis that have been calculated by R.\nLO6 write statistical and modelling results as part of a scientific report.\nLO7 appraise the validity of statistical analyses used publications."
   },
   {
     "objectID": "index.html",
@@ -336,23 +343,116 @@
     ]
   },
   {
-    "objectID": "lectures/L03/index.html",
-    "href": "lectures/L03/index.html",
-    "title": "Lecture 03",
-    "section": "",
-    "text": "Lecture 03a – t-tests Full Screen | PDF\nLecture 03b – One-way ANOVA Full Screen | PDF",
-    "crumbs": [
-      "{{< fa house-chimney >}}",
-      "**Module 1: Designed studies**",
-      "L03 -- 1-way ANOVA"
-    ]
+    "objectID": "lectures/L01/Lecture-01b.html#things-to-recall",
+    "href": "lectures/L01/Lecture-01b.html#things-to-recall",
+    "title": "Lecture 01b – Revision",
+    "section": "Things to recall",
+    "text": "Things to recall\n\nSamples, populations and statistical inference\nProbability distributions\nParameter estimation\n\ncentral tendency\nspread or variability\n\nSampling distributions (mean)\nStandard error (mean)\nConfidence intervals (mean)\nControlled experiments vs observational studies"
   },
   {
-    "objectID": "lectures/L04/index.html",
-    "href": "lectures/L04/index.html",
-    "title": "Lecture 04",
+    "objectID": "lectures/L01/Lecture-01b.html#populations-and-samples",
+    "href": "lectures/L01/Lecture-01b.html#populations-and-samples",
+    "title": "Lecture 01b – Revision",
+    "section": "Populations and samples",
+    "text": "Populations and samples\nPopulations\n\nAll the possible units and their associated observations of interest\nScientists are often interested in making inferences about populations, but measuring every unit is impractical\n\nSamples\n\nA collection of observations from any population is a sample, and the number of observations in it is the sample size\nWe assume samples that we collect can be used to make inferences about the population\nNEW: Samples need to be representative of the population\n\n\nThe basic way of generating a sample is random sampling, where every observation has the same probability of being included in the sample. We will go in-depth on this next week."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#statistics-vs-parameters",
+    "href": "lectures/L01/Lecture-01b.html#statistics-vs-parameters",
+    "title": "Lecture 01b – Revision",
+    "section": "Statistics vs parameters",
+    "text": "Statistics vs parameters\n\nCharacteristics of the population are called parameters (e.g. population mean or population regression slope)\nCharacteristics of the sample are called statistics (e.g. sample mean or sample regression slope) – they are used to estimate the population parameters\nStatistics are what we use to help us understand the population\nFormal statistical methods can help us make inferences about the population based on the sample – statistical inference\nNot all statistical techniques are inferential, but many are"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#sample-data",
+    "href": "lectures/L01/Lecture-01b.html#sample-data",
+    "title": "Lecture 01b – Revision",
+    "section": "Sample data",
+    "text": "Sample data\nSample data are usually collected as variables, which are the characteristics we measure or record from each object.\n\nVariables can be:\nCategorical Variables\n\nNominal: categories without a natural order (e.g. colors, names)\nOrdinal: categories with a natural order (e.g. ratings, rankings)\n\nNumerical Variables\n\nContinuous: can take any value within a range (e.g. height, weight)\nDiscrete: can take only specific values (e.g. counts, presence/absence)"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#you-decide-on-what-a-variable-represents",
+    "href": "lectures/L01/Lecture-01b.html#you-decide-on-what-a-variable-represents",
+    "title": "Lecture 01b – Revision",
+    "section": "YOU decide on what a variable represents",
+    "text": "YOU decide on what a variable represents\nA numerical, continuous variable can be treated as a categorical variable if you decide to categorise it.\nExamples\n\n\nheight (in cm) – a numerical, continuous variable, can be treated as a categorical variable if you group it into categories (short, medium, tall)\nage (in years) – a numerical, discrete variable, can be treated as a continuous variable (if we allow for certain issues)\ntreatment (A, B, C) – a categorical variable, can be treated as a numerical variable if we assign numbers to the treatments (1, 2, 3) and assume they are ordered e.g. effect of 1 &lt; 2 &lt; 3 – the basis of non-parametric tests"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#types-of-probability-distributions",
+    "href": "lectures/L01/Lecture-01b.html#types-of-probability-distributions",
+    "title": "Lecture 01b – Revision",
+    "section": "Types of probability distributions",
+    "text": "Types of probability distributions\nBy now, you should be familiar with these distributions and their properties\n\n\nNormal Distribution: Bell-shaped curve, symmetric around the mean. Data is continuous\nBinomial Distribution: Models success/failure outcomes in a fixed number of trials. Data is discrete\nPoisson Distribution: Models count data when events occur at a constant rate. Data is discrete\n\n\n\nKnowing the distribution of your data is important for choosing the right statistical model – although it is not always necessary."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#section",
+    "href": "lectures/L01/Lecture-01b.html#section",
+    "title": "Lecture 01b – Revision",
     "section": "",
-    "text": "Important\n\n\n\nLecture 04 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+    "text": "Code\nlibrary(tidyverse)\n\nset.seed(908)\nnormal_data &lt;- data.frame(x = rnorm(10000, mean = 0, sd = 1))\nbinomial_data &lt;- data.frame(x = rbinom(10000, size = 10, prob = 0.5))\npoisson_data &lt;- data.frame(x = rpois(500, lambda = 3))\n\n# normal\np1 &lt;- ggplot(normal_data, aes(x = x)) +\n  geom_histogram(aes(y = ..density..), bins = 30, fill = \"lightblue\", color = \"black\") +\n  geom_density(color = \"red\") +\n  ggtitle(\"Normal Distribution\")\n\n# binomial\np2 &lt;- ggplot(binomial_data, aes(x = x)) +\n  geom_bar(fill = \"lightgreen\", color = \"black\") +\n  ggtitle(\"Binomial Distribution\")\n\n# poisson\np3 &lt;- ggplot(poisson_data, aes(x = x)) +\n  geom_bar(fill = \"lightpink\", color = \"black\") +\n  ggtitle(\"Poisson Distribution\")\n\n# Arrange plots\nlibrary(patchwork)\np1 | p2 / p3"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#measures-of-central-tendency",
+    "href": "lectures/L01/Lecture-01b.html#measures-of-central-tendency",
+    "title": "Lecture 01b – Revision",
+    "section": "Measures of central tendency",
+    "text": "Measures of central tendency\nMean\n\nThe arithmetic average of all values in a dataset\nSum of all values divided by number of observations\nSensitive to extreme values (outliers)\n\n\n\n\n\n\n\n\nFormula\n\n\n\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\nwhere n is the number of observations\nx_i represents each individual value\n\\sum means we add up all values from i=1 to n\nExample: for data {2,4,6,8}, n=4 and \\bar{x} = \\frac{2+4+6+8}{4} = 5"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#section-1",
+    "href": "lectures/L01/Lecture-01b.html#section-1",
+    "title": "Lecture 01b – Revision",
+    "section": "",
+    "text": "Median\n\nMiddle value when data is ordered\n50th percentile of the data\nMore robust to outliers than mean\nFor even n, average of two middle values\n\n\nMode\n\nMost frequently occurring value\nCan have multiple modes\nOnly measure of central tendency for categorical data\nNot always meaningful for continuous data"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#how-they-compare",
+    "href": "lectures/L01/Lecture-01b.html#how-they-compare",
+    "title": "Lecture 01b – Revision",
+    "section": "How they compare",
+    "text": "How they compare\n\nDepending on the distribution of the data, the mean and median can be different, and this can tell you something about the data."
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#measures-of-dispersion",
+    "href": "lectures/L01/Lecture-01b.html#measures-of-dispersion",
+    "title": "Lecture 01b – Revision",
+    "section": "Measures of dispersion",
+    "text": "Measures of dispersion\nVariance\n\nMeasures how spread out the data is from the mean\nCalculated as average squared deviations from the mean\nSquared units make it harder to interpret\nSensitive to outliers (squares large deviations)"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#measures-of-dispersion-1",
+    "href": "lectures/L01/Lecture-01b.html#measures-of-dispersion-1",
+    "title": "Lecture 01b – Revision",
+    "section": "Measures of dispersion",
+    "text": "Measures of dispersion\n\n\n\n\n\n\nFormula\n\n\ns^2 = \\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2\n\nwhere n is the number of observations\nx_i represents each individual value\n\\bar{x} is the sample mean\nFor data {2,4,6,8}:\n\nmean = 5\ndifferences = (-3,-1,1,3), squares = (9,1,1,9), sum = 20\nTherefore, s^2 = \\frac{20}{3} \\approx 6.67"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#measures-of-dispersion-2",
+    "href": "lectures/L01/Lecture-01b.html#measures-of-dispersion-2",
+    "title": "Lecture 01b – Revision",
+    "section": "Measures of dispersion",
+    "text": "Measures of dispersion\nStandard Deviation\n\nSquare root of variance\nSame units as original data\nMore interpretable than variance\nEmpirical rule for normal distributions:\n\n≈68% of data within ±1 SD\n≈95% of data within ±2 SD\n≈99.7% of data within ±3 SD\n\n\n\n\n\n\n\n\n\nFormula\n\n\ns = \\sqrt{\\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2}\n\nSimply the square root of variance\nFor our example data {2,4,6,8}:\n\ns = \\sqrt{6.67} \\approx 2.58\n\nInterpretation: On average, values deviate about 2.58 units from the mean"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#visualising-standard-deviation",
+    "href": "lectures/L01/Lecture-01b.html#visualising-standard-deviation",
+    "title": "Lecture 01b – Revision",
+    "section": "Visualising standard deviation",
+    "text": "Visualising standard deviation"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#population-parameters-vs-sample-statistics",
+    "href": "lectures/L01/Lecture-01b.html#population-parameters-vs-sample-statistics",
+    "title": "Lecture 01b – Revision",
+    "section": "Population parameters vs sample statistics",
+    "text": "Population parameters vs sample statistics\nFor those of you interested:\nMean\n\n\n\n\n\n\n\nPopulation Parameter\nSample Statistic\n\n\n\n\n\\mu = \\frac{1}{N}\\sum_{i=1}^N x_i\n\\bar{x} = \\frac{1}{n}\\sum_{i=1}^n x_i\n\n\n\nVariance\n\n\n\n\n\n\n\nPopulation Parameter\nSample Statistic\n\n\n\n\n\\sigma^2 = \\frac{1}{N}\\sum_{i=1}^N (x_i - \\mu)^2\ns^2 = \\frac{1}{n-1}\\sum_{i=1}^n (x_i - \\bar{x})^2\n\n\n\nStandard Deviation\n\n\n\nPopulation Parameter\nSample Statistic\n\n\n\n\n\\sigma = \\sqrt{\\sigma^2}\ns = \\sqrt{s^2}\n\n\n\n\n\n\n\n\n\nNote\n\n\nNotice the use of n-1 in sample variance and standard deviation"
+  },
+  {
+    "objectID": "lectures/L01/Lecture-01b.html#why-n-1",
+    "href": "lectures/L01/Lecture-01b.html#why-n-1",
+    "title": "Lecture 01b – Revision",
+    "section": "Why n-1?",
+    "text": "Why n-1?\n\nWhen calculating sample variance, we use n-1 instead of n in the denominator\nThis is called “Bessel’s correction”\nWhy? Because we lose one “degree of freedom” when we estimate the mean:\n\nIf you know the sample mean (\\bar{x})\nAnd you know all but one value in your sample\nThe last value is constrained - it must make the mean equal \\bar{x}"
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html",
@@ -493,6 +593,37 @@
     ]
   },
   {
+    "objectID": "lectures/L03/index.html",
+    "href": "lectures/L03/index.html",
+    "title": "Lecture 03",
+    "section": "",
+    "text": "Lecture 03a – t-tests Full Screen | PDF\nLecture 03b – One-way ANOVA Full Screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 1: Designed studies**",
+      "L03 -- 1-way ANOVA"
+    ]
+  },
+  {
+    "objectID": "lectures/L05/index.html",
+    "href": "lectures/L05/index.html",
+    "title": "Lecture 05",
+    "section": "",
+    "text": "Important\n\n\n\nLecture 05 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
+  },
+  {
+    "objectID": "lectures/L07/index.html",
+    "href": "lectures/L07/index.html",
+    "title": "Lecture 07",
+    "section": "",
+    "text": "Lecture 07 – Regression modelling Full screen | PDF",
+    "crumbs": [
+      "{{< fa house-chimney >}}",
+      "**Module 2: Finding patterns**",
+      "L07 -- Regression modelling"
+    ]
+  },
+  {
     "objectID": "lectures/L09/index.html",
     "href": "lectures/L09/index.html",
     "title": "Lecture 09",
@@ -503,24 +634,5 @@
       "**Module 2: Finding patterns**",
       "L09 -- Model assessment"
     ]
-  },
-  {
-    "objectID": "lectures/L01/index.html",
-    "href": "lectures/L01/index.html",
-    "title": "Lecture 01",
-    "section": "",
-    "text": "Lecture 01a – Welcome Full Screen | PDF",
-    "crumbs": [
-      "{{< fa house-chimney >}}",
-      "**Module 1: Designed studies**",
-      "L01 -- Introduction"
-    ]
-  },
-  {
-    "objectID": "lectures/L06/index.html",
-    "href": "lectures/L06/index.html",
-    "title": "Lecture 06",
-    "section": "",
-    "text": "Important\n\n\n\nLecture 06 is not available in Quarto. Please refer to the Canvas site to access the lecture material."
   }
 ]
