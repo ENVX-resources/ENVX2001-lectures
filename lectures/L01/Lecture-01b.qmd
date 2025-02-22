@@ -6,7 +6,7 @@ format: revealjs
 fontsize: 16pt
 # embed-resources: true
 execute:
-  cache: true
+  cache: false
 ---
 
 ```{r}
@@ -16,13 +16,13 @@ execute:
 #| message: false
 
 # Load required packages
-pacman::p_load(tidyverse, patchwork)
+pacman::p_load(tidyverse, patchwork, cowplot)
 
 # Set random seed for reproducibility
 set.seed(909)
 
 # Set default ggplot theme
-theme_set(theme_minimal())
+theme_set(theme_cowplot())
 ```
 
 # Refresher
@@ -120,20 +120,17 @@ poisson_data <- data.frame(x = rpois(500, lambda = 3))
 p1 <- ggplot(normal_data, aes(x = x)) +
   geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black") +
   geom_density(color = "red") +
-  ggtitle("Normal Distribution") +
-  theme_minimal()
+  ggtitle("Normal Distribution")
 
 # binomial
 p2 <- ggplot(binomial_data, aes(x = x)) +
   geom_bar(fill = "lightgreen", color = "black") +
-  ggtitle("Binomial Distribution") +
-  theme_minimal()
+  ggtitle("Binomial Distribution")
 
 # poisson
 p3 <- ggplot(poisson_data, aes(x = x)) +
   geom_bar(fill = "lightpink", color = "black") +
-  ggtitle("Poisson Distribution") +
-  theme_minimal()
+  ggtitle("Poisson Distribution")
 
 # Arrange plots
 library(patchwork)
@@ -142,39 +139,50 @@ p1 | p2 / p3
 
 # Parameter estimation
 
-## Measures of Central Tendency
+## Measures of central tendency
+
 
 ### Mean
-::: incremental
 - The arithmetic average of all values in a dataset
 - Sum of all values divided by number of observations
 - Sensitive to extreme values (outliers)
-- Formula: $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$
+
+::: fragment
+::: callout-warning
+## Formula
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$$
+
+- where $n$ is the number of observations
+- $x_i$ represents each individual value
+- $\sum$ means we add up all values from $i=1$ to $n$
+- Example: for data {2,4,6,8}, $n=4$ and $\bar{x} = \frac{2+4+6+8}{4} = 5$
+:::
 :::
 
+## 
+
+
 ### Median
-::: incremental
 - Middle value when data is ordered
 - 50th percentile of the data
 - More robust to outliers than mean
 - For even n, average of two middle values
-:::
 
+
+::: fragment
 ### Mode
-::: incremental
 - Most frequently occurring value
 - Can have multiple modes
 - Only measure of central tendency for categorical data
 - Not always meaningful for continuous data
 :::
 
-## Visual Comparison of Central Tendency
+## How they compare
 
 ```{r}
 #| label: central-tendency
 #| echo: false
 #| warning: false
-#| fig.height: 4
 
 # Create data with different shapes
 set.seed(123)
@@ -188,7 +196,6 @@ p1 <- ggplot(normal_data, aes(x = x)) +
   geom_vline(xintercept = mean(normal_data$x), color = "red", linetype = "dashed") +
   geom_vline(xintercept = median(normal_data$x), color = "green", linetype = "dashed") +
   ggtitle("Symmetric Distribution") +
-  theme_minimal() +
   annotate("text", x = mean(normal_data$x), y = 0.1, 
            label = "Mean ≈ Median", angle = 90, vjust = -0.5)
 
@@ -199,81 +206,83 @@ p2 <- ggplot(skewed_data, aes(x = x)) +
   geom_vline(xintercept = mean(skewed_data$x), color = "red", linetype = "dashed") +
   geom_vline(xintercept = median(skewed_data$x), color = "green", linetype = "dashed") +
   ggtitle("Skewed Distribution") +
-  theme_minimal() +
   annotate("text", x = mean(skewed_data$x), y = 0.2, 
            label = "Mean", angle = 90, vjust = -0.5) +
   annotate("text", x = median(skewed_data$x), y = 0.2, 
            label = "Median", angle = 90, vjust = -0.5)
 
 # Arrange plots side by side
-p1 | p2
+p1 / p2
 ```
 
-## Measures of Dispersion
+Depending on the distribution of the data, the mean and median can be different, and this can tell you something about the data.
 
+## Measures of dispersion
+
+::: fragment
 ### Variance
-::: incremental
 - Measures spread of data around the mean
 - Average of squared deviations from mean
 - Formula: $s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$
 - Units are squared (harder to interpret)
 :::
 
+::: fragment
 ### Standard Deviation
-::: incremental
 - Square root of variance
 - Same units as original data
 - Approximately 68% of data within ±1 SD of mean
 - Formula: $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}$
 :::
 
-## Visualizing Dispersion
-
+## Visualising standard deviation
 ```{r}
 #| label: dispersion
 #| echo: false
 #| warning: false
-#| fig.height: 4
+
 
 # Create datasets with different dispersion
 set.seed(456)
 narrow_data <- data.frame(x = rnorm(1000, mean = 0, sd = 1))
 wide_data <- data.frame(x = rnorm(1000, mean = 0, sd = 2))
 
-# Function to add SD bands
-add_sd_bands <- function(p, data, fill_colors) {
+# Function to add SD bands using colorblind-friendly colors
+add_sd_bands <- function(p, data, base_color) {
   mean_val <- mean(data$x)
   sd_val <- sd(data$x)
   p + 
-    geom_rect(aes(xmin = mean_val - sd_val, xmax = mean_val + sd_val, 
-                  ymin = -Inf, ymax = Inf), 
-              fill = fill_colors[1], alpha = 0.2) +
-    geom_rect(aes(xmin = mean_val - 2*sd_val, xmax = mean_val + 2*sd_val, 
-                  ymin = -Inf, ymax = Inf), 
-              fill = fill_colors[2], alpha = 0.1)
+    geom_vline(xintercept = mean_val, color = "#E69F00", linetype = "dashed") +
+    annotate("rect", xmin = mean_val - sd_val, xmax = mean_val + sd_val,
+             ymin = -Inf, ymax = Inf, fill = base_color, alpha = 0.3) +
+    annotate("rect", xmin = mean_val - 2*sd_val, xmax = mean_val + 2*sd_val,
+             ymin = -Inf, ymax = Inf, fill = base_color, alpha = 0.15) +
+    annotate("text", x = mean_val, y = Inf, label = "±1 SD", vjust = 2) +
+    annotate("text", x = mean_val + 2*sd_val, y = Inf, label = "±2 SD", vjust = 2)
 }
 
-# Create base plots
+# Create base plots with fixed x-axis limits
 p1 <- ggplot(narrow_data, aes(x = x)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightblue", color = "black", alpha = 0.7) +
-  geom_density(color = "darkblue") +
-  ggtitle("Smaller Dispersion (SD = 1)") +
-  theme_minimal()
+  geom_histogram(aes(y = after_stat(density)), bins = 30, 
+                fill = "#56B4E9", color = "black", alpha = 0.7) +
+  geom_density(color = "#0072B2") +
+  ggtitle("Smaller dispersion (SD = 1)") +
+  xlim(-6, 6) 
 
 p2 <- ggplot(wide_data, aes(x = x)) +
-  geom_histogram(aes(y = ..density..), bins = 30, fill = "lightgreen", color = "black", alpha = 0.7) +
-  geom_density(color = "darkgreen") +
-  ggtitle("Larger Dispersion (SD = 2)") +
-  theme_minimal()
+  geom_histogram(aes(y = after_stat(density)), bins = 30, 
+                fill = "#009E73", color = "black", alpha = 0.7) +
+  geom_density(color = "#005C44") +
+  ggtitle("Larger dispersion (SD = 2)") +
+  xlim(-6, 6)
 
 # Add SD bands
-p1 <- add_sd_bands(p1, narrow_data, c("blue", "lightblue"))
-p2 <- add_sd_bands(p2, wide_data, c("green", "lightgreen"))
+p1 <- add_sd_bands(p1, narrow_data, "#56B4E9")
+p2 <- add_sd_bands(p2, wide_data, "#009E73")
 
 # Arrange plots
-p1 | p2
+p1 / p2
 ```
-
 
 
 
