@@ -21,6 +21,18 @@ toc-title: Outline
 library(tidyverse)
 ```
 
+<!-- ## Uncertainty
+
+One of the **most important** characteristics of data is their **uncertainty**.
+
+### Observation uncertainty
+
+- Results from sampling error 
+- The mean value in a sample is an imperfect estimate of the population mean, because
+  - The sample mean is a random variable
+  - The sample mean can vary from sample to sample -->
+
+
 # Last week
 ## Observational study vs. controlled experiment
 | Aspect | Observational study | Controlled experiment |
