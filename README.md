@@ -1,12 +1,6 @@
 # ENVX2001 Lectures
 
-This repository contains lecture materials for the ENVX2001 unit at the University of Sydney. The content is built using [Quarto](https://quarto.org/), providing interactive and dynamic lecture materials for environmental data science education.
-
-## 📚 Course Overview
-
-ENVX2001 is a second-year unit focused on data analysis and statistics for students in the School of Life and Environmental Sciences. 
-
-## 🗂️ Repository Structure
+This repository contains lecture materials for the ENVX2001 unit at the University of Sydney. The content is built using [Quarto](https://quarto.org/). ENVX2001 is a second-year unit focused on data analysis and statistics for students in the School of Life and Environmental Sciences. 
 
 ## 🗂️ Repository Structure
 
@@ -27,7 +21,6 @@ lectures/
 └── L13/ - Revision
 ```
 
-
 ## 🛠️ Setup and Usage
 
 ### Prerequisites
@@ -37,7 +30,7 @@ You will need R, a code editor like RStudio or VS Code and the Quarto package. N
 ### Building the Materials
 
 1. **Clone the repository**: Download a copy of the project to your local machine.
-2. **Install R dependencies**: Set up the necessary R packages for the project.
+2. **Install R dependencies**: Set up the necessary R packages for the project - a `renv::restore()` normally clears this hurdle automatically.
 3. **Render the materials**: Generate the output files from the source code.
 4. **Create a new branch**: Start a new branch to make your changes.
 5. **Make changes and preview**: Edit the files and generate the output to see your changes.
