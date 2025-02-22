@@ -15,23 +15,10 @@ toc-depth: 1
 toc-title: Outline
 ---
 
-
-
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(ggthemes)
 ```
-
-<!-- ## Uncertainty
-
-One of the **most important** characteristics of data is their **uncertainty**.
-
-### Observation uncertainty
-
-- Results from sampling error 
-- The mean value in a sample is an imperfect estimate of the population mean, because
-  - The sample mean is a random variable
-  - The sample mean can vary from sample to sample -->
-
 
 # Last week
 ## Observational study vs. controlled experiment
@@ -40,7 +27,6 @@ One of the **most important** characteristics of data is their **uncertainty**.
 | **Control** | No control over the variables of interest - **Mensurative** and **Absolute** | Control over the variables of interest - **Comparative** and **Manipulative** |
 | **Causation** | Cannot establish causation, but perhaps **association** | Can establish **causation** |
 | **Feasibility** | Can be done in many cases | May be destructive and cannot always be done |
-
 
 # Today: observational studies
 ## Two common types
@@ -57,11 +43,10 @@ One of the **most important** characteristics of data is their **uncertainty**.
 - *E.g. measuring species richness in a forest **before and after a fire***.
 :::
 
-
 ## Sampling designs
 
 ::: fragment
-### Simple random sampling:
+### Simple random sampling
 - Each unit has an equal chance of being selected.
 - **Randomly sample units from the entire population.**
 
@@ -76,37 +61,50 @@ One of the **most important** characteristics of data is their **uncertainty**.
 ![](images/stratified.png){fig-align="center" height=140}
 :::
 
+## Inclusion probability
 
-
-## What is "random" sampling?
-
-::: fragment
-***Random*** selection of **finite** or **infinite** population units.
-:::
-
-::: {.fragment .fade-up}
-> What does *random* mean?
-:::
+The mathematical foundation of random sampling rests on the concept of inclusion probability.
 
 ::: fragment
-Within a population, **all** units have a > 0 probability of being selected *i.e. everything has a chance to be selected*. 
+### Definition
+The probability that a unit from the population will be included in the sample, denoted as $\pi_i$.
 
-::: incremental
-- This *chance* is called the **inclusion probability ($\pi_i$)**:
-  - $\pi_i$ is **equal** *within* a population unit -- *i.e. all units have the same chance of being selected*.
-  - $\pi_i$ **not** necessarily equal *between different* population units -- *i.e. a unit from one population unit may have a different chance of being selected than a unit from another population unit* - more on this later.
-:::
+$$\pi_i = P(\text{unit }i\text{ is selected})$$
 :::
 
 ::: fragment
-### How do we perform random sampling in real life?
-- **Random number generator** (RNG) -- e.g. R's `sample()` function.
-- **Random number table** -- e.g. [Random number table](https://www.nist.gov/system/files/documents/2017/04/28/AppenB-HB133-05-Z.pdf) by the National Institute of Standards and Technology (NIST).
+### Properties in simple random sampling
+For a sample size $n$ from a population of size $N$:
+
+$$\pi_i = \frac{n}{N} \quad \text{for all units }i$$
+
+This means:
+- Every unit has the same probability of being selected
+- $0 < \pi_i \leq 1$ for all units
+- In simple random sampling, $\pi_i$ is equal for all units
 :::
 
+::: fragment
+### Implementation
+In practice, we achieve random sampling through:
+
+- **Computational methods**: Using R's `sample()` function
+  ```r
+  # Sample 5 units from a population of 100
+  sample(1:100, size = 5, replace = FALSE)
+  ```
+- **Traditional methods**: Random number tables
+:::
+
+::: fragment
+### Biological context
+In ecological surveys:
+- Each quadrat in a field has equal probability of selection
+- Each individual in a population has equal chance of being measured
+- Each time point has equal likelihood of being sampled
+:::
 
 # Interpreting sampled data
-
 
 ## We know that...
 ### From the previous lecture
@@ -122,224 +120,157 @@ Within a population, **all** units have a > 0 probability of being selected *i.e
 # Confidence intervals
 ![](images/ci-garfield.png)
 
-## Combining an estimate with its precision
+## Confidence interval concept
 
-- A **confidence interval (CI)** is a range of values, derived from a sample of data, that is used to estimate the range of values for a population **parameter**.
-- Crucial for **hypothesis testing** and **estimation**, the basis of statistical inference.
-- Will be frequently mentioned throughout this unit!
+::: fragment
+### Definition
+A range of values that likely contains the true population parameter, based on sample data.
+:::
 
-### General form
-
-In general, a CI has the form:
+::: fragment
+### Mathematical form
 $$\text{estimate} \pm \text{margin of error}$$
 
-where the margin of error is a **function of the standard error** of the estimate:
+More specifically:
+$$\text{estimate} \pm (\text{critical value} \times \text{standard error})$$
+:::
 
-$$\text{estimate} \pm (\text{critical value} \times \text{standard error (estimate)})$$
-
-where the critical value is based on the **sampling distribution** of the estimate i.e. the **$t$-distribution**.
+::: fragment
+### Biological significance
+- Helps assess precision of ecological measurements
+- Guides sample size decisions in field studies
+- Enables comparison between different populations
+:::
 
 ## Interpreting confidence intervals
 
-- Confidence intervals depend on a specified **confidence level** (e.g. 95%, 99%) with higher confidence levels producing wider intervals (i.e. more conservative).
-- Think of it as a **range of values** that we are fairly sure contains the true value of the population parameter.
+- Confidence intervals depend on a specified **confidence level** (e.g. 95%, 99%)
+- Higher confidence levels produce wider intervals (more conservative)
+- Represents our uncertainty about the true population value
 
 ::: fragment
-### Fishing net analogy
-
-**Imagine that we are fishing in a river and we want to catch a fish that we saw.**
-
-- If we use a *spear* and throw it at a fish, we might miss it.
-- If we use a **net**, we have a better chance of catching the fish.
-- The *bigger* the net, the *more likely* we are to catch the fish.
-
-Analogy: **The net is the confidence interval, and the fish is the true population parameter.**
+### Ecological example
+When measuring tree heights in a forest:
+- 95% CI of 20 ± 2 metres means:
+- If we repeated this sampling many times
+- 95% of intervals would contain the true mean height
+- Wider intervals suggest more variable populations
 :::
 
-# Calculating confidence intervals
+# Biological application: soil carbon
 
-## What we need
-
-1. **Estimate** of the population parameter, e.g. the [**sample mean**]{style="color: #e64626;"}.
-2. [**Critical value**]{style="color: #e64626;"} from the sampling distribution of the estimate, which depends on the **number of samples** and the **confidence level**. This is usually based on the **$t$-distribution**.
-3. **Standard error** of the estimate, standardised by the number of samples i.e. [**SE of the mean**]{style="color: #e64626;"}.
-
-### Why the t-distribution?
-
-- The $t$-distribution results from **standardising the sample variance by the number of samples**.
-  - Used when the true population variance is unknown. 
-- It resembles the normal distribution, but with heavier tails for small sample sizes. 
-- As sample size increases, the $t$-distribution converges to the normal distribution.
-
-# Data story: soil carbon
-
-
-## Soil carbon
+## Soil carbon in forest ecosystems
 :::: {.columns}
-::: {.column width="50%"}
-### Data story
-
-![](images/datastory.png)
-
-Soil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).
+::: {.column width="60%"}
+### Ecological importance
+::: fragment
+- Critical for climate change mitigation
+- Indicator of soil health and fertility
+- Key factor in forest ecosystem function
 :::
 
-::: {.column width="50%"}
-We start with the sampled data:
-```{r}
-soil <- c(48, 56, 90, 78, 86, 71, 42)
-soil
-```
-
-**What is the mean soil carbon content and how confident are we in this estimate?**
+::: fragment
+### Sampling challenges
+- High spatial variability
+- Labour-intensive measurements
+- Seasonal fluctuations
 :::
 ::::
 
-# Simple random sampling: estimates
+::: {.column width="40%"}
+::: fragment
+```{r, fig.height=4}
+# Create data frame for soil samples
+soil_data <- tibble(
+  location = 1:7,
+  carbon = c(48, 56, 90, 78, 86, 71, 42)
+)
 
+# Calculate mean and confidence interval
+soil_summary <- tibble(
+  mean = mean(soil_data$carbon),
+  se = sd(soil_data$carbon)/sqrt(length(soil_data$carbon)),
+  ci_lower = mean - qt(0.975, df=length(soil_data$carbon)-1) * se,
+  ci_upper = mean + qt(0.975, df=length(soil_data$carbon)-1) * se
+)
 
-## 95 % Confidence interval
+# Plot with ggplot2
+ggplot(soil_data, aes(x = "", y = carbon)) +
+  geom_jitter(width = 0.1, alpha = 0.6, colour = "forestgreen") +
+  geom_crossbar(data = soil_summary, 
+                aes(y = mean, ymin = ci_lower, ymax = ci_upper),
+                width = 0.3, alpha = 0.2) +
+  theme_minimal() +
+  labs(x = "", y = "Soil carbon (t/ha)",
+       title = "Forest soil carbon content",
+       subtitle = "Points show samples, bar shows 95% CI") +
+  theme(plot.title = element_text(face = "bold"))
+```
+:::
+:::
+::::
 
-### The formula
-$$95\%\ CI = \bar y \pm t^{0.025}_{n-1} \times SE(\bar y)$$
+## Statistical analysis
 
 ::: fragment
-![](images/confused.gif){fig-align="center" height=150}
+### Sample data
+```{r}
+soil <- soil_data$carbon
+soil
+```
 :::
 
 ::: fragment
-Recall:
-$$CI = \text{estimate} \pm \text{margin of error}$$
-
-So:
-$$95\%\ CI = \text{sample mean} \pm \text{t-critical value} \times \text{standard error of the mean}$$
-:::
-
-::: fragment
-**We need to calculate each of these components:** 
-
-① Sample mean $\bar y$; ⓶ Critical value $t^{0.025}_{n-1}$; and ③ Standard error of the mean $SE(\bar y)$
-:::
-
-
-## Sample mean
-$$\bar y = \frac{1}{n} \times \sum_{i = 1}^{n}y_i$$
-
-> The **sum** of all sampled **values**, divided by the number of **samples**.
-
-Relatively straightforward to calculate.
-
+### Components for confidence interval
+1. Sample mean calculation
 ```{r}
 mean_soil <- mean(soil)
 mean_soil
 ```
 
-## $t$-critical value
-
-### What is the $t$-distribution?
-
-The $t$-distribution is a **family of distributions** indexed by a **parameter** called **degrees of freedom**.
-
-::: fragment
-### Understanding degrees of freedom for a mean estimate
-::: incremental
-- Degrees of freedom (df) represent the count of independent data points used to estimate a parameter.
-- For the mean, df equals `n - 1`. For a sample size `n`, the last sample isn't independent -- it **must** satisfy the mean.
-- For instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value **must** be 8 and df = 2.
-:::
-:::
-
-::: fragment
-### Calculating the $t$-critical value
-We refer to the $t$-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the `qt()` function in R. For a 95% confidence level, we use the 0.975 quantile since the $t$-distribution is symmetric.
-
+2. Critical value (95% confidence)
 ```{r}
 t_critical <- qt(0.975, df = length(soil) - 1)
 t_critical
 ```
-:::
 
-## Standard error of the mean
-
-::: fragment
-The variance of the mean, $var(\bar y)$, is:
-$$var(\bar y) = \frac{var(y)}{n}$$
-:::
-
-::: fragment
-Variance is standard deviation squared ($s^2$), so the formula is:
-$$var(\bar y) = \frac{s^2(y)}{n}$$
-:::
-
-::: fragment
-Since $SE = \frac{s}{\sqrt{n}}$, then the standard error of the mean, $SE(\bar y)$, is:
-$$SE(\bar y) = \frac{s(y)}{\sqrt{n}} = \frac{\sqrt{s^2(y)}}{\sqrt{n}} = \sqrt{var(\bar y)}$$
-:::
-
-::: fragment
-![](images/wtf.gif){fig-align="center" height=160}
-:::
-
-
-## In words
-
-> **step 1** calculate the variance $var(y)$ of the sampled values. <br>
-> **step 2** divide $var(y)$ by the number of samples ($n$) to obtain variance of the mean $var{(\bar y)}$. <br>
-> **step 3** take the square root of $var{(\bar y)}$ to obtain the standard error of the mean $\sqrt{var{(\bar{y})}} = SE(\bar y)$.
-
-
-::: fragment
-In R, we can calculate the standard error of the mean using the `var()` or `sd()` function and the number of samples.
-
-::: panel-tabset
-
-## using `var()`
-```{r}
-# step 1
-var_soil <- var(soil)
-# step 2
-var_mean <- var_soil / length(soil)
-# step 3
-se_mean <- sqrt(var_mean)
-se_mean
-```
-
-## using `sd()`
+3. Standard error
 ```{r}
 se_mean <- sd(soil) / sqrt(length(soil))
 se_mean
 ```
 :::
-:::
 
+## Results interpretation
 
-
-## Putting it all together
-
-So far we have:
-
-```r
-mean_soil <- mean(soil)
-t_critical <- qt(0.975, df = length(soil) - 1)
-se_mean <- sqrt(var_soil / length(soil))
-```
-
-Now we can calculate the confidence interval:
-
+::: fragment
+### Confidence interval calculation
 ```{r}
 margin_error <- t_critical * se_mean
 ci95 <- c(mean = mean_soil, 
   L95 = mean_soil - margin_error, 
   U95 = mean_soil + margin_error)
-
 ci95
 ```
+:::
 
-## Questions
+::: fragment
+### Ecological interpretation
+- Mean soil carbon: 67.3 t/ha
+- 95% CI: [52.3, 82.3] t/ha
+- Interpretation:
+  - Moderate to high carbon content
+  - Relatively wide interval suggests high variability
+  - More samples needed for higher precision
+:::
 
-- How precise is our estimate?
-- How big a change must there be to estimate a statistically significant change?
+## Questions for field sampling
+
+::: incremental
+- How precise is our estimate of soil carbon?
+- What sample size would improve precision?
 - **Can we sample more efficiently?**
+:::
 
 # Tomorrow: stratified random sampling
 
@@ -348,7 +279,6 @@ ci95
 ### Questions?
 
 This presentation is based on the [SOLES Quarto reveal.js template][soles-revealjs] and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by] 
-
 
 <!-- Links -->
 [soles-revealjs]: https://github.com/usyd-soles-edu/soles-revealjs
