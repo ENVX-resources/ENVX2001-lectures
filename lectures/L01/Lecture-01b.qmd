@@ -217,7 +217,9 @@ p1 / p2
 
 Depending on the distribution of the data, the mean and median can be different, and this can tell you something about the data.
 
-## Population Parameters vs Sample Statistics {.smaller}
+## Population Parameters vs Sample Statistics
+
+For those of you interested:
 
 ### Mean
 | Population Parameter | Sample Statistic |
@@ -235,78 +237,64 @@ Depending on the distribution of the data, the mean and median can be different,
 | $\sigma = \sqrt{\sigma^2}$ | $s = \sqrt{s^2}$ |
 
 ::: {.callout-note}
-Notice the use of $n-1$ in sample variance and standard deviation!
+Notice the use of $n-1$ in sample variance and standard deviation
 :::
 
-## Why n-1? {.smaller}
-
-::: {.incremental}
+## Why n-1?
 - When calculating sample variance, we use $n-1$ instead of $n$ in the denominator
-- This is called "Bessel's correction"
-- Why? Because we lose one "degree of freedom" when we estimate the mean
-- Think about it:
+- This is called "[Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction)"
+- Why? Because we lose one "degree of freedom" when we estimate the mean:
   1. If you know the sample mean ($\bar{x}$)
   2. And you know all but one value in your sample
   3. The last value is *constrained* - it must make the mean equal $\bar{x}$
-:::
 
-## Example of Degrees of Freedom
 
-Let's say we have 5 numbers with a mean of 10:
+## Measures of Dispersion
 
-::: {.incremental}
-- If we know four numbers: 8, 9, 11, 12
-- The fifth number MUST be 10 to maintain the mean of 10
-- We can calculate it: $5 \times 10 - (8 + 9 + 11 + 12) = 10$
-- This loss of freedom is why we use $n-1$
-- Using $n-1$ gives an unbiased estimate of population variance
-:::
-
-## R Simulation: n vs n-1 {.smaller}
-
-```{r}
-#| echo: true
-set.seed(42)
-# Create population
-population <- rnorm(10000, mean = 50, sd = 10)
-pop_var <- var(population) * (length(population)-1)/length(population)
-
-# Function to compare variance estimates
-compare_var <- function(n_samples = 1000, sample_size = 30) {
-  samples <- replicate(n_samples, {
-    sample <- sample(population, size = sample_size)
-    c(
-      n1 = var(sample),  # using n-1
-      n = var(sample) * (length(sample)-1)/length(sample)  # using n
-    )
-  })
-  # Calculate mean estimates
-  colMeans(t(samples))
-}
-
-# Compare estimates
-estimates <- compare_var()
-cat("Population variance:", pop_var, "\n",
-    "Mean estimate (n-1):", estimates["n1"], "\n",
-    "Mean estimate (n):", estimates["n"], "\n")
-```
-
-## Measures of dispersion
-
-::: fragment
 ### Variance
-- Measures spread of data around the mean
-- Average of squared deviations from mean
-- Formula: $s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$
-- Units are squared (harder to interpret)
-:::
+- Measures how spread out the data is from the mean
+- Calculated as average squared deviations from the mean
+- Squared units make it harder to interpret
+- Sensitive to outliers (squares large deviations)
 
 ::: fragment
+::: callout-warning
+## Formula
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2$$
+
+- where $n$ is the number of observations
+- $x_i$ represents each individual value
+- $\bar{x}$ is the sample mean
+- Example: for data {2,4,6,8}:
+  1. Mean $\bar{x} = 5$
+  2. Deviations: -3, -1, 1, 3
+  3. Squared deviations: 9, 1, 1, 9
+  4. Sum = 20
+  5. $s^2 = \frac{20}{4-1} \approx 6.67$
+:::
+:::
+
+## 
+
 ### Standard Deviation
 - Square root of variance
 - Same units as original data
-- Approximately 68% of data within ±1 SD of mean
-- Formula: $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}$
+- More interpretable than variance
+- Empirical rule for normal distributions:
+  - ≈68% of data within ±1 SD
+  - ≈95% of data within ±2 SD
+  - ≈99.7% of data within ±3 SD
+
+::: fragment
+::: callout-warning
+## Formula
+$$s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i - \bar{x})^2}$$
+
+- Simply the square root of variance
+- For our example data {2,4,6,8}:
+  - $s = \sqrt{6.67} \approx 2.58$
+- Interpretation: On average, values deviate about 2.58 units from the mean
+:::
 :::
 
 ## Visualising standard deviation
