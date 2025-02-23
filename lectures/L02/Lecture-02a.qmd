@@ -1,12 +1,12 @@
 ---
 title: "Lecture 02a -- Sampling designs: simple random sampling"
 author: Januar Harianto
-# format: soles-revealjs
-format: revealjs
-fontsize: 16pt
-# embed-resources: true
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
 execute:
-  cache: true
+  cache: false
 ---
 
 
