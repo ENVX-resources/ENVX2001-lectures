@@ -12,7 +12,8 @@ execute:
 
 
 ```{r setup, include=FALSE}
-library(tidyverse)
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot)
+theme_set(theme_cowplot())
 ```
 
 # Last week
@@ -66,8 +67,7 @@ tibble(
 
 We will focus on the fundamentals behind **observational studies** this week.
 
-## Today: observational studies
-### Two common types
+## Two common types
 ::: fragment
 #### Surveys
 - Estimate a statistic (e.g. mean, variance), but
@@ -148,9 +148,12 @@ Within a population, **all** units have a > 0 probability of being selected *i.e
 
 ## Combining an estimate with its precision
 
-- A **confidence interval (CI)** is a range of values, derived from a sample of data, that is used to estimate the range of values for a population **parameter**
+A **confidence interval (CI)** is: 
+
+- A range of values, derived from a sample of data, that is used to estimate the range of values for a population **parameter**
 - Crucial for **hypothesis testing** and **estimation**, the basis of statistical inference
-- Will be frequently mentioned throughout this unit
+
+You will often see CIs in scientific papers, reports, and news articles.
 
 ## Calculating confidence intervals
 
@@ -160,14 +163,7 @@ Within a population, **all** units have a > 0 probability of being selected *i.e
 2. [**Critical value** ($t_{n-1}$)]{style="color: #e64626;"} from the sampling distribution of the estimate, which depends on the **number of samples** and the **confidence level**. This is usually based on the **$t$-distribution**
 3. **Standard error** of the estimate, standardised by the number of samples i.e. [**SE of the mean** ($SE_{\bar{x}}$)]{style="color: #e64626;"}
 
-::: fragment
-### The t-distribution?
-
-- The $t$-distribution results from **standardising the sample variance by the number of samples**
-  - Used when the true population variance is unknown
-- It resembles the normal distribution, but with heavier tails for small sample sizes
-- As sample size increases, the $t$-distribution converges to the normal distribution
-:::
+All these (mean, standard error and critical value) are *combined* to form the confidence interval.
 
 ## Breakdown
 
@@ -194,7 +190,7 @@ $$
 
 3. Determine the standard error of the mean, $SE_{\bar{x}} = \frac{s}{\sqrt{n}}$
 
-4. Look up the t-value, $t_{n-1}$, from the t-distribution table for the 95% confidence level and $n-1$ degrees of freedom (manual table or funcition in R).
+4. Look up the t-value, $t_{n-1}$, from the t-distribution table for the 95% confidence level and $n-1$ degrees of freedom (manual table or function in R).
 
 5. Compute the margin of error:
   $$\text{Margin of Error} = t_{n-1} \times SE_{\bar{x}}$$
@@ -204,6 +200,83 @@ $$
 
 
 **You need to be able to calculate this by hand/calculator.**
+
+## More definitions
+
+### Degrees of freedom (df)
+The number of independent values in a sample. It is calculated as:
+$$
+\text{df} = n - 1
+$$
+where $n$ is the number of samples. We subtract 1 because of [Bessel's correction](https://en.wikipedia.org/wiki/Bessel%27s_correction).
+
+
+::: fragment
+::: callout-note
+## Example
+- Four numbers have a mean value of 5. The first three numbers can be any value, so they are 3, 10 and 7
+- **The fourth number must be 5 to make the mean 5**
+- Therefore, the group of four numbers have 3 i.e. $n - 1$, degrees of freedom 
+:::
+:::
+
+## More definitions
+
+### *t*-critical value
+Given a **confidence level** (e.g. 95%) and **degrees of freedom** (df), the $t$-critical value is a value that is used to determine the **margin of error** in a confidence interval.
+
+It assumes:
+- A **t-distribution** of the data
+- A **symmetric distribution** around the mean
+
+## More definitions
+
+### *t*-distribution
+A probability distribution that is used to estimate the population. Using the correct distribution gives better estimates.
+
+- Similar to the normal distribution, but with **heavier tails**.
+- As the sample size increases, the $t$-distribution approaches the normal distribution, so we do not need to worry about it for large sample sizes.
+
+```{r}
+library(ggplot2)
+library(gganimate)
+
+# Variable to control animation speed (higher values = slower transitions)
+anim_speed <- 1
+
+# Create a sequence of x values for the plot
+x <- seq(-4, 4, length.out = 400)
+
+# Degrees of freedom: 1 through 5 then even numbers from 6 to 30
+dfs <- c(1:5, seq(6, 30, by = 2))
+
+# Prepare data for t-distribution curves with a new "df" column
+t_curves <- do.call(rbind, lapply(dfs, function(df) {
+  data.frame(x = x, 
+             density = dt(x, df), 
+             df = df)
+}))
+
+# Create data for the standard normal distribution (static)
+normal_curve <- data.frame(x = x, 
+                             density = dnorm(x))
+
+# Plot with gganimate: animate t-distribution curves (each frame shows one df)
+p <- ggplot() +
+  # Static normal distribution curve
+  geom_line(data = normal_curve, aes(x = x, y = density), 
+            color = "black", linetype = "dashed", size = 1) +
+  # t-distribution curve that will animate
+  geom_line(data = t_curves, aes(x = x, y = density, color = factor(df)), 
+            size = 1) +
+  labs(title = "Degrees of Freedom: {closest_state}",
+       x = "x",
+       y = "Density") +
+  theme(legend.position = "none") +
+  transition_states(states = df, transition_length = anim_speed, state_length = anim_speed)
+
+p
+```
 
 ## Interpreting confidence intervals
 
@@ -221,170 +294,73 @@ A confidence interval is like a fishing net:
 :::
 
 
-
 # Data story: soil carbon
-
-
 ## Soil carbon
-:::: {.columns}
-::: {.column width="50%"}
-### Data story
 
 ![](images/datastory.png)
 
 Soil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).
-:::
 
-::: {.column width="50%"}
-We start with the sampled data:
 ```{r}
 soil <- c(48, 56, 90, 78, 86, 71, 42)
 soil
 ```
 
-**What is the mean soil carbon content and how confident are we in this estimate?**
-:::
-::::
-
-# Simple random sampling: estimates
+**What is the mean soil carbon content and how confident are we in this estimate?** How this is calculated depends on whether we used simple random sampling or stratified random sampling.
 
 
-## 95 % Confidence interval
+# Simple random sampling
+Assuming that the soil carbon content is a simple random sample from the population, let's calculate the 95% confidence interval.
 
-### The formula
-$$95\%\ CI = \bar y \pm t^{0.025}_{n-1} \times SE(\bar y)$$
+## Mean and 95% CI
 
-::: fragment
-![](images/confused.gif){fig-align="center" height=150}
-:::
+### Step-by-step calculation
 
-::: fragment
-Recall:
-$$CI = \text{estimate} \pm \text{margin of error}$$
-
-So:
-$$95\%\ CI = \text{sample mean} \pm \text{t-critical value} \times \text{standard error of the mean}$$
-:::
-
-::: fragment
-**We need to calculate each of these components:** 
-
-① Sample mean $\bar y$; ⓶ Critical value $t^{0.025}_{n-1}$; and ③ Standard error of the mean $SE(\bar y)$
-:::
-
-
-## Sample mean
-$$\bar y = \frac{1}{n} \times \sum_{i = 1}^{n}y_i$$
-
-> The **sum** of all sampled **values**, divided by the number of **samples**.
-
-Relatively straightforward to calculate.
-
-```{r}
-mean_soil <- mean(soil)
-mean_soil
-```
-
-## $t$-critical value
-
-### What is the $t$-distribution?
-
-The $t$-distribution is a **family of distributions** indexed by a **parameter** called **degrees of freedom**.
-
-::: fragment
-### Understanding degrees of freedom for a mean estimate
 ::: incremental
-- Degrees of freedom (df) represent the count of independent data points used to estimate a parameter.
-- For the mean, df equals `n - 1`. For a sample size `n`, the last sample isn't independent -- it **must** satisfy the mean.
-- For instance, in a 3-value data set with a mean of 6, if two values are 7 and 3, the final value **must** be 8 and df = 2.
-:::
+1. Mean: $\bar{x} = \frac{48+56+90+78+86+71+42}{7} \approx 67.3$
+2. Standard deviation: $s \approx 18.84$
+3. Standard error: $SE = \frac{s}{\sqrt{7}} \approx 7.12$
+4. t-value (95% CI, df = 6): $t_{0.975,6} \approx 2.447$
+5. Margin of error: $t_{0.975,6} \times SE \approx 17.43$
+6. Which gives: $(67.3 - 17.43, 67.3 + 17.43) = (49.87, 84.73)$
 :::
 
 ::: fragment
-### Calculating the $t$-critical value
-We refer to the $t$-distribution table to find the critical value for a given confidence level and degrees of freedom. These days, we can use the `qt()` function in R. For a 95% confidence level, we use the 0.975 quantile since the $t$-distribution is symmetric.
+And so we report the mean soil carbon content as 67.3 t/ha with a 95% CI of (49.87, 84.73) t/ha or 67.3 ± 17.43 t/ha.
+:::
 
+
+## Implementation in R 
+
+
+### Manual calculation
 ```{r}
-t_critical <- qt(0.975, df = length(soil) - 1)
-t_critical
-```
-:::
+#| code-fold: false
 
-## Standard error of the mean
-
-::: fragment
-The variance of the mean, $var(\bar y)$, is:
-$$var(\bar y) = \frac{var(y)}{n}$$
-:::
-
-::: fragment
-Variance is standard deviation squared ($s^2$), so the formula is:
-$$var(\bar y) = \frac{s^2(y)}{n}$$
-:::
-
-::: fragment
-Since $SE = \frac{s}{\sqrt{n}}$, then the standard error of the mean, $SE(\bar y)$, is:
-$$SE(\bar y) = \frac{s(y)}{\sqrt{n}} = \frac{\sqrt{s^2(y)}}{\sqrt{n}} = \sqrt{var(\bar y)}$$
-:::
-
-::: fragment
-![](images/wtf.gif){fig-align="center" height=160}
-:::
-
-
-## In words
-
-> **step 1** calculate the variance $var(y)$ of the sampled values. <br>
-> **step 2** divide $var(y)$ by the number of samples ($n$) to obtain variance of the mean $var{(\bar y)}$. <br>
-> **step 3** take the square root of $var{(\bar y)}$ to obtain the standard error of the mean $\sqrt{var{(\bar{y})}} = SE(\bar y)$.
-
-
-::: fragment
-In R, we can calculate the standard error of the mean using the `var()` or `sd()` function and the number of samples.
-
-::: panel-tabset
-
-## using `var()`
-```{r}
-# step 1
-var_soil <- var(soil)
-# step 2
-var_mean <- var_soil / length(soil)
-# step 3
-se_mean <- sqrt(var_mean)
-se_mean
-```
-
-## using `sd()`
-```{r}
-se_mean <- sd(soil) / sqrt(length(soil))
-se_mean
-```
-:::
-:::
-
-
-
-## Putting it all together
-
-So far we have:
-
-```r
+# Step 1: Calculate the sample mean of soil carbon content
 mean_soil <- mean(soil)
-t_critical <- qt(0.975, df = length(soil) - 1)
-se_mean <- sqrt(var_soil / length(soil))
+
+# Step 2: Calculate the sample standard deviation of soil carbon content
+sd_soil <- sd(soil)
+
+# Step 3: Calculate the standard error of the mean (SE)
+se_soil <- sd_soil / sqrt(length(soil))
+
+# Step 4: Calculate the t-critical value for a 95% confidence interval
+t_crit <- qt(0.975, df = length(soil) - 1)
+
+# Step 5: Calculate the margin of error (t_crit * SE)
+# and then determine the lower and upper bounds of the confidence interval
+ci <- mean_soil + c(-1, 1) * (t_crit * se_soil)
+
+# Step 6: View the calculated 95% confidence interval
+ci
+
 ```
 
-Now we can calculate the confidence interval:
+There are ways to calculate this in R quickly, but it is important to understand the manual calculation.
 
-```{r}
-margin_error <- t_critical * se_mean
-ci95 <- c(mean = mean_soil, 
-  L95 = mean_soil - margin_error, 
-  U95 = mean_soil + margin_error)
 
-ci95
-```
 
 ## Questions
 
@@ -392,11 +368,13 @@ ci95
 - How big a change must there be to estimate a statistically significant change?
 - **Can we sample more efficiently?**
 
+To answer these questions, we need to compare simple random sampling with a hypothetical stratified random sampling design (i.e. what if we had considered stratification before sampling?)
+
 # Tomorrow: stratified random sampling
 
-## Thanks!
+# Thanks!
 
-### Questions?
+**Questions?**
 
 This presentation is based on the [SOLES Quarto reveal.js template][soles-revealjs] and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by] 
 
@@ -404,5 +382,3 @@ This presentation is based on the [SOLES Quarto reveal.js template][soles-reveal
 <!-- Links -->
 [soles-revealjs]: https://github.com/usyd-soles-edu/soles-revealjs
 [cc-by]: http://creativecommons.org/licenses/by/4.0/
-
-### [⇣PDF](Lecture-02a.pdf)
