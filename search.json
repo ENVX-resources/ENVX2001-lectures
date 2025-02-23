@@ -47,116 +47,109 @@
     "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
-    "objectID": "lectures/L02/Lecture-02b.html",
-    "href": "lectures/L02/Lecture-02b.html",
-    "title": "Lecture 02b – Sampling designs II",
-    "section": "",
-    "text": "Each unit has an equal chance of being selected.\n\n\n\n\n\n\n\n\n\nEach unit has an equal chance of being selected.\n\n\n\nBut what if we have more information about the population?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?"
-  },
-  {
     "objectID": "lectures/L02/Lecture-02b.html#simple-random-sampling",
     "href": "lectures/L02/Lecture-02b.html#simple-random-sampling",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "",
-    "text": "Each unit has an equal chance of being selected."
+    "section": "Simple random sampling",
+    "text": "Simple random sampling\n\n\nEach unit has an equal chance of being selected.\n\n\nNot always the case, but still a good technique."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#simple-random-sampling-1",
     "href": "lectures/L02/Lecture-02b.html#simple-random-sampling-1",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "",
-    "text": "Each unit has an equal chance of being selected.\n\n\n\nBut what if we have more information about the population?\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?"
+    "section": "Simple random sampling",
+    "text": "Simple random sampling\nEach unit has an equal chance of being selected.\nNot always the case, but still a good technique.\n\nBut what if we have more information about the population?\n\n\n\n\nSoil carbon\n\n\n\nDifferent land types\n\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#stratified-random-sampling",
     "href": "lectures/L02/Lecture-02b.html#stratified-random-sampling",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Stratified random sampling",
-    "text": "Stratified random sampling\n\n3 steps\n\n\nDivide the population into homogeneous subgroups (strata).\nSample from each stratum using simple random sampling.\nPool (or combine) the estimates from each stratum to get an overall population estimate."
+    "text": "Stratified random sampling\n3 steps\n\n\nDivide the population into homogeneous subgroups (strata).\nSample from each stratum using simple random sampling.\nPool (or combine) the estimates from each stratum to get an overall population estimate."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#strata-rules",
     "href": "lectures/L02/Lecture-02b.html#strata-rules",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Strata rules",
-    "text": "Strata rules\n\nStrata are…\n\n\nMutually exclusive and collectively exhaustive; i.e. units must all belong to a stratum and only to one stratum (no unit should be unassigned).\nHomogeneous – units within a stratum are similar to each other and distinct from units in other strata.\nSampled irrespective of size – the point is to ensure that each stratum is represented in the final sample.\n\n\n\n\n\n\n\n\n\n\n\n\nIdentifying strata\n\n\n\nAcceptable\nAge groups or income brackets – these are mutually exclusive and homogeneous.\n\n\n\nMight not work…\nNationality or food preference – these may not be mutually exclusive e.g. a person can have multiple nationalities, or animals can have multiple food preferences."
+    "text": "Strata rules\nStrata are…\n\n\nMutually exclusive and collectively exhaustive; i.e. units must all belong to a stratum and only to one stratum (no unit should be unassigned).\nHomogeneous – units within a stratum are similar to each other and distinct from units in other strata.\nSampled irrespective of size – the point is to ensure that each stratum is represented in the final sample.\n\n\n\n\n\n\n\n\n\n\nIdentifying strata\n\n\nAcceptable\nAge groups or income brackets – these are mutually exclusive and homogeneous.\n\nMight not work…\nNationality or food preference – these may not be mutually exclusive e.g. a person can have multiple nationalities, or animals can have multiple food preferences."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#advantages",
     "href": "lectures/L02/Lecture-02b.html#advantages",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Advantages",
-    "text": "Advantages\n\nWe address:\n\n\nBias. Each stratum is sampled, so the sample is representative of the population.\nAccuracy. Each stratum is represented by a minimum number of sampling units.\nInsight. We can compare strata and make inferences about the population.\n\n\n\n\n\nDoes this make simple random sampling obsolete?\n\n\nNo. Still a good technique.\nWith large enough samples, the two methods will converge.\nChance of not selecting a unit from a stratum is always there, but reduces as the sample size increases."
+    "text": "Advantages\nWe address:\n\n\nBias. Each stratum is sampled, so the sample is representative of the population.\nAccuracy. Each stratum is represented by a minimum number of sampling units.\nInsight. We can compare strata and make inferences about the population.\n\n\n\nDoes this make simple random sampling obsolete?\n\n\nNo. Still a good technique.\nWith large enough samples, the two methods will converge.\nChance of not selecting a unit from a stratum is always there, but reduces as the sample size increases."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#everything-is-the-same-but",
     "href": "lectures/L02/Lecture-02b.html#everything-is-the-same-but",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Everything is the same, but…",
-    "text": "Everything is the same, but…\n\nWeighted estimates\n\nWe need to “weigh” the estimates from each stratum to account for the different stratum sizes and inclusion probabilities.\nMost of the time, we use the stratum size as the weight to calculate weighted estimates.\nThe overall population estimate is the sum of the weighted estimates from each stratum, i.e. we pool the individual strata information into a single, overall population estimate.\n\n\n\n\nExample\n\n\nA forest contains two types of trees: A and B, with 60% and 40% of the population, respectively.\nWe want to estimate the mean height of the trees.\nTake 10 height measurements, of which 7 are randomly selected from type A and 3 are randomly selected from type B.\nThe pooled estimate for the mean height of the trees is: \\[0.6 \\times \\text{average height of A} + 0.4 \\times \\text{average height of B}\\]"
+    "text": "Everything is the same, but…\nWeighted estimates\n\nWe need to “weigh” the estimates from each stratum to account for the different stratum sizes and inclusion probabilities.\nMost of the time, we use the stratum size as the weight to calculate weighted estimates.\nThe overall population estimate is the sum of the weighted estimates from each stratum, i.e. we pool the individual strata information into a single, overall population estimate.\n\n\nExample\n\n\nA forest contains two types of trees: A and B, with 60% and 40% of the population, respectively.\nWe want to estimate the mean height of the trees.\nTake 10 height measurements, of which 7 are randomly selected from type A and 3 are randomly selected from type B.\nThe pooled estimate for the mean height of the trees is: 0.6 \\times \\text{average height of A} + 0.4 \\times \\text{average height of B}"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#soil-carbon-1",
     "href": "lectures/L02/Lecture-02b.html#soil-carbon-1",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Soil carbon",
-    "text": "Soil carbon\n\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\n\n\nDifferent land types\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?\n\n\n\nIn R\nSuppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.\n(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)\n\n\nCode\nlandA &lt;- c(90, 78, 86, 71)  # stratum A samples\nlandB &lt;- c(48, 56, 42)      # stratum B samples"
+    "text": "Soil carbon\n\n\nData story\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\nDifferent land types\n\nLand type A covers 62% of the area, and land type B covers 38%.\nType A has a higher chance of being selected if we use simple random sampling.\nCan we use this information to our advantage?\n\nIn R\nSuppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.\n(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)\n\n\nCode\nlandA &lt;- c(90, 78, 86, 71)  # stratum A samples\nlandB &lt;- c(48, 56, 42)      # stratum B samples"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#confidence-interval",
     "href": "lectures/L02/Lecture-02b.html#confidence-interval",
     "title": "Lecture 02b – Sampling designs II",
     "section": "95 % Confidence interval",
-    "text": "95 % Confidence interval\n\nThe formula\n\\[95\\%\\ CI = \\bar y_{s} \\pm t^{0.025}_{n-L} \\times SE(\\bar y_{s})\\]\nwhere \\(L\\) is the number of strata, \\(n\\) is the total number of samples, and \\(\\bar y_{s}\\) is the weighted mean of the strata.\nTherefore:\n\n\n\\(\\bar y_{s}\\) is the pooled mean.\n\\(t^{0.025}_{n-L}\\) is the \\(t\\)-value for a 95% confidence interval with \\(n-L\\) degrees of freedom.\n\\(SE(\\bar y_{s})\\) is the pooled standard error of the mean."
+    "text": "95 % Confidence interval\nThe formula\n95\\%\\ CI = \\bar y_{s} \\pm t^{0.025}_{n-L} \\times SE(\\bar y_{s})\nwhere L is the number of strata, n is the total number of samples, and \\bar y_{s} is the weighted mean of the strata.\nTherefore:\n\n\n\\bar y_{s} is the pooled mean.\nt^{0.025}_{n-L} is the t-value for a 95% confidence interval with n-L degrees of freedom.\nSE(\\bar y_{s}) is the pooled standard error of the mean."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#pooled-mean-bar-y_s",
     "href": "lectures/L02/Lecture-02b.html#pooled-mean-bar-y_s",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "Pooled mean \\(\\bar y_{s}\\)",
-    "text": "Pooled mean \\(\\bar y_{s}\\)\n\nSum of the weighted estimates of mean, from each stratum.\n\n\n\\[\\bar{y}_{s} = \\sum_{i=1}^L \\bar{y}_i \\times w_i\\]\nwhere \\(L\\) is the number of strata, \\(\\bar{y}_i\\) is the mean of stratum \\(i\\), and \\(w_i\\) is the weight for stratum \\(i\\).\n\n\nWe first define the weights \\(w_i\\) for each stratum:\n\n\nCode\nweight &lt;- c(0.62, 0.38)\n\n\n\n\nThen we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:\n\n\nCode\nweighted_mean &lt;- mean(landA) * weight[1] + mean(landB) * weight[2]\nweighted_mean\n\n\n[1] 68.86833"
+    "section": "Pooled mean \\bar y_{s}",
+    "text": "Pooled mean \\bar y_{s}\n\nSum of the weighted estimates of mean, from each stratum.\n\n\n\\bar{y}_{s} = \\sum_{i=1}^L \\bar{y}_i \\times w_i\nwhere L is the number of strata, \\bar{y}_i is the mean of stratum i, and w_i is the weight for stratum i.\n\n\nWe first define the weights w_i for each stratum:\n\n\nCode\nweight &lt;- c(0.62, 0.38)\n\n\n\n\nThen we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:\n\n\nCode\nweighted_mean &lt;- mean(landA) * weight[1] + mean(landB) * weight[2]\nweighted_mean\n\n\n[1] 68.86833"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s",
     "href": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)",
-    "text": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)\n\nSquare root of the sum of the weight-adjusted variances of the mean per stratum, assuming the strata are independent (see next slide).\n\n\n\\[Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i)\\] \\[SE(\\bar y_{s}) = \\sqrt{Var(\\bar y_{s})}\\]\nwhere \\(L\\) is the number of strata, \\(w_i\\) is the weight for stratum \\(i\\), and \\(Var(\\bar y_i)\\) is the variance of the mean for stratum \\(i\\).\n\n\n\nIn R\n\n\nCode\nvarA &lt;- var(landA) / length(landA)\nvarB &lt;- var(landB) / length(landB)\nweighted_var &lt;- weight[1]^2 * varA + weight[2]^2 * varB\nweighted_se &lt;- sqrt(weighted_var)\nweighted_se\n\n\n[1] 3.041995"
+    "section": "Pooled standard error of the mean SE(\\bar y_{s})",
+    "text": "Pooled standard error of the mean SE(\\bar y_{s})\n\nSquare root of the sum of the weight-adjusted variances of the mean per stratum, assuming the strata are independent (see next slide).\n\n\nVar(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i) SE(\\bar y_{s}) = \\sqrt{Var(\\bar y_{s})}\nwhere L is the number of strata, w_i is the weight for stratum i, and Var(\\bar y_i) is the variance of the mean for stratum i.\n\n\nIn R\n\n\nCode\nvarA &lt;- var(landA) / length(landA)\nvarB &lt;- var(landB) / length(landB)\nweighted_var &lt;- weight[1]^2 * varA + weight[2]^2 * varB\nweighted_se &lt;- sqrt(weighted_var)\nweighted_se\n\n\n[1] 3.041995"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s-1",
     "href": "lectures/L02/Lecture-02b.html#pooled-standard-error-of-the-mean-sebar-y_s-1",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)",
-    "text": "Pooled standard error of the mean \\(SE(\\bar y_{s})\\)\n\nWhy is weight \\(w\\) squared?\nVariance is standard deviation squared, therefore the weight is naturally squared when calculating the variance of the weighted mean. We just don’t see it unless we expand the variance formula i.e. “it’s a math thing”.\n\n\n\nCan we really add variances?\nYes, if sampling units are all independent, which should be the case for a well-designed stratified random sampling since units are mutually exclusive and collectively exhaustive.\nThe addition or subtraction of variances include a covariance term if the strata are not independent:\n\\[ Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i) + 2 \\times \\sum_{i=1}^L \\sum_{j=1}^L w_i \\times w_j \\times Cov(\\bar y_i, \\bar y_j)\\]"
+    "section": "Pooled standard error of the mean SE(\\bar y_{s})",
+    "text": "Pooled standard error of the mean SE(\\bar y_{s})\nWhy is weight w squared?\nVariance is standard deviation squared, therefore the weight is naturally squared when calculating the variance of the weighted mean. We just don’t see it unless we expand the variance formula i.e. “it’s a math thing”.\n\nCan we really add variances?\nYes, if sampling units are all independent, which should be the case for a well-designed stratified random sampling since units are mutually exclusive and collectively exhaustive.\nThe addition or subtraction of variances include a covariance term if the strata are not independent:\n Var(\\bar y_{s}) = \\sum_{i=1}^L w_i^2 \\times Var(\\bar y_i) + 2 \\times \\sum_{i=1}^L \\sum_{j=1}^L w_i \\times w_j \\times Cov(\\bar y_i, \\bar y_j)"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#t-critical-value",
     "href": "lectures/L02/Lecture-02b.html#t-critical-value",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "\\(t\\)-critical value",
-    "text": "\\(t\\)-critical value\n\nDegrees of freedom \\(df\\)\n\\[df = n - L\\]\nwhere \\(n\\) is the total number of samples and \\(L\\) is the number of strata.\n\n\nSuppose we want to assign 12 samples to 3 strata.\nThe degrees of freedom is \\(12 - 3 = 9\\).\nThink of it this way: of all the 12 samples, we can assign at least 9 units freely into any stratum, but the last 3 must be in each of the 3 strata.\n\n\n\n\n\nIn R\n\n\nCode\ndf &lt;- length(landA) + length(landB) - 2\nt_crit &lt;- qt(0.975, df)\nt_crit\n\n\n[1] 2.570582"
+    "section": "t-critical value",
+    "text": "t-critical value\nDegrees of freedom df\ndf = n - L\nwhere n is the total number of samples and L is the number of strata.\n\n\nSuppose we want to assign 12 samples to 3 strata.\nThe degrees of freedom is 12 - 3 = 9.\nThink of it this way: of all the 12 samples, we can assign at least 9 units freely into any stratum, but the last 3 must be in each of the 3 strata.\n\n\n\nIn R\n\n\nCode\ndf &lt;- length(landA) + length(landB) - 2\nt_crit &lt;- qt(0.975, df)\nt_crit\n\n\n[1] 2.570582"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#confidence-interval-1",
     "href": "lectures/L02/Lecture-02b.html#confidence-interval-1",
     "title": "Lecture 02b – Sampling designs II",
     "section": "95 % Confidence interval",
-    "text": "95 % Confidence interval\n\nPutting it all together\n\n\nCode\nci &lt;- c(\n  L95 = weighted_mean - t_crit * weighted_se,\n  u95 = weighted_mean + t_crit * weighted_se\n)\nci\n\n\n     L95      u95 \n61.04864 76.68803"
+    "text": "95 % Confidence interval\nPutting it all together\n\n\nCode\nci &lt;- c(\n  L95 = weighted_mean - t_crit * weighted_se,\n  u95 = weighted_mean + t_crit * weighted_se\n)\nci\n\n\n     L95      u95 \n61.04864 76.68803"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#simple-random-vs.-stratified-random-sampling",
     "href": "lectures/L02/Lecture-02b.html#simple-random-vs.-stratified-random-sampling",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Simple random vs. stratified random sampling",
-    "text": "Simple random vs. stratified random sampling\nWhat if we had use stratified random sampling instead of simple random sampling (and collected the same amount of data)?\n\nWhat differences can you see?\n\n\nCode\nlibrary(tidyverse)\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\nCode\n# Manually printing the results below as SRS data is in previous lecture\ncompare &lt;- tibble(\n  Design = c(\"Simple Random\", \"Stratified Random\"),\n  Mean = c(67.29, 68.9), \n  `Var (mean)` = c(50.83, 9.30),\n  L95 = c(49.85, 61), \n  U95 = c(84.73, 76.7), \n  df = c(6, 5))\nknitr::kable(compare)\n\n\n\n\n\nDesign\nMean\nVar (mean)\nL95\nU95\ndf\n\n\n\n\nSimple Random\n67.29\n50.83\n49.85\n84.73\n6\n\n\nStratified Random\n68.90\n9.30\n61.00\n76.70\n5\n\n\n\n\n\n\n\nDifferences in mean, variance of the mean and 95% CI?\nWhich method is more precise?\nCan simple random sampling be as precise as stratified random sampling?"
+    "text": "Simple random vs. stratified random sampling\nWhat if we had use stratified random sampling instead of simple random sampling (and collected the same amount of data)?\nWhat differences can you see?\n\n\nCode\nlibrary(tidyverse)\n# Manually printing the results below as SRS data is in previous lecture\ncompare &lt;- tibble(\n  Design = c(\"Simple Random\", \"Stratified Random\"),\n  Mean = c(67.29, 68.9), \n  `Var (mean)` = c(50.83, 9.30),\n  L95 = c(49.85, 61), \n  U95 = c(84.73, 76.7), \n  df = c(6, 5))\nknitr::kable(compare)\n\n\n\n\n\nDesign\nMean\nVar (mean)\nL95\nU95\ndf\n\n\n\n\nSimple Random\n67.29\n50.83\n49.85\n84.73\n6\n\n\nStratified Random\n68.90\n9.30\n61.00\n76.70\n5\n\n\n\n\n\n\n\nDifferences in mean, variance of the mean and 95% CI?\nWhich method is more precise?\nCan simple random sampling be as precise as stratified random sampling?"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#efficiency",
     "href": "lectures/L02/Lecture-02b.html#efficiency",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Efficiency",
-    "text": "Efficiency\n\nCalculated as a ratio: \\[\\text{Efficiency} = \\frac{\\text{Variance of SRS}}{\\text{Variance of Stratified}}\\]\nIndicates sampling effort required to achieve precision of stratified sampling.\nEfficiency &gt; 1 means stratified sampling is more efficient.\nValue tells us how much we need to increase the sample size in SRS to achieve the same precision as stratified sampling.\n\n\nIn R\n\n\nCode\nefficiency &lt;- 50.83 / 9.30\nefficiency\n\n\n[1] 5.465591\n\n\nHow many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?\n\n\nCode\nround(7 * efficiency, 0)\n\n\n[1] 38"
+    "text": "Efficiency\n\nCalculated as a ratio: \\text{Efficiency} = \\frac{\\text{Variance of SRS}}{\\text{Variance of Stratified}}\nIndicates sampling effort required to achieve precision of stratified sampling.\nEfficiency &gt; 1 means stratified sampling is more efficient.\nValue tells us how much we need to increase the sample size in SRS to achieve the same precision as stratified sampling.\n\nIn R\n\n\nCode\nefficiency &lt;- 50.83 / 9.30\nefficiency\n\n\n[1] 5.465591\n\n\nHow many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?\n\n\nCode\nround(7 * efficiency, 0)\n\n\n[1] 38"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#tips-on-implementation",
@@ -169,36 +162,36 @@
     "objectID": "lectures/L02/Lecture-02b.html#the-change-in-mean-delta-bar-y",
     "href": "lectures/L02/Lecture-02b.html#the-change-in-mean-delta-bar-y",
     "title": "Lecture 02b – Sampling designs II",
-    "section": "The change in mean \\(\\Delta \\bar y\\)",
-    "text": "The change in mean \\(\\Delta \\bar y\\)\n\nOur interest now lies in the change in mean soil carbon content.\nWe can still calculate the 95% confidence interval for the change in mean, but we need to account for the correlation between the two sets of measurements.\nA covariance problem that differs depending on the resampling design."
+    "section": "The change in mean \\Delta \\bar y",
+    "text": "The change in mean \\Delta \\bar y\n\nOur interest now lies in the change in mean soil carbon content.\nWe can still calculate the 95% confidence interval for the change in mean, but we need to account for the correlation between the two sets of measurements.\nA covariance problem that differs depending on the resampling design."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#monitoring-estimates",
     "href": "lectures/L02/Lecture-02b.html#monitoring-estimates",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Monitoring estimates",
-    "text": "Monitoring estimates\n\nChange in mean \\(\\Delta \\bar y\\)\n\nThe difference between the means of the two sets of measurements.\n\n\\[\\Delta \\bar y = \\bar y_2 - \\bar y_1\\]\nwhere \\(\\bar y_2\\) and \\(\\bar y_1\\) are the means of the second and first set of measurements, respectively.\n\n\n\nVariance of the change in mean \\(Var(\\Delta{\\bar y})\\)\n\nSum of the variances of the two sets of measurements, minus twice the covariance between the two sets of measurements if the two sets are not independent. The covariance term is zero if the two sets are independent.\n\n\\[Var(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1) - 2 \\times Cov(\\bar y_2, \\bar y_1)\\]"
+    "text": "Monitoring estimates\nChange in mean \\Delta \\bar y\n\nThe difference between the means of the two sets of measurements.\n\n\\Delta \\bar y = \\bar y_2 - \\bar y_1\nwhere \\bar y_2 and \\bar y_1 are the means of the second and first set of measurements, respectively.\n\nVariance of the change in mean Var(\\Delta{\\bar y})\n\nSum of the variances of the two sets of measurements, minus twice the covariance between the two sets of measurements if the two sets are not independent. The covariance term is zero if the two sets are independent.\n\nVar(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1) - 2 \\times Cov(\\bar y_2, \\bar y_1)"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#covariance",
     "href": "lectures/L02/Lecture-02b.html#covariance",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Covariance?",
-    "text": "Covariance?\n\nIf we revisit the same 7 sites\n\\[Var(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1) - 2 \\times Cov(\\bar y_2, \\bar y_1)\\]\n\nThe measurements are not independent, as anything that affects the first set of measurements will also affect the second set (unknown to us).\nCovariance exists between the two sets of measurements.\nWe need to account for this in the variance of the change in mean.\nEquivalent to a paired t-test.\n\n\n\nIf we visit 7 randomly-selected sites\n\\[Var(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1)\\]\n\nThe measurements are independent.\nCovariance is zero.\nEquivalent to a two-sample t-test."
+    "text": "Covariance?\nIf we revisit the same 7 sites\nVar(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1) - 2 \\times Cov(\\bar y_2, \\bar y_1)\n\nThe measurements are not independent, as anything that affects the first set of measurements will also affect the second set (unknown to us).\nCovariance exists between the two sets of measurements.\nWe need to account for this in the variance of the change in mean.\nEquivalent to a paired t-test.\n\nIf we visit 7 randomly-selected sites\nVar(\\Delta{\\bar y}) = Var(\\bar y_2) + Var(\\bar y_1)\n\nThe measurements are independent.\nCovariance is zero.\nEquivalent to a two-sample t-test."
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#calculating-the-95-ci-for-the-change-in-mean",
     "href": "lectures/L02/Lecture-02b.html#calculating-the-95-ci-for-the-change-in-mean",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Calculating the 95% CI for the change in mean",
-    "text": "Calculating the 95% CI for the change in mean\n\\[95\\%\\ CI = \\Delta \\bar y \\pm t^{0.025}_{n-1} \\times SE(\\Delta \\bar y)\\]\nwhere \\(n\\) is the number of pairs of measurements, and \\(SE(\\Delta \\bar y)\\) is the standard error of the change in mean.\n\n\n\\(SE(\\Delta \\bar y)\\)\nIf the covariance term is needed, we calculate covariance as:\n\\[Cov(\\bar y_2, \\bar y_1) = \\frac{\\sum_{i=1}^n (y_{2i} - \\bar y_2) \\times (y_{1i} - \\bar y_1)}{n-1}\\]\nwhere \\(n\\) is the number of pairs of measurements, and \\(y_{2i}\\) and \\(y_{1i}\\) are the measurements from the second and first set, respectively.\n\nThe sum of the product of the differences between each pair of measurements and the mean of each set, divided by \\(n-1\\).\n\n\n\n\nLuckily, you are not expected to calculate this by hand. R will do it for you either by using the cov() function (if calculating manually), or by using the t.test() function with the paired argument set to TRUE. We will go through this in the lab!"
+    "text": "Calculating the 95% CI for the change in mean\n95\\%\\ CI = \\Delta \\bar y \\pm t^{0.025}_{n-1} \\times SE(\\Delta \\bar y)\nwhere n is the number of pairs of measurements, and SE(\\Delta \\bar y) is the standard error of the change in mean.\n\nSE(\\Delta \\bar y)\nIf the covariance term is needed, we calculate covariance as:\nCov(\\bar y_2, \\bar y_1) = \\frac{\\sum_{i=1}^n (y_{2i} - \\bar y_2) \\times (y_{1i} - \\bar y_1)}{n-1}\nwhere n is the number of pairs of measurements, and y_{2i} and y_{1i} are the measurements from the second and first set, respectively.\n\nThe sum of the product of the differences between each pair of measurements and the mean of each set, divided by n-1.\n\n\n\nLuckily, you are not expected to calculate this by hand. R will do it for you either by using the cov() function (if calculating manually), or by using the t.test() function with the paired argument set to TRUE. We will go through this in the lab!"
   },
   {
     "objectID": "lectures/L02/Lecture-02b.html#thanks",
     "href": "lectures/L02/Lecture-02b.html#thanks",
     "title": "Lecture 02b – Sampling designs II",
     "section": "Thanks!",
-    "text": "Thanks!\n\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
+    "text": "Thanks!\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License."
   },
   {
     "objectID": "lectures/L01/index.html",
@@ -487,70 +480,70 @@
     "href": "lectures/L01/Lecture-01b.html#clt-in-action",
     "title": "Lecture 01b – Revision",
     "section": "CLT in action",
-    "text": "CLT in action\n\n\nCode\n# Create a skewed population\nset.seed(456)\nskewed_pop &lt;- exp(rnorm(10000, mean = 0, sd = 0.5))\n\n# Sample means for different sample sizes (ordered small to large)\nsample_sizes &lt;- c(5, 30, 100)\nsample_labels &lt;- factor(paste(\"n =\", sample_sizes), \n                       levels = paste(\"n =\", sample_sizes))  # preserve order\nsample_dist_data &lt;- lapply(sample_sizes, function(n) {\n  means &lt;- replicate(1000, mean(sample(skewed_pop, size = n)))\n  data.frame(means = means, size = factor(paste(\"n =\", n), levels = levels(sample_labels)))\n})\nsample_dist_df &lt;- do.call(rbind, sample_dist_data)\n\n# Plot\nggplot() +\n  geom_histogram(aes(x = means, y = ..density..), data = sample_dist_df,\n                bins = 30, fill = \"lightblue\", color = \"black\", alpha = 0.7) +\n  geom_density(aes(x = means), data = sample_dist_df, color = \"blue\") +\n  facet_wrap(~size, scales = \"free_x\") +\n  ggtitle(\"Sampling distributions for different sample sizes\")"
+    "text": "CLT in action\n\n\nCode\n# Create a skewed population\nset.seed(456)\nskewed_pop &lt;- exp(rnorm(10000, mean = 0, sd = 0.5))\n\n# Sample means for different sample sizes (ordered small to large)\nsample_sizes &lt;- c(5, 30, 100)\nsample_labels &lt;- factor(paste(\"n =\", sample_sizes),\n  levels = paste(\"n =\", sample_sizes)\n) # preserve order\nsample_dist_data &lt;- lapply(sample_sizes, function(n) {\n  means &lt;- replicate(1000, mean(sample(skewed_pop, size = n)))\n  data.frame(means = means, size = factor(paste(\"n =\", n), levels = levels(sample_labels)))\n})\nsample_dist_df &lt;- do.call(rbind, sample_dist_data)\n\n# Plot\nggplot() +\n  geom_histogram(aes(x = means, y = ..density..),\n    data = sample_dist_df,\n    bins = 30, fill = \"lightblue\", color = \"black\", alpha = 0.7\n  ) +\n  geom_density(aes(x = means), data = sample_dist_df, color = \"blue\") +\n  facet_wrap(~size, scales = \"free_x\") +\n  ggtitle(\"Sampling distributions for different sample sizes\")"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#example",
     "href": "lectures/L01/Lecture-01b.html#example",
     "title": "Lecture 01b – Revision",
     "section": "Example",
-    "text": "Example\n\n\nCode\nset.seed(239)\n# Generate a skewed distribution\nskewed &lt;- tibble(\n    x = rgamma(1000, shape = 2, scale = 1)\n)\n\n# plot in ggplot2\nggplot(data = skewed, aes(x = x)) +\n    geom_histogram(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlab(\"Height (m)\")\n\n\n\n\nSkewed population distribution for tree heights.\nWe want to estimate the mean height of the trees in the forest."
+    "text": "Example\n\n\nCode\nset.seed(239)\n# Generate a skewed distribution\nskewed &lt;- tibble(\n  x = rgamma(1000, shape = 2, scale = 1)\n)\n\n# plot in ggplot2\nggplot(data = skewed, aes(x = x)) +\n  geom_histogram(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  xlab(\"Height (m)\")\n\n\n\n\nSkewed population distribution for tree heights.\nWe want to estimate the mean height of the trees in the forest."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#sample-no-summary-statistic",
     "href": "lectures/L01/Lecture-01b.html#sample-no-summary-statistic",
     "title": "Lecture 01b – Revision",
     "section": "1 sample (no summary statistic)",
-    "text": "1 sample (no summary statistic)\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 1,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\nWith only one sample, we are not really seeing a sampling distribution – we are just replicating the same population distribution. A sampling distribution emerges when we take multiple samples and calculate their means."
+    "text": "1 sample (no summary statistic)\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 1,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  xlim(0, 10) +\n  xlab(\"Mean height (m)\")\n\n\n\nWith only one sample, we are not really seeing a sampling distribution – we are just replicating the same population distribution. A sampling distribution emerges when we take multiple samples and calculate their means."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#samples-1",
     "href": "lectures/L01/Lecture-01b.html#samples-1",
     "title": "Lecture 01b – Revision",
     "section": "2 samples",
-    "text": "2 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 2,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nWe sample 2 trees and calculate the mean height, and repeat this 1000 times.\nThe distribution of sample means is starting to look more like a normal distribution."
+    "text": "2 samples\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 2,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  xlim(0, 10) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nWe sample 2 trees and calculate the mean height, and repeat this 1000 times.\nThe distribution of sample means is starting to look more like a normal distribution."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#samples-2",
     "href": "lectures/L01/Lecture-01b.html#samples-2",
     "title": "Lecture 01b – Revision",
     "section": "5 samples",
-    "text": "5 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 5,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nFive random samples per calculated mean, repeated 1000 times.\nThe distribution is becoming more normal, and the spread is decreasing: estimate is getting more precise."
+    "text": "5 samples\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 5,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  xlim(0, 10) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nFive random samples per calculated mean, repeated 1000 times.\nThe distribution is becoming more normal, and the spread is decreasing: estimate is getting more precise."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#samples-3",
     "href": "lectures/L01/Lecture-01b.html#samples-3",
     "title": "Lecture 01b – Revision",
     "section": "30 samples",
-    "text": "30 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 30,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nThirty random samples per calculated mean, repeated 1000 times.\nThe distribution of sample means is very close to a normal distribution."
+    "text": "30 samples\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 30,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  xlim(0, 10) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nThirty random samples per calculated mean, repeated 1000 times.\nThe distribution of sample means is very close to a normal distribution."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#samples-4",
     "href": "lectures/L01/Lecture-01b.html#samples-4",
     "title": "Lecture 01b – Revision",
     "section": "50 samples",
-    "text": "50 samples\n\n\nCode\nskewed |&gt;\n    infer::rep_sample_n(\n        size = 50,\n        reps = 1000\n    ) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(x)) |&gt;\n    ggplot(aes(x = xbar)) +\n    geom_density(\n        fill = \"orangered\",\n        alpha = 0.5, bins = 50\n    ) +\n    xlim(0, 10) +\n    xlab(\"Mean height (m)\")\n\n\n\n\nFifty random samples per calculated mean, repeated 1000 times.\nHow many samples is enough?"
+    "text": "50 samples\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 50,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  xlim(0, 10) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nFifty random samples per calculated mean, repeated 1000 times.\nHow many samples is enough?"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#are-50-samples-normal-enough",
     "href": "lectures/L01/Lecture-01b.html#are-50-samples-normal-enough",
     "title": "Lecture 01b – Revision",
     "section": "Are 50 samples “normal” enough?",
-    "text": "Are 50 samples “normal” enough?\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 50,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  stat_function(\n    fun = dnorm,\n    args = list(\n      mean = 2,  # population mean for gamma(2,1)\n      sd = sqrt(2)/sqrt(50)  # theoretical SE for gamma(2,1)\n    ),\n    linewidth = 1,\n    color = \"blue\",\n    linetype = \"dashed\"\n  ) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nFifty random samples per calculated mean, repeated 1000 times.\nHow many samples is enough?"
+    "text": "Are 50 samples “normal” enough?\n\n\nCode\nskewed |&gt;\n  infer::rep_sample_n(\n    size = 50,\n    reps = 1000\n  ) |&gt;\n  group_by(replicate) |&gt;\n  summarise(xbar = mean(x)) |&gt;\n  ggplot(aes(x = xbar)) +\n  geom_density(\n    fill = \"orangered\",\n    alpha = 0.5, bins = 50\n  ) +\n  stat_function(\n    fun = dnorm,\n    args = list(\n      mean = 2, # population mean for gamma(2,1)\n      sd = sqrt(2) / sqrt(50) # theoretical SE for gamma(2,1)\n    ),\n    linewidth = 1,\n    color = \"blue\",\n    linetype = \"dashed\"\n  ) +\n  xlab(\"Mean height (m)\")\n\n\n\n\nFifty random samples per calculated mean, repeated 1000 times.\nHow many samples is enough?"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#effect-of-sample-size",
     "href": "lectures/L01/Lecture-01b.html#effect-of-sample-size",
     "title": "Lecture 01b – Revision",
     "section": "Effect of sample size",
-    "text": "Effect of sample size\n\n\nCode\nlibrary(tidymodels)\nlibrary(patchwork)\nset.seed(642)\n\nheights &lt;- tibble(heights = rnorm(1000, 1.99, 1))\npopmean &lt;- mean(heights$heights)\nsample_sizes &lt;- c(2, 5, 25, 100)\nn &lt;- length(sample_sizes)\n\nheights &lt;- tibble(heights = rgamma(1000, shape = 2, scale = 1))\nsample_sizes &lt;- c(2, 5, 25, 100)\nn &lt;- length(sample_sizes)\n\nplots &lt;- lapply(sample_sizes, function(size) {\n    df &lt;- heights |&gt;\n        rep_sample_n(size = size, reps = 2000) |&gt;\n        group_by(replicate) |&gt;\n        summarise(xbar = mean(heights))\n\n    mean_xbar &lt;- mean(df$xbar)\n\n    ggplot(df, aes(x = xbar)) +\n        geom_histogram(fill = \"orangered\", alpha = 0.5, bins = 50) +\n        geom_vline(aes(xintercept = mean_xbar), color = \"blue\", linetype = \"dashed\") +\n        geom_text(aes(x = mean_xbar, label = sprintf(\"%.2f\", mean_xbar), y = Inf), hjust = -0.1, vjust = 2, color = \"blue\") +\n        ggtitle(paste0(\"Sample Size: \", size)) +\n        xlab(\"Mean height (m)\") +\n        xlim(-3, 8) \n})\nwrap_plots(plots)\n\n\n\nIncreased sample size leads to a more accurate estimate of the population mean, reflected by the narrower distribution of the sample mean, which is captured by the standard error."
+    "text": "Effect of sample size\n\n\nCode\nlibrary(tidymodels)\nlibrary(patchwork)\nset.seed(642)\n\nheights &lt;- tibble(heights = rnorm(1000, 1.99, 1))\npopmean &lt;- mean(heights$heights)\nsample_sizes &lt;- c(2, 5, 25, 100)\nn &lt;- length(sample_sizes)\n\nheights &lt;- tibble(heights = rgamma(1000, shape = 2, scale = 1))\nsample_sizes &lt;- c(2, 5, 25, 100)\nn &lt;- length(sample_sizes)\n\nplots &lt;- lapply(sample_sizes, function(size) {\n  df &lt;- heights |&gt;\n    rep_sample_n(size = size, reps = 2000) |&gt;\n    group_by(replicate) |&gt;\n    summarise(xbar = mean(heights))\n\n  mean_xbar &lt;- mean(df$xbar)\n\n  ggplot(df, aes(x = xbar)) +\n    geom_histogram(fill = \"orangered\", alpha = 0.5, bins = 50) +\n    geom_vline(aes(xintercept = mean_xbar), color = \"blue\", linetype = \"dashed\") +\n    geom_text(aes(x = mean_xbar, label = sprintf(\"%.2f\", mean_xbar), y = Inf), hjust = -0.1, vjust = 2, color = \"blue\") +\n    ggtitle(paste0(\"Sample Size: \", size)) +\n    xlab(\"Mean height (m)\") +\n    xlim(-3, 8)\n})\nwrap_plots(plots)\n\n\n\nIncreased sample size leads to a more accurate estimate of the population mean, reflected by the narrower distribution of the sample mean, which is captured by the standard error."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#effect-of-variability",
     "href": "lectures/L01/Lecture-01b.html#effect-of-variability",
     "title": "Lecture 01b – Revision",
     "section": "Effect of variability",
-    "text": "Effect of variability\n\n\nCode\nset.seed(1221)\n\n# Define a function to generate ggplot objects\ngenerate_plot &lt;- function(sd) {\n    data &lt;- rnorm(500, 1.99, sd)\n    p &lt;- ggplot(data = tibble(x = data), aes(x = x)) +\n        geom_histogram(fill = \"orangered\", alpha = 0.5, bins = 50) +\n        ggtitle(paste(\"SD =\", sd)) +\n        xlim(-100, 100)\n    return(p)\n}\n\n# Apply the function to a list of standard deviations\nsds &lt;- c(3, 6, 15, 25)\nplots &lt;- lapply(sds, generate_plot)\n\n# Wrap the plots\nwrap_plots(plots)\n\n\n\nIncreased variability (i.e. wide range of tree heights) leads to a wider distribution of the sample mean (i.e. less precision), which is also reflected by the standard error."
+    "text": "Effect of variability\n\n\nCode\nset.seed(1221)\n\n# Define a function to generate ggplot objects\ngenerate_plot &lt;- function(sd) {\n  data &lt;- rnorm(500, 1.99, sd)\n  p &lt;- ggplot(data = tibble(x = data), aes(x = x)) +\n    geom_histogram(fill = \"orangered\", alpha = 0.5, bins = 50) +\n    ggtitle(paste(\"SD =\", sd)) +\n    xlim(-100, 100)\n  return(p)\n}\n\n# Apply the function to a list of standard deviations\nsds &lt;- c(3, 6, 15, 25)\nplots &lt;- lapply(sds, generate_plot)\n\n# Wrap the plots\nwrap_plots(plots)\n\n\n\nIncreased variability (i.e. wide range of tree heights) leads to a wider distribution of the sample mean (i.e. less precision), which is also reflected by the standard error."
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#clt-drives-statistical-inference",
@@ -578,119 +571,140 @@
     "href": "lectures/L01/Lecture-01b.html#confidence-intervals",
     "title": "Lecture 01b – Revision",
     "section": "Confidence intervals",
-    "text": "Confidence intervals\nWhat is a confidence interval?\n\nRange of values likely to contain the true population parameter\nLevel of confidence (usually 95%) indicates reliability\nWider intervals = less precise estimates\n\n\n\n\n\n\n\n\nFormula for 95% CI\n\n\n\\bar{x} \\pm (t_{n-1} \\times SE_{\\bar{x}})\n\nwhere t_{n-1} is the t-value for n-1 degrees of freedom\nFor large samples (n &gt; 30), use 1.96 instead of t-value"
+    "text": "Confidence intervals\nWhat is a confidence interval?\n\nRange of values likely to contain the true population parameter\nLevel of confidence (usually 95%) indicates reliability\nWider intervals = less precise estimates\n\n\n\n\n\n\n\n\nFormula for 95% CI\n\n\n\\bar{x} \\pm (t_{n-1} \\times SE_{\\bar{x}})"
   },
   {
     "objectID": "lectures/L01/Lecture-01b.html#visualising-confidence-intervals",
     "href": "lectures/L01/Lecture-01b.html#visualising-confidence-intervals",
     "title": "Lecture 01b – Revision",
     "section": "Visualising confidence intervals",
-    "text": "Visualising confidence intervals\n\n\nCode\n# Generate sample data\nset.seed(253)\nsample_data &lt;- data.frame(\n  group = rep(c(\"A\", \"B\", \"C\"), each = 30),\n  value = c(rnorm(30, 100, 15),\n            rnorm(30, 110, 15),\n            rnorm(30, 105, 15))\n)\n\n# Calculate means and CIs\nci_data &lt;- sample_data %&gt;%\n  group_by(group) %&gt;%\n  summarise(\n    mean = mean(value),\n    se = sd(value)/sqrt(n()),\n    ci_lower = mean - qt(0.975, n()-1)*se,\n    ci_upper = mean + qt(0.975, n()-1)*se\n  )\n\n# Plot\nggplot(ci_data, aes(x = group, y = mean)) +\n  geom_point(size = 3) +\n  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2) +\n  ggtitle(\"Means with 95% Confidence Intervals\")"
+    "text": "Visualising confidence intervals\n\n\nCode\n# Generate sample data\nset.seed(253)\nsample_data &lt;- data.frame(\n  group = rep(c(\"A\", \"B\", \"C\"), each = 30),\n  value = c(\n    rnorm(30, 100, 15),\n    rnorm(30, 110, 15),\n    rnorm(30, 105, 15)\n  )\n)\n\n# Calculate means and CIs\nci_data &lt;- sample_data %&gt;%\n  group_by(group) %&gt;%\n  summarise(\n    mean = mean(value),\n    se = sd(value) / sqrt(n()),\n    ci_lower = mean - qt(0.975, n() - 1) * se,\n    ci_upper = mean + qt(0.975, n() - 1) * se\n  )\n\n# Plot\nggplot(ci_data, aes(x = group, y = mean)) +\n  geom_point(size = 3) +\n  geom_errorbar(aes(ymin = ci_lower, ymax = ci_upper), width = 0.2) +\n  ggtitle(\"Means with 95% Confidence Intervals\")\n\n\n\nWe will learn more about confidence intervals in the next lecture."
   },
   {
-    "objectID": "lectures/L01/Lecture-01b.html#summary",
-    "href": "lectures/L01/Lecture-01b.html#summary",
-    "title": "Lecture 01b – Revision",
-    "section": "Summary",
-    "text": "Summary\nYou should\n\nUnderstand the difference between populations and samples"
+    "objectID": "lectures/L02/Lecture-02a.html#overview",
+    "href": "lectures/L02/Lecture-02a.html#overview",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Overview",
+    "text": "Overview\n\n\n\n\n\n\n\n\nAspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest: mensurative and absolute\nControl over the variables of interest: comparative and manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and thus cannot always be done\n\n\nExamples\nSurveys, monitoring studies, correlational studies, case-control studies, cohort studies\nClinical trials, A/B testing, laboratory experiments, field experiments\n\n\nStatistical Tests\nCorrelation, regression, chi-squared tests, t-tests, one-way ANOVA, time series analysis\nT-tests, one-way ANOVA, factorial ANOVA, regression\n\n\n\n\n\n\n\nWe will focus on the fundamentals behind observational studies this week."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#common-study-types",
-    "href": "lectures/L02/Lecture-02a.html#common-study-types",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Common study types",
-    "text": "Common study types\n\nResearch surveys\n\nEstimate a statistic (e.g. mean, variance), but\nno temporal change during estimate\nE.g. measuring species richness in a forest\n\n\n\nMonitoring studies\n\nEstimate a change in statistic (same as above), and\ntemporal change across observations, i.e. before and after\nE.g. measuring species richness in a forest before and after a fire"
+    "objectID": "lectures/L02/Lecture-02a.html#two-common-types",
+    "href": "lectures/L02/Lecture-02a.html#two-common-types",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Two common types",
+    "text": "Two common types\n\nSurveys\n\nEstimate a statistic (e.g. mean, variance), but\nno temporal change during estimate.\nE.g. measuring species richness in a forest.\n\n\n\nMonitoring studies\n\nEstimate a change in statistic (same as above), and\ntemporal change across observations, i.e. before and after.\nE.g. measuring species richness in a forest before and after a fire."
   },
   {
     "objectID": "lectures/L02/Lecture-02a.html#sampling-designs",
     "href": "lectures/L02/Lecture-02a.html#sampling-designs",
-    "title": "Lecture 02a – Sampling designs I",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
     "section": "Sampling designs",
-    "text": "Sampling designs\n\nSimple random sampling\n\nEach unit has an equal chance of being selected\nRandomly sample units from the entire population\n\n\n\n\n\n\n\n\nStratified random sampling\n\nThe population is first divided into strata (more on this later)\nRandomly sample units within each strata by simple random sampling, standardised by the inclusion probability (or weight) of each strata"
+    "text": "Sampling designs\n\nSimple random sampling:\n\nEach unit has an equal chance of being selected.\nRandomly sample units from the entire population.\n\n\n\n\n\n\n\n\nStratified random sampling\n\nThe population is first divided into strata (more on this later).\nRandomly sample units within each strata by simple random sampling, standardised by the inclusion probability (or weight) of each strata."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#inclusion-probability",
-    "href": "lectures/L02/Lecture-02a.html#inclusion-probability",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Inclusion probability",
-    "text": "Inclusion probability\nThe mathematical foundation of random sampling rests on the concept of inclusion probability.\n\nDefinition\nThe probability that a unit from the population will be included in the sample, denoted as \\(\\pi_i\\).\n\\[\\pi_i = P(\\text{unit }i\\text{ is selected})\\]\n\n\nProperties in simple random sampling\nFor a sample size \\(n\\) from a population of size \\(N\\):\n\\[\\pi_i = \\frac{n}{N} \\quad \\text{for all units }i\\]\nThis means:\n\nEvery unit has the same probability of being selected\n\\(0 &lt; \\pi_i \\leq 1\\) for all units\nIn simple random sampling, \\(\\pi_i\\) is equal for all units\n\n\n\nImplementation\nIn practice, we achieve random sampling through:\n\nComputational methods: Using R’s sample() function\n# Sample 5 units from a population of 100\nsample(1:100, size = 5, replace = FALSE)\nTraditional methods: Random number tables\n\n\n\nBiological application\nIn ecological surveys:\n\nEach quadrat in a field has equal probability of selection\nEach individual in a population has equal chance of being measured\nEach time point has equal likelihood of being sampled"
+    "objectID": "lectures/L02/Lecture-02a.html#what-is-random-sampling",
+    "href": "lectures/L02/Lecture-02a.html#what-is-random-sampling",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "What is “random” sampling?",
+    "text": "What is “random” sampling?\n\nRandom selection of finite or infinite population units.\n\n\n\nWhat does random mean?\n\n\n\nWithin a population, all units have a &gt; 0 probability of being selected i.e. everything has a chance to be selected.\n\n\nThis chance is called the inclusion probability (\\pi_i):\n\n\\pi_i is equal within a population unit – i.e. all units have the same chance of being selected.\n\\pi_i not necessarily equal between different population units – i.e. a unit from one population unit may have a different chance of being selected than a unit from another population unit - more on this later.\n\n\n\n\n\nHow do we perform random sampling in real life?\n\nRandom number generator (RNG) – e.g. R’s sample() function.\nRandom number table – e.g. Random number table by the National Institute of Standards and Technology (NIST)."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#review-of-key-concepts",
-    "href": "lectures/L02/Lecture-02a.html#review-of-key-concepts",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Review of key concepts",
-    "text": "Review of key concepts\nFrom the previous lecture\n\n\nSample mean is a good measure of central tendency\nSample variance is a good measure of dispersion\nSample size affects the precision of the sample mean\n\n\n\nCore question\nCan we combine all of the above in a single statistic?"
+    "objectID": "lectures/L02/Lecture-02a.html#we-know-that",
+    "href": "lectures/L02/Lecture-02a.html#we-know-that",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "We know that…",
+    "text": "We know that…\nFrom the previous lecture\n\nSample mean is a good measure of central tendency.\nSample variance is a good measure of dispersion.\nSample size affects the precision of the sample mean.\n\n\nCan we combine all of the above in a single statistic?"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#understanding-confidence-intervals",
-    "href": "lectures/L02/Lecture-02a.html#understanding-confidence-intervals",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Understanding confidence intervals",
-    "text": "Understanding confidence intervals\n\nBasic definition\nA range of values that likely contains the true population parameter, based on sample data.\n\n\nMathematical form\n\\[\\text{estimate} \\pm \\text{margin of error}\\]\nMore specifically: \\[\\text{estimate} \\pm (\\text{critical value} \\times \\text{standard error})\\]\n\n\nApplications in ecology\n\nHelps assess precision of ecological measurements\nGuides sample size decisions in field studies\nEnables comparison between different populations"
+    "objectID": "lectures/L02/Lecture-02a.html#combining-an-estimate-with-its-precision",
+    "href": "lectures/L02/Lecture-02a.html#combining-an-estimate-with-its-precision",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Combining an estimate with its precision",
+    "text": "Combining an estimate with its precision\nA confidence interval (CI) is:\n\nA range of values, derived from a sample of data, that is used to estimate the range of values for a population parameter\nCrucial for hypothesis testing and estimation, the basis of statistical inference\n\nYou will often see CIs in scientific papers, reports, and news articles."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#interpreting-intervals",
-    "href": "lectures/L02/Lecture-02a.html#interpreting-intervals",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Interpreting intervals",
-    "text": "Interpreting intervals\n\nConfidence intervals depend on a specified confidence level (e.g. 95%, 99%)\nHigher confidence levels produce wider intervals (more conservative)\nRepresents our uncertainty about the true population value\n\n\nField example\nWhen measuring tree heights in a forest:\n\n95% CI of 20 ± 2 metres means:\nIf we repeated this sampling many times\n95% of intervals would contain the true mean height\nWider intervals suggest more variable populations"
+    "objectID": "lectures/L02/Lecture-02a.html#calculating-confidence-intervals",
+    "href": "lectures/L02/Lecture-02a.html#calculating-confidence-intervals",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Calculating confidence intervals",
+    "text": "Calculating confidence intervals\nWhat we need\n\nEstimate of the population parameter, i.e. the sample mean (\\bar{x})\nCritical value (t_{n-1}) from the sampling distribution of the estimate, which depends on the number of samples and the confidence level. This is usually based on the t-distribution\nStandard error of the estimate, standardised by the number of samples i.e. SE of the mean (SE_{\\bar{x}})\n\nAll these (mean, standard error and critical value) are combined to form the confidence interval."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#understanding-soil-carbon",
-    "href": "lectures/L02/Lecture-02a.html#understanding-soil-carbon",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Understanding soil carbon",
-    "text": "Understanding soil carbon\nEcological importance\n\n\nCritical for climate change mitigation\nIndicator of soil health and fertility\nKey factor in forest ecosystem function\n\n\n\nResearch challenges\n\nHigh spatial variability\nLabour-intensive measurements\nSeasonal fluctuations"
+    "objectID": "lectures/L02/Lecture-02a.html#breakdown",
+    "href": "lectures/L02/Lecture-02a.html#breakdown",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Breakdown",
+    "text": "Breakdown\nIn general, a CI has the form: \\text{estimate} \\pm \\text{margin of error}\nwhere the margin of error is a function of the standard error of the estimate:\n\\text{estimate} \\pm (\\text{critical value} \\times \\text{standard error (estimate)})\nwhere the critical value is based on the sampling distribution of the estimate i.e. the t-distribution."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#sample-data-analysis",
-    "href": "lectures/L02/Lecture-02a.html#sample-data-analysis",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Sample data analysis",
-    "text": "Sample data analysis\n\n\nCode\n# Create data frame for soil samples\nsoil_data &lt;- tibble(\n  location = 1:7,\n  carbon = c(48, 56, 90, 78, 86, 71, 42)\n)\n\n# Calculate mean and confidence interval\nsoil_summary &lt;- tibble(\n  mean = mean(soil_data$carbon),\n  se = sd(soil_data$carbon)/sqrt(length(soil_data$carbon)),\n  ci_lower = mean - qt(0.975, df=length(soil_data$carbon)-1) * se,\n  ci_upper = mean + qt(0.975, df=length(soil_data$carbon)-1) * se\n)\n\n# Plot with ggplot2\nggplot(soil_data, aes(x = \"\", y = carbon)) +\n  geom_jitter(width = 0.1, alpha = 0.6, colour = \"forestgreen\") +\n  geom_crossbar(data = soil_summary, \n                aes(y = mean, ymin = ci_lower, ymax = ci_upper),\n                width = 0.3, alpha = 0.2) +\n  theme_minimal() +\n  labs(x = \"\", y = \"Soil carbon (t/ha)\",\n       title = \"Forest soil carbon content\",\n       subtitle = \"Points show samples, bar shows 95% CI\") +\n  theme(plot.title = element_text(face = \"bold\"))"
+    "objectID": "lectures/L02/Lecture-02a.html#formula-for-95-confidence-interval-ci",
+    "href": "lectures/L02/Lecture-02a.html#formula-for-95-confidence-interval-ci",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Formula for 95% Confidence Interval (CI)",
+    "text": "Formula for 95% Confidence Interval (CI)\n\n\\bar{x} \\pm \\left(t_{n-1} \\times \\frac{s}{\\sqrt{n}}\\right)\n\nStep-by-step calculation by hand\n\nCalculate the sample mean, \\bar{x}\nCalculate the sample standard deviation, s\nDetermine the standard error of the mean, SE_{\\bar{x}} = \\frac{s}{\\sqrt{n}}\nLook up the t-value, t_{n-1}, from the t-distribution table for the 95% confidence level and n-1 degrees of freedom (manual table or function in R).\nCompute the margin of error: \\text{Margin of Error} = t_{n-1} \\times SE_{\\bar{x}}\nFinally, the 95% CI is: \\bar{x} \\pm (t_{n-1} \\times SE_{\\bar{x}})\n\nYou need to be able to calculate this by hand/calculator."
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#data-processing",
-    "href": "lectures/L02/Lecture-02a.html#data-processing",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Data processing",
-    "text": "Data processing\n\nRaw measurements\n\n\nCode\nsoil &lt;- soil_data$carbon\nsoil\n\n\n[1] 48 56 90 78 86 71 42\n\n\n\n\nStatistical components\n\nSample mean calculation\n\n\n\nCode\nmean_soil &lt;- mean(soil)\nmean_soil\n\n\n[1] 67.28571\n\n\n\nCritical value (95% confidence)\n\n\n\nCode\nt_critical &lt;- qt(0.975, df = length(soil) - 1)\nt_critical\n\n\n[1] 2.446912\n\n\n\nStandard error\n\n\n\nCode\nse_mean &lt;- sd(soil) / sqrt(length(soil))\nse_mean\n\n\n[1] 7.127126"
+    "objectID": "lectures/L02/Lecture-02a.html#more-definitions",
+    "href": "lectures/L02/Lecture-02a.html#more-definitions",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "More definitions",
+    "text": "More definitions\nDegrees of freedom (df)\nThe number of independent values in a sample. It is calculated as: \n\\text{df} = n - 1\n where n is the number of samples. We subtract 1 because of Bessel’s correction.\n\n\n\n\n\n\n\nExample\n\n\n\nFour numbers have a mean value of 5. The first three numbers can be any value, so they are 3, 10 and 7\nThe fourth number must be 5 to make the mean 5\nTherefore, the group of four numbers have 3 i.e. n - 1, degrees of freedom"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#results-interpretation",
-    "href": "lectures/L02/Lecture-02a.html#results-interpretation",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Results interpretation",
-    "text": "Results interpretation\n\nConfidence interval calculation\n\n\nCode\nmargin_error &lt;- t_critical * se_mean\nci95 &lt;- c(mean = mean_soil, \n  L95 = mean_soil - margin_error, \n  U95 = mean_soil + margin_error)\n\nci95\n\n\n    mean      L95      U95 \n67.28571 49.84627 84.72516 \n\n\n\n\nEcological implications\n\nMean soil carbon: 67.3 t/ha\n95% CI: [52.3, 82.3] t/ha\nInterpretation:\n\nModerate to high carbon content\nRelatively wide interval suggests high variability\nMore samples needed for higher precision"
+    "objectID": "lectures/L02/Lecture-02a.html#more-definitions-1",
+    "href": "lectures/L02/Lecture-02a.html#more-definitions-1",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "More definitions",
+    "text": "More definitions\nt-critical value\nGiven a confidence level (e.g. 95%) and degrees of freedom (df), the t-critical value is a value that is used to determine the margin of error in a confidence interval.\nIt assumes: - A t-distribution of the data - A symmetric distribution around the mean"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#research-considerations",
-    "href": "lectures/L02/Lecture-02a.html#research-considerations",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Research considerations",
-    "text": "Research considerations\n\n\nHow precise is our estimate of soil carbon?\nWhat sample size would improve precision?\nCan we sample more efficiently?"
+    "objectID": "lectures/L02/Lecture-02a.html#more-definitions-2",
+    "href": "lectures/L02/Lecture-02a.html#more-definitions-2",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "More definitions",
+    "text": "More definitions\nt-distribution\nA probability distribution that is used to estimate the population. Using the correct distribution gives better estimates.\n\nSimilar to the normal distribution, but with heavier tails.\nAs the sample size increases, the t-distribution approaches the normal distribution, so we do not need to worry about it for large sample sizes.\n\n\n\nCode\nlibrary(ggplot2)\nlibrary(gganimate)\n\n# Variable to control animation speed (higher values = slower transitions)\nanim_speed &lt;- 1\n\n# Create a sequence of x values for the plot\nx &lt;- seq(-4, 4, length.out = 400)\n\n# Degrees of freedom: 1 through 5 then even numbers from 6 to 30\ndfs &lt;- c(1:5, seq(6, 30, by = 2))\n\n# Prepare data for t-distribution curves with a new \"df\" column\nt_curves &lt;- do.call(rbind, lapply(dfs, function(df) {\n  data.frame(x = x, \n             density = dt(x, df), \n             df = df)\n}))\n\n# Create data for the standard normal distribution (static)\nnormal_curve &lt;- data.frame(x = x, \n                             density = dnorm(x))\n\n# Plot with gganimate: animate t-distribution curves (each frame shows one df)\np &lt;- ggplot() +\n  # Static normal distribution curve\n  geom_line(data = normal_curve, aes(x = x, y = density), \n            color = \"black\", linetype = \"dashed\", size = 1) +\n  # t-distribution curve that will animate\n  geom_line(data = t_curves, aes(x = x, y = density, color = factor(df)), \n            size = 1) +\n  labs(title = \"Degrees of Freedom: {closest_state}\",\n       x = \"x\",\n       y = \"Density\") +\n  theme(legend.position = \"none\") +\n  transition_states(states = df, transition_length = anim_speed, state_length = anim_speed)\n\np"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#understanding-different-approaches",
-    "href": "lectures/L02/Lecture-02a.html#understanding-different-approaches",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Understanding different approaches",
-    "text": "Understanding different approaches\nOur focus today has been on observational studies. However, environmental science uses different approaches depending on the research question.\n\n\n\n\n\n\n\n\nAspect\nObservational study\nControlled experiment\n\n\n\n\nControl\nNo control over the variables of interest - Mensurative and Absolute\nControl over the variables of interest - Comparative and Manipulative\n\n\nCausation\nCannot establish causation, but perhaps association\nCan establish causation\n\n\nFeasibility\nCan be done in many cases\nMay be destructive and cannot always be done\n\n\n\n\nThis comparison will be important as we move into experimental design in our next lectures."
+    "objectID": "lectures/L02/Lecture-02a.html#interpreting-confidence-intervals",
+    "href": "lectures/L02/Lecture-02a.html#interpreting-confidence-intervals",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Interpreting confidence intervals",
+    "text": "Interpreting confidence intervals\n\nConfidence intervals depend on a specified confidence level (e.g. 95%, 99%) with higher confidence levels producing wider intervals (i.e. more conservative).\nAnother way to think of it: a range of values that we are fairly sure contains the true value of the population parameter.\n\n\nFishing analogy\nA confidence interval is like a fishing net:\n\nA wider net (interval) is more likely to catch the fish (true value)\nA spear is less likely to catch the fish\nThe net width represents our uncertainty about the true value"
   },
   {
-    "objectID": "lectures/L02/Lecture-02a.html#thanks",
-    "href": "lectures/L02/Lecture-02a.html#thanks",
-    "title": "Lecture 02a – Sampling designs I",
-    "section": "Thanks!",
-    "text": "Thanks!\nQuestions?\nThis presentation is based on the SOLES Quarto reveal.js template and is licensed under a Creative Commons Attribution 4.0 International License\n\n⇣PDF"
+    "objectID": "lectures/L02/Lecture-02a.html#soil-carbon",
+    "href": "lectures/L02/Lecture-02a.html#soil-carbon",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Soil carbon",
+    "text": "Soil carbon\n\nSoil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).\n\n\nCode\nsoil &lt;- c(48, 56, 90, 78, 86, 71, 42)\nsoil\n\n\n[1] 48 56 90 78 86 71 42\n\n\nWhat is the mean soil carbon content and how confident are we in this estimate? How this is calculated depends on whether we used simple random sampling or stratified random sampling."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#mean-and-95-ci",
+    "href": "lectures/L02/Lecture-02a.html#mean-and-95-ci",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Mean and 95% CI",
+    "text": "Mean and 95% CI\nStep-by-step calculation\n\n\nMean: \\bar{x} = \\frac{48+56+90+78+86+71+42}{7} \\approx 67.3\nStandard deviation: s \\approx 18.84\nStandard error: SE = \\frac{s}{\\sqrt{7}} \\approx 7.12\nt-value (95% CI, df = 6): t_{0.975,6} \\approx 2.447\nMargin of error: t_{0.975,6} \\times SE \\approx 17.43\nWhich gives: (67.3 - 17.43, 67.3 + 17.43) = (49.87, 84.73)\n\n\n\nAnd so we report the mean soil carbon content as 67.3 t/ha with a 95% CI of (49.87, 84.73) t/ha or 67.3 ± 17.43 t/ha."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#implementation-in-r",
+    "href": "lectures/L02/Lecture-02a.html#implementation-in-r",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Implementation in R",
+    "text": "Implementation in R\nManual calculation\n\n# Step 1: Calculate the sample mean of soil carbon content\nmean_soil &lt;- mean(soil)\n\n# Step 2: Calculate the sample standard deviation of soil carbon content\nsd_soil &lt;- sd(soil)\n\n# Step 3: Calculate the standard error of the mean (SE)\nse_soil &lt;- sd_soil / sqrt(length(soil))\n\n# Step 4: Calculate the t-critical value for a 95% confidence interval\nt_crit &lt;- qt(0.975, df = length(soil) - 1)\n\n# Step 5: Calculate the margin of error (t_crit * SE)\n# and then determine the lower and upper bounds of the confidence interval\nci &lt;- mean_soil + c(-1, 1) * (t_crit * se_soil)\n\n# Step 6: View the calculated 95% confidence interval\nci\n\n[1] 49.84627 84.72516\n\n\nThere are ways to calculate this in R quickly, but it is important to understand the manual calculation."
+  },
+  {
+    "objectID": "lectures/L02/Lecture-02a.html#questions",
+    "href": "lectures/L02/Lecture-02a.html#questions",
+    "title": "Lecture 02a – Sampling designs: simple random sampling",
+    "section": "Questions",
+    "text": "Questions\n\nHow precise is our estimate?\nHow big a change must there be to estimate a statistically significant change?\nCan we sample more efficiently?\n\nTo answer these questions, we need to compare simple random sampling with a hypothetical stratified random sampling design (i.e. what if we had considered stratification before sampling?)"
   },
   {
     "objectID": "lectures/L02/index.html",
     "href": "lectures/L02/index.html",
     "title": "Lecture 02",
     "section": "",
-    "text": "Lecture 02a – Sampling designs I Full Screen | PDF\nLecture 02b – Sampling designs II Full Screen | PDF",
+    "text": "Lecture 02a – Sampling designs: simple random sampling Full Screen | PDF\n\nLecture 02b – Sampling designs II Full Screen | PDF",
     "crumbs": [
       "{{< fa house-chimney >}}",
       "**Module 1: Designed studies**",
