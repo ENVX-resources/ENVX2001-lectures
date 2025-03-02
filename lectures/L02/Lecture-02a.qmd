@@ -34,8 +34,10 @@ theme_set(theme_cowplot())
 library(gt)
 
 tibble(
-  Aspect = c("**Control**", "**Causation**", "**Feasibility**", 
-             "**Examples**", "**Statistical Tests**"),
+  Aspect = c(
+    "**Control**", "**Causation**", "**Feasibility**",
+    "**Examples**", "**Statistical Tests**"
+  ),
   `Observational study` = c(
     "No control over the variables of interest: **mensurative** and **absolute**",
     "Cannot establish causation, but perhaps **association**",
@@ -46,7 +48,7 @@ tibble(
   `Controlled experiment` = c(
     "Control over the variables of interest: **comparative** and **manipulative**",
     "Can establish **causation**",
-    "May be destructive and thus cannot always be done", 
+    "May be destructive and thus cannot always be done",
     "Clinical trials, A/B testing, laboratory experiments, field experiments",
     "**T-tests**, **one-way ANOVA**, factorial ANOVA, regression"
   )
@@ -226,6 +228,7 @@ where $n$ is the number of samples. We subtract 1 because of [Bessel's correctio
 Given a **confidence level** (e.g. 95%) and **degrees of freedom** (df), the $t$-critical value is a value that is used to determine the **margin of error** in a confidence interval.
 
 It assumes:
+
 - A **t-distribution** of the data
 - A **symmetric distribution** around the mean
 
@@ -252,26 +255,36 @@ dfs <- c(1:5, seq(6, 30, by = 2))
 
 # Prepare data for t-distribution curves with a new "df" column
 t_curves <- do.call(rbind, lapply(dfs, function(df) {
-  data.frame(x = x, 
-             density = dt(x, df), 
-             df = df)
+  data.frame(
+    x = x,
+    density = dt(x, df),
+    df = df
+  )
 }))
 
 # Create data for the standard normal distribution (static)
-normal_curve <- data.frame(x = x, 
-                             density = dnorm(x))
+normal_curve <- data.frame(
+  x = x,
+  density = dnorm(x)
+)
 
 # Plot with gganimate: animate t-distribution curves (each frame shows one df)
 p <- ggplot() +
   # Static normal distribution curve
-  geom_line(data = normal_curve, aes(x = x, y = density), 
-            color = "black", linetype = "dashed", size = 1) +
+  geom_line(
+    data = normal_curve, aes(x = x, y = density),
+    color = "black", linetype = "dashed", size = 1
+  ) +
   # t-distribution curve that will animate
-  geom_line(data = t_curves, aes(x = x, y = density, color = factor(df)), 
-            size = 1) +
-  labs(title = "Degrees of Freedom: {closest_state}",
-       x = "x",
-       y = "Density") +
+  geom_line(
+    data = t_curves, aes(x = x, y = density, color = factor(df)),
+    size = 1
+  ) +
+  labs(
+    title = "Degrees of Freedom: {closest_state}",
+    x = "x",
+    y = "Density"
+  ) +
   theme(legend.position = "none") +
   transition_states(states = df, transition_length = anim_speed, state_length = anim_speed)
 

@@ -1,0 +1,15 @@
+{
+  "hash": "782b4775327a273ec1a7fff3a929acc1",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: Lecture 03a -- $t$-Tests\nsubtitle: ENVX2001 Applied Statistical Methods\nauthor: Dr. Januar Harianto \ninstitute: The University of Sydney\ndate: last-modified # today | last-modified\ndate-format: \"MMM YYYY\"\nexecute:\n  cache: false\n  echo: true\neditor-options:\n  canonical: true\ntoc: true\ntoc-depth: 1\ntoc-title: Outline\n---\n\n\n\n\n\n\n# History\n\n![William Gosset (1908)](images/will.png)\n\nFormulated the $t$-distribution and $t$-tests.\n\n![Ronald FIsher](images/ronald.png)\n\nFormulated the $t$-distribution and $t$-tests.\n\n\n# Cattle\n## Data\n\n- Weights of two breeds of cattle are to be compared\n- Twelve (12) samples were taken randomly from Breed 1 and 15 samples from Breed 2.\n- Are there any differences in the mean weights of the two breeds?\n\n::: fragment\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncattle <- read.csv(\"data/cattle.csv\")\ncattle\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n   Breed1 Breed2\n1   187.6  148.1\n2   180.3  146.2\n3   198.6  152.8\n4   190.7  135.3\n5   196.3  151.2\n6   203.8  146.3\n7   190.2  163.5\n8   201.0  146.6\n9   194.7  162.4\n10  221.1  140.2\n11  186.7  159.4\n12  203.1  181.8\n13     NA  165.1\n14     NA  165.0\n15     NA  141.6\n```\n\n\n:::\n:::\n\n\n\n\n\n:::\n\n\n\n## Thanks!\n### Questions?\nThis presentation is based on the [SOLES Quarto reveal.js template](https://github.com/usyd-soles-edu/soles-revealjs) and is licensed under a [Creative Commons Attribution 4.0 International License][cc-by].\n\n[cc-by]: http://creativecommons.org/licenses/by/4.0/\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

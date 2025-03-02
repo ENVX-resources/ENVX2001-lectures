@@ -5155,11 +5155,11 @@
       "Author": "John Helveston [aut, cre, cph] (<https://orcid.org/0000-0002-2657-9191>), Garrick Aden-Buie [aut] (<https://orcid.org/0000-0002-7111-0077>), Bryan Shalloway [ctb]",
       "Maintainer": "John Helveston <john.helveston@gmail.com>",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "renderthis",
       "RemoteUsername": "jhelvy",
+      "RemoteRepo": "renderthis",
       "RemoteRef": "HEAD",
-      "RemoteSha": "b0068f77bc308ae77e98b8c6d6cabcea33f0da3d"
+      "RemoteSha": "b0068f77bc308ae77e98b8c6d6cabcea33f0da3d",
+      "RemoteHost": "api.github.com"
     },
     "renv": {
       "Package": "renv",

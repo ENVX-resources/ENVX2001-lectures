@@ -4,12 +4,19 @@ author: Januar Harianto
 format: soles-revealjs
 # format: revealjs
 # fontsize: 16pt
-embed-resources: true
+embed-resources: false
 execute:
-  cache: true
+  cache: false
 ---
 
 # In the last lecture...
+
+::: incremental
+- We learned about **simple random sampling**
+- Each unit had an equal chance of being selected
+- We calculated confidence intervals for population estimates
+- We saw some limitations of this approach (not always representative)
+:::
 
 
 
@@ -31,29 +38,59 @@ execute:
 
 ### Not *always* the case, but still a good technique.
 
+## Simple random sampling: potential problems
+
 ::: fragment
-But what if we have more information about the population?
+Imagine tossing 10 random points onto a landscape.
 :::
 
 ::: fragment
-:::: {.columns}
-::: {.column width="50%"}
+### By pure chance...
+- We might miss some important areas entirely
+- Or sample some areas too much
+:::
+
+::: fragment
+### This is more likely when:
+- Sample size is small
+- The landscape has distinct zones
+:::
+
+
+## Simple random sampling: theoretical example
+
+::: fragment
+If an area has:
+
+- 80% grassland
+- 20% wetland
+:::
+
+::: fragment
+With simple random sampling:
+
+- We expect ~8 samples in grassland, ~2 in wetland
+- But by chance, we might get:
+  - 10 grassland, 0 wetland! 
+  - Or 6 grassland, 4 wetland
+:::
+
+::: fragment
+### But what if we have more information about the population?
+:::
+
+## Soil carbon example
+
+::: fragment
 ### Soil carbon
-![](images/datastory.png)
+![](images/datastory.png){width="50%"}
 :::
 
-::: {.column width="50%"}
 ::: fragment
 ### Different land types
-::: incremental
-- Land type A covers 62% of the area, and land type B covers 38%.
-- Type A has a **higher** chance of being selected if we use simple random sampling.
+- Land type A covers 62% of the area, land type B covers 38%
+- Type A has a **higher** chance of being selected with simple random sampling
 - **Can we use this information to our advantage?**
-:::
-:::
-
-:::
-::::
 :::
 
 
@@ -68,59 +105,103 @@ But what if we have more information about the population?
 3. **Pool** (or **combine**) the estimates from each stratum to get an overall population estimate.
 :::
 
+::: fragment
+### Real-world example
+If studying plant biodiversity in a national park:
+
+- Step 1: Divide park into strata (e.g., forest, grassland, wetland)
+- Step 2: Take random samples within each habitat type
+- Step 3: Combine data to estimate overall biodiversity, giving proper weight to each habitat's area
+:::
+
 ## Strata rules 
 
 ### Strata are...
 
 ::: incremental
-- **Mutually exclusive** and **collectively exhaustive**; i.e. units must *all* belong to a stratum and *only* to one stratum (no unit should be unassigned).
-- **Homogeneous** -- units within a stratum are similar to each other and distinct from units in other strata.
-- **Sampled irrespective of size** -- the point is to ensure that each stratum is represented in the final sample.
+- **Mutually exclusive and collectively exhaustive** (simple explanation: every sample belongs to exactly one stratum -- no overlaps, no leftovers)
+- **Homogeneous** - Samples within a stratum should be similar to each other (less variable than the overall population)
+- **Each stratum must be sampled** - The goal is to ensure every important group is represented
 :::
 
 ::: fragment
-![](images/stratified.png){style="width: 60%;" fig-align="center"}
+![](images/stratified.png)
 :::
 
-:::fragment
-### Identifying strata
+## Good vs. poor stratification choices
+
+::: fragment
+### Everyday examples
 
 :::: {.columns}
 ::: {.column width="50%"}
-#### Acceptable
-**Age groups** or **income brackets** -- these are mutually exclusive and homogeneous.
+#### Good strata
+- **University students**: Undergrad, Masters, PhD
+- **Forest types**: Deciduous, Coniferous, Mixed
+- **Income levels**: Low, Medium, High
 :::
 
 ::: {.column width="50%"}
-#### Might not work...
-**Nationality** or **food preference** -- these may not be mutually exclusive e.g. a person can have multiple nationalities, or animals can have multiple food preferences.
+#### Poor strata choices
+- **Interests**: Sports fans, Music lovers, Foodies (a person can be in multiple groups)
+- **Water quality**: Clean, Somewhat polluted (too subjective, not clearly defined)
 :::
 ::::
 :::
-
 ## Advantages
 
 ### We address:
 
-::: incremental
+
 - **Bias**. Each stratum is sampled, so the sample is representative of the population.
 - **Accuracy**. Each stratum is represented by a minimum number of sampling units.
 - **Insight**. We can compare strata and make inferences about the population.
-:::
 
 :::fragment
 ### Does this make simple random sampling obsolete?
 
-::: incremental
 - **No**. *Still* a good technique.
 - With large enough samples, the two methods will converge.
 - Chance of *not* selecting a unit from a stratum is always there, but reduces as the sample size increases.
-:::
+
 :::
 
 # Stratified random sampling: estimates
 
-## Everything is the same, but...
+## What are we trying to achieve with our calculations?
+
+### The statistical journey
+
+::: fragment
+Once we have our stratified sample, we need to:
+
+1. **Estimate the population central tendency**: Calculate the pooled mean
+2. **Quantify our uncertainty**: Calculate the pooled standard error
+3. **Create an inference tool**: Build a confidence interval
+4. **Make decisions**: Compare estimates, test hypotheses
+
+All of these steps must account for our stratified design.
+:::
+
+
+## The statistical workflow for stratified sampling
+
+### Four key steps:
+
+1. **Pooled Mean ($\bar{y}_{s}$)**: Sum of (stratum weight × stratum mean)
+   - Best estimate of the population parameter
+
+2. **Pooled Standard Error**: $$SE(\bar{y}_{s}) = \sqrt{\sum w_i^2 \times \frac{s_i^2}{n_i}}$$
+   - Accounts for stratum weights and within-stratum variability
+
+3. **t-Critical Value**: Based on $df = n - L$ and α = 0.05
+   - Accounts for sample size in uncertainty estimates
+
+4. **Confidence Interval**: $$\text{Pooled mean} \pm (t-\text{critical} \times SE(\bar{y}_{s}))$$
+   - Range likely containing true population mean
+
+
+## Accounting for strata using "weight"
 
 ### Weighted estimates
 
@@ -141,120 +222,75 @@ But what if we have more information about the population?
 
 # Data story: soil carbon
 
+## Soil carbon data
 
-## Soil carbon
-:::: {.columns}
-::: {.column width="50%"}
-### Data story
+### Our case study
 
-![](images/datastory.png)
+Soil carbon content was measured at 7 locations across the area. The amounts were:
+48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).
 
-Soil carbon content was measured at 7 locations across the area. The amount at each location was 48, 56, 90, 78, 86, 71, 42 tonnes per hectare (t/ha).
-:::
+![](images/datastory.png){width="60%"}
 
-::: {.column width="50%"}
 ::: fragment
-### Different land types
-- Land type A covers 62% of the area, and land type B covers 38%.
-- Type A has a **higher** chance of being selected if we use simple random sampling.
-- **Can we use this information to our advantage?**
+### Setting up the data in R
 
-### In R
-
-Suppose we know the land type for each location sampled. We can use this information to sample the data from each land type according to stratum size.
-
-(Coincidentally the sampling effort and data are the same as the simple random sampling example from the previous lecture.)
+We know which land type each sample came from:
 
 ```{r}
-landA <- c(90, 78, 86, 71)  # stratum A samples
-landB <- c(48, 56, 42)      # stratum B samples
+#| code-fold: false
+landA <- c(90, 78, 86, 71)  # stratum A samples (62% of the area)
+landB <- c(48, 56, 42)      # stratum B samples (38% of the area) 
 ```
-:::
-:::
-::::
-
-## 95 % Confidence interval
-
-### The formula
-$$95\%\ CI = \bar y_{s} \pm t^{0.025}_{n-L} \times SE(\bar y_{s})$$
-
-where $L$ is the number of strata, $n$ is the total number of samples, and $\bar y_{s}$ is the weighted mean of the strata. 
-
-**Therefore:**
-
-::: incremental
-- $\bar y_{s}$ is the pooled mean.
-- $t^{0.025}_{n-L}$ is the $t$-value for a 95% confidence interval with $n-L$ degrees of freedom.
-- $SE(\bar y_{s})$ is the pooled standard error of the mean.
 :::
 
 ## Pooled mean $\bar y_{s}$
 
-> **Sum** of the weighted estimates of mean, from each stratum.
+> The pooled mean is our best estimate of the overall population mean, taking into account the different stratum sizes.
 
 ::: fragment
 $$\bar{y}_{s} = \sum_{i=1}^L \bar{y}_i \times w_i$$
 
-where $L$ is the number of strata, $\bar{y}_i$ is the mean of stratum $i$, and $w_i$ is the weight for stratum $i$.
+**In simple terms:**
+
+- We calculate the mean for each stratum separately ($\bar{y}_i$)
+- We multiply each stratum's mean by its weight ($w_i$)
+- We add these weighted means together to get the overall pooled mean
 :::
 
+## Calculating pooled mean: soil carbon example
+
 ::: fragment
-We first define the weights $w_i$ for each stratum:
+We first define the weights $w_i$ for each stratum based on their area:
 
 ```{r}
-weight <- c(0.62, 0.38)
+weight <- c(0.62, 0.38)  # 62% of area is land type A, 38% is land type B
 ```
 :::
 
 ::: fragment
-Then we calculate the weighted mean by multiplying the mean of each stratum by the weight and summing the results:
+Then we calculate the weighted mean:
 
 ```{r}
 weighted_mean <- mean(landA) * weight[1] + mean(landB) * weight[2]
 weighted_mean
 ```
+
+This is like saying: "62% of our land has soil carbon like land type A, and 38% has soil carbon like land type B, so our overall estimate takes both into account in these proportions."
 :::
 
 ## Pooled standard error of the mean $SE(\bar y_{s})$
 
-> **Square root** of the sum of the weight-adjusted variances of the mean per stratum, **assuming the strata are independent** (see next slide).
+### The formula looks similar to a standard error...
 
-::: fragment
-$$Var(\bar y_{s}) = \sum_{i=1}^L w_i^2 \times Var(\bar y_i)$$
-$$SE(\bar y_{s}) = \sqrt{Var(\bar y_{s})}$$
+$$SE(\bar y_{s}) = \sqrt{\color{blue}{{\sum_{i=1}^L w_i^2}} \times \frac{s_i^2}{n_i}}$$
 
-where $L$ is the number of strata, $w_i$ is the weight for stratum $i$, and $Var(\bar y_i)$ is the variance of the mean for stratum $i$.
+::: {.callout-note}
+### What's different?
+- Instead of a single variance term, we use the sum of weighted variances from each stratum
+- The $\color{blue}{w_i^2}$ term ensures we account for the relative size of each stratum
+- Each stratum contributes its own variance ($s_i^2$) and sample size ($n_i$)
 :::
 
-::: fragment
-### In R
-```{r}
-varA <- var(landA) / length(landA)
-varB <- var(landB) / length(landB)
-weighted_var <- weight[1]^2 * varA + weight[2]^2 * varB
-weighted_se <- sqrt(weighted_var)
-weighted_se
-```
-:::
-
-## Pooled standard error of the mean $SE(\bar y_{s})$
-### Why is weight $w$ squared?
-Variance is standard deviation squared, therefore the weight is naturally squared when calculating the variance of the weighted mean. We just don't see it unless we *expand* the variance formula i.e. *"it's a math thing".*
-
-::: fragment
-### Can we really add variances?
-Yes, if sampling units are *all independent*, which should be the case for a well-designed stratified random sampling since units are mutually exclusive and collectively exhaustive.
-
-The addition or subtraction of variances include a **covariance term** if the strata are not independent:
-
-$$ Var(\bar y_{s}) = \sum_{i=1}^L w_i^2 \times Var(\bar y_i) + 2 \times \sum_{i=1}^L \sum_{j=1}^L w_i \times w_j \times Cov(\bar y_i, \bar y_j)$$
-:::
-
-::: fragment
-
-![](images/wtfmouth.gif){style="width: 15%;" fig-align="center"}
-
-:::
 
 ## $t$-critical value
 ### Degrees of freedom $df$
@@ -264,9 +300,11 @@ $$df = n - L$$
 where $n$ is the total number of samples and $L$ is the number of strata.
 
 ::: fragment
-- Suppose we want to assign 12 samples to 3 strata.
-- The degrees of freedom is $12 - 3 = 9$.
-- Think of it this way: of all the 12 samples, we can assign at least 9 units freely into any stratum, but the last 3 *must* be in *each* of the 3 strata.
+- The degrees of freedom tells us how much "free information" we have for making estimates
+- For stratified sampling, we lose one degree of freedom for each stratum
+- **Example:** If we have 12 samples in 3 strata:
+  - The degrees of freedom is $12 - 3 = 9$
+  - Think of it this way: 9 samples can be placed anywhere, but we must have at least 1 sample in each of the 3 strata
 :::
 
 ::: fragment
@@ -279,11 +317,36 @@ t_crit
 
 :::
 
-## 95 % Confidence interval
+## 95 % Confidence interval for stratified random sampling
+
+### The formula
+$$95\%\ CI = \bar y_{s} \pm t^{0.025}_{n-L} \times SE(\bar y_{s})$$
+
+where $L$ is the number of strata, $n$ is the total number of samples, and $\bar y_{s}$ is the weighted mean of the strata. 
+
+**In simple terms:**
+
+::: incremental 
+- We're creating a range where we're 95% confident the true population mean lies
+- We start with our best estimate (the pooled mean $\bar y_{s}$)
+- We add and subtract a "margin of error" (which depends on our sample size and variability)
+- The margin of error = $t$-critical value × standard error
+:::
+
+### Visualising this:
+```
+Lower bound ← [Pooled mean - Margin of error] ... [Pooled mean + Margin of error] → Upper bound
+```
+
+## 95 % Confidence interval for stratified random sampling
 
 ### Putting it all together
 
 ```{r}
+varA <- var(landA) / length(landA)  # variance of the mean for A
+varB <- var(landB) / length(landB)  # variance of the mean for B
+weighted_var <- weight[1]^2 * varA + weight[2]^2 * varB
+weighted_se <- sqrt(weighted_var)
 ci <- c(
   L95 = weighted_mean - t_crit * weighted_se,
   u95 = weighted_mean + t_crit * weighted_se
@@ -293,9 +356,10 @@ ci
 
 # Comparison
 
+
 ## Simple random vs. stratified random sampling
 
-What if we had use stratified random sampling instead of simple random sampling (and collected the same amount of data)?
+What if we had used stratified random sampling instead of simple random sampling (and collected the same amount of data)?
 
 ### What differences can you see?
 
@@ -315,20 +379,49 @@ knitr::kable(compare)
 
 ```
 
-::: incremental
-- Differences in mean, variance of the mean and 95% CI?
-- Which method is more precise?
-- *Can simple random sampling be as precise as stratified random sampling?*
+## Visual comparison of 95% confidence intervals
+
+```{r}
+#| fig-height: 4
+#| fig-width: 10
+#| fig-align: center
+
+# Creating a visual comparison of confidence intervals
+ggplot(compare, aes(x = Design, y = Mean)) +
+  geom_point(size = 3) +
+  geom_errorbar(aes(ymin = L95, ymax = U95), width = 0.2, size = 1) +
+  labs(title = "95% Confidence Intervals by Sampling Design",
+       y = "Soil Carbon (tonnes/ha)",
+       x = "") +
+  theme_minimal(base_size = 14) +
+  annotate("text", x = 2, y = 55, 
+           label = "Stratified sampling gives a\nnarrower confidence interval\n(more precise estimate)", 
+           color = "blue")
+```
+
+
+::: fragment
+### Key insights:
+- Both methods give similar estimates of the mean
+- Stratified sampling produces a much narrower confidence interval
+- The variance of the mean is about 5 times smaller with stratified sampling
+- This means stratified sampling is much more precise with the same number of samples
 :::
 
 ## Efficiency
 
+### What is sampling efficiency?
+- A measure of how much "bang for your buck" you get with different sampling methods
 - Calculated as a ratio:
   $$\text{Efficiency} = \frac{\text{Variance of SRS}}{\text{Variance of Stratified}}$$
-- Indicates sampling effort required to achieve precision of stratified sampling.
-- Efficiency > 1 means stratified sampling is more efficient.
-- Value tells us how much we need to increase the sample size in SRS to achieve the same precision as stratified sampling.
 
+::: fragment
+### In simple terms:
+- Efficiency > 1: Stratified sampling is better (more precise with same sample size)
+- Efficiency = 5 means: You'd need 5 times as many samples with simple random sampling to get the same precision as stratified sampling
+:::
+
+::: fragment
 ### In R
 
 ```{r}
@@ -336,27 +429,40 @@ efficiency <- 50.83 / 9.30
 efficiency
 ```
 
-How many samples would we have had to collect in SRS, to achieve the same precision as stratified sampling?
+How many samples would we have had to collect using simple random sampling to achieve the same precision as our stratified sample?
 
 ```{r}
 round(7 * efficiency, 0)
 ```
+So we would need about 38 samples with simple random sampling to get the same precision that we achieved with just 7 samples using stratified sampling!
+:::
 
 ## Tips on implementation
 
-- The most difficult part is to **identify** the strata and **assign** the sampling units to the strata.
+- The most difficult part is to **identify** the strata and **assign** the sampling units to the strata
+- Common stratification variables in environmental science:
+  - **Spatial**: elevation bands, soil types, vegetation zones
+  - **Temporal**: seasons, time of day, growth stages
+  - **Management**: treatment types, land-use history
 - **Strata sampling size**: allocate samples to strata based on the size of the strata, either proportional to:
-  - the size of the strata, or
-  - the variance of the strata.
+  - the size of the strata (e.g. 60% of area = 60% of samples)
+  - the variance of the strata (more samples where variation is higher)
   
 # Monitoring
 What if we come back and do another set of soil carbon measurements?
 
 ## The change in mean $\Delta \bar y$
 
-- Our interest now lies in the change in mean soil carbon content.
-- We can still calculate the 95% confidence interval for the change in mean, but we need to account for the *correlation* between the two sets of measurements.
-- A **covariance** problem that differs depending on the resampling design.
+### Important considerations
+
+::: incremental
+- We want to measure change in soil carbon over time
+- Key question: **How do we select sites for the second measurement?**
+  1. Return to the **same sites**?
+  2. Select completely **new sites**?
+- This choice affects our statistical analysis (covariance)
+:::
+
 
 ## Monitoring estimates
 
@@ -368,52 +474,88 @@ $$\Delta \bar y = \bar y_2 - \bar y_1$$
 
 where $\bar y_2$ and $\bar y_1$ are the means of the second and first set of measurements, respectively.
 
+## Uncertainty in change estimates
+
 ::: fragment
 ### Variance *of the change in mean* $Var(\Delta{\bar y})$
 
-> Sum of the variances of the two sets of measurements, minus twice the covariance between the two sets of measurements **if the two sets are not independent**. The covariance term is zero if the two sets are independent.
+This tells us how precise our estimate of the change is. It depends on:
 
 $$Var(\Delta{\bar y}) = Var(\bar y_2) + Var(\bar y_1) - 2 \times Cov(\bar y_2, \bar y_1)$$
+
+**In simple terms:**
+
+- The uncertainty in our change estimate comes from the uncertainties in both measurements
+- However, if we sample the same sites twice, they are related to each other (covariance)
+- This relationship usually reduces the overall uncertainty in our change estimate
 :::
 
-## Covariance?
+::: fragment
+**Important:** Visiting the same sites twice (paired sampling) usually gives more precise estimates of change than visiting different sites each time!
+:::
 
-### If we revisit the same 7 sites
+## Covariance and site selection
 
-$$Var(\Delta{\bar y}) = Var(\bar y_2) + Var(\bar y_1) - 2 \times Cov(\bar y_2, \bar y_1)$$
+### Quick decision guide
 
-- The measurements are not independent, as anything that affects the first set of measurements will also affect the second set (unknown to us).
-- Covariance exists between the two sets of measurements.
-- We need to account for this in the variance of the change in mean.
-- Equivalent to a **paired t-test**.
+1. **Same sites?** Use paired approach:
+   - Sites are the same in both visits
+   - Use paired t-test
+   - Account for covariance between visits
 
-### If we visit 7 randomly-selected sites
+2. **Different sites?** Use independent approach:
+   - New random sites in second visit
+   - Use two-sample t-test
+   - No covariance between visits
 
-$$Var(\Delta{\bar y}) = Var(\bar y_2) + Var(\bar y_1)$$
+## What is covariance?
 
-- The measurements are independent.
-- Covariance is zero.
-- Equivalent to a **two-sample t-test**.
+::: fragment
+Covariance measures how two measurements relate to each other:
+
+**Example with soil carbon:**
+
+- Site 1: First visit = 90 t/ha, Second visit = 95 t/ha
+- Site 2: First visit = 48 t/ha, Second visit = 52 t/ha
+- Site 3: First visit = 71 t/ha, Second visit = 75 t/ha
+:::
+
+::: fragment
+**What do you notice?** Sites with high carbon in the first measurement still have high carbon in the second measurement (positive covariance).
+
+**Why this matters:** Knowing the first measurement helps us predict the second one, reducing uncertainty in our estimate of change.
+:::
+
+::: fragment
+**Practical takeaway:** When measuring change over time, returning to the same sites usually gives more precise results because it removes site-to-site variation.
+:::
 
 ## Calculating the 95% CI for the change in mean
 
+### The formula looks similar to before:
 $$95\%\ CI = \Delta \bar y \pm t^{0.025}_{n-1} \times SE(\Delta \bar y)$$
 
-where $n$ is the number of pairs of measurements, and $SE(\Delta \bar y)$ is the standard error of the change in mean.
-
 ::: fragment
-### $SE(\Delta \bar y)$
-If the covariance term is needed, we calculate covariance as:
-
-$$Cov(\bar y_2, \bar y_1) = \frac{\sum_{i=1}^n (y_{2i} - \bar y_2) \times (y_{1i} - \bar y_1)}{n-1}$$
-
-where $n$ is the number of pairs of measurements, and $y_{2i}$ and $y_{1i}$ are the measurements from the second and first set, respectively.
-
-> The sum of the product of the differences between each pair of measurements and the mean of each set, divided by $n-1$.
+### In plain language:
+- We have our best estimate of the change (the difference between the two means)
+- We add and subtract a margin of error to create a range
+- We're 95% confident that the true change falls within this range
 :::
 
 ::: fragment
-**Luckily, you are not expected to calculate this by hand.** R will do it for you either by using the `cov()` function (if calculating manually), or by using the `t.test()` function with the `paired` argument set to `TRUE`. We will go through this in the lab!
+### The standard error of the change $SE(\Delta \bar y)$
+- This tells us how precise our estimate of the change is
+- It's complicated to calculate by hand, especially when we visit the same sites twice
+- If we visit the same sites twice, we need to account for their relationship (covariance)
+:::
+
+::: fragment
+**Good news!** You don't need to calculate this by hand!
+
+- R can do these calculations for you using the `t.test()` function
+- For same sites: use `paired = TRUE` option
+- For different sites: use `paired = FALSE` option
+- We'll practice this in the lab!
 :::
 
 
