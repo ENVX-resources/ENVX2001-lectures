@@ -2,10 +2,15 @@
 title: "Lecture 02"
 ---
 
-**Lecture 02a -- Sampling designs: simple random sampling** [Full Screen](Lecture-02a.qmd) | [PDF](Lecture-02a.pdf) 
+**Lecture 02a -- Sampling designs** [Full Screen](Lecture-02a.qmd) | [PDF](Lecture-02a.pdf) 
 
 ```{=html}
 <iframe class="slide-deck" src="Lecture-02a.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
 ``` 
 
-**Lecture 02b -- Sampling designs II** Full Screen | PDF
+**Lecture 02a -- Sampling designs II** [Full Screen](Lecture-02b.qmd) | [PDF](Lecture-02b.pdf) 
+
+```{=html}
+<iframe class="slide-deck" src="Lecture-02b.html" height="420" width="747" style="border: 1px solid #2e3846;"></iframe>
+```
+  

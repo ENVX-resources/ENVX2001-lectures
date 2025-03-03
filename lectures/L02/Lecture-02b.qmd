@@ -4,10 +4,12 @@ author: Januar Harianto
 format: soles-revealjs
 # format: revealjs
 # fontsize: 16pt
-embed-resources: false
+embed-resources: true
 execute:
-  cache: false
+  cache: true
 ---
+
+# Welcome back!
 
 # In the last lecture...
 
