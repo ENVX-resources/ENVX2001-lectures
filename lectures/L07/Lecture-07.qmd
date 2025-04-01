@@ -1,5 +1,5 @@
 ---
-title: "Regression modelling"
+title: "Regression: modelling"
 subtitle: ENVX2001 Applied Statistical Methods
 author: Si Yang Han
 institute: The University of Sydney
@@ -113,13 +113,48 @@ Many other people contributed to the development of regression analysis, but the
 
 # Simple linear regression
 
+> An example with Galton's data: parent and child heights.
+
+## Example: child vs parent height
+
+*Galton, F. (1886). Regression Towards Mediocrity in Hereditary Stature Journal of the Anthropological Institute, 15, 246-263*
+
+:::{.columns}
+:::{.column width="50%"}
+
+```{r}
+#| code-fold: true
+library(HistData)
+str(Galton)
+```
+
+- 928 children of 205 pairs of parents
+- Average height of both parents and their child's height measured in inches
+- Size classes were binned (hence data looks discrete)
+
+:::
+:::{.column width="50%"}
+
+```{r}
+#| code-fold: true
+ggplot(Galton, aes(x = parent, y = child)) +
+  geom_point(alpha = .2, size = 3) + 
+  geom_smooth(method = "lm") +
+  labs(subtitle = paste("Correlation:", round(cor(Galton$parent, Galton$child), 2)))
+```
+
+:::
+
 ## Defining a linear relationship {.nostretch}
 
-- Pearson correlation coefficient ($r$) measures the linear correlation between two variables
+- Pearson correlation coefficient ($r$) measures the linear correlation between two variables (ranges from -1 to 1)
 - Useful for distinguishing *strength* (weak/moderate/strong) and *direction* (positive/negative) of the association
-- Does not distinguish different *patterns* -- i.e. is the relationship actaully linear?
+- Does not distinguish different *patterns* -- i.e. is the relationship actually linear?
 
 $$ r = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\sum_{i=1}^n (x_i - \bar{x})^2 \sum_{i=1}^n (y_i - \bar{y})^2}} $$
+```{r}
+cor(Galton$parent, Galton$child) |> round(2)
+```
 
 ## Anscombe's quartet
 
@@ -135,22 +170,9 @@ anscombe %>%
     facet_wrap(~set, ncol = 4)
 ```
 
-*All of these data have a correlation coefficient of about 0.8, but **only one** of them meet the assumptions of a linear model.*
+*All of these data have a correlation coefficient of about 0.8* -- always visualise your data.
 
-## Datasaurus Dozen
-
-```{r}
-#| code-fold: true
-library(datasauRus)
-ggplot(datasaurus_dozen, aes(x=x, y=y)) +
-  geom_point(size = .5, alpha = .3) +
-  geom_smooth(method = "lm", se = TRUE) +
-  facet_wrap(~dataset, ncol = 6)
-```
-
-*All of these data have the **same** correlation coefficient, mean and standard deviation but look very different.*
-
-## Simple linear regression modelling {auto-animate="true"}
+## Simple linear regression model {auto-animate="true"}
 
 We want to predict a response $Y$ based on a predictor $x$ for $i$ number of observations: 
 
@@ -169,15 +191,15 @@ Because $\epsilon_i$ is the only part of the equation that is not fixed, we asso
 
 ## Fitting the model {auto-animate="true"}
 
+- $\color{royalblue}{\hat{y}_i}$ is the predicted value of $y_i$:
+
+$$\color{royalblue}{\hat{y}_i} = \beta_0 + \beta_1 x_i$$
+
 - The *residual* is the difference between the observed value of the response and the predicted value:
 
 $$\hat\epsilon_i = y_i - \color{royalblue}{\hat{y}_i}$$
 
-where $\color{royalblue}{\hat{y}_i}$ is the predicted value of $y_i$:
-
-$$\color{royalblue}{\hat{y}_i} = \beta_0 + \beta_1 x_i$$
-
-therefore:
+- Therefore:
 
 $$\hat\epsilon_i = y_i - \color{royalblue}{(\beta_0 + \beta_1 x_i)}$$
 
@@ -191,110 +213,73 @@ Finding the minimum SS requires solving the following problem:
 
 $$\color{firebrick}{argmin_{\beta_0, \beta_1}} \sum_{i=1}^n (y_i - \color{royalblue}{(\beta_0 + \beta_1 x_i)})^2$$
 
-We can find $\beta_0$ and $\beta_1$ analytically:
+We can find $\beta_0$ and $\beta_1$ **analytically**. We first find $\beta_1$:
 
 $$ \beta_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2} =  \frac{Cov(x,y)}{Var(x)} = \frac{SS_{xy}}{SS_{xx}} $$
-then substituting $\beta_1$ into the equation for $\beta_0$:
+And then substitute $\beta_1$ into the equation for $\beta_0$:
 
 $$ \beta_0 = \bar{y} - \beta_1 \bar{x} $$
+
 ## Numerical fitting
 
-Computer uses “random guesses” to find set of parameters that minimises objective function (SS) -- more computationally efficient and applies beyond linear regression.
+Computers use “random guesses” to find set of parameters that minimises objective function (SS) -- more computationally efficient and applies beyond linear regression.
 
 ![[source](https://github.com/Enchufa2/ls-springs)](images/leastsquares.gif){fig-align="center"}
 
 
-## Galton's data
+
+## Fitting a model in R is easy with `lm()`
 
 ```{r}
-#| code-fold: true
-library(HistData)
-str(Galton)
-```
-
-- 928 children of 205 pairs of parents
-- Average height of both parents and their child's height measured in inches
-- Size classes were binned (hence data looks discrete)
-
-*Galton, F. (1886). Regression Towards Mediocrity in Hereditary Stature Journal of the Anthropological Institute, 15, 246-263*
-
----
-
-```{r}
-ggplot(Galton, aes(x = parent, y = child)) +
-  geom_point(alpha = .2, size = 3) + 
-  geom_smooth(method = "lm") +
-  labs(subtitle = paste("Correlation:", round(cor(Galton$parent, Galton$child), 2)))
-```
-
-## Regression modelling in R with `lm()`
-
-```{r}
-#| echo: true
 fit <- lm(child ~ parent, data = Galton)
 ```
 
-<br> 
+That's it -- the model has been fitted.
 
-That's it - the model has been fitted.
+**But** there is a process similar to HATPC (hypothesis, assumptions, test, p-value, conclusions).
 
+## Define the hypothesis
 
-<!-- ```{r}
-library(report)
-report(fit) 
-```  -->
+$$H_0: \beta_1=0$$
 
-<br>
+$$H_1: \beta_1 \neq 0$$
 
-Does the input of `lm()` look familiar? It should!
+The null model is a line with no slope (i.e. flat or horizontal) at the mean of the child height ($\bar{y}$ = `r round(mean(Galton$child))` inches).
 
 ```{r}
-#| eval: false
-model <- aov(y ~ x, data)
+#| code-fold: true
+library(dplyr)
+null_model <- Galton %>%
+  lm(child ~ 1, data = .) %>%
+  broom::augment(Galton)
+lin_model <- Galton %>%
+  lm(child ~ parent, data = .) %>%
+  broom::augment(Galton)
+models <- bind_rows(null_model, lin_model) %>%
+  mutate(model = rep(c("Null model", "SLR model"), each = nrow(Galton)))
+
+ggplot(data = models, aes(x = parent, y = child)) +
+  geom_smooth(
+    data = filter(models, model == "Null model"),
+    method = "lm", se = FALSE, formula = y ~ 1, size = 1
+  ) +
+  geom_smooth(
+    data = filter(models, model == "SLR model"),
+    method = "lm", se = FALSE, formula = y ~ x, size = 1
+  ) +
+  geom_segment(
+    aes(xend = parent, yend = .fitted),
+    arrow = arrow(length = unit(0.1, "cm")),
+    size = 0.3, color = "darkgray"
+  ) +
+  geom_point(alpha = .2) +
+  facet_wrap(~model) +
+  xlab("Parent height (in)") +
+  ylab("Child height (in)") +
+  theme_classic()
+
 ```
 
-
-## Handle `lm()` output
-
-Residuals and fitted values (amongst other things) can be obtained from the `lm()` object:
-
-```{r}
-#| echo: true
-#| eval: false
-fit$residuals
-fit$fitted.values # i.e. predictions for our x values
-```
-
-We can view the model output using `summary()`, and then extract specific parts of the output using `$` notation:
-
-```{r}
-#| echo: true
-summary(fit)
-summary(fit)$r.squared
-```
-
-The `sjPlot::tab_model()` package is useful to create a formatted summary table:
-```{r}
-#| echo: true
-library(sjPlot)
-sjPlot::tab_model(fit, dv.labels = "")
-```
-
----
-
-The `broom::glance()` function is useful for quickly assessing model parameters:
-
-```{r}
-#| echo: true
-broom::glance(fit)
-```
-
-The `broom::augment()` function adds residuals and fitted values to a data frame:
-
-```{r}
-#| echo: true
-broom::augment(fit) |> head()
-```
 
 ## Assumptions
 
@@ -305,34 +290,29 @@ The data **must** meet certain criteria, which we often call *assumptions*. They
 - **N**ormal. The errors $\epsilon$ are normally distributed.
 - **E**qual Variance. At each value of $x$, the variance of $y$ is the same i.e. homoskedasticity, or constant variance.
 
-**Notice any similarities to the assumptions of ANOVA?**
-
 :::{.callout-tip}
 All but the independence assumption can be assessed using diagnostic plots. 
 :::
 
-## Assumptions with `plot()`
+## Assumptions with base R `plot()`
 
 ```{r}
-#| echo: true
-par(mfrow= c(2, 2))
+par(mfrow= c(2, 2)) # plots combined into 2x2 grid
 plot(fit)
 ```
 
-## Assumptions with `ggfortify package and autoplot()`
+## Assumptions with `ggfortify` package and `autoplot()`
 
 ```{r}
-#| echo: true
 library(ggfortify)
 autoplot(fit)
 ```
 
 ## Assumptions using `performance`
 
-Also provides a guide on what to check for in the assumption plot.
+(Also provides a guide on what to check for in the assumption plot)
 
 ```{r}
-#| echo: true
 #| eval: false
 library(performance)
 performance::check_model(fit) # check all assumptions
@@ -358,7 +338,6 @@ ggplot(Galton, aes(x = parent, y = child)) +
 The linearity assumption can be checked again by looking at a plot of the residuals against $x$ (i.e. `parent` height).
 
 ```{r}
-#| echo: true
 performance::check_model(fit, check = "linearity")
 ```
 
@@ -404,21 +383,8 @@ performance::check_model(fit, check = c("normality", "qq"))
 - **Left-skewed** (n shape): more data falls to the left of the mean
 - **Right-skewed** (u shape): more data falls to the right of the mean
 
----
-
-Heavy-tailed, right-skewed.
-
-```{r} 
-#| code-fold: true
-set.seed(915)
-x <- rnorm(100)
-y <- 2 + 5 * x + rchisq(100, df = 2)
-df <- data.frame(x, y)
-performance::check_model(lm(y ~ x, data = df),
-  check = c("normality", "qq"))
-```
-
----
+:::{.columns}
+:::{.column width="50%"}
 
 Heavy-tailed, left-skewed.
 
@@ -429,11 +395,11 @@ x <- rnorm(100)
 y <- 2 + 5 * x + rchisq(100, df = 3) * -1
 df <- data.frame(x, y)
 performance::check_model(lm(y ~ x, data = df),
-  check = c(c("normality", "qq")))
+  check = c(c("qq")))
 ```
 
----
-
+:::
+:::{.column width="50%"}
 Light-tailed, right-skewed.
 
 ```{r} 
@@ -443,8 +409,9 @@ x <- rnorm(100)
 y <- 2 + 5 * x + rnbinom(100, 10, .5)
 df <- data.frame(x, y)
 performance::check_model(lm(y ~ x, data = df),
-  check = c(c("normality", "qq")))
+  check = c(c("qq")))
 ```
+:::
 
 ## Asumption: Equal variances
 
@@ -452,11 +419,14 @@ performance::check_model(lm(y ~ x, data = df),
 performance::check_model(fit, check = c("homogeneity", "outliers"))
 ```
 
+Outliers are not a strict assumption, but they will affect the model fit.
+
 ## What is a standardised residual?
 
 - The standardised residual is the residual divided by the standard error of the residual (normalised).
 
 $$Standardised\ residual = \frac{Residual}{Standard\ error\ of\ the\ residual}$$
+
 - The *mean* of the residuals is 0 in linear regression
 - A standardised residual of 2 or above suggests the point is an outlier (far from the regression line)
 - Spread should be random i.e. no pattern (fanning, W), which indicates **equal variances**
@@ -465,155 +435,110 @@ $$Standardised\ residual = \frac{Residual}{Standard\ error\ of\ the\ residual}$$
 
 How well does our fitted model represent the relationship between the variables?
 
-## Hypothesis testing
+## ANOVA and linear regression
 
-How does our null ($H_0: \beta_1=0$) model compare to the linear ($H_1: \beta_1 \neq 0$) model?
-
-```{r}
-#| code-fold: true
-library(dplyr)
-null_model <- Galton %>%
-  lm(child ~ 1, data = .) %>%
-  broom::augment(Galton)
-lin_model <- Galton %>%
-  lm(child ~ parent, data = .) %>%
-  broom::augment(Galton)
-models <- bind_rows(null_model, lin_model) %>%
-  mutate(model = rep(c("Null model", "SLR model"), each = nrow(Galton)))
-
-ggplot(data = models, aes(x = parent, y = child)) +
-  geom_smooth(
-    data = filter(models, model == "Null model"),
-    method = "lm", se = FALSE, formula = y ~ 1, size = 1
-  ) +
-  geom_smooth(
-    data = filter(models, model == "SLR model"),
-    method = "lm", se = FALSE, formula = y ~ x, size = 1
-  ) +
-  geom_segment(
-    aes(xend = parent, yend = .fitted),
-    arrow = arrow(length = unit(0.1, "cm")),
-    size = 0.3, color = "darkgray"
-  ) +
-  geom_point(alpha = .2) +
-  facet_wrap(~model) +
-  xlab("Parent height (in)") +
-  ylab("Child height (in)") +
-  theme_classic()
-
-```
-::: {.fragment}
-The null model is a flat line at the mean of the child height ($\bar{y}$ = `r round(mean(Galton$child))` inches).
-:::
-## ANOVA using linear regression 
-
-ANOVA is simply a variation of the linear regression
+ANOVA is a variation of linear regression -- both partition variance into sum of squares for residuals (variance explained) and sum of squares for error (variance not explained) aka **the components of the F-statistic**.
 
 :::: {.columns}
 ::: {.column width="50%"}
+
 ### ANOVA Output
 
 ```{r}
 #| echo: true
-fit <- lm(formula = child ~ parent, data = Galton)
+fit <- lm(child ~ parent, data = Galton)
 anova(fit)
 ```
 
-- `parent Sum Sq` is the variation that the `parent` variable explains in the `child` variable
-- `Residuals Mean Sq` is the variation (per degree of freedom) that the model does not explain
+:::
+
+::: {.column width="50%"}
+
+<br>
+
+- `parent Sum Sq`: the variation that `parent` explains in the `child` variable
+- `Residuals Mean Sq`: variation (per degree of freedom) that the model does not explain
 - The `F-value` is the ratio, i.e. does `parent` explain enough variation in `child` to be considered significant?
 
 $$\text{F-value} = \frac{\text{parent Sum Sq}}{\text{Residuals Mean Sq}} = \frac{1236.9}{5.01} = 246.84 $$
 
 :::
+::::
 
-::: {.column width="50%"}
 ### Regression Output
 
 ```{r}
-#| echo: true
-fit <- lm(formula = child ~ parent, data = Galton)
+#| eval: false
+fit <- lm(child ~ parent, data = Galton)
 summary(fit)
+
+# F-statistic: 246.8 on 1 and 926 DF,  p-value: < 2.2e-16
 ```
 
-Note -- the F-statistic is the same.
+## ANOVA and linear regression 
 
-:::
-::::
+ANOVA is a variation of linear regression -- both partition variance into sum of squares for residuals (variance explained) and sum of squares for error (variance not explained) aka **the components of the F-statistic**.
 
-## ANOVA using linear regression
-
-ANOVA is simply a variation of the linear regression
-
-:::: {.columns}
-::: {.column width="50%"}
 ### ANOVA Output
 
 The ANOVA suggests that the main effect of parent is statistically significant and large (F(1, 926) = 246.84, p < .001)
-:::
 
-::: {.column width="50%"}
 ### Regression Output
+
 We fitted a linear model (estimated using OLS) to predict child with parent (formula: child ~ parent). The model explains a statistically significant and moderate proportion of variance (R^2^ = 0.21, F(1, 926) = 246.84, p < .001). Within this model, the effect of parent is statistically significant and positive ($\beta_1$ = 0.65, 95% CI [0.57, 0.73], t(926) = 15.71, p < .001).
 
+:::{.callout-note}
+For simple linear regression, the significance of the predictor (i.e. `child`) is the same as the model significance.
 :::
-::::
 
-# Patterns
-What if we want to predict from the data?
+# Interpret output
+
+> Model fit and predictions
 
 ## Model fit {auto-animate="true"}
 
-```{r}
-summary(fit)$coefficients
-```
-
-Translates to:
-
-$$\widehat{child} = 23.9 + 0.65 \cdot parent$$
-- For every unit change in parent (i.e. *1 inch*), we expect a 0.65 unit change in child.
-- We can predict the value of child for *any* value of parent, *but should we?*
-
-## {auto-animate="true"}
-
-$$\widehat{child} = 23.9 + 0.65 \cdot parent$$
+::::{.columns}
+:::{.column width="50%"}
 
 ```{r}
 summary(fit)
 ```
 
-- **Multiple R^2^**: proportion of variance in the response variable that is explained by the model.
-- **Adjusted R^2^**: R^2^ adjusted for the number of predictors in the model (i.e. multiple linear regression). It only increases if the new term improves the model more than would be expected by chance
-    - *Always lower than multiple R^2^*
-    - Can use this to interpret simple linear regression **to compare with a multiple linear regression model**
+:::
+:::{.column width="50%"}
 
-<!-- It is a measure of how far the data points are from the fitted line. -->
+$$\widehat{child} = 23.9 + 0.65 \cdot parent$$
+
+For every unit change in parent (i.e. *1 inch*), we expect a 0.65 unit change in child.
+
+How much variation is explained? R^2^ = 0.21 = 21%
+
+- **Multiple R^2^**: proportion of variance in the response variable explained by the model.
+- **Adjusted R^2^**: as above but adjusted for the number of predictors in the model.
+    - For multiple linear regression
+    - It only increases if the new term improves the model more than would be expected by chance
+    - *Always lower than multiple R^2^*
+
+:::
+::::
 
 ## Making predictions
 
 What is the predicted child height for a parent height of 70 inches?
 
-Since:
-
-$$\widehat{child} = 23.9 + 0.65 \cdot parent$$
-
-Then:
-
 ```{r}
-#| echo: true
 child <- 23.9 + 0.65 * 70
 child
 ```
 
-We use `predict()` to make predictions -- it takes in the `lm()` model and understands the equation.
+We use `predict()` to make predictions -- it takes in the `lm()` model, recreates the equation and applies it to new data.
 
 ```{r}
 predict(fit, data.frame(parent = 70)) # using 70 as this is the value we want to sub in and predict
-
 ```
 
 :::{.callout-note}
-How good is our *prediction* actually? Is it accurate? We cover this in Week 9.
+How good is our prediction actually? What if we had more parents and children, would the equation still hold up? We cover this in Week 9.
 :::
 
 # Transformations
@@ -628,7 +553,6 @@ What if assumptions are not met, or we want to improve the model?
 - **Homoskedasticity** makes it difficult to estimate "true" standard deviation of errors (i.e. noisy estimates)
 - **Normality** can compromise inferences and hypothesis testing
 
-
 ## How do we solve these problems?
 
 - Use less restrictive (but more complicated) models, e.g. generalised linear models, non-parametric techniques (ENVX3002)
@@ -640,7 +564,10 @@ What if assumptions are not met, or we want to improve the model?
 We can also perform transformations to improve the model fit, but **beware of overfitting** -- we want to make reasonable predictions, not fit the data!
 :::
 
-## New example: Air quality
+## Example: air quality
+
+::::{.columns}
+:::{.column width="50%"}
 
 Daily air quality measurements in New York, May to September 1973.
 
@@ -648,9 +575,13 @@ Daily air quality measurements in New York, May to September 1973.
 str(airquality)
 ```
 
-## Is Ozone concentration influenced by Temperature?
+:::
+:::{.column width="50%"}
+
+We start with one variable: is ozone concentration influenced by temperature?
 
 ```{r}
+#| code-fold: true
 ggplot(airquality, aes(x = Temp, y = Ozone)) +
   geom_point(alpha = .2, size = 3) +
   labs(
@@ -658,6 +589,8 @@ ggplot(airquality, aes(x = Temp, y = Ozone)) +
     y = "Ozone (parts per billion)") +
   geom_smooth(method = "lm", se = FALSE)
 ```
+
+:::
 
 ## Assumption checks
 
@@ -668,12 +601,24 @@ performance::check_model(fit, check = c("linearity", "qq", "homogeneity", "outli
 
 Is a simple linear model appropriate? *Depends on your threshold for what is acceptable.*
 
-## The log transform
+## Backtransforming -- FYI
+
+A log transformation (natural or a base) is relatively easy to back-transform.
+
+$$\widehat{log(Ozone)}=\color{royalblue}{-1.8380 + 0.0675 \times Temp}$$
+$$\widehat{Ozone}=e^{-1.8380 + 0.0675 \times Temp}=e^{-1.8380} \times e^{0.0675 \times Temp}$$
+But given we are focused on a 1-unit change of `Temp`, $\widehat{Ozone}$ changes by $e^{0.0675} = 1.07$ **times**.
+
+If this had been a `sqrt()` transformation...
+
+$$\widehat{\sqrt{Ozone}}=-1.8380 + 0.0675 \times Temp$$
+$$\widehat{Ozone}=(-1.8380 + 0.0675 \times Temp)^2 = 3.3782−(0.2481×Temp)+(0.0675×Temp)^2$$
+## Interpreting log transformations -- FYI
 
 :::{.fragment}
 - Log-linear: $Log(Y)=\beta_0+\beta_1x$
   - An increase of $x$ by 1 unit corresponds to a $\beta_1$ unit increase in $log(Y)$
-  - An increase of $x$ by 1 unit corresponds to a $\beta_1 \times 100\%$ increase in $Y$
+  - An increase of $x$ by 1 unit corresponds to approximately a $\beta_1 \times 100\%$ increase in $Y$
 :::
 :::{.fragment}
 - Linear-log: $Y=\beta_0+\beta_1log(x)$
@@ -683,19 +628,6 @@ Is a simple linear model appropriate? *Depends on your threshold for what is acc
 - Log-log: $Log(Y)=\beta_0+\beta_1log(x)$
   - An increase of $1\%$ in $x$ corresponds to a $\beta_1\%$ increase in $Y$
 :::
-
-## Backtransforming -- FYI
-
-A log transformation (natural or a base) is relatively easy to back-transform.
-
-$$\widehat{log(Ozone)}=\color{royalblue}{-1.8380 + 0.0675 \times Temp}$$
-$$\widehat{Ozone}=e^{-1.8380 + 0.0675 \times Temp}=e^{-1.8380} \times e^{0.0675 \times Temp}$$
-But given we are focused on a 1-unit change of `Temp`, $\widehat{Ozone}$ changes by $e^{0.0675} = 1.07$ times.
-
-If this had been a `sqrt()` transformation...
-
-$$\widehat{\sqrt{Ozone}}=-1.8380 + 0.0675 \times Temp$$
-$$\widehat{Ozone}=(-1.8380 + 0.0675 \times Temp)^2 = 3.3782−(0.2481×Temp)+(0.0675×Temp)^2$$
 
 ## Percent change with $ln$ transformation -- FYI
 
@@ -707,7 +639,7 @@ $$\Delta y \% = 100 \cdot (e^{\beta_1}-1)$$
 
 If $\beta_1$ is small (i.e. $-0.25 < \beta_1 < 0.25$), then: $e^{\beta_1} \approx 1 + \beta_1$. So $\Delta y \% \approx 100 \cdot \beta_1$.
 
-:::{.columns}
+::::{.columns}
 :::{.column width="50%"}
 
 |   β   |   Exact $(e^{\beta} - 1)$%   |   Approximate $100 \cdot \beta$   |
@@ -739,9 +671,9 @@ Let's transform Ozone using the natural log (`log()`).
 fit_log <- lm(log(Ozone) ~ Temp, data = airquality)
 ```
 
-:::: {.columns}
+::::{.columns}
  
-::: {.column width="50%"}
+:::{.column width="50%"}
 :::{.fragment}
 
 ### Before
@@ -946,7 +878,22 @@ multi_fit <- lm(log(Ozone) ~ Temp + Solar.R + Wind, data = airquality)
 performance::check_model(multi_fit, check = c("linearity", "qq", "homogeneity", "outliers")) # check specific assumptions
 ```
 
+There is one additional assumption for multiple linear regression. **Collinearity** is when two or more predictors are very highly correlated. If the predictors are basically identical, the model cannot distinguish how much variability each explains. (Correlations in previous slides look fine).
+
 ## Hypothesis
+
+For multiple linear regression, there are two hypothesis tests:
+
+- Individual predictors, where the significance of each predictor is tested via t-tests
+
+$$H_0: \beta_k = 0$$
+$$H_1: \beta_k \neq 0$$
+
+- The overall model, which is tested with an F-test (to get F-stat). $H_0$ is an intercept-only model (i.e. the mean), so if at least one predictor is useful, the model is better than the intercept-only model.
+
+$$H_0: \beta_1 = \beta_2 = ... = \beta_k = 0$$
+$$H_1: \text{At least one } \beta_k \neq 0$$
+
 
 ## Model Fit {auto-animate=true}
 
@@ -986,11 +933,9 @@ sjPlot::tab_model(fit_log, multi_fit, digits = 4, show.ci = FALSE)
 
 - The adjusted $R^2$ is higher for the MLR model...
 - Interpretation of $R^2$ is the same as for simple linear regression: how much of the variation in the response variable is explained by the model
-- **Are all the variables/predictors needed?**
+- **Are all the variables/predictors needed?** (next week)
 
 # Summing up
-
-What have we done today?
 
 ::: {.fragment}
 - We fit a simple linear model to represent a linear relationship between two variables
@@ -999,28 +944,19 @@ What have we done today?
 :::
 
 ::: {.fragment}
-- Check assumptions to understand the validity of the model
-    + linearity, independence, normality, equal variance (LINE)
+- Multiple linear regression
+    + Do more predictors improve model fit?
+    + $Y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_k + \epsilon$
 :::
 
 ::: {.fragment}
 - Hypothesis testing with linear models
         + Is our model the best representation of the relationship?
-:::
-
-::: {.fragment}
-- Interpreting model output
-        + ANOVA vs summary to view the output
-:::
-
-::: {.fragment}
+- Check assumptions to understand the validity of the model
+    + collinearity, linearity, independence, normality, equal variance (CLINE)
 - Transformations to meet assumptions and improve model fit
-:::
-
-::: {.fragment}
-- Multiple linear regression
-    + Do more predictors improve model fit?
-    + $Y = \beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_kx_k + \epsilon$
+- Interpreting model output
+        + F-test via ANOVA and summary(), R^2^
 :::
 
 # Next lecture: Variable selection
