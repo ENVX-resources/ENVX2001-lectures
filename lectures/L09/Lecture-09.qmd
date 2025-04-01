@@ -1,0 +1,922 @@
+---
+title: "Regression: predictive modelling"
+subtitle: "ENVX2001 - Applied Statistical Methods"
+author:
+  - name: Si Yang Han
+    affiliations: The University of Sydney
+date: last-modified
+self-contained: true
+execute:
+  freeze: auto
+  cache: false
+# NOTE: please check _quarto.yml file for more options
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+    echo = TRUE,
+    message = FALSE,
+    warning = FALSE,
+    cache = TRUE
+)
+library(tidyverse)
+ggplot2::theme_set(cowplot::theme_half_open())
+# ggplot2::theme_set(ggplot2::theme_minimal())
+```
+
+# Predictive modelling
+
+> "The best way to predict the future is to create it."
+
+-- Peter Ferdinand Drucker, 1909--2005
+
+# Our workflow so far
+
+## Workflow {auto-animate="true"}
+
+1.  [Model development]{style="color: #D0D3D4;"}
+    -   [Explore: visualise, summarise]{style="color: #D0D3D4;"}
+    -   [Transform predictors: linearise, reduce skewness/leverage]{style="color: #D0D3D4;"}
+    -   [Model: fit, check assumptions, interpret, transform. Repeat.]{style="color: #D0D3D4;"}
+2.  [Variable selection]{style="color: #D0D3D4;"}
+    -   [VIF: remove predictors with high variance inflation factor]{style="color: #D0D3D4;"}
+    -   [Model selection: stepwise selection, AIC, principle of parsimony, assumption checks]{style="color: #D0D3D4;"}
+3.  Predictive modelling
+    -   **Predict**: Use the model to predict new data
+    -   **Validate**: Evaluate the model’s performance
+
+## Previously on ENVX2001... {auto-animate="true"}
+
+We fitted a multiple linear regression model to the data.
+
+```{r}
+library(tidyverse)
+fit <- lm(log(Ozone) ~ Temp + Solar.R + Wind, data = airquality)
+summary(fit)
+```
+
+$$\widehat{log(Ozone)}=-0.262 + 0.0492 \cdot Temp + 0.00252 \cdot Solar.R - 0.0616 \cdot Wind$$
+
+## Predictions by hand {auto-animate="true"}
+
+$$ \widehat{log(Ozone)}=-0.262 + \color{darkorchid}{0.0492} \cdot Temp + \color{darkorange}{0.00252} \cdot Solar.R - \color{seagreen}{0.0616} \cdot Wind $$
+
+On a certain day, we measured (*in imperial units*):
+
+- [temperature `Temp` to be 80 degrees Fahrenheit]{style="color: darkorchid"}
+- [solar radiation `Solar.R` to be 145 units (Langleys)]{style="color: darkorange"}
+- [wind speed `Wind` to be 10.9 miles per hour]{style="color: seagreen"}
+  
+**What is the predicted ozone level?**
+
+$$\widehat{log(Ozone)}= -0.262 + \color{darkorchid}{0.0492 \cdot 80} + \color{darkorange}{0.00252 \cdot 145} - \color{seagreen}{0.0616 \cdot 10.9}$$
+
+Easy! The two things we need to think about are...
+
+- **What is the uncertainty in this prediction?**
+- **Can this model be used to predict ozone if we collect new data in the future?**
+
+
+## Uncertainty
+
+- **Confidence interval**: uncertainty in the **mean** response at a given predictor value.
+- **Prediction interval**: uncertainty in a **single** response at a given predictor value.
+
+### What it means
+
+> **95% confidence interval**: Given the parameters of the model, we are 95% confident that the *mean* response at a given predictor value is between $y_1$ and $y_2$.
+
+> **95% prediction interval**: Given the parameters of the model, we are 95% confident that a *single* response at a given predictor value is between $y_1$ and $y_2$.
+
+## Equations
+
+The equation to calculate any prediction interval is:
+
+$$ \widehat{y} \pm t_{\alpha/2} \cdot se(\widehat{y}) $$
+
+where: 
+
+- $\widehat{y}$ is the predicted value
+- $t_{\alpha/2}$ is the critical value of the t-distribution for a given confidence level
+- $se(\widehat{y})$ is the standard error of the prediction
+
+The difference in calculating a confidence interval and a prediction interval is in the standard error of the prediction.
+
+## Equations
+
+### CI: standard error of the fit
+
+$$ se(\widehat{y}) = \sqrt{MSE \cdot \left( \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)} $$ 
+
+### PI: standard error of the prediction
+
+$$ se(\widehat{y}) = \sqrt{MSE \cdot \left( 1 + \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{\sum_{i=1}^n (x_i - \bar{x})^2} \right)}$$
+
+- $x_0$ is value of the predictor for which we want a response
+- $MSE$ is the mean squared error of the fit ($SS_{xx}$)
+- $\sum_{i=1}^n (x_i - \bar{x})^2$ is the sum of squares of the predictor values
+- $n$ is the number of observations
+- $\bar{x}$ is the mean of the predictor values
+
+The prediction interval formula has an additional term ($1 \cdot MSE$). There is uncertainty that the *mean* prediction will be similar to the observed, and additional uncertainty/variability for a *single* response (equivalent to the MSE). **Thus the confidence interval is always narrower than the prediction interval.**
+
+## Predictions in R
+
+- First, we need to create a new data frame with the predictor values we want to predict at -- it must include all variables in the fitted model.
+
+```{r}
+predict_df <- data.frame(Temp = 80, Solar.R = 145, Wind = 10.9)
+```
+
+- We use the `predict()` function to obtain the predicted value.
+- Specifying `interval = "confidence"` or `interval = "prediction"` also calculates the confidence or prediction interval.
+
+```{r}
+predict(fit, newdata = predict_df) # the predicted value
+predict(fit, newdata = predict_df, interval = "confidence") # predicted value and CI
+predict(fit, newdata = predict_df, interval = "prediction") # predicted value and PI
+
+```
+
+## Visualising CI and PI
+
+```{r}
+airquality$pred <- predict(fit, newdata = airquality) # predict for existing data
+
+preds_ci <- predict(fit, newdata = airquality, interval = "confidence") # confidence interval
+preds_pi <- predict(fit, newdata = airquality, interval = "prediction") # prediction interval
+```
+
+- We can now plot the CI and PI as shaded areas around the predicted line
+
+```{r}
+#| code-fold: true
+
+p <-
+  ggplot(airquality, aes(pred, log(Ozone))) +
+  geom_point() + 
+  geom_line(data = preds_ci, aes(fit, lwr), color = "blue") +
+  geom_line(data = preds_ci, aes(fit, upr), color = "blue") +
+  geom_line(data = preds_pi, aes(fit, lwr), color = "red") +
+  geom_line(data = preds_pi, aes(fit, upr), color = "red") +
+  labs(x = "Observed log(Ozone)", y = "Predicted log(Ozone)") +
+  theme_classic()
+p
+```
+
+## Visualising with `geom_smooth()`
+
+:::{.columns}
+:::{.column width="50%"}
+
+- `geom_smooth()` fits a linear model to obtain a smooth line
+- For visualisation we can use `geom_smooth()` instead of `geom_line()` to fit smoothed lines
+
+```{r}
+#| code-fold: true
+p <-
+  ggplot(airquality, aes(pred, log(Ozone))) +
+  geom_point() + 
+  geom_smooth(data = preds_ci, aes(fit, lwr), color = "blue", se = F) +
+  geom_smooth(data = preds_ci, aes(fit, upr), color = "blue", se = F) +
+  geom_smooth(data = preds_pi, aes(fit, lwr), color = "red", se = F) +
+  geom_smooth(data = preds_pi, aes(fit, upr), color = "red", se = F) +
+  labs(x = "Observed log(Ozone)", y = "Predicted log(Ozone)") +
+  theme_classic()
+p
+```
+
+:::
+:::{.column width="50%"}
+
+- The hyperparameter `se = TRUE` fits a smoothed CI around the predicted line
+- Smoothed with loess functions
+- Cannot fit the prediction interval
+
+```{r}
+#| code-fold: true
+p + geom_smooth(method = "lm", se = TRUE)
+```
+
+:::
+
+# Calibration and validation {auto-animate=true}
+
+All is good when we want to assess uncertainty in a model that we have already fit. 
+
+What if we want to know how well the model predicts **new** data, i.e. data that we did not use to fit the model?
+
+## Why separate calibration and validation data?
+
+In model development we try many models and choose the one that *fits that specific dataset* very well. 
+
+So our model *may be* too complex and overfits the data. If we predict onto new data (in the real world) **the model does not give plausible predictions**.
+
+Why might this be a problem?
+
+- Predict the wrong **ozone levels** (and people with respiratory issues are not warned)
+- Predict the wrong **disease numbers** (and local health services are not prepared)
+- Predict the wrong **crop yield** (and farmers under/overapply fertiliser)
+
+Predictions can directly be used for decision-making, which has consequences.
+
+## General Idea {auto-animate=true}
+
+What if we want to know how well the model predicts **new** data, i.e. data that we did not use to fit the model?
+
+- We build the model with one dataset (calibration).
+- We validate the model's predictions with an **independent dataset**.
+  - If the model is good, we expect the predictions to be *close* to the actual values.
+  - If the model is bad, we expect the predictions to be *far* from the actual values.
+- The dataset can be obtained by:
+  - Collecting new data.
+  - Splitting the existing data into two parts before model building.
+    - Data splitting
+    - Cross-validation
+    
+## Definitions
+
+Sometimes the terms for calibration and validation can get muddled.
+
+Best practice:
+
+- Calibration/Training Dataset: the data used to train the model
+- Validation: the data used to fine tune the model (e.g. variable selection, hyperparameters in machine learning)
+- Test: remaining data that has not been used in any kind of model training
+
+To keep things simple (and if datasets are small), also common:
+
+- Calibration/Training: the data used to train the model
+- Validation/Test: the data used to assess the model's prediction performance
+
+## Our data {auto-animate=true}
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 10px;"}
+:::
+:::
+
+[Dataset]{style="color: #2D708EFF;" .absolute top=130 left=275 data-id="text1"}
+
+## Collecting new data {auto-animate=true}
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 10px;"}
+:::
+
+[Dataset (train)]{style="color: #2D708EFF;" .absolute top=130 left=155 data-id="text1"}
+
+$+$
+
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 200px; height: 50px; margin: 10px;"}
+:::
+:::
+
+[New dataset (test)]{style="color: #95D840FF;" .absolute top=130 left=700}
+
+<br>
+
+- The best way to assess how well a model predicts new data is to collect new data.
+  - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Test set**]{style="color: #95D840FF"}: used to assess how well the model predicts new data.
+
+## Collecting new data
+
+### Pros
+
+- The new data is completely independent of the data used to fit the model.
+- More data to *fit* and *validate* compared to data splitting.
+
+### Cons
+
+- It can be expensive and time-consuming to collect new data.
+- Some data may be impossible to collect (e.g. historical data).
+
+## Data splitting {auto-animate=true}
+
+::: {.r-hstack}
+::: {style="width: 500px; height: 50px; background: linear-gradient(to right, #2D708EFF 70%, #95D840FF 30%); margin: 0px;"}
+:::
+
+<br>
+
+- Split the existing dataset into training and test datasets (80:20, 70:30, 60:40, etc.)
+  - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Test set**]{style="color: #95D840FF"}: used to assess how well the model predicts new data.
+  
+## Data splitting {auto-animate=true}
+
+::: {.r-hstack}
+::: {style="width: 500px; height: 50px; background: linear-gradient(to right, #2D708E 0%, #2D708E 60%, #95D840 60%, #95D840 80%, #D84095 80%, #D84095 100%); margin: 0px;"}
+:::
+
+<br>
+
+- Only possible for larger datasets (hundreds of observations)
+- Split the existing dataset into calibration, validation and test datasets (70:15:15, etc.)
+  - [**Calibration set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Validation set**]{style="color: #95D840FF"}: used to test model development (prevent overfitting).
+  - [**Test set**]{style="color: #D84095"}: used to assess how well the model predicts new data.
+
+## Data splitting
+
+### Pros
+
+- Compared to collecting new data, it is cheaper and faster to split existing data.
+
+### Cons
+
+- We have *less* data to fit the model and *less* data to validate the model.
+- How do we split the data? Randomly? By time? By location?
+
+
+## *k*-fold cross-validation {auto-animate=true auto-animate-easing="ease-in-out"}
+<!-- Single dataset -->
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 500px; height: 50px; margin: 0px;"}
+:::
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 0px; height: 50px; margin: 0px;"}
+:::
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 0px; height: 50px; margin: 0px;"}
+:::
+:::
+
+## *k*-fold cross-validation {auto-animate=true auto-animate-easing="ease-in-out"}
+<!-- Cross-validated dataset (random split) -->
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 50px; margin: 0px;"}
+:::
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 50px; margin: 0px;"}
+:::
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 50px; margin: 0px;"}
+:::
+:::
+
+## *k*-fold cross-validation {auto-animate=true auto-animate-easing="ease-in-out"}
+<!-- Make bars smaller -->
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
+:::
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
+:::
+:::
+
+## *k*-fold cross-validation {auto-animate=true auto-animate-easing="ease-in-out"}
+<!-- Add iterations -->
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
+:::
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
+:::
+:::
+
+::: {.r-hstack}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
+:::
+:::
+
+
+::: {.r-hstack}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 250px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 150px; height: 20px; margin: 0px;"}
+:::
+:::
+
+[Iteration 1]{style="color: #000; font-size: 18px;" .absolute top=55 right=790 data-id="text1"}
+
+[Iteration 2]{style="color: #000; font-size: 18px;" .absolute top=75 right=790 data-id="text2"}
+
+[Iteration 3]{style="color: #000; font-size: 18px;" .absolute top=95 right=790 data-id="text3"}
+
+[And so on...]{style="color: #000; font-size: 18px;" .absolute top=115 right=790 data-id="text4"}
+
+
+## *k*-fold cross-validation 
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
+:::
+::: {data-id="box2" auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {data-id="box3" auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
+:::
+:::
+
+::: {.r-hstack}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 300px; height: 20px; margin: 0px;"}
+:::
+:::
+
+
+::: {.r-hstack}
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 250px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #95D840FF; width: 100px; height: 20px; margin: 0px;"}
+:::
+::: {auto-animate-delay="0" style="background: #2D708EFF; width: 150px; height: 20px; margin: 0px;"}
+:::
+:::
+
+[Iteration 1]{style="color: #000; font-size: 18px;" .absolute top=55 right=790 data-id="text1"}
+[Iteration 2]{style="color: #000; font-size: 18px;" .absolute top=75 right=790 data-id="text2"}
+[Iteration 3]{style="color: #000; font-size: 18px;" .absolute top=95 right=790 data-id="text3"}
+[3-fold cross-validation]{style="color: #000; font-size: 18px;" .absolute top=120 right=790 data-id="text4"}
+[Fold 1]{style="color: #000; font-size: 18px;" .absolute top=120 right=660}
+[Fold 2]{style="color: #000; font-size: 18px;" .absolute top=120 right=494}
+[Fold 3]{style="color: #000; font-size: 18px;" .absolute top=120 right=328}
+
+- Like data splitting, where existing data is split into two parts:
+  - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
+  - [**Test set**]{style="color: #95D840FF"}: used to assess how well the model predicts new data.
+- The **difference** is that the splitting is done *multiple* times, and the model is fit and validated *multiple* times.
+- Each iteration or fold is used for testing once.
+
+## *k*-fold cross-validation
+
+### Pros
+
+- Same as data splitting, but also:
+  - The model is fit and validated *multiple* times, so we can get a better estimate of how well the model predicts new data.
+  - Greatly reduces overfitting as the model's performance is not just a result of the particular way the data was split.
+
+### Cons
+
+- Bias in small datasets: each fold may contain too little data to provide a representative sample.
+- Each fold fits a **new** model so it is not used for interpretation, only for prediction quality.
+  - Computationally more expensive.
+  
+## Cross-validation
+
+*k*-fold cross-validation splits data in each fold randomly.
+
+If there is some underlying structure to the data, consider:
+
+- Spatial cross-validation (e.g. fields on a farm, each fold is one field)
+- Temporal cross-validation (e.g. time series data, each fold is a time period)
+- Stratified cross-validation (e.g. each fold has the same proportion of each category)
+
+# Assessing prediction quality
+
+How 'good' are the predictions? Observed vs predicted.
+
+## Visually {auto-animate=true}
+
+- **Plot**: observed ($y_i$) vs predicted ($\hat y$) values
+
+```{r}
+ggplot(data = airquality, aes(x = log(Ozone), y = pred)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  labs(x = "Observed log(Ozone)", y = "Predicted log(Ozone)") +
+  theme_classic()
+```
+
+We can also use metrics to quantify how well the model predicts new data:
+
+- How close points are to the 1:1 line
+- How *linear* the relationship is between observed and predicted values
+
+## Error {auto-animate=true}
+
+The smaller the error, the better the model.
+
+**Mean error**: the average difference between observed and predicted values.
+
+- Can be positive or negative to indicate over- or under-estimation (a measure of bias)
+  
+$$ME = \frac{1}{n} \sum_{i=1}^{n} y_i - \hat{y}_i$$ (in $y$ units)
+
+**Mean absolute error**: the average (absolute) difference between observed and predicted values (residual).
+
+$$MAE = \frac{1}{n} \sum_{i=1}^{n} |y_i - \hat{y}_i|$$ (in $y$ units)
+
+**Mean squared error**: the average of the squared residuals
+
+- Squared so positive and negative errors do not cancel each other out
+- Penalises poor predictions more
+
+$$MSE = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2$$
+
+**Root mean squared error**: the standard deviation of the residuals
+
+- Squaring the error penalises poor predictions more
+  
+$$RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)^2}$$ (in $y$ units)
+
+## Linearity {auto-animate=true}
+
+The more linear the relationship between observed and predicted values, the better the model.
+
+**Pearson's correlation coefficient (*r*)**: 
+
+- A measure of the strength and direction of a linear relationship between two variables.
+- Ranges from -1 to 1, with 0 indicating no relationship and 1 indicating a perfect positive linear relationship.
+
+$$r = \frac{\sum_{i=1}^{n} (y_i - \bar{y})(\hat{y}_i - \bar{\hat{y}})}{\sqrt{\sum_{i=1}^{n} (y_i - \bar{y})^2 \sum_{i=1}^{n} (\hat{y}_i - \bar{\hat{y}})^2}}$$
+
+**R^2^**: 
+
+- The proportion of variance explained by the variables in the model.
+- When two variables are compared (e.g. observed vs predicted) it is the same as correlation squared.
+- A value of 1 indicates a perfect linear relationship.
+
+$$R^2 = 1 - \frac{\sum_{i=1}^{n} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{n} (y_i - \bar{y})^2}$$
+**Lin's concordance correlation coefficient ($\rho_c$)**:
+
+- A measure of agreement between two variables (based on covariance, variances, and difference in means).
+- How well the points fit the 1:1 line.
+- A value of 0 indicates no agreement and 1 indicating perfect agreement.
+
+$$LCCC = \frac{2\text{Cov}(X,Y)}{\text{Var}(X) + \text{Var}(Y) + (\mu_X - \mu_Y)^2}$$
+
+## LCCC vs $r$ and R^2^
+
+LCCC combines error and linearity so it better measures the fit to the 1:1 line.
+
+```{r}
+#| code-fold: true
+library(tidyverse)
+
+df <- tibble(y = seq(0, 100, 5),
+  "45 degree line | CCC = 1" = seq(0, 100, 5)) %>%
+  mutate("Location shift | CCC = 0.89" = `45 degree line | CCC = 1` - 15) %>%
+  mutate("Scale shift | CCC = 0.52" = y / 2) %>%
+  mutate("Location and scale shift | CCC = 0.67" = y * 2 - 20)
+
+# pivot
+df_long <- df %>%
+  pivot_longer(-1, values_to = "x") %>%
+  mutate(name = factor(name, 
+    levels = c("45 degree line | CCC = 1",
+      "Location shift | CCC = 0.89",
+      "Scale shift | CCC = 0.52",
+      "Location and scale shift | CCC = 0.67")))
+
+ggplot(df_long, aes(x, y)) +
+  geom_abline(intercept = 0, slope = 1, size = 0.5, colour = "grey") +
+  facet_wrap(~name) +
+  geom_point() +
+  xlim(0, 100) +
+  labs(x = "", y = "") +
+  theme_classic() +
+  geom_blank() 
+```
+
+## Limitations
+
+No one metric is perfect.
+
+Each prediction below has an LCCC of 0.6.
+
+[Wadoux and Minasny 2024](https://www.sciencedirect.com/science/article/pii/S1574954124003625)
+![](images/LCCC.jpg)
+:::{.callout-tip}
+
+Use multiple metrics to test prediction quality, and always plot the predicted vs observed.
+
+:::
+
+# Example: Loyn dataset
+
+We will go through several examples to practice data splitting, cross-validation, and model evaluation.
+
+## About
+
+Data on the relationship between bird abundance (bird ha^-1^) and the characteristics of forest patches at 56 locations in SE Victoria.  
+
+The predictor variables are:
+
+- `ALT` Altitude (m) 
+- `YR.ISOL` Year when the patch was isolated (years) 
+-	`GRAZE` Grazing (coded 1-5 which is light to heavy) 
+-	`AREA` Patch area (ha) 
+-	`DIST` Distance to nearest patch (km) 
+-	`LDIST` Distance to largest patch (km)  
+
+```{r}
+loyn <- read_csv("images/loyn.csv")
+```
+
+
+## Dataset splitting
+
+We will split the data into training and test sets.
+
+As the dataset is quite small, we will use a 80:20 split.
+
+```{r}
+set.seed(100)
+indexes <- sample(1:nrow(loyn), size = 0.2 * nrow(loyn)) # randomly sample 20% of rows in the dataset
+loyn_train <- loyn[-indexes, ] # remove the 20% - training dataset
+loyn_test <- loyn[indexes, ] # select the 20% - test dataset
+```
+
+## Checking the split
+
+Check out the `str()` of the data to see if the split worked (number of observations).
+
+```{r}
+#| message: false
+
+str(loyn_train)
+str(loyn_test)
+```
+
+# Model development
+From now on, we will work with the **training set only**.
+
+## Exploratory data analysis
+
+- The next step is to visualise the data.
+- Expore relationships between the predictors and the response via histograms, scatterplots, boxplots, correlations etc.
+
+In this lecture we will just look at histograms.
+
+## Histograms
+
+```{r}
+#| code-fold: true
+
+loyn_train %>%
+    pivot_longer(
+    cols = everything(),
+    names_to = "variable",
+    values_to = "value"
+  ) %>% 
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(~ variable, scales = "free")
+```
+
+- Looks like `AREA` `LDIST` and `DIST` are skewed -- we will transform them so that they are more normally distributed.
+
+## Transforming predictors
+
+ We will use `log10()` to transform the predictors. The `mutate()` function from the `dplyr` package is useful for this as it can create new columns in the data frame with the transformed values.
+
+```{r}
+loyn_train <- loyn_train %>%
+    mutate(
+        AREA_L10 = log10(AREA),
+        LDIST_L10 = log10(LDIST),
+        DIST_L10 = log10(DIST)
+    )
+```
+
+Then, remove the untransformed variables from the dataset. Here we can use the `select()` function from the `dplyr` package to "delselect" columns by using the `-` sign.
+
+```{r}
+loyn_train <- loyn_train %>%
+    select(-AREA, -LDIST, -DIST)
+
+str(loyn_train)
+```
+
+## Final inspection
+
+View the histograms again to check that the transformation worked.
+
+```{r}
+#| code-fold: true
+
+loyn_train %>%
+    pivot_longer(
+    cols = everything(),
+    names_to = "variable",
+    values_to = "value"
+  ) %>% 
+  ggplot(aes(x = value)) +
+  geom_histogram() +
+  facet_wrap(~ variable, scales = "free")
+```
+
+## Full model
+
+We start with a full model that includes all the predictors.
+
+```{r}
+full_fit <- lm(ABUND ~ ., data = loyn_train)
+summary(full_fit)
+```
+
+## Assumptions - Round 1
+
+As usual, we should check the assumptions of the model (CLINE + outliers). We will use the `check_model()` function from the `perfomance` package (because it looks nice and has interpretation instructions).
+
+```{r}
+library(performance)
+check_model(full_fit, check = c("linearity", "qq", "homogeneity", "outliers"))
+```
+
+## Assumptions - Round 1
+
+We check multicollinearity with variable inflation factors (VIF) - VIFs are all < 10, so there is no multicollinearity. All assumptions are thus met.
+
+```{r}
+check_model(full_fit, check = c("vif"))
+```
+
+## Backwards stepwise selection
+
+Use the `step()` function perform backwards stepwise selection. This function uses AIC to select the best model. 
+
+Depending on the dataset splitting, the best model may be different each time we randomly sample the data. In this case we should all have the same results as we set the seed.
+
+If we compare to the full model, the adjusted r-squared is slightly higher, and the AIC is lower.
+
+```{r}
+step_fit <- step(full_fit, direction = "backward")
+```
+
+## The selected model
+
+:::{.columns}
+:::{.column width="50%"}
+
+```{r}
+summary(full_fit)
+```
+
+:::
+:::{.column width="50%"}
+```{r}
+summary(step_fit)
+```
+
+:::
+
+## Assumptions - Round 2
+
+```{r}
+check_model(step_fit, check = c("linearity", "qq", "homogeneity", "outliers", "vif"))
+```
+
+# Model validation
+It looks like the model is good, so let's bring in the test set to see how it performs!
+
+## Prepare the test data
+
+Since the test data has not been transformed, we need to do that first.
+
+We then predict onto the training and test dataset using the reduced stepwise model.
+
+```{r}
+loyn_test <- loyn_test %>%
+    mutate(
+        AREA_L10 = log10(AREA),
+        LDIST_L10 = log10(LDIST),
+        DIST_L10 = log10(DIST)
+    ) %>%
+    select(-AREA, -LDIST, -DIST)
+
+loyn_train$pred <- predict(step_fit, newdata = loyn_train)
+loyn_test$pred <- predict(step_fit, newdata = loyn_test)
+```
+
+## Plotting observed vs predicted
+
+```{r}
+#| code-fold: true
+
+library(patchwork)
+
+p1 <- ggplot(loyn_train, aes(ABUND, pred)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  labs(x = "Observed ABUND", y = "Predicted ABUND",
+       title = "Training") +
+  theme_classic()
+
+p2 <- ggplot(loyn_test, aes(ABUND, pred)) +
+  geom_point() +
+  geom_abline(intercept = 0, slope = 1, color = "red") +
+  labs(x = "Observed ABUND", y = "Predicted ABUND",
+       title = "Test") +
+  theme_classic()
+
+p1 + p2
+  
+```
+
+## Calculating metrics - error
+
+Generally the training dataset will have lower error and higher linearity than the test dataset. If this difference is very large -- it suggests the model is not applicable to the test data and overfitting.
+
+With error -- lower is better. The following all measure error **in the same units as the response variable** (number of birds in each forest patch).
+
+### Mean error
+
+```{r}
+mean(loyn_train$ABUND - loyn_train$pred) |> round(2)
+mean(loyn_test$ABUND - loyn_test$pred) |> round(2)
+```
+
+We expect the ME for the training dataset to be near 0 -- a well-fitted linear regression model will have positive and negative residuals balance each other out.
+
+### Mean absolute error
+
+```{r}
+mean(abs(loyn_train$ABUND - loyn_train$pred)) |> round(2)
+mean(abs(loyn_test$ABUND - loyn_test$pred)) |> round(2)
+```
+
+### Root mean squared error (`caret` package)
+
+```{r}
+library(caret)
+RMSE(loyn_train$ABUND, loyn_train$pred) |> round(2)
+RMSE(loyn_test$ABUND, loyn_test$pred) |> round(2)
+```
+
+## Calculating metrics -- linearity
+
+With linearity -- higher is better.
+
+Both training and test datasets perform similarly, which is a good sign the model is not overfitting.
+
+### Pearson's correlation coefficient *r*
+
+```{r}
+cor(loyn_train$ABUND, loyn_train$pred) |> round(2)
+cor(loyn_test$ABUND, loyn_test$pred) |> round(2)
+```
+
+### R^2^
+
+Can either square the correlation coefficient or use the `R2()` function from the `caret` package.
+
+```{r}
+R2(loyn_train$ABUND, loyn_train$pred) |> round(2)
+R2(loyn_test$ABUND, loyn_test$pred) |> round(2)
+```
+
+### Lin's concordance correlation coefficient (CCC) (`epiR` package)
+
+```{r}
+library(epiR)
+epi.ccc(loyn_train$ABUND, loyn_train$pred)$rho.c$est |> round(2)
+epi.ccc(loyn_test$ABUND, loyn_test$pred)$rho.c$est |> round(2)
+```
+
+## Conclusions
+
+```{r}
+#| code-fold: true
+# put all data into a tible and kable it
+tibble(
+    Dataset = c("Training", "Test"),
+    ME = c(
+        mean(loyn_train$ABUND - loyn_train$pred),
+        mean(loyn_test$ABUND - loyn_test$pred)
+    ),
+    MAE = c(
+        mean(abs(loyn_train$ABUND - loyn_train$pred)),
+        mean(abs(loyn_test$ABUND - loyn_test$pred))
+    ),
+    RMSE = c(
+        RMSE(loyn_train$ABUND, loyn_train$pred),
+        RMSE(loyn_test$ABUND, loyn_test$pred)
+    ),
+    cor = c(
+        cor(loyn_train$ABUND, loyn_train$pred),
+        cor(loyn_test$ABUND, loyn_test$pred)
+    ),
+    R2 = c(
+        R2(loyn_train$ABUND, loyn_train$pred),
+        R2(loyn_test$ABUND, loyn_test$pred)
+    ),
+    LCCC = c(
+        epi.ccc(loyn_train$ABUND, loyn_train$pred)$rho.c$est,
+        epi.ccc(loyn_test$ABUND, loyn_test$pred)$rho.c$est
+    )
+) %>%
+    knitr::kable(digits = 2)
+```
+
+- The model fit for the training dataset is marginally better (slight overfitting, but not a concern)
+- Small differences are also expected due to the small sample size or the chosen `set.seed()`
+- The model predicts bird abundance in forest patches in SE Victoria well (***r*** = 0.82, **LCCC** = 0.81, **MAE** = 5.21 birds/patch, **RMSE** = 6.72 birds/patch).
+
+# Thanks!
+
+**Questions? Comments?**
+
+Slides made with [Quarto](https://quarto.org)
