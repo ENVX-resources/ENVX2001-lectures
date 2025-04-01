@@ -1,32 +1,20 @@
 ---
-title: "Regression: modelling"
-subtitle: ENVX2001 Applied Statistical Methods
-author: Si Yang Han
-institute: The University of Sydney
-date: last-modified # today | last-modified
-date-format: "MMM YYYY"
+title: "Lecture 02a -- Sampling designs"
+author: Januar Harianto
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
 execute:
-  cache: false
+  cache: true
   echo: true
-editor-options:
-  canonical: true
-toc: true
-toc-depth: 1
-toc-title: Outline
-chalkboard: true
+  warning: false
+  message: false
 ---
 
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-  message = FALSE, 
-  warning = FALSE,
-  cache = TRUE)
-library(tidyverse)
-library(performance)
-library(ggplot2)
-ggplot2::theme_set(cowplot::theme_half_open())
-# ggplot2::theme_set(ggplot2::theme_minimal())
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance)
+theme_set(theme_cowplot())
 ```
 
 # Welcome to regression modelling!
