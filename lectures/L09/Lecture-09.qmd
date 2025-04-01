@@ -1,27 +1,20 @@
 ---
 title: "Regression: predictive modelling"
-subtitle: "ENVX2001 - Applied Statistical Methods"
-author:
-  - name: Si Yang Han
-    affiliations: The University of Sydney
-date: last-modified
-self-contained: true
+author: Si Yang Han
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
 execute:
-  freeze: auto
-  cache: false
-# NOTE: please check _quarto.yml file for more options
+  cache: true
+  echo: true
+  warning: false
+  message: false
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-    echo = TRUE,
-    message = FALSE,
-    warning = FALSE,
-    cache = TRUE
-)
-library(tidyverse)
-ggplot2::theme_set(cowplot::theme_half_open())
-# ggplot2::theme_set(ggplot2::theme_minimal())
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom, caret, epiR)
+theme_set(theme_cowplot())
 ```
 
 # Predictive modelling
@@ -50,7 +43,6 @@ ggplot2::theme_set(cowplot::theme_half_open())
 We fitted a multiple linear regression model to the data.
 
 ```{r}
-library(tidyverse)
 fit <- lm(log(Ozone) ~ Temp + Solar.R + Wind, data = airquality)
 summary(fit)
 ```
@@ -553,8 +545,6 @@ LCCC combines error and linearity so it better measures the fit to the 1:1 line.
 
 ```{r}
 #| code-fold: true
-library(tidyverse)
-
 df <- tibble(y = seq(0, 100, 5),
   "45 degree line | CCC = 1" = seq(0, 100, 5)) %>%
   mutate("Location shift | CCC = 0.89" = `45 degree line | CCC = 1` - 15) %>%
@@ -722,8 +712,7 @@ summary(full_fit)
 As usual, we should check the assumptions of the model (CLINE + outliers). We will use the `check_model()` function from the `perfomance` package (because it looks nice and has interpretation instructions).
 
 ```{r}
-library(performance)
-check_model(full_fit, check = c("linearity", "qq", "homogeneity", "outliers"))
+performance::check_model(full_fit, check = c("linearity", "qq", "homogeneity", "outliers"))
 ```
 
 ## Assumptions - Round 1
@@ -795,9 +784,6 @@ loyn_test$pred <- predict(step_fit, newdata = loyn_test)
 
 ```{r}
 #| code-fold: true
-
-library(patchwork)
-
 p1 <- ggplot(loyn_train, aes(ABUND, pred)) +
   geom_point() +
   geom_abline(intercept = 0, slope = 1, color = "red") +
@@ -841,7 +827,6 @@ mean(abs(loyn_test$ABUND - loyn_test$pred)) |> round(2)
 ### Root mean squared error (`caret` package)
 
 ```{r}
-library(caret)
 RMSE(loyn_train$ABUND, loyn_train$pred) |> round(2)
 RMSE(loyn_test$ABUND, loyn_test$pred) |> round(2)
 ```
@@ -871,7 +856,6 @@ R2(loyn_test$ABUND, loyn_test$pred) |> round(2)
 ### Lin's concordance correlation coefficient (CCC) (`epiR` package)
 
 ```{r}
-library(epiR)
 epi.ccc(loyn_train$ABUND, loyn_train$pred)$rho.c$est |> round(2)
 epi.ccc(loyn_test$ABUND, loyn_test$pred)$rho.c$est |> round(2)
 ```
