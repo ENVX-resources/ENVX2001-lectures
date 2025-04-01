@@ -1,25 +1,20 @@
 ---
 title: "Regression: model development"
-subtitle: "ENVX2001 - Applied Statistical Methods"
-author:
-  - name: Si Yang Han
-    affiliations: The University of Sydney
-date: last-modified
-self-contained: true
+author: Si Yang Han
+format: soles-revealjs
+# format: revealjs
+# fontsize: 16pt
+embed-resources: true
 execute:
-  freeze: auto
-  cache: false
-# NOTE: please check _quarto.yml file for more options
+  cache: true
+  echo: true
+  warning: false
+  message: false
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE,
-  message = FALSE, 
-  warning = FALSE,
-  cache = TRUE)
-library(tidyverse)
-ggplot2::theme_set(cowplot::theme_half_open())
-# ggplot2::theme_set(ggplot2::theme_minimal())
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom)
+theme_set(theme_cowplot())
 ```
 
 # Variable selection
@@ -47,7 +42,6 @@ We fitted a multiple linear regression model to the data.
 
 ```{r}
 #| message=FALSE, warning=FALSE
-library(tidyverse)
 full_fit <- lm(log(Ozone) ~ Temp + Solar.R + Wind, data = airquality)
 summary(full_fit)
 ```
@@ -86,8 +80,6 @@ A simple example using polynomial regression.
 
 ```{r}
 #| code-fold: true
-
-library(tidyverse)
 set.seed(1030)
 xsquared <- function(x) {
   x ^ 2
@@ -466,7 +458,6 @@ If we remove the least significant variable...
 ```{r}
 #| code-fold: true
 
-library(broom)
 full6 <- loyn_fit
 part5 <- update(full6, . ~ . - LDIST_L10)
 part4 <- update(part5, . ~ . - DIST_L10)
