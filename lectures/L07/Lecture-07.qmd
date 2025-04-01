@@ -1,6 +1,6 @@
 ---
-title: "Lecture 02a -- Sampling designs"
-author: Januar Harianto
+title: "Regression: modelling"
+author: Si Yang Han
 format: soles-revealjs
 # format: revealjs
 # fontsize: 16pt
