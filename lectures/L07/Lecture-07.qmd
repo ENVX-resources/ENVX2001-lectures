@@ -13,7 +13,7 @@ execute:
 ---
 
 ```{r setup, include=FALSE}
-pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance)
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom)
 theme_set(theme_cowplot())
 ```
 
