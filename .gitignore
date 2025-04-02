@@ -34,6 +34,7 @@
 _book/
 _site/
 
+
 # Quarto temporary files
 *.utf8.md
 *.knit.md
@@ -51,6 +52,7 @@ _site/
 # Project specific
 # ---------------
 _solution/
+_other/
 
 # Cline
 # -----
@@ -65,3 +67,4 @@ memory-bank/
 ENVX1002-handbook/
 
 .roomodes
+
