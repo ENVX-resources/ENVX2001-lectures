@@ -10,10 +10,11 @@ execute:
   echo: true
   warning: false
   message: false
+scrolling: true
 ---
 
 ```{r setup, include=FALSE}
-pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom)
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom, HistData)
 theme_set(theme_cowplot())
 ```
 
@@ -113,6 +114,7 @@ Many other people contributed to the development of regression analysis, but the
 ```{r}
 #| code-fold: true
 library(HistData)
+data(Galton)
 str(Galton)
 ```
 
@@ -132,6 +134,8 @@ ggplot(Galton, aes(x = parent, y = child)) +
 ```
 
 :::
+:::
+
 
 ## Defining a linear relationship {.nostretch}
 
@@ -400,6 +404,7 @@ performance::check_model(lm(y ~ x, data = df),
   check = c(c("qq")))
 ```
 :::
+:::
 
 ## Asumption: Equal variances
 
@@ -423,7 +428,7 @@ $$Standardised\ residual = \frac{Residual}{Standard\ error\ of\ the\ residual}$$
 
 How well does our fitted model represent the relationship between the variables?
 
-## ANOVA and linear regression
+## ANOVA and linear regression {.scrollable}
 
 ANOVA is a variation of linear regression -- both partition variance into sum of squares for residuals (variance explained) and sum of squares for error (variance not explained) aka **the components of the F-statistic**.
 
@@ -456,6 +461,7 @@ $$\text{F-value} = \frac{\text{parent Sum Sq}}{\text{Residuals Mean Sq}} = \frac
 ### Regression Output
 
 ```{r}
+#| code-fold: false
 #| eval: false
 fit <- lm(child ~ parent, data = Galton)
 summary(fit)
@@ -493,6 +499,7 @@ summary(fit)
 ```
 
 :::
+
 :::{.column width="50%"}
 
 $$\widehat{child} = 23.9 + 0.65 \cdot parent$$
@@ -579,6 +586,7 @@ ggplot(airquality, aes(x = Temp, y = Ozone)) +
 ```
 
 :::
+:::
 
 ## Assumption checks
 
@@ -601,6 +609,7 @@ If this had been a `sqrt()` transformation...
 
 $$\widehat{\sqrt{Ozone}}=-1.8380 + 0.0675 \times Temp$$
 $$\widehat{Ozone}=(-1.8380 + 0.0675 \times Temp)^2 = 3.3782−(0.2481×Temp)+(0.0675×Temp)^2$$
+
 ## Interpreting log transformations -- FYI
 
 :::{.fragment}
@@ -820,7 +829,7 @@ A 1 degree (&deg;F) increase in temperature is associated with a:
 - $e^{0.0675} = 1.07$ *times* increase in `Ozone` concentration
 - Approximately a 6.75% increase in `Ozone` concentration
 
-# Multiple linear regression
+##Multiple linear regression
 
 ### The MLR model
 
