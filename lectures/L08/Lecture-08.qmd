@@ -4,7 +4,7 @@ author: Si Yang Han
 format: soles-revealjs
 # format: revealjs
 # fontsize: 16pt
-# embed-resources: true
+embed-resources: true
 execute:
   scrolling: true
 ---
