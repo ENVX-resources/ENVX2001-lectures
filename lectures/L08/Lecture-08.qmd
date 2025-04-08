@@ -10,6 +10,7 @@ execute:
   echo: true
   warning: false
   message: false
+  scrolling: true
 ---
 
 ```{r setup, include=FALSE}
@@ -235,7 +236,7 @@ $$F = \big| \frac{SS_{reg,full} - SS_{reg,reduced}}{(df_{res,full} - df_{res,red
 -   $df_{res,reduced}$ is the degrees of freedom of the residuals of the reduced model
 -   $MS_{res, full}$ is the mean square of the residuals of the full model
 
-::::: columns
+::: {.columns}
 ::: {.column width="50%"}
 ```{r}
 full <- anova(full_fit) %>% broom::tidy()
@@ -250,7 +251,7 @@ reduced <- anova(reduced_fit) %>% broom::tidy()
 reduced
 ```
 :::
-:::::
+:::
 
 Each row is the *individual effect* of each predictor on the response $log(Ozone)$ (whilst holding all other predictors constant).
 
@@ -498,13 +499,11 @@ knitr::kable(rs, digits = 2)
 ## The problem
 
 -   Other combinations of predictors exist but are not shown.
-
 -   Need *automated way* to select the best model -- 6 predictors gives us 2\^6 = **64 models** to choose from!
-
--   Two options:
-
+-   Options:
     -   Backward elimination
-    -   Forward selection (not covered in this course)
+    -   Forward selection
+    -   Combination (R default)
 
 # Backward elimination
 
