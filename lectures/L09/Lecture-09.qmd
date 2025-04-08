@@ -10,6 +10,7 @@ execute:
   echo: true
   warning: false
   message: false
+  scrolling: true
 ---
 
 ```{r setup, include=FALSE}
@@ -190,6 +191,7 @@ p
 p + geom_smooth(method = "lm", se = TRUE)
 ```
 
+:::
 :::
 
 # Calibration and validation {auto-animate=true}
@@ -578,10 +580,9 @@ Each prediction below has an LCCC of 0.6.
 
 [Wadoux and Minasny 2024](https://www.sciencedirect.com/science/article/pii/S1574954124003625)
 ![](images/LCCC.jpg)
+
 :::{.callout-tip}
-
 Use multiple metrics to test prediction quality, and always plot the predicted vs observed.
-
 :::
 
 # Example: Loyn dataset
@@ -750,6 +751,7 @@ summary(full_fit)
 summary(step_fit)
 ```
 
+:::
 :::
 
 ## Assumptions - Round 2
