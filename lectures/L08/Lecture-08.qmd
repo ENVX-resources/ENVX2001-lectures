@@ -4,12 +4,8 @@ author: Si Yang Han
 format: soles-revealjs
 # format: revealjs
 # fontsize: 16pt
-embed-resources: true
+# embed-resources: true
 execute:
-  cache: true
-  echo: true
-  warning: false
-  message: false
   scrolling: true
 ---
 
@@ -83,16 +79,16 @@ A simple example using polynomial regression.
 #| code-fold: true
 set.seed(1030)
 xsquared <- function(x) {
-  x ^ 2
+  x^2
 }
 # Generate xy data
 sim_data <- function(xsquared, sample_size = 100) {
-  x = runif(n = sample_size, min = 0, max = 1) 
-  y = rnorm(n = sample_size, mean = xsquared(x), sd = 0.05)
+  x <- runif(n = sample_size, min = 0, max = 1)
+  y <- rnorm(n = sample_size, mean = xsquared(x), sd = 0.05)
   data.frame(x, y)
 }
 # Generate predicted data (model)
-df = sim_data(xsquared, sample_size = 60)
+df <- sim_data(xsquared, sample_size = 60)
 fit <- lm(y ~ 1, data = df)
 fit_1 <- lm(y ~ poly(x, degree = 1), data = df)
 fit_2 <- lm(y ~ poly(x, degree = 2), data = df)
@@ -110,11 +106,11 @@ df <- data.frame(
 
 # Reshape the data frame into long format
 df_long <- pivot_longer(
-  df, 
+  df,
   cols = starts_with("fit_"),
   names_to = "model",
   values_to = "value"
-) %>% 
+) %>%
   mutate(
     model = case_when(
       model == "fit" ~ "y = b",
@@ -126,7 +122,7 @@ df_long <- pivot_longer(
   )
 # Plot
 p <- ggplot(df_long, aes(x = x, y = value, color = model)) +
-  facet_wrap(~ model, ncol = 2, scales = "free") +
+  facet_wrap(~model, ncol = 2, scales = "free") +
   geom_point(aes(y = y), alpha = .4, size = 2) +
   geom_line(linewidth = .9, linetype = 1) +
   scale_color_brewer(palette = "Set1") +
