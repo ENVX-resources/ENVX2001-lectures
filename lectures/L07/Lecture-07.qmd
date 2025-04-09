@@ -829,7 +829,7 @@ A 1 degree (&deg;F) increase in temperature is associated with a:
 - $e^{0.0675} = 1.07$ *times* increase in `Ozone` concentration
 - Approximately a 6.75% increase in `Ozone` concentration
 
-##Multiple linear regression
+## Multiple linear regression
 
 ### The MLR model
 
