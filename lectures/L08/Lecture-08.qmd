@@ -138,7 +138,7 @@ p
 In concept...
 
 -   As complexity increases, bias ($\sum{O-\bar{P}}$) *decreases* (the mean of a model’s predictions is closer to the true mean).
--   As complexity increases, prediction variance ($\frac{\sum{P-\bar{P}}}{n}$) decreases.
+-   As complexity increases, prediction variance ($\frac{\sum{(P-\bar{P})}^2}{n}$) increases.
 -   The **goal** is to find a model that isn't too simple or complex with a good balance between bias and variance.
 
 $$ \text{Mean Squared Error} = \text{Bias}^2 + \text{Variance} + \text{Immeasureable Error} $$ In practice, the math and relationships are a bit more irregular.
@@ -170,7 +170,7 @@ Some other commonly used measures:
 -   **Select meaningful predictors** based on domain knowledge, correlation, or significance.
 -   More complex approaches are available for big data and machine learning.
 
-## Air quality: can we reduce the number of predictors?
+## Air quality: can we reduce the number of predictors? {auto-animate=true}
 
 **Full model:**
 
@@ -181,7 +181,7 @@ summary(full_fit)
 -   `Wind` has the highest p-value, can we remove it?
 -   Full model: Multiple R-squared = 0.66, Adjusted R-squared = 0.66
 
-## 
+## {auto-animate=true}
 
 -   Full model: multiple R-squared = 0.66, adjusted R-squared = 0.66
 
@@ -281,7 +281,7 @@ pf(F, df1 = 1, df2 = df_full, lower.tail = FALSE) # corresponding p-value
 ## In R with functions
 
 ```{r}
-anova(full_fit, reduced_fit)
+anova(reduced_fit, full_fit) # reduced goes first else will see negative df
 ```
 
 -   The partial F-test is significant (p-value \< 0.05), so we can reject the null hypothesis and conclude that the full model is significantly better, even if adjusted R^2^ improves by 4%.
@@ -291,10 +291,9 @@ anova(full_fit, reduced_fit)
 Looking back at the original model, we can see that the partial regression coefficients are the *same* as the partial F-test results!
 
 ```{r}
-anova(full_fit, reduced_fit) # partial F-test
+anova(reduced_fit, full_fit) # partial F-test
 
-full <- anova(full_fit) %>% broom::tidy()
-full # partial regression coefficients
+summary(full_fit)$coefficients
 
 ```
 
@@ -380,6 +379,11 @@ loyn %>%
 
 loyn_fit <- lm(ABUND ~ YR.ISOL + GRAZE + ALT + AREA + LDIST + DIST, data = loyn)
 summary(loyn_fit)
+```
+##
+
+```{r}
+#| code-fold: TRUE
 performance::check_model(loyn_fit, check = c("linearity", "qq", "homogeneity", "outliers")) # check specific assumptions
 ```
 
@@ -390,6 +394,13 @@ performance::check_model(loyn_fit, check = c("linearity", "qq", "homogeneity", "
 
 loyn_fit <- lm(ABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + LDIST_L10 + DIST_L10, data = loyn)
 summary(loyn_fit)
+
+```
+
+##
+
+```{r}
+#| code-fold: TRUE
 performance::check_model(loyn_fit, check = c("linearity", "qq", "homogeneity", "outliers")) # check specific assumptions
 ```
 
