@@ -525,24 +525,23 @@ In backward selection, the model fit is assessed using the Akaike Information Cr
 
 ## About AIC
 
--   Most **popular** model selection criterion.
+-   Most **popular** model selection criterion (can be used for non-nested models)
 -   Developed by [Hirotsugu Akaike](https://en.wikipedia.org/wiki/Hirotugu_Akaike) under the name of "an information criterion" (AIC)
 -   Founded on information theory which is concerned with the transmission, processing, utilization, and extraction of information.
 
-$$AIC = 2k - 2\ln(L)$$ where $k$ is the number of parameters in the model and $L$ is the maximum value of the likelihood function.
+$$AIC = 2k - 2\ln(L)$$
 
-## Interpretation {auto-animate="true"}
+## About AIC {auto-animate="true"}
 
-When used in linear regression, the AIC can also be defined as:
+$$AIC = 2k - 2\ln(L)$$
 
-$$AIC = n\log(\frac{RSS}{n}) + 2k$$
-
-where $RSS$ is the residual sum of squares and $2k$ is the number of parameters in the model (i.e. model complexity).
-
--   The AIC is a measure of the **relative quality** or **goodness of fit** of a statistical model for a given set of data.
--   It estimates the **relative amount of information** lost by a given model when it is used to approximate the true underlying process that generated the data.
--   **The smaller the AIC, the better the model fits the data.**
--   A *relative* measure and *unitless*, so it is not worth trying to interpret alone.
+- $k$ is the number of parameters in the model (predictors + intercept)
+- $L$ is the maximum value of the likelihood function
+  - If we predict using the (current) model, what is the probability density of the prediction compared to the original distribution?
+  - $ln(L)$ = goodness of fit (higher is better)
+- For the number of parameters in the model ($2k$) subtract the goodness of fit $2ln(L)$
+  - **The smaller the AIC, the better the model fits the data.**
+  -   A *relative* measure and *unitless*, so it is not worth trying to interpret alone.
 
 ## Back to our example
 
