@@ -375,7 +375,7 @@
     "href": "lectures/L08/Lecture-08.html#variance-bias-trade-off",
     "title": "Regression: model development",
     "section": "Variance-bias trade-off",
-    "text": "Variance-bias trade-off\n\nIn concept…\n\nAs complexity increases, bias (\\sum{O-\\bar{P}}) decreases (the mean of a model’s predictions is closer to the true mean).\nAs complexity increases, prediction variance (\\frac{\\sum{P-\\bar{P}}}{n}) decreases.\nThe goal is to find a model that isn’t too simple or complex with a good balance between bias and variance.\n\n \\text{Mean Squared Error} = \\text{Bias}^2 + \\text{Variance} + \\text{Immeasureable Error}  In practice, the math and relationships are a bit more irregular."
+    "text": "Variance-bias trade-off\n\nIn concept…\n\nAs complexity increases, bias (\\sum{O-\\bar{P}}) decreases (the mean of a model’s predictions is closer to the true mean).\nAs complexity increases, prediction variance (\\frac{\\sum{(P-\\bar{P})}^2}{n}) increases.\nThe goal is to find a model that isn’t too simple or complex with a good balance between bias and variance.\n\n \\text{Mean Squared Error} = \\text{Bias}^2 + \\text{Variance} + \\text{Immeasureable Error}  In practice, the math and relationships are a bit more irregular."
   },
   {
     "objectID": "lectures/L08/Lecture-08.html#how-do-we-determine-the-best-model",
@@ -445,14 +445,14 @@
     "href": "lectures/L08/Lecture-08.html#in-r-with-functions",
     "title": "Regression: model development",
     "section": "In R with functions",
-    "text": "In R with functions\n\n\nCode\nanova(full_fit, reduced_fit)\n\n\nAnalysis of Variance Table\n\nModel 1: log(Ozone) ~ Temp + Solar.R + Wind\nModel 2: log(Ozone) ~ Temp + Solar.R\n  Res.Df    RSS Df Sum of Sq     F    Pr(&gt;F)    \n1    107 27.675                                 \n2    108 31.645 -1   -3.9703 15.35 0.0001577 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nThe partial F-test is significant (p-value &lt; 0.05), so we can reject the null hypothesis and conclude that the full model is significantly better, even if adjusted R2 improves by 4%."
+    "text": "In R with functions\n\n\nCode\nanova(reduced_fit, full_fit) # reduced goes first else will see negative df\n\n\nAnalysis of Variance Table\n\nModel 1: log(Ozone) ~ Temp + Solar.R\nModel 2: log(Ozone) ~ Temp + Solar.R + Wind\n  Res.Df    RSS Df Sum of Sq     F    Pr(&gt;F)    \n1    108 31.645                                 \n2    107 27.675  1    3.9703 15.35 0.0001577 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\n\nThe partial F-test is significant (p-value &lt; 0.05), so we can reject the null hypothesis and conclude that the full model is significantly better, even if adjusted R2 improves by 4%."
   },
   {
     "objectID": "lectures/L08/Lecture-08.html#but-wait",
     "href": "lectures/L08/Lecture-08.html#but-wait",
     "title": "Regression: model development",
     "section": "But wait…",
-    "text": "But wait…\nLooking back at the original model, we can see that the partial regression coefficients are the same as the partial F-test results!\n\n\nCode\nanova(full_fit, reduced_fit) # partial F-test\n\n\nAnalysis of Variance Table\n\nModel 1: log(Ozone) ~ Temp + Solar.R + Wind\nModel 2: log(Ozone) ~ Temp + Solar.R\n  Res.Df    RSS Df Sum of Sq     F    Pr(&gt;F)    \n1    107 27.675                                 \n2    108 31.645 -1   -3.9703 15.35 0.0001577 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\nfull &lt;- anova(full_fit) %&gt;% broom::tidy()\nfull # partial regression coefficients\n\n\n# A tibble: 4 × 6\n  term         df sumsq meansq statistic   p.value\n  &lt;chr&gt;     &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 Temp          1 45.8  45.8       177.   2.07e-24\n2 Solar.R       1  5.07  5.07       19.6  2.29e- 5\n3 Wind          1  3.97  3.97       15.4  1.58e- 4\n4 Residuals   107 27.7   0.259      NA   NA       \n\n\nThis is because the reduced model is nested within the full model so the partial F-test is equivalent to a partial regression coefficient test."
+    "text": "But wait…\nLooking back at the original model, we can see that the partial regression coefficients are the same as the partial F-test results!\n\n\nCode\nanova(reduced_fit, full_fit) # partial F-test\n\n\nAnalysis of Variance Table\n\nModel 1: log(Ozone) ~ Temp + Solar.R\nModel 2: log(Ozone) ~ Temp + Solar.R + Wind\n  Res.Df    RSS Df Sum of Sq     F    Pr(&gt;F)    \n1    108 31.645                                 \n2    107 27.675  1    3.9703 15.35 0.0001577 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n\nCode\nsummary(full_fit)$coefficients\n\n\n                Estimate   Std. Error    t value     Pr(&gt;|t|)\n(Intercept) -0.262132313 0.5535668608 -0.4735332 6.367975e-01\nTemp         0.049171124 0.0060875025  8.0773888 1.069103e-12\nSolar.R      0.002515177 0.0005567301  4.5177673 1.616797e-05\nWind        -0.061562470 0.0157129654 -3.9179409 1.576806e-04\n\n\nThis is because the reduced model is nested within the full model so the partial F-test is equivalent to a partial regression coefficient test."
   },
   {
     "objectID": "lectures/L08/Lecture-08.html#nested-models",
@@ -487,14 +487,28 @@
     "href": "lectures/L08/Lecture-08.html#checking-assumptions---no-transformation",
     "title": "Regression: model development",
     "section": "Checking assumptions - no transformation",
-    "text": "Checking assumptions - no transformation\n\n\nCode\nloyn_fit &lt;- lm(ABUND ~ YR.ISOL + GRAZE + ALT + AREA + LDIST + DIST, data = loyn)\nsummary(loyn_fit)\n\n\n\nCall:\nlm(formula = ABUND ~ YR.ISOL + GRAZE + ALT + AREA + LDIST + DIST, \n    data = loyn)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-17.6638  -4.6409  -0.0883   4.2858  20.1042 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)   \n(Intercept) -1.097e+02  1.133e+02  -0.968  0.33791   \nYR.ISOL      6.693e-02  5.684e-02   1.177  0.24472   \nGRAZE       -3.447e+00  1.107e+00  -3.114  0.00308 **\nALT          4.772e-02  3.089e-02   1.545  0.12878   \nAREA         8.866e-04  4.657e-03   0.190  0.84980   \nLDIST        1.418e-03  1.310e-03   1.082  0.28451   \nDIST         3.811e-03  5.418e-03   0.703  0.48514   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 7.947 on 49 degrees of freedom\nMultiple R-squared:  0.5118,    Adjusted R-squared:  0.452 \nF-statistic: 8.561 on 6 and 49 DF,  p-value: 2.24e-06\n\n\nCode\nperformance::check_model(loyn_fit, check = c(\"linearity\", \"qq\", \"homogeneity\", \"outliers\")) # check specific assumptions"
+    "text": "Checking assumptions - no transformation\n\n\nCode\nloyn_fit &lt;- lm(ABUND ~ YR.ISOL + GRAZE + ALT + AREA + LDIST + DIST, data = loyn)\nsummary(loyn_fit)\n\n\n\nCall:\nlm(formula = ABUND ~ YR.ISOL + GRAZE + ALT + AREA + LDIST + DIST, \n    data = loyn)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-17.6638  -4.6409  -0.0883   4.2858  20.1042 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)   \n(Intercept) -1.097e+02  1.133e+02  -0.968  0.33791   \nYR.ISOL      6.693e-02  5.684e-02   1.177  0.24472   \nGRAZE       -3.447e+00  1.107e+00  -3.114  0.00308 **\nALT          4.772e-02  3.089e-02   1.545  0.12878   \nAREA         8.866e-04  4.657e-03   0.190  0.84980   \nLDIST        1.418e-03  1.310e-03   1.082  0.28451   \nDIST         3.811e-03  5.418e-03   0.703  0.48514   \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 7.947 on 49 degrees of freedom\nMultiple R-squared:  0.5118,    Adjusted R-squared:  0.452 \nF-statistic: 8.561 on 6 and 49 DF,  p-value: 2.24e-06"
+  },
+  {
+    "objectID": "lectures/L08/Lecture-08.html#section-1",
+    "href": "lectures/L08/Lecture-08.html#section-1",
+    "title": "Regression: model development",
+    "section": "",
+    "text": "Code\nperformance::check_model(loyn_fit, check = c(\"linearity\", \"qq\", \"homogeneity\", \"outliers\")) # check specific assumptions"
   },
   {
     "objectID": "lectures/L08/Lecture-08.html#checking-assumptions---transformation",
     "href": "lectures/L08/Lecture-08.html#checking-assumptions---transformation",
     "title": "Regression: model development",
     "section": "Checking assumptions - transformation",
-    "text": "Checking assumptions - transformation\n\n\nCode\nloyn_fit &lt;- lm(ABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + LDIST_L10 + DIST_L10, data = loyn)\nsummary(loyn_fit)\n\n\n\nCall:\nlm(formula = ABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + LDIST_L10 + \n    DIST_L10, data = loyn)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-15.6506  -2.9390   0.5289   2.5353  15.2842 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -125.69725   91.69228  -1.371   0.1767    \nYR.ISOL        0.07387    0.04520   1.634   0.1086    \nGRAZE         -1.66774    0.92993  -1.793   0.0791 .  \nALT            0.01951    0.02396   0.814   0.4195    \nAREA_L10       7.47023    1.46489   5.099 5.49e-06 ***\nLDIST_L10     -0.64842    2.12270  -0.305   0.7613    \nDIST_L10      -0.90696    2.67572  -0.339   0.7361    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 6.384 on 49 degrees of freedom\nMultiple R-squared:  0.6849,    Adjusted R-squared:  0.6464 \nF-statistic: 17.75 on 6 and 49 DF,  p-value: 8.443e-11\n\n\nCode\nperformance::check_model(loyn_fit, check = c(\"linearity\", \"qq\", \"homogeneity\", \"outliers\")) # check specific assumptions"
+    "text": "Checking assumptions - transformation\n\n\nCode\nloyn_fit &lt;- lm(ABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + LDIST_L10 + DIST_L10, data = loyn)\nsummary(loyn_fit)\n\n\n\nCall:\nlm(formula = ABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + LDIST_L10 + \n    DIST_L10, data = loyn)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-15.6506  -2.9390   0.5289   2.5353  15.2842 \n\nCoefficients:\n              Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -125.69725   91.69228  -1.371   0.1767    \nYR.ISOL        0.07387    0.04520   1.634   0.1086    \nGRAZE         -1.66774    0.92993  -1.793   0.0791 .  \nALT            0.01951    0.02396   0.814   0.4195    \nAREA_L10       7.47023    1.46489   5.099 5.49e-06 ***\nLDIST_L10     -0.64842    2.12270  -0.305   0.7613    \nDIST_L10      -0.90696    2.67572  -0.339   0.7361    \n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 6.384 on 49 degrees of freedom\nMultiple R-squared:  0.6849,    Adjusted R-squared:  0.6464 \nF-statistic: 17.75 on 6 and 49 DF,  p-value: 8.443e-11"
+  },
+  {
+    "objectID": "lectures/L08/Lecture-08.html#section-2",
+    "href": "lectures/L08/Lecture-08.html#section-2",
+    "title": "Regression: model development",
+    "section": "",
+    "text": "Code\nperformance::check_model(loyn_fit, check = c(\"linearity\", \"qq\", \"homogeneity\", \"outliers\")) # check specific assumptions"
   },
   {
     "objectID": "lectures/L08/Lecture-08.html#leverage",
@@ -557,14 +571,14 @@
     "href": "lectures/L08/Lecture-08.html#about-aic",
     "title": "Regression: model development",
     "section": "About AIC",
-    "text": "About AIC\n\nMost popular model selection criterion.\nDeveloped by Hirotsugu Akaike under the name of “an information criterion” (AIC)\nFounded on information theory which is concerned with the transmission, processing, utilization, and extraction of information.\n\nAIC = 2k - 2\\ln(L) where k is the number of parameters in the model and L is the maximum value of the likelihood function."
+    "text": "About AIC\n\nMost popular model selection criterion (can be used for non-nested models)\nDeveloped by Hirotsugu Akaike under the name of “an information criterion” (AIC)\nFounded on information theory which is concerned with the transmission, processing, utilization, and extraction of information.\n\nAIC = 2k - 2\\ln(L)"
   },
   {
-    "objectID": "lectures/L08/Lecture-08.html#interpretation",
-    "href": "lectures/L08/Lecture-08.html#interpretation",
+    "objectID": "lectures/L08/Lecture-08.html#about-aic-1",
+    "href": "lectures/L08/Lecture-08.html#about-aic-1",
     "title": "Regression: model development",
-    "section": "Interpretation",
-    "text": "Interpretation\nWhen used in linear regression, the AIC can also be defined as:\nAIC = n\\log(\\frac{RSS}{n}) + 2k\nwhere RSS is the residual sum of squares and 2k is the number of parameters in the model (i.e. model complexity).\n\nThe AIC is a measure of the relative quality or goodness of fit of a statistical model for a given set of data.\nIt estimates the relative amount of information lost by a given model when it is used to approximate the true underlying process that generated the data.\nThe smaller the AIC, the better the model fits the data.\nA relative measure and unitless, so it is not worth trying to interpret alone."
+    "section": "About AIC",
+    "text": "About AIC\nAIC = 2k - 2\\ln(L)\n\nk is the number of parameters in the model (predictors + intercept)\nL is the maximum value of the likelihood function\n\nIf we predict using the (current) model, what is the probability density of the prediction compared to the original distribution?\nln(L) = goodness of fit (higher is better)\n\nFor the number of parameters in the model (2k) subtract the goodness of fit 2ln(L)\n\nThe smaller the AIC, the better the model fits the data.\nA relative measure and unitless, so it is not worth trying to interpret alone."
   },
   {
     "objectID": "lectures/L08/Lecture-08.html#back-to-our-example",
@@ -574,8 +588,8 @@
     "text": "Back to our example\n\n\nCode\nback_step &lt;- step(loyn_fit, direction = \"backward\")\n\n\nStart:  AIC=214.14\nABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + LDIST_L10 + DIST_L10\n\n            Df Sum of Sq    RSS    AIC\n- LDIST_L10  1      3.80 2000.7 212.25\n- DIST_L10   1      4.68 2001.5 212.27\n- ALT        1     27.02 2023.9 212.90\n&lt;none&gt;                   1996.8 214.14\n- YR.ISOL    1    108.83 2105.7 215.11\n- GRAZE      1    131.07 2127.9 215.70\n- AREA_L10   1   1059.75 3056.6 235.98\n\nStep:  AIC=212.25\nABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10 + DIST_L10\n\n           Df Sum of Sq    RSS    AIC\n- DIST_L10  1     12.64 2013.3 210.60\n- ALT       1     35.12 2035.8 211.22\n&lt;none&gt;                  2000.7 212.25\n- YR.ISOL   1    121.64 2122.3 213.55\n- GRAZE     1    132.44 2133.1 213.84\n- AREA_L10  1   1193.04 3193.7 236.44\n\nStep:  AIC=210.6\nABUND ~ YR.ISOL + GRAZE + ALT + AREA_L10\n\n           Df Sum of Sq    RSS    AIC\n- ALT       1     57.84 2071.1 210.19\n&lt;none&gt;                  2013.3 210.60\n- GRAZE     1    123.48 2136.8 211.94\n- YR.ISOL   1    134.89 2148.2 212.23\n- AREA_L10  1   1227.11 3240.4 235.25\n\nStep:  AIC=210.19\nABUND ~ YR.ISOL + GRAZE + AREA_L10\n\n           Df Sum of Sq    RSS    AIC\n&lt;none&gt;                  2071.1 210.19\n- YR.ISOL   1    129.81 2200.9 211.59\n- GRAZE     1    188.45 2259.6 213.06\n- AREA_L10  1   1262.97 3334.1 234.85"
   },
   {
-    "objectID": "lectures/L08/Lecture-08.html#section-1",
-    "href": "lectures/L08/Lecture-08.html#section-1",
+    "objectID": "lectures/L08/Lecture-08.html#section-3",
+    "href": "lectures/L08/Lecture-08.html#section-3",
     "title": "Regression: model development",
     "section": "",
     "text": "Printing back_step reveals the final model:\n\n\nCode\nback_step\n\n\n\nCall:\nlm(formula = ABUND ~ YR.ISOL + GRAZE + AREA_L10, data = loyn)\n\nCoefficients:\n(Intercept)      YR.ISOL        GRAZE     AREA_L10  \n -134.26065      0.07835     -1.90216      7.16617"
@@ -887,6 +901,13 @@
     "title": "Regression: modelling",
     "section": "Is transforming better?",
     "text": "Is transforming better?\n\n\nBefore\n\n\nCode\nsummary(fit)\n\n\n\nCall:\nlm(formula = Ozone ~ Temp, data = airquality)\n\nResiduals:\n    Min      1Q  Median      3Q     Max \n-40.729 -17.409  -0.587  11.306 118.271 \n\nCoefficients:\n             Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -146.9955    18.2872  -8.038 9.37e-13 ***\nTemp           2.4287     0.2331  10.418  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 23.71 on 114 degrees of freedom\n  (37 observations deleted due to missingness)\nMultiple R-squared:  0.4877,    Adjusted R-squared:  0.4832 \nF-statistic: 108.5 on 1 and 114 DF,  p-value: &lt; 2.2e-16\n\n\n\nAfter\n\n\nCode\nsummary(fit_log)\n\n\n\nCall:\nlm(formula = log(Ozone) ~ Temp, data = airquality)\n\nResiduals:\n     Min       1Q   Median       3Q      Max \n-2.14469 -0.33095  0.02961  0.36507  1.49421 \n\nCoefficients:\n            Estimate Std. Error t value Pr(&gt;|t|)    \n(Intercept) -1.83797    0.45100  -4.075 8.53e-05 ***\nTemp         0.06750    0.00575  11.741  &lt; 2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\nResidual standard error: 0.5848 on 114 degrees of freedom\n  (37 observations deleted due to missingness)\nMultiple R-squared:  0.5473,    Adjusted R-squared:  0.5434 \nF-statistic: 137.8 on 1 and 114 DF,  p-value: &lt; 2.2e-16"
+  },
+  {
+    "objectID": "lectures/L07/Lecture-07.html#multiple-linear-regression",
+    "href": "lectures/L07/Lecture-07.html#multiple-linear-regression",
+    "title": "Regression: modelling",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nThe MLR model\nY = \\beta_0 + \\beta_1x_1 + \\beta_2x_2 + ... + \\beta_kx_k + \\epsilon\nwhere\n\na response variable (Y) which we wish to predict using predictor variables (x_k)\n\\beta_0 is the y-intercept\n\\beta_k is the partial regression coefficient associated with the k^{th} predictor variable\n\\epsilon is error and \\epsilon \\sim N(0,\\ \\sigma^2)"
   },
   {
     "objectID": "lectures/L07/Lecture-07.html#can-we-use-more-predictors",
