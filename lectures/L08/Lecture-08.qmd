@@ -542,6 +542,18 @@ $$AIC = 2k - 2\ln(L)$$
 - For the number of parameters in the model ($2k$) subtract the goodness of fit $2ln(L)$
   - **The smaller the AIC, the better the model fits the data.**
   -   A *relative* measure and *unitless*, so it is not worth trying to interpret alone.
+- Can be calculated with the `AIC()` function in R
+
+## About AIC - FYI
+
+In linear regression, AIC is sometimes calculated as:
+
+$$AIC = n\log(\frac{RSS}{n}) + 2k$$
+
+where $RSS$ is the residual sum of squares, $2k$ is the number of parameters in the model, and $n$ is the number of observations.
+
+-   The difference between this equation and the previous equation is a constant, or scaling
+-   The `step()` function in R uses this equation (hence you may notice a difference in AIC values!)
 
 ## Back to our example
 
