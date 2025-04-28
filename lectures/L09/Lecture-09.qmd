@@ -6,15 +6,15 @@ format: soles-revealjs
 # fontsize: 16pt
 embed-resources: true
 execute:
-  cache: true
+  cache: false
   echo: true
-  warning: false
+  warning: false 
   message: false
   scrolling: true
 ---
 
 ```{r setup, include=FALSE}
-pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom, caret, epiR)
+pacman::p_load(tidyverse, gt, ggplot2, gganimate, cowplot, performance, broom, caret, epiR, patchwork)
 theme_set(theme_cowplot())
 ```
 
@@ -285,11 +285,49 @@ $+$
 - It can be expensive and time-consuming to collect new data.
 - Some data may be impossible to collect (e.g. historical data).
 
+
+## Data splitting {auto-animate=true auto-animate-easing="ease-in-out"}
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 500px; height: 50px; margin: 0px;"}
+:::
+::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 0px; height: 50px; margin: 0px;"}
+:::
+:::
+
+[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+
+## Data splitting {auto-animate=true auto-animate-easing="ease-in-out"}
+
+::: {.r-hstack}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;"}
+:::
+:::
+
+[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+
+[(Training)]{style="color: #2780e3;" .absolute top=130 left=368 data-id="text2"}
+
+[Subset (Test)]{style="color: #3fb618;" .absolute top=130 left=680}
+
 ## Data splitting {auto-animate=true}
 
 ::: {.r-hstack}
-::: {style="width: 500px; height: 50px; background: linear-gradient(to right, #2D708EFF 70%, #95D840FF 30%); margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;"}
 :::
+
+::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;"}
+:::
+:::
+
+[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+
+[(Training)]{style="color: #2780e3;" .absolute top=130 left=368 data-id="text2"}
+
+[Subset (Test)]{style="color: #3fb618;" .absolute top=130 left=680}
 
 <br>
 
@@ -300,10 +338,21 @@ $+$
 ## Data splitting {auto-animate=true}
 
 ::: {.r-hstack}
-::: {style="width: 500px; height: 50px; background: linear-gradient(to right, #2D708E 0%, #2D708E 60%, #95D840 60%, #95D840 80%, #D84095 80%, #D84095 100%); margin: 0px;"}
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 400px; height: 50px; margin: 0px;"}
 :::
 
+::: {data-id="box2" auto-animate-delay="0" style="background: #3fb618; width: 100px; height: 50px; margin: 0px;"}
+:::
+:::
+
+[Dataset]{style="color: #2780e3;" .absolute top=130 left=275 data-id="text1"}
+
+[(Training)]{style="color: #2780e3;" .absolute top=130 left=368 data-id="text2"}
+
+[Subset (Test)]{style="color: #3fb618;" .absolute top=130 left=680}
+
 <br>
+
 
 - Only possible for larger datasets (hundreds of observations)
 - Split the existing dataset into calibration, validation and test datasets (70:15:15, etc.)
@@ -436,6 +485,8 @@ $+$
 [Fold 1]{style="color: #000; font-size: 18px;" .absolute top=120 right=660}
 [Fold 2]{style="color: #000; font-size: 18px;" .absolute top=120 right=494}
 [Fold 3]{style="color: #000; font-size: 18px;" .absolute top=120 right=328}
+
+<br>
 
 - Like data splitting, where existing data is split into two parts:
   - [**Training set**]{style="color: #2D708EFF"}: used to fit the model.
